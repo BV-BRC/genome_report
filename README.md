@@ -1,5 +1,5 @@
 # genome-report
-Server-side Generation of PATRIC Genome Reports. 
+Server-side Generation of PATRIC Genome Reports.
 
 ## Requirements
 
@@ -11,6 +11,22 @@ Server-side Generation of PATRIC Genome Reports.
 ```
 cd genome_report
 npm install
+```
+
+## Devlopment
+
+Serve the template and listen for changes with
+
+```
+npm start
+```
+
+## Prod Installation
+
+The following will not install any dev dependencies
+
+```
+npm install --production
 ```
 
 ## Usage
