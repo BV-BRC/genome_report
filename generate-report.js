@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  *
- * generate-images.js
+ * generate-report.js
  *
  * Example usage:
- *      ./generate-pdf.js --genome_id=83332.12
+ *      ./generate-report.js --genome_id=83332.12
  *
  * Author(s):
  *      nconrad
@@ -29,7 +29,7 @@ const tmplData = {
     author: {
         name: 'nconrad'
     },
-    organism: {
+    org: {
         name: "Mycobacterium tuberculosis H37Rv"
     },
     reportDate: new Date().toJSON().slice(0,10).replace(/-/g,'/')
@@ -46,7 +46,7 @@ if (require.main === module){
     }
 
     let genomeId = opts.genome_id;
-    tmplData.organism.id = genomeId;
+    tmplData.org.id = genomeId;
 
     // fill html template and save as pdf
     buildPdf(genomeId);

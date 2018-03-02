@@ -1,14 +1,17 @@
+<!DOCTYPE html>
 <html>
     <head>
+        <title>PATRIC Genome Report | {{org.id}}</title>
+
         <style>
-           html {
+
+            body {
                 font-family: 'Open Sans', sans-serif;
                 color: #444;
-            }
-            body {
                 display: flex;
                 flex-direction: column;
             }
+
             a {
                 text-decoration: none;
                 color: #0d78ef;
@@ -42,7 +45,7 @@
                 margin-left: 10px;
                 position:absolute;
                 bottom:0;
-                width: 100%;
+
                 font-size: 1.3em;
                 color: #444;
             }
@@ -55,7 +58,6 @@
                 color: #777;
             }
             .logo {
-                float: left;
                 width: 40%;
             }
             .subsystem-img {
@@ -64,34 +66,30 @@
             }
 
         </style>
+        <link rel="stylesheet" type="text/css" href="/templates/gr-template.css" media="screen, print">
     </head>
-    <body style="width: 100%; font-size: 1em" cz-shortcut-listen="true">
+    <body>
 
-        <section>
-            <img src="../../patric-logo.svg" class="logo">
-
+        <header>
             <div style="float: left; position: relative;">
+                <img src="../../patric-logo.svg" class="logo">
+
+
                 <span class="v-divide" style="float: left;"></span>
                 <span class="report-title">Genome Report</span>
             </div>
 
             <div class="report-info">
                 Report Date: {{reportDate}}<br>
-                Organism: {{organism.name}}
+                Organism: {{org.name}}
             </div>
-        </section>
+        </header>
 
         <br>
 
-        <!--
-        <section style="width: 100%;">
-            <h2>Authors</h2>
-        </section>
-        -->
+        <section>
 
-        <section style="width: 100%;">
-
-            <h2>General Information for the genus {{organism.name}} </h2>
+            <h2>General Information for the genus {{org.name}} </h2>
             Brucella is a genus of Gram-negative bacteria. They are small (0.5 to 0.7 by 0.6 to 1.5 µm), nonencapsulated,
             nonmotile, facultative intracellular coccobacilli.
             Brucella is the cause of brucellosis, which is a zoonosis transmitted by
@@ -101,21 +99,21 @@
             The different species of Brucella are genetically very similar, although each has a slightly different host specificity.
             <br>
 
-            <h2>Details on annotated proteins for {{organism.name}}</h2>
+            <h2>Details on annotated proteins for {{org.name}}</h2>
             blah blah blah.  some stuff will go here.
 
 
 
-            <h2>Details on specialty genes for {{organism.name}}</h2>
+            <h2>Details on specialty genes for {{org.name}}</h2>
             A graphical display of the distribution of the CDS on each strand, the repeat_regions, GC content and GC skew are provided (Figure 1).
-            <small>[<a href="https://patricbrc.org/view/Genome/{{organism.id}}#view_tab=circular">view online</a>]</small>
+            <small>[<a href="https://patricbrc.org/view/Genome/{{org.id}}#view_tab=circular">view online</a>]</small>
             <div>
-                <img src="{{organism.id}}-circular.png">
+                <img src="{{org.id}}-circular.png">
             </div>
 
 
             <div>
-                <img src="{{organism.id}}-subsystem.svg" class="subsystem-img">
+                <img src="{{org.id}}-subsystem.svg" class="subsystem-img">
             </div>
         </section>
     </body>
