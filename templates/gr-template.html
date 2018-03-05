@@ -27,22 +27,15 @@
             tr {
                 page-break-inside: avoid;
             }
-            span.v-divide {
-                width: 5px;
-                height: 90px;
-                border-right: 5px solid #444;
-            }
-            span.v-divide-left {
-                width: 5px;
-                height: 90px;
-                border-left: 5px solid #444;
-            }
             .report-title {
+                display: inline-block;
+                position: relative;
+            }
+            .title {
                 float: left;
                 margin-left: 10px;
                 position:absolute;
-                bottom:0;
-
+                bottom: 0;
                 font-size: 1.3em;
                 color: #444;
             }
@@ -54,6 +47,12 @@
                 font-size:.8em;
                 color: #777;
             }
+            span.v-divide {
+                width: 5px;
+                height: 90px;
+                border-right: 5px solid #444;
+                float: left;
+            }
             .logo {
                 width: 40%;
             }
@@ -61,18 +60,18 @@
                 width: 1200px;
                 height: 600px;
             }
-
         </style>
-        <link rel="stylesheet" type="text/css" href="/templates/gr-template.css" media="screen, print">
+
     </head>
     <body>
         <header>
-            <div style="float: left; position: relative;">
-                <img src="../../patric-logo.svg" class="logo">
+            <div class="report-title">
+                <span>
+                    <img src="../../patric-logo.svg" class="logo">
+                </span>
 
-
-                <span class="v-divide" style="float: left;"></span>
-                <span class="report-title">Genome Report</span>
+                <span class="v-divide"></span>
+                <span class="title">Genome Report</span>
             </div>
 
             <div class="report-info">
@@ -83,23 +82,62 @@
 
         <br>
 
+
         <section>
+            <h2>Introduction</h2>
+            <p>
+            Brucella is a genus of Gram-negative bacteria. They are small (0.5 to 0.7 by 0.6 to 1.5 µm), nonencapsulated, nonmotile, facultative intracellular coccobacilli.
+            Brucella is the cause of brucellosis, which is a zoonosis transmitted by ingesting
+            contaminated food (such as unpasteurized milk products), direct contact with an
+            infected animal, or inhalation of aerosols. Transmission from human to human,
+            for example through sexual intercourse or from mother to child, is exceedingly
+            rare, but possible. Minimum infectious exposure is between 10 and 100 organisms.
+            The different species of Brucella are genetically very similar, although each has a
+            slightly different host specificity.
+            </p>
 
-            <h2>General Information for the genus {{org.name}} </h2>
-            Brucella is a genus of Gram-negative bacteria. They are small (0.5 to 0.7 by 0.6 to 1.5 µm), nonencapsulated,
-            nonmotile, facultative intracellular coccobacilli.
-            Brucella is the cause of brucellosis, which is a zoonosis transmitted by
-            ingesting contaminated food (such as unpasteurized milk products), direct contact with an
-            infected animal, or inhalation of aerosols. Transmission from human to human, for example through
-                sexual intercourse or from mother to child, is exceedingly rare, but possible. Minimum infectious exposure is between 10 and 100 organisms.
-            The different species of Brucella are genetically very similar, although each has a slightly different host specificity.
-            <br>
-
-            <h2>Details on annotated proteins for {{org.name}}</h2>
-            blah blah blah.  some stuff will go here.
+            <p>
+            Brucella neotomae BNWLG2-S2 was isolated from the urine of a 49 year-old female who presented to a clinic in Pennsylvania on April 26th 2016 with symptoms indicative of a UTI. It harbors mcr-1 and blaCTX-M on a Novel IncF Plasmid, First report of mcr-1 in the USA.
+            </p>
+        </section>
 
 
+        <section>
+            <h2>Genome Assembly</h2>
+            <p>
+                Brucella neotomae BNWLG2-S2 ran under job ID 2fee1c1b-f8bb-4781-bb20-f08fa66398e1 at PATRIC (1).  The assembly job started at 10/6/17, 2:53 PM and completed at 10/7/17, 4:41 PM, after 25h 47m 90011s.  The auto assembly strategy was selected, and it runs BayesHammer [2] on short reads, followed by three assembly strategies that include Velvet [3], IDBA [4] and Spades [5], each of which is given an assembly score by ARAST, an in-house script. The minimum contig length was 120bp, and smaller contigs were not included in the assembly. The minimum contig coverage was 5, and contigs with less coverage were not included in the assembly.
+                Also add reference to QUAST. ARAST ranked the Spades assembly best (Table 1).
+            </p>
+            <p>
+                The assembled genome has 33 contigs, with the total length of 3.31 Mbp and %GC of 57.26%.
 
+                {{TABLE!}}
+            </p>
+        </section>
+
+        <section>
+            <h2>Genome Annotation</h2>
+            <p>
+                The Genome Annotation Service in PATRIC [1] uses the RAST tool kit (RASTtk) [6] to
+                provide annotation of genomic features.  The job for B. neotomae BNWLG2-S2
+                    ran under job number 685fb8c1-348a-4cea-a298-496b037af1f8.
+                The annotation job started at 10/9/17, 7:10 AM and completed at 10/9/17, 8:16 AM,
+                after 1h 5m 3623s.  The selected domain was Bacteria, the Taxonomy ID was 234.128.
+                The Genetic code was 11.  The taxonomy of B. neotomae BNWLG2-S2 is:
+            </p>
+
+            <taxonomy></taxonomy>
+
+            The annotations includes 3349 CDS, 50 tRNAs and 3 rRNAs. All annotated genome features for this genome are summarized in Table 3.
+
+            The functional annotation included 655 hypothetical proteins and 2694 proteins with functional assignments. Furthermore, 963 proteins were  assigned EC numbers and 749 proteins were mapped to KEGG pathways.  A breakdown of the proteins that have been annotated for this isolate is provided in Table 4.
+
+        </section>
+
+
+
+        <!--
+        <section>
             <h2>Details on specialty genes for {{org.name}}</h2>
             A graphical display of the distribution of the CDS on each strand, the repeat_regions, GC content and GC skew are provided (Figure 1).
             <small>[<a href="https://patricbrc.org/view/Genome/{{org.id}}#view_tab=circular">view online</a>]</small>
@@ -112,5 +150,6 @@
                 <img src="{{org.id}}-subsystem.svg" class="subsystem-img">
             </div>
         </section>
+        -->
     </body>
 </html>

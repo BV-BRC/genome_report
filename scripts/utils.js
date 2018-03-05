@@ -19,7 +19,7 @@ const writeFile = Promise.promisify(fs.writeFile);
 const config = require('../config.json');
 
 
-function createGenomeFolder(id) {
+function createGenomeDir(id) {
     let baseDir = path.resolve(`../${config.reportDir}`);
 
     // create reports directory if needed
@@ -40,6 +40,6 @@ function createGenomeFolder(id) {
 
 
 module.exports = {
-    createGenomeFolder: createGenomeFolder,
+    createGenomeDir: createGenomeDir,
     writeFile: writeFile
 }

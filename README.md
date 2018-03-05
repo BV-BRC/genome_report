@@ -34,14 +34,19 @@ npm install --production
 Fetch images and write to `reports/{genome-id}/`
 
 ```
-./generate-images.js --genome_id=83332.12
+./fetch-images.js --genome_id=83332.12
 ```
 
+Fetch data and write to `reports/{genome-id}/`
+
+```
+./fetch-images.js --genome_id=83332.12
+```
 
 Generate and write html/pdf to `reports/{genome-id}/`
 
 ```
-./generate-pdf.js --genome_id=83332.12
+./generate-report.js --genome_id=83332.12
 ```
 
 

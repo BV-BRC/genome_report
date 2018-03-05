@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  *
- * generate-images.js
+ * fetch-images.js
  *
  * Example usage:
- *      ./generate-images.js --genome_id=83332.12
+ *      ./fetch-images.js --genome_id=83332.12
  *
  * Authors:
  *      nconrad
@@ -19,7 +19,10 @@ const fs = require('fs'),
     rp = require('request-promise'),
     puppeteer = require('puppeteer');
 
+const utils = require('./utils');
+const config = require('../config.json');
 const { convert } = require('convert-svg-to-png');
+
 
 const baseDir = path.resolve('./reports');
 
@@ -69,13 +72,15 @@ async function getImage(id) {
     svgContent = await page.$eval('#dijit_layout_TabContainer_0_circular svg', el => el.innerHTML)
     svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg">' + svgContent + '</svg>'
 
-    let genomeDir = createGenomeFolder(id);
+    let genomeDir = utils.createGenomeDir(id);
     let outPath = path.resolve(`${genomeDir}/${id}-circular.svg`);
 
     console.log(`writing ${outPath}...`);
-    fs.writeFileSync(outPath, svg, {encoding: 'utf8'});
-    //png = await convert(svg, {width: 1200, height: 800});
-    //fs.writeFileSync('subsystem.png', png)
+    await utils.writeFile(outPath, svg);
+
+    png = await convert(svg, {width: 1200, height: 800});
+    outPath = path.resolve(`${genomeDir}/${id}-circular.png`);
+    await utils.writeFile(outPath, png);
 
 
 
@@ -89,7 +94,7 @@ async function getImage(id) {
     outPath = path.resolve(`${genomeDir}/${id}-subsystem.svg`);
 
     console.log(`writing ${outPath}...`)
-    fs.writeFileSync(outPath, svg, {encoding: 'utf8'});
+    await utils.writeFile(outPath, svg);
 
 
     await browser.close();

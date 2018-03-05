@@ -1,0 +1,106 @@
+{
+    "meta": {
+        "plasmids": 0,
+        "contigs": 11,
+        "sequences": 11,
+        "common_name": "Brucella_neotomae_5K33",
+        "temperature_range": "Mesophilic",
+        "oxygen_requirement": "Aerobic",
+        "owner": "PATRIC",
+        "completion_date": "2009-02-18T00:00:00Z",
+        "genome_id": "520456.3",
+        "genome_status": "WGS",
+        "strain": "5K33",
+        "motility": "No",
+        "patric_cds": 3434,
+        "sporulation": "No",
+        "gc_content": 57.3,
+        "refseq_cds": 3217,
+        "culture_collection": "ATCC 23459",
+        "gram_stain": "-",
+        "ncbi_project_id": "33567",
+        "disease": [
+            "Brucellosis"
+        ],
+        "sequencing_depth": "36.42x",
+        "organism_name": "Brucella neotomae 5K33",
+        "genome_name": "Brucella neotomae 5K33",
+        "sequencing_centers": "Broad Institute",
+        "genome_length": 3329623,
+        "cell_shape": "Coccobacillus",
+        "comments": [
+            "Brucella neotomae 5K33. Brucella neotomae 5K33 (ATCC 23459) is the type strain and will be used for comparative analysis with other Brucella species. "
+        ],
+        "genbank_accessions": "ACEH00000000",
+        "refseq_project_id": "55801",
+        "optimal_temperature": "-",
+        "public": true,
+        "sequencing_status": "assembly",
+        "brc1_cds": 0,
+        "p2_genome_id": 114381,
+        "type_strain": "Yes",
+        "refseq_accessions": "NZ_ACEH00000000",
+        "sequencing_platform": "454",
+        "chromosomes": 0,
+        "taxon_id": 520456,
+        "habitat": "Host-associated",
+        "taxon_lineage_ids": [
+            "131567",
+            "2",
+            "1224",
+            "28211",
+            "356",
+            "118882",
+            "234",
+            "29460",
+            "520456"
+        ],
+        "taxon_lineage_names": [
+            "cellular organisms",
+            "Bacteria",
+            "Proteobacteria",
+            "Alphaproteobacteria",
+            "Rhizobiales",
+            "Brucellaceae",
+            "Brucella",
+            "Brucella neotomae",
+            "Brucella neotomae 5K33"
+        ],
+        "phylum": "Proteobacteria",
+        "order": "Rhizobiales",
+        "genus": "Brucella",
+        "species": "Brucella neotomae",
+        "kingdom": "Bacteria",
+        "class": "Alphaproteobacteria",
+        "family": "Brucellaceae",
+        "date_inserted": "2014-12-08T22:10:39.671Z",
+        "date_modified": "2015-03-16T03:17:09.594Z",
+        "reference_genome": "Representative",
+        "bioproject_accession": "PRJNA33567",
+        "document_type": "genome",
+        "assembly_accession": "GCA_000158715.1",
+        "_version_": 1585509101794754600
+    },
+    "annotationMeta": [
+        {
+            "name": "CDS",
+            "count": 3434
+        },
+        {
+            "name": "tRNA",
+            "count": 48
+        },
+        {
+            "name": "pseudogene",
+            "count": 23
+        },
+        {
+            "name": "rRNA",
+            "count": 3
+        },
+        {
+            "name": "misc_RNA",
+            "count": 1
+        }
+    ]
+}
