@@ -23,22 +23,18 @@ const utils = require('./utils');
 const config = require('../config.json');
 
 
-const DATA_API_URL = 'https://p3.theseed.org/services/data_api';
-
-
-const pdfMargin = '35px';
-
 const getOpts = {
     json: true,
     headers: {
       "content-type": "application/json",
       "authorization": opts.token || ''
     }
-  }
+}
 
 
 const tmplData = {
     meta: null,
+    annotationData: null
 }
 
 
@@ -54,8 +50,8 @@ if (require.main === module){
     let genomeID = opts.genome_id;
 
     getAllData(genomeID);
-
 }
+
 
 // # contigs, genome length, gc, n50, L50, genome coverage
 async function getAllData(genomeID) {
@@ -66,8 +62,6 @@ async function getAllData(genomeID) {
     // build master data json
     tmplData.meta = meta;
     tmplData.annotationMeta = annotationMeta;
-
-    console.log('tmplData', tmplData)
 
 
     // create genome folder if needed
@@ -86,7 +80,7 @@ async function getAllData(genomeID) {
 
 
 function getMeta(genomeID) {
-    let url = `${DATA_API_URL}/genome/${genomeID}`;
+    let url = `${config.dataAPIUrl}/genome/${genomeID}`;
 
     console.log(`fetching genome meta...`)
     return rp.get(url, getOpts).then(meta => {
@@ -98,7 +92,7 @@ function getMeta(genomeID) {
 
 
 function getAnnotationMeta(genomeID) {
-    let url = `${DATA_API_URL}/genome_feature/?eq(genome_id,${genomeID})&limit(1)`+
+    let url = `${config.dataAPIUrl}/genome_feature/?eq(genome_id,${genomeID})&limit(1)`+
         `&in(annotation,(PATRIC,RefSeq))&ne(feature_type,source)`+
         `&facet((pivot,(annotation,feature_type)),(mincount,0))&http_accept=application/solr+json`;
 

@@ -24,9 +24,6 @@ const config = require('../config.json');
 const { convert } = require('convert-svg-to-png');
 
 
-const baseDir = path.resolve('./reports');
-
-
 if (require.main === module){
     opts.option('-g, --genome_id [value]', 'Genome ID to create images for.')
         .parse(process.argv);
@@ -37,24 +34,6 @@ if (require.main === module){
     }
 
     getImage(opts.genome_id);
-}
-
-
-function createGenomeFolder(id) {
-    // create reports directory if needed
-    if (!fs.existsSync(baseDir)){
-        console.log(`\ncreating genome directory ${baseDir} ...` )
-        fs.mkdirSync(baseDir);
-    }
-
-    // create genome directory if needed
-    let genomeDir = path.resolve(`${baseDir}/${id}/`);
-    if (!fs.existsSync(genomeDir)){
-        console.log(`creating genome dir ${genomeDir} ...` )
-        fs.mkdirSync(genomeDir);
-    }
-
-    return genomeDir;
 }
 
 

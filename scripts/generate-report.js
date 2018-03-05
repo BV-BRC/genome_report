@@ -15,14 +15,15 @@ const fs = require('fs'),
     process = require('process'),
     opts = require('commander'),
     rp = require('request-promise'),
-    mustache = require('mustache');
+    mustache = require('mustache'),
+    utils = require('./utils');
 
 const puppeteer = require('puppeteer');
 
-const DATA_API_URL = 'https://p3.theseed.org/services/data_api';
-const TEMPLATE_PATH = path.resolve(`./templates/gr-template.html`);
+const config = require('../config.json');
+const TEMPLATE_PATH = path.resolve(`../${config.templatePath}`);
 
-const baseOutDir = path.resolve('./reports');
+
 const pdfMargin = '35px';
 
 const tmplData = {
@@ -61,11 +62,13 @@ function buildPdf(genomeId) {
         console.log('Filling template...');
         let output = mustache.render(data.toString(), tmplData);
 
-        let htmlPath = path.resolve(`${baseOutDir}/${genomeId}/genome-report.html`);
+        let genomeDir = utils.createGenomeDir(genomeId);
+
+        let htmlPath = path.resolve(`${genomeDir}/genome-report.html`);
         console.log(`Writing html to ${htmlPath}...`);
         fs.writeFileSync(htmlPath, output);
 
-        let pdfPath = path.resolve(`${baseOutDir}/${genomeId}/genome-report.pdf`);
+        let pdfPath = path.resolve(`${genomeDir}/genome-report.pdf`);
         generatePdf(htmlPath, pdfPath);
     });
 }

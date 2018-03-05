@@ -1,3 +1,5 @@
 {
-    "reportDir": "reports/"
+    "reportDir": "reports/",
+    "dataAPIUrl": "https://p3.theseed.org/services/data_api",
+    "templatePath": "templates/gr-template.html"
 }

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PATRIC Genome Report | 520456.3</title>
+
+        <style>
+
+            body {
+                font-family: 'Open Sans', sans-serif;
+                color: #444;
+                display: flex;
+                flex-direction: column;
+            }
+            a {
+                text-decoration: none;
+                color: #0d78ef;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            h2 small {
+                color: #aaa;
+            }
+            table {
+                border-collapse: collapse;
+            }
+            tr {
+                page-break-inside: avoid;
+            }
+            .report-title {
+                display: inline-block;
+                position: relative;
+            }
+            .title {
+                float: left;
+                margin-left: 10px;
+                position:absolute;
+                bottom: 0;
+                font-size: 1.3em;
+                color: #444;
+            }
+            .report-info {
+                float: right;
+                position: relative;
+                text-align: right;
+                margin-right: 30px;
+                font-size:.8em;
+                color: #777;
+            }
+            span.v-divide {
+                width: 5px;
+                height: 90px;
+                border-right: 5px solid #444;
+                float: left;
+            }
+            .logo {
+                width: 40%;
+            }
+            .subsystem-img {
+                width: 1200px;
+                height: 600px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <header>
+            <div class="report-title">
+                <span>
+                    <img src="../../patric-logo.svg" class="logo">
+                </span>
+
+                <span class="v-divide"></span>
+                <span class="title">Genome Report</span>
+            </div>
+
+            <div class="report-info">
+                Report Date: 2018&#x2F;03&#x2F;05<br>
+                Organism: Mycobacterium tuberculosis H37Rv
+            </div>
+        </header>
+
+        <br>
+
+
+        <section>
+            <h2>Introduction</h2>
+            <p>
+            Brucella is a genus of Gram-negative bacteria. They are small (0.5 to 0.7 by 0.6 to 1.5 µm), nonencapsulated, nonmotile, facultative intracellular coccobacilli.
+            Brucella is the cause of brucellosis, which is a zoonosis transmitted by ingesting
+            contaminated food (such as unpasteurized milk products), direct contact with an
+            infected animal, or inhalation of aerosols. Transmission from human to human,
+            for example through sexual intercourse or from mother to child, is exceedingly
+            rare, but possible. Minimum infectious exposure is between 10 and 100 organisms.
+            The different species of Brucella are genetically very similar, although each has a
+            slightly different host specificity.
+            </p>
+
+            <p>
+            Brucella neotomae BNWLG2-S2 was isolated from the urine of a 49 year-old female who presented to a clinic in Pennsylvania on April 26th 2016 with symptoms indicative of a UTI. It harbors mcr-1 and blaCTX-M on a Novel IncF Plasmid, First report of mcr-1 in the USA.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Genome Assembly</h2>
+            <p>
+                Brucella neotomae BNWLG2-S2 ran under job ID 2fee1c1b-f8bb-4781-bb20-f08fa66398e1 at PATRIC (1).  The assembly job started at 10/6/17, 2:53 PM and completed at 10/7/17, 4:41 PM, after 25h 47m 90011s.  The auto assembly strategy was selected, and it runs BayesHammer [2] on short reads, followed by three assembly strategies that include Velvet [3], IDBA [4] and Spades [5], each of which is given an assembly score by ARAST, an in-house script. The minimum contig length was 120bp, and smaller contigs were not included in the assembly. The minimum contig coverage was 5, and contigs with less coverage were not included in the assembly.
+                Also add reference to QUAST. ARAST ranked the Spades assembly best (Table 1).
+            </p>
+            <p>
+                The assembled genome has 33 contigs, with the total length of 3.31 Mbp and %GC of 57.26%.
+
+                
+            </p>
+        </section>
+
+        <section>
+            <h2>Genome Annotation</h2>
+            <p>
+                The Genome Annotation Service in PATRIC [1] uses the RAST tool kit (RASTtk) [6] to
+                provide annotation of genomic features.  The job for B. neotomae BNWLG2-S2
+                    ran under job number 685fb8c1-348a-4cea-a298-496b037af1f8.
+                The annotation job started at 10/9/17, 7:10 AM and completed at 10/9/17, 8:16 AM,
+                after 1h 5m 3623s.  The selected domain was Bacteria, the Taxonomy ID was 234.128.
+                The Genetic code was 11.  The taxonomy of B. neotomae BNWLG2-S2 is:
+            </p>
+
+            <taxonomy></taxonomy>
+
+            The annotations includes 3349 CDS, 50 tRNAs and 3 rRNAs. All annotated genome features for this genome are summarized in Table 3.
+
+            The functional annotation included 655 hypothetical proteins and 2694 proteins with functional assignments. Furthermore, 963 proteins were  assigned EC numbers and 749 proteins were mapped to KEGG pathways.  A breakdown of the proteins that have been annotated for this isolate is provided in Table 4.
+
+        </section>
+
+
+
+        <!--
+        <section>
+            <h2>Details on specialty genes for Mycobacterium tuberculosis H37Rv</h2>
+            A graphical display of the distribution of the CDS on each strand, the repeat_regions, GC content and GC skew are provided (Figure 1).
+            <small>[<a href="https://patricbrc.org/view/Genome/520456.3#view_tab=circular">view online</a>]</small>
+            <div>
+                <img src="520456.3-circular.png">
+            </div>
+
+
+            <div>
+                <img src="520456.3-subsystem.svg" class="subsystem-img">
+            </div>
+        </section>
+        -->
+    </body>
+</html>
