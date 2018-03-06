@@ -29,7 +29,7 @@
         "genome_length": 3329623,
         "cell_shape": "Coccobacillus",
         "comments": [
-            "Brucella neotomae 5K33. Brucella neotomae 5K33 (ATCC 23459) is the type strain and will be used for comparative analysis with other Brucella species. "
+            "Brucella neotomae was first isolated in 1957 from wood rats (Neotoma lepida) in North America and  has been considered nonzoonotic. Brucella neotomae 5K33 (ATCC 23459) is the type strain and will be used for comparative analysis with other Brucella species."
         ],
         "genbank_accessions": "ACEH00000000",
         "refseq_project_id": "55801",
@@ -122,7 +122,7 @@
         ],
         "core_families": 2052,
         "core_family_ratio": 0.996,
-        "_version_": 1594129162875961300
+        "_version_": 1594211500375933000
     },
     "annotationMeta": [
         {
@@ -144,6 +144,36 @@
         {
             "name": "misc_RNA",
             "count": 1
+        }
+    ],
+    "proteinFeatures": [
+        {
+            "name": "Hypothetical proteins",
+            "count": 772
+        },
+        {
+            "name": "Proteins with functional assignments",
+            "count": 2662
+        },
+        {
+            "name": "Proteins with EC number assignments",
+            "count": 947
+        },
+        {
+            "name": "Proteins with GO assignments",
+            "count": 934
+        },
+        {
+            "name": "Proteins with Pathway assignments",
+            "count": 746
+        },
+        {
+            "name": "Proteins with PATRIC genus-specific family (PLfam) assignments",
+            "count": 3434
+        },
+        {
+            "name": "Proteins with PATRIC cross-genus family (PGfam) assignments",
+            "count": 3434
         }
     ],
     "wiki": {

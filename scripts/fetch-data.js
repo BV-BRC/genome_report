@@ -35,6 +35,7 @@ const getOpts = {
 const tmplData = {
     meta: null,
     annotationMeta: null,
+    proteinFeatures: null,
     wiki: null,
     specialtyGenes: null
 }
@@ -63,12 +64,15 @@ async function getAllData(genomeID) {
     let annotationMeta = await getAnnotationMeta(genomeID);
     let wiki = await getWiki(meta[0].species, meta[0].genus);
     let specialtyGenes = await getSpecialtyGenes(genomeID);
+    let proteinFeatures = await getProteinFeatures(genomeID, meta[0].cds);
+
 
     // build master data json
     tmplData.meta = meta[0];
     tmplData.annotationMeta = annotationMeta;
     tmplData.wiki = wiki;
     tmplData.specialtyGenes = specialtyGenes;
+    tmplData.proteinFeatures = proteinFeatures;
 
     // create genome folder if needed
     utils.createGenomeDir(genomeID);
@@ -198,3 +202,99 @@ function processSpecGenes(data) {
 
     return rows;
 }
+
+
+async function getProteinFeatures(genomeID, CDS) {
+    let url = `${config.dataAPIUrl}/genome_feature/` +
+        `?eq(genome_id,${genomeID})&and(eq(product,hypothetical+protein),eq(feature_type,CDS))` +
+        `&in(annotation,(PATRIC,RefSeq))&limit(1)&facet((field,annotation),(mincount,1))&json(nl,map)&http_accept=application/solr+json`;
+
+
+    console.log(`fetching hypothetical+protein...`)
+    let hypotheticalProteins = await getPFCount(url);
+
+    console.log('hypotheticalProtein', hypotheticalProteins)
+
+    url = `${config.dataAPIUrl}/genome_feature/` +
+        `?eq(genome_id,${genomeID})&eq(go,*)&in(annotation,(PATRIC,RefSeq))&limit(1)`+
+        `&facet((field,annotation),(mincount,1))&json(nl,map)&http_accept=application/solr+json`;
+    let goAssignments = await getPFCount(url);
+
+    console.log('goAssignments', goAssignments)
+
+    url = `${config.dataAPIUrl}/genome_feature/` +
+        `?eq(genome_id,${genomeID})&eq(pathway,*)&in(annotation,(PATRIC,RefSeq))&limit(1)`+
+        `&facet((field,annotation),(mincount,1))&json(nl,map)&http_accept=application/solr+json`
+    let pathwayAssignments = await getPFCount(url);
+
+    console.log('pathwayAssignments', pathwayAssignments)
+
+
+    url = `${config.dataAPIUrl}/genome_feature/` +
+        `?eq(genome_id,${genomeID})&eq(pgfam_id,PGF*)&in(annotation,(PATRIC,RefSeq))&limit(1)` +
+        `&facet((field,annotation),(mincount,1))&json(nl,map)&http_accept=application/solr+json`
+    let pgFamAssignments = await getPFCount(url);
+
+    console.log('pgFamAssignments', pgFamAssignments)
+
+
+    url = `${config.dataAPIUrl}/genome_feature/` +
+        `?eq(genome_id,${genomeID})&eq(plfam_id,PLF*)&in(annotation,(PATRIC,RefSeq))` +
+        `&limit(1)&facet((field,annotation),(mincount,1))&json(nl,map)&http_accept=application/solr+json`
+    let plFamAssignments = await getPFCount(url);
+
+    console.log('plFamAssignment', plFamAssignments)
+
+
+    url = `${config.dataAPIUrl}/genome_feature/` +
+        `?eq(genome_id,520456.3)&eq(ec,*)&in(annotation,(PATRIC,RefSeq))&limit(1)`+
+        `&facet((field,annotation),(mincount,1))&json(nl,map)&http_accept=application/solr+json`
+    let ecAssignments = await getPFCount(url);
+
+    console.log('ecAssignments', ecAssignments)
+
+    let data = [{
+        name: "Hypothetical proteins",
+        count: hypotheticalProteins,
+    }, {
+        name: "Proteins with functional assignments",
+        count: CDS - hypotheticalProteins,
+    }, {
+        name: "Proteins with EC number assignments",
+        count: ecAssignments
+    }, {
+        name: "Proteins with GO assignments",
+        count: goAssignments
+    }, {
+        name: "Proteins with Pathway assignments",
+        count: pathwayAssignments
+    }, {
+        name: "Proteins with PATRIC genus-specific family (PLfam) assignments",
+        count: plFamAssignments
+    }, {
+        name: "Proteins with PATRIC cross-genus family (PGfam) assignments",
+        count: pgFamAssignments
+    }]
+
+    return data;
+}
+
+function getPFCount(url) {
+    return rp.get(url, getOpts).then(res => {
+        let data = res.facet_counts.facet_fields.annotation.PATRIC;
+        return data;
+    }).catch((e) => {
+        console.error(e.message);
+    })
+}
+
+
+
+
+
+/*
+
+
+ '?eq(genome_id,${genomeID})&eq(pgfam_id,PGF*)&in(annotation,(PATRIC,RefSeq))&limit(1)&facet((field,annotation),(mincount,1))&json(nl,map)&http_accept=application/solr+json'
+// '?eq(genome_id,${genomeID})&eq(figfam_id,*)&in(annotation,(PATRIC,RefSeq))&limit(1)&facet((field,annotation),(mincount,1))&json(nl,map)&http_accept=application/solr+json'
+ */

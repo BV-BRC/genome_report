@@ -36,6 +36,7 @@
             table {
                 margin: .1in 0;
                 border-collapse: collapse;
+                page-break-inside: avoid;
             }
 
             /* standard key-value table (single or 2 columns)*/
@@ -103,14 +104,29 @@
                 width: 1200px;
                 height: 150px;
             }
+
+
+            .clearfix:after {
+                visibility: hidden;
+                display: block;
+                font-size: 0;
+                content: " ";
+                clear: both;
+                height: 0;
+            }
+            .clearfix { display: inline-block; }
+
+            * html .clearfix { height: 1%; }
+            .clearfix { display: block; }
+
         </style>
 
     </head>
     <body>
         <header style="width: 100%">
-            <div>
+            <div class="pull-left">
                 <img src="../../patric-logo.svg" class="logo pull-left">
-                <div class="title">Genome Report</div>
+                <div class="title pull-left">Genome Report</div>
             </div>
 
             <div class="report-info pull-right">
@@ -118,6 +134,7 @@
                 Organism: Brucella neotomae 5K33
             </div>
         </header>
+        <div class="clearfix"></div>
 
         <br>
 
@@ -192,24 +209,24 @@
                 The Genetic code was 11.  The taxonomy of B. neotomae BNWLG2-S2 is:
             </p>
 
-            Bacteria &gt;&gt; Proteobacteria &gt;&gt; Alphaproteobacteria &gt;&gt; Rhizobiales &gt;&gt; Brucellaceae &gt;&gt; Brucella &gt;&gt; Brucella neotomae &gt;&gt; Brucella neotomae 5K33<br>
-            <br>
+            <div style="width: 80%;" class="center-table"><i>Bacteria &gt;&gt; Proteobacteria &gt;&gt; Alphaproteobacteria &gt;&gt; Rhizobiales &gt;&gt; Brucellaceae &gt;&gt; Brucella &gt;&gt; Brucella neotomae &gt;&gt; Brucella neotomae 5K33</i></div><br>
+
 
             <p>
                 The annotations includes 3349 CDS, 50 tRNAs and 3 rRNAs.
-                All annotated genome features for this genome are summarized in Table 3.
+                All annotated genome features for this genome are summarized in Table 2.
             </p>
 
             <p>
                 The functional annotation included 655 hypothetical proteins and 2694 proteins with functional assignments.
                 Furthermore, 963 proteins were  assigned EC numbers and 749 proteins were mapped to KEGG pathways.
-                A breakdown of the proteins that have been annotated for this isolate is provided in Table 4.
+                A breakdown of the proteins that have been annotated for this isolate is provided in Table 3.
             </p>
 
             <table class="small-table kv-table-2 center-table">
                 <thead class="table-header">
                     <tr>
-                        <th colspan="2">Table 3. Annotated Genome Features</th>
+                        <th colspan="2">Table 2. Annotated Genome Features</th>
                     </tr>
                 </thead>
 
@@ -222,6 +239,38 @@
                     <tr><td>misc_RNA</td><td>1</td></tr>
                 </tbody>
             </table>
+
+            <div class="clearfix"></div>
+            <br>
+
+            <table class="med-table kv-table-2 center-table">
+                <thead class="table-header">
+                    <tr>
+                        <th colspan="2">Table 3. Protein Features</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="row-header"><td></td> <td>PATRIC</td></tr>
+                    <tr><td>Hypothetical proteins</td><td>772</td></tr>
+                    <tr><td>Proteins with functional assignments</td><td>2662</td></tr>
+                    <tr><td>Proteins with EC number assignments</td><td>947</td></tr>
+                    <tr><td>Proteins with GO assignments</td><td>934</td></tr>
+                    <tr><td>Proteins with Pathway assignments</td><td>746</td></tr>
+                    <tr><td>Proteins with PATRIC genus-specific family (PLfam) assignments</td><td>3434</td></tr>
+                    <tr><td>Proteins with PATRIC cross-genus family (PGfam) assignments</td><td>3434</td></tr>
+                </tbody>
+            </table>
+
+            <div class="clearfix"></div>
+            <br>
+
+            <p>
+                A graphical display of the distribution of the CDS on each strand, the repeat_regions,
+                GC content and GC skew are provided (Figure 1).
+            </p>
+
+            <img src="../520456.3/520456.3-circular.png" class="circular-fig" />
         </section>
 
 
@@ -239,13 +288,13 @@
             <p>
                 PATRIC [1] annotation also includes identification of proteins that have homology to
                 known virulence factors, drug targets, and antibiotic resistance genes (Reference
-                the sources).  A breakdown of the distribution is provided (Table 5).
+                the sources).  A breakdown of the distribution is provided (Table 4).
             </p>
 
             <table class="med-table kv-table center-table">
                 <thead class="table-header">
                     <tr>
-                        <th colspan="3">Table 5. Annotated Genome Features</th>
+                        <th colspan="3">Table 4. Annotated Genome Features</th>
                     </tr>
                 </thead>
 
@@ -304,13 +353,54 @@
                 </tbody>
             </table>
 
-            <p>
-                A graphical display of the distribution of the CDS on each strand, the repeat_regions,
-                GC content and GC skew are provided (Figure 1).
-            </p>
 
-            <img src="../520456.3/520456.3-circular.png" class="circular-fig" />
 
+        </section>
+
+        <section>
+            <!--
+            <h2>Antimicrobial Ressistance Analysis</h2>
+            <table class="small-table kv-table-2 center-table pull-right">
+                <thead class="table-header">
+                    <tr>
+                        <th colspan="2">Table 3. Protein Features</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="row-header"><td></td> <td>PATRIC</td></tr>
+                    <tr><td>Hypothetical proteins</td><td>772</td></tr>
+                    <tr><td>Proteins with functional assignments</td><td>2662</td></tr>
+                    <tr><td>Proteins with EC number assignments</td><td>947</td></tr>
+                    <tr><td>Proteins with GO assignments</td><td>934</td></tr>
+                    <tr><td>Proteins with Pathway assignments</td><td>746</td></tr>
+                    <tr><td>Proteins with PATRIC genus-specific family (PLfam) assignments</td><td>3434</td></tr>
+                    <tr><td>Proteins with PATRIC cross-genus family (PGfam) assignments</td><td>3434</td></tr>
+                </tbody>
+            </table>
+            -->
+
+            <!--
+            <h2>Antimicrobial Ressistance Genes</h2>
+            <table class="small-table kv-table-2 center-table pull-right">
+                <thead class="table-header">
+                    <tr>
+                        <th colspan="2">Table 3. Protein Features</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="row-header"><td></td> <td>PATRIC</td></tr>
+                    <tr><td>Hypothetical proteins</td><td>772</td></tr>
+                    <tr><td>Proteins with functional assignments</td><td>2662</td></tr>
+                    <tr><td>Proteins with EC number assignments</td><td>947</td></tr>
+                    <tr><td>Proteins with GO assignments</td><td>934</td></tr>
+                    <tr><td>Proteins with Pathway assignments</td><td>746</td></tr>
+                    <tr><td>Proteins with PATRIC genus-specific family (PLfam) assignments</td><td>3434</td></tr>
+                    <tr><td>Proteins with PATRIC cross-genus family (PGfam) assignments</td><td>3434</td></tr>
+                </tbody>
+            </table>
+            -->
         </section>
 
 
@@ -353,7 +443,7 @@
                 The trimmed alignments are concatenated and this concatenated alignment is
                 used to build the main tree with either RAxML or FastTree.
             </p>
-
+            <br>
 
             <h3>Comparison to Reference Genomes in the Same Genus</h3>
             <img src="../520456.3/520456.3-tree.svg" class="tree-fig" />
