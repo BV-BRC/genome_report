@@ -53,6 +53,8 @@ Generate and write html/pdf to `reports/{genome-id}/`
 ./create-report.js --genome_id=83332.12
 ```
 
+### Todo: 
+- one script to rule them all
 
 ## Contributing
 
