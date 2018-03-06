@@ -13,7 +13,7 @@ cd genome_report
 npm install
 ```
 
-## Devlopment
+## Development
 
 Serve the template and listen for changes with
 
