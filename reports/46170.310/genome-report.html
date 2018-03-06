@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PATRIC Genome Report | {{meta.genome_name}}</title>
+        <title>PATRIC Genome Report | Staphylococcus aureus subsp. aureus strain VB4283</title>
 
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700,800,900" rel="stylesheet">
 
@@ -131,8 +131,8 @@
             </div>
 
             <div class="report-info pull-right">
-                Report Date: {{reportDate}}<br>
-                Organism: {{meta.genome_name}}
+                Report Date: 2018&#x2F;03&#x2F;06<br>
+                Organism: Staphylococcus aureus subsp. aureus strain VB4283
             </div>
         </header>
         <div class="clearfix"></div>
@@ -143,8 +143,13 @@
         <section>
             <h2>Introduction</h2>
             <p>
-                <img src={{wiki.imageSource}} class="pull-left main-img"/>
-                <span class="pull-left">{{{wiki.text}}}</span>
+                <img src=https:&#x2F;&#x2F;upload.wikimedia.org&#x2F;wikipedia&#x2F;commons&#x2F;thumb&#x2F;5&#x2F;57&#x2F;Staphylococcus_aureus_01.jpg&#x2F;400px-Staphylococcus_aureus_01.jpg class="pull-left main-img"/>
+                <span class="pull-left"><p><i><b>Staphylococcus</b></i> (from the Greek: <span lang="el" xml:lang="el">σταφυλή</span>, <i>staphylē</i>, "grape" and κόκκος, <i>kókkos</i>, "granule") is a genus of Gram-positive bacteria. Under the microscope, they appear round (cocci), and form in grape-like clusters.</p>
+<p>The <i>Staphylococcus</i> genus includes at least 40 species. Of these, nine have two subspecies, one has three subspecies, and one has four subspecies. Most are harmless and reside normally on the skin and mucous membranes of humans and other organisms. Staphylococcus has been found to be a nectar-inhabiting microbe. Found worldwide, they are a small component of soil microbial flora.</p>
+<p></p>
+
+<p></p>
+</span>
             </p>
 
             <p>
@@ -165,24 +170,24 @@
 
             <table class="large-table kv-table-2 center-table">
                 <thead class="table-header">
-                    <tr><th colspan="4">Table 1. Assembly details for {{meta.genome_name}}</th></tr>
+                    <tr><th colspan="4">Table 1. Assembly details for Staphylococcus aureus subsp. aureus strain VB4283</th></tr>
                 </thead>
 
                 <tbody>
                     <tr>
-                        <td>Contigs</td><td>{{meta.contigs}}</td>
-                        <td>GC Content</td><td>{{meta.gc_content}}</td>
+                        <td>Contigs</td><td>78</td>
+                        <td>GC Content</td><td>32.7</td>
                     </tr>
                     <tr>
-                        <td>Plasmids</td><td>{{meta.plasmids}}</td>
-                        <td>Contig L50</td><td>{{meta.contig_l50}}</td>
+                        <td>Plasmids</td><td></td>
+                        <td>Contig L50</td><td>9</td>
                     </tr>
                     <tr>
-                        <td>Genome Length</td><td>{{meta.genome_length}}</td>
-                        <td>Contig N50</td><td>{{meta.contig_n50}}</td>
+                        <td>Genome Length</td><td>2796422</td>
+                        <td>Contig N50</td><td>105363</td>
                     </tr>
                     <tr>
-                        <td>Chromosomes</td><td>{{meta.chromosomes}}</td>
+                        <td>Chromosomes</td><td></td>
                         <td></td><td></td>
                     </tr>
                 </tbody>
@@ -200,7 +205,7 @@
                 The Genetic code was 11.  The taxonomy of B. neotomae BNWLG2-S2 is:
             </p>
 
-            <div style="width: 80%;" class="center-table"><i>{{getTaxonomy}}</i></div><br>
+            <div style="width: 80%;" class="center-table"><i>Bacteria &gt;&gt; Terrabacteria group &gt;&gt; Firmicutes &gt;&gt; Bacilli &gt;&gt; Bacillales &gt;&gt; Staphylococcaceae &gt;&gt; Staphylococcus &gt;&gt; Staphylococcus aureus &gt;&gt; Staphylococcus aureus subsp. aureus</i></div><br>
 
 
             <p>
@@ -223,9 +228,13 @@
 
                 <tbody>
                     <tr class="row-header"><td></td> <td>PATRIC</td></tr>
-                    {{#annotationMeta}}
-                    <tr><td>{{name}}</td><td>{{count}}</td></tr>
-                    {{/annotationMeta}}
+                    <tr><td>CDS</td><td>2903</td></tr>
+                    <tr><td>repeat_region</td><td>127</td></tr>
+                    <tr><td>classifier_predicted_region</td><td>66</td></tr>
+                    <tr><td>tRNA</td><td>56</td></tr>
+                    <tr><td>misc_RNA</td><td>12</td></tr>
+                    <tr><td>regulatory</td><td>10</td></tr>
+                    <tr><td>rRNA</td><td>6</td></tr>
                 </tbody>
             </table>
 
@@ -241,9 +250,13 @@
 
                 <tbody>
                     <tr class="row-header"><td></td> <td>PATRIC</td></tr>
-                    {{#proteinFeatures}}
-                    <tr><td>{{name}}</td><td>{{count}}</td></tr>
-                    {{/proteinFeatures}}
+                    <tr><td>Hypothetical proteins</td><td>740</td></tr>
+                    <tr><td>Proteins with functional assignments</td><td>2163</td></tr>
+                    <tr><td>Proteins with EC number assignments</td><td>947</td></tr>
+                    <tr><td>Proteins with GO assignments</td><td>640</td></tr>
+                    <tr><td>Proteins with Pathway assignments</td><td>561</td></tr>
+                    <tr><td>Proteins with PATRIC genus-specific family (PLfam) assignments</td><td>2845</td></tr>
+                    <tr><td>Proteins with PATRIC cross-genus family (PGfam) assignments</td><td>2845</td></tr>
                 </tbody>
             </table>
 
@@ -255,7 +268,7 @@
                 GC content and GC skew are provided (Figure 1).
             </p>
 
-            <img src="../{{meta.genome_id}}/{{meta.genome_id}}-circular.png" class="circular-fig" />
+            <img src="../46170.310/46170.310-circular.png" class="circular-fig" />
         </section>
 
 
@@ -289,22 +302,55 @@
 
                 <tbody>
                     <tr class="row-header"><td></td> <td>Source</td> <td>Genes</td></tr>
-                    {{#specialtyGenes}}
                     <tr>
-                        <td>{{type}}</td>
-                        <td>{{source}}</td>
-                        <td>{{genes}}</td>
+                        <td>Virulence Factor</td>
+                        <td>VFDB</td>
+                        <td>70</td>
                     </tr>
-                    {{/specialtyGenes}}
+                    <tr>
+                        <td>Virulence Factor</td>
+                        <td>Victors</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td>Antibiotic Resistance</td>
+                        <td>CARD</td>
+                        <td>32</td>
+                    </tr>
+                    <tr>
+                        <td>Drug Target</td>
+                        <td>DrugBank</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Human Homolog</td>
+                        <td>Human</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Antibiotic Resistance</td>
+                        <td>PATRIC</td>
+                        <td>19</td>
+                    </tr>
+                    <tr>
+                        <td>Antibiotic Resistance</td>
+                        <td>ARDB</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Drug Target</td>
+                        <td>TTD</td>
+                        <td>10</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
 
 
 
-        {{#amr}}
         <section>
             <h2>Antimicrobial Ressistance Analysis</h2>
+            <p>[some text will go here]</p>
             <table class="large-table kv-table-2 center-table">
                 <thead class="table-header">
                     <tr>
@@ -314,8 +360,8 @@
 
                 <tbody>
                     <tr class="row-header"><td></td> <td>Antibiotics</td></tr>
-                    <tr><td>Resistant</td><td>{{amr.resistantStr}}</td></tr>
-                    <tr><td>susceptible</td><td>{{amr.susceptibleStr}}</td></tr>
+                    <tr><td>Resistant</td><td>ciprofloxacin, erythromycin, gentamicin, methicillin, penicillin, trimethoprim&#x2F;sulfamethoxazole</td></tr>
+                    <tr><td>susceptible</td><td>clindamycin, tetracycline</td></tr>
                 </tbody>
             </table>
 
@@ -323,7 +369,6 @@
 
             [Incomplete]
         </section>
-        {{/amr}}
 
 
 
@@ -337,7 +382,7 @@
                 is provided in Figure 2.
             </p>
 
-            <img src="../{{meta.genome_id}}/{{meta.genome_id}}-subsystem.svg" class="subsystem-fig" />
+            <img src="../46170.310/46170.310-subsystem.svg" class="subsystem-fig" />
         </section>
 
 
@@ -368,7 +413,7 @@
             <br>
 
             <h3>Comparison to Reference Genomes in the Same Genus</h3>
-            <img src="../{{meta.genome_id}}/{{meta.genome_id}}-tree.svg" class="tree-fig" />
+            <img src="../46170.310/46170.310-tree.svg" class="tree-fig" />
         </section>
     </body>
 </html>

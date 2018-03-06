@@ -37,7 +37,8 @@ const tmplData = {
     annotationMeta: null,
     proteinFeatures: null,
     wiki: null,
-    specialtyGenes: null
+    specialtyGenes: null,
+    amr: null
 }
 
 
@@ -65,6 +66,8 @@ async function getAllData(genomeID) {
     let wiki = await getWiki(meta[0].species, meta[0].genus);
     let specialtyGenes = await getSpecialtyGenes(genomeID);
     let proteinFeatures = await getProteinFeatures(genomeID, meta[0].cds);
+    let amr = await getGenomeAMR(genomeID);
+
 
 
     // build master data json
@@ -73,6 +76,7 @@ async function getAllData(genomeID) {
     tmplData.wiki = wiki;
     tmplData.specialtyGenes = specialtyGenes;
     tmplData.proteinFeatures = proteinFeatures;
+    tmplData.amr = amr;
 
     // create genome folder if needed
     utils.createGenomeDir(genomeID);
@@ -210,7 +214,7 @@ async function getProteinFeatures(genomeID, CDS) {
         `&in(annotation,(PATRIC,RefSeq))&limit(1)&facet((field,annotation),(mincount,1))&json(nl,map)&http_accept=application/solr+json`;
 
 
-    console.log(`fetching hypothetical+protein...`)
+    console.log(`fetching protein features...`)
     let hypotheticalProteins = await getPFCount(url);
 
     console.log('hypotheticalProtein', hypotheticalProteins)
@@ -288,13 +292,32 @@ function getPFCount(url) {
     })
 }
 
+function getGenomeAMR(genomeID) {
+    let url = `${config.dataAPIUrl}/genome_amr/` +
+        `?eq(genome_id,${genomeID})&limit(1)` +
+        `&facet((pivot,(resistant_phenotype,laboratory_typing_method,antibiotic)),(mincount,1))` +
+        `&json(nl,map)&http_accept=application/solr+json`;
+
+    console.log(`fetching amr data...`);
+    return rp.get(url, getOpts).then(res => {
+        let data = res.facet_counts
+            .facet_pivot['resistant_phenotype,laboratory_typing_method,antibiotic'];
+
+        let resistant = data[0].pivot[0].pivot.map(drug => drug.value);
+        let susceptible = data[1].pivot[0].pivot.map(drug => drug.value);
+
+        return {
+            resistant,
+            susceptible,
+            resistantStr: resistant.join(', '),
+            susceptibleStr: susceptible.join(', '),
+        };
+    }).catch((e) => {
+        console.error(e.message);
+    })
+}
 
 
 
 
-/*
 
-
- '?eq(genome_id,${genomeID})&eq(pgfam_id,PGF*)&in(annotation,(PATRIC,RefSeq))&limit(1)&facet((field,annotation),(mincount,1))&json(nl,map)&http_accept=application/solr+json'
-// '?eq(genome_id,${genomeID})&eq(figfam_id,*)&in(annotation,(PATRIC,RefSeq))&limit(1)&facet((field,annotation),(mincount,1))&json(nl,map)&http_accept=application/solr+json'
- */

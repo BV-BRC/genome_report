@@ -1,0 +1,241 @@
+{
+    "meta": {
+        "sequencing_centers": "Christian Medical College",
+        "genbank_accessions": "NBSI00000000",
+        "sequencing_depth": "61.0x",
+        "comments": [
+            "Heteroresistant vancomycin-intermediate Staphylococcus aureus VB4283"
+        ],
+        "habitat": "",
+        "culture_collection": "Not applicable",
+        "phylum": "Firmicutes",
+        "sequencing_platform": "IonTorrent",
+        "temperature_range": "",
+        "class": "Bacilli",
+        "publication": "",
+        "oxygen_requirement": "",
+        "public": true,
+        "genome_status": "WGS",
+        "genome_length": 2796422,
+        "biosample_accession": "SAMN06675389",
+        "gram_stain": "",
+        "geographic_location": "India",
+        "completion_date": "2017-05-12T00:00:00Z",
+        "taxon_id": 46170,
+        "collection_date": "13-Feb-2016",
+        "host_health": "septicemia",
+        "owner": "PATRIC@patricbrc.org",
+        "refseq_cds": 2854,
+        "family": "Staphylococcaceae",
+        "genus": "Staphylococcus",
+        "taxon_lineage_ids": [
+            "131567",
+            "2",
+            "1783272",
+            "1239",
+            "91061",
+            "1385",
+            "90964",
+            "1279",
+            "1280",
+            "46170"
+        ],
+        "assembly_method": "SPAdes v. 5.0.0.0",
+        "motility": "",
+        "sequences": 78,
+        "order": "Bacillales",
+        "gc_content": 32.7,
+        "additional_metadata": [
+            "collected_by:Christian Medical College"
+        ],
+        "isolation_source": "blood",
+        "cell_shape": "",
+        "taxon_lineage_names": [
+            "cellular organisms",
+            "Bacteria",
+            "Terrabacteria group",
+            "Firmicutes",
+            "Bacilli",
+            "Bacillales",
+            "Staphylococcaceae",
+            "Staphylococcus",
+            "Staphylococcus aureus",
+            "Staphylococcus aureus subsp. aureus"
+        ],
+        "other_clinical": [
+            "host_health_state:Tamil Nadu"
+        ],
+        "kingdom": "Bacteria",
+        "genome_id": "46170.310",
+        "genome_name": "Staphylococcus aureus subsp. aureus strain VB4283",
+        "contigs": 78,
+        "common_name": "Staphylococcus_aureus_subsp_aureus",
+        "collection_year": 2016,
+        "strain": "VB4283",
+        "species": "Staphylococcus aureus subsp. aureus",
+        "host_name": "Human, Homo sapiens",
+        "antimicrobial_resistance": [
+            "Resistant",
+            "Susceptible"
+        ],
+        "patric_cds": 2903,
+        "antimicrobial_resistance_evidence": "Computational Prediction",
+        "bioproject_accession": "PRJNA381375",
+        "date_inserted": "2017-05-29T16:58:41.554Z",
+        "date_modified": "2017-05-29T16:58:41.554Z",
+        "plfam_cds": 2845,
+        "partial_cds": 0,
+        "cds": 2903,
+        "contig_l50": 9,
+        "hypothetical_cds": 737,
+        "trna": 56,
+        "rrna": 6,
+        "cds_ratio": 1.0381123,
+        "partial_cds_ratio": 0,
+        "contig_n50": 105363,
+        "genome_quality": "High",
+        "contigs_new": 78,
+        "plfam_cds_ratio": 0.98002064,
+        "hypothetical_cds_ratio": 0.25387532,
+        "nearest_genomes": [
+            "1241616.6",
+            "1293.6",
+            "158879.11",
+            "279808.8",
+            "29388.43",
+            "435838.3",
+            "553212.3",
+            "72758.6",
+            "93061.5",
+            "1295.23"
+        ],
+        "outgroup_genomes": [
+            "1548.3"
+        ],
+        "core_families": 1326,
+        "core_family_ratio": 1,
+        "_version_": 1594212801304330200
+    },
+    "annotationMeta": [
+        {
+            "name": "CDS",
+            "count": 2903
+        },
+        {
+            "name": "repeat_region",
+            "count": 127
+        },
+        {
+            "name": "classifier_predicted_region",
+            "count": 66
+        },
+        {
+            "name": "tRNA",
+            "count": 56
+        },
+        {
+            "name": "misc_RNA",
+            "count": 12
+        },
+        {
+            "name": "regulatory",
+            "count": 10
+        },
+        {
+            "name": "rRNA",
+            "count": 6
+        }
+    ],
+    "proteinFeatures": [
+        {
+            "name": "Hypothetical proteins",
+            "count": 740
+        },
+        {
+            "name": "Proteins with functional assignments",
+            "count": 2163
+        },
+        {
+            "name": "Proteins with EC number assignments",
+            "count": 947
+        },
+        {
+            "name": "Proteins with GO assignments",
+            "count": 640
+        },
+        {
+            "name": "Proteins with Pathway assignments",
+            "count": 561
+        },
+        {
+            "name": "Proteins with PATRIC genus-specific family (PLfam) assignments",
+            "count": 2845
+        },
+        {
+            "name": "Proteins with PATRIC cross-genus family (PGfam) assignments",
+            "count": 2845
+        }
+    ],
+    "wiki": {
+        "text": "<p><i><b>Staphylococcus</b></i> (from the Greek: <span lang=\"el\" xml:lang=\"el\">σταφυλή</span>, <i>staphylē</i>, \"grape\" and κόκκος, <i>kókkos</i>, \"granule\") is a genus of Gram-positive bacteria. Under the microscope, they appear round (cocci), and form in grape-like clusters.</p>\n<p>The <i>Staphylococcus</i> genus includes at least 40 species. Of these, nine have two subspecies, one has three subspecies, and one has four subspecies. Most are harmless and reside normally on the skin and mucous membranes of humans and other organisms. Staphylococcus has been found to be a nectar-inhabiting microbe. Found worldwide, they are a small component of soil microbial flora.</p>\n<p></p>\n\n<p></p>\n",
+        "imageSource": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Staphylococcus_aureus_01.jpg/400px-Staphylococcus_aureus_01.jpg"
+    },
+    "specialtyGenes": [
+        {
+            "type": "Virulence Factor",
+            "source": "VFDB",
+            "genes": 70
+        },
+        {
+            "type": "Virulence Factor",
+            "source": "Victors",
+            "genes": 35
+        },
+        {
+            "type": "Antibiotic Resistance",
+            "source": "CARD",
+            "genes": 32
+        },
+        {
+            "type": "Drug Target",
+            "source": "DrugBank",
+            "genes": 30
+        },
+        {
+            "type": "Human Homolog",
+            "source": "Human",
+            "genes": 20
+        },
+        {
+            "type": "Antibiotic Resistance",
+            "source": "PATRIC",
+            "genes": 19
+        },
+        {
+            "type": "Antibiotic Resistance",
+            "source": "ARDB",
+            "genes": 10
+        },
+        {
+            "type": "Drug Target",
+            "source": "TTD",
+            "genes": 10
+        }
+    ],
+    "amr": {
+        "resistant": [
+            "ciprofloxacin",
+            "erythromycin",
+            "gentamicin",
+            "methicillin",
+            "penicillin",
+            "trimethoprim/sulfamethoxazole"
+        ],
+        "susceptible": [
+            "clindamycin",
+            "tetracycline"
+        ],
+        "resistantStr": "ciprofloxacin, erythromycin, gentamicin, methicillin, penicillin, trimethoprim/sulfamethoxazole",
+        "susceptibleStr": "clindamycin, tetracycline"
+    }
+}
