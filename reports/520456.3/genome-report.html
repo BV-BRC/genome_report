@@ -19,6 +19,9 @@
             }
             h2 {
                 font-size: 1.45em;
+
+            }
+            h2, h3 {
                 font-weight: 500;
             }
             .pull-left {
@@ -31,6 +34,7 @@
                 color: #aaa;
             }
             table {
+                margin: .1in 0;
                 border-collapse: collapse;
             }
 
@@ -91,12 +95,13 @@
             }
 
             .subsystem-fig {
-                width: 1200px;
+                width: 1300px;
                 height: 600px;
             }
 
-            .mute {
-                color: #888;
+            .tree-fig {
+                width: 1200px;
+                height: 150px;
             }
         </style>
 
@@ -311,7 +316,6 @@
 
 
         <section>
-
             <h2>Subsystem Analysis</h2>
             <p>
                 A subsystem is a set of protein functions that are related. Frequently, subsystems
@@ -322,8 +326,37 @@
             </p>
 
             <img src="../520456.3/520456.3-subsystem.svg" class="subsystem-fig" />
-
         </section>
 
+
+        <section>
+            <h2>Phylogenetic Analysis</h2>
+
+            <p>
+                PATRIC [1] provides a phylogentic tree building service.  The makes use of
+                several third-party tools. These include, BLAST[1], MCL[2], Muscle[3],
+                hmmbuild[4], hmmsearch[4], Gblocks[5], FastTree[6], and RAxML[7].
+                The pipeline begins with thegi set of ingroup genome protein files.
+                These are filtered to remove duplicate species, resulting in a distinct-species
+                subset of the ingroup genomes. This is done to reduce biasing the homolog
+                sets with overrepresented species. BLAST searches are used to find
+                bi-directional best hit protein pairs between genomes, and these bidirectional
+                best hit pairs are clustered using MCL. Clusters containing members from at least
+                half of the distinct genomes are chosen as initial, or seed, homolog sets. These
+                seed sets are expanded to include members from all ingroup and outgroup taxa using
+                tools from the HMMer suite. A hidden Markov Model (HMM) is built from each seed
+                set using hmmbuild. These HMMs are used to search each genome, with hmmsearch,
+                to find the best match from each genome for each homolog set model. The final,
+                expanded, homolog sets are created from the hmmsearch results. Homolog sets representing
+                fewer than 80% of ingroup genomes are removed. The remaining sets are aligned
+                using Muscle, and the alignments are trimmed using GBlocks.
+                The trimmed alignments are concatenated and this concatenated alignment is
+                used to build the main tree with either RAxML or FastTree.
+            </p>
+
+
+            <h3>Comparison to Reference Genomes in the Same Genus</h3>
+            <img src="../520456.3/520456.3-tree.svg" class="tree-fig" />
+        </section>
     </body>
 </html>
