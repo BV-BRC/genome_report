@@ -231,5 +231,6 @@
             "source": "PATRIC_VF",
             "genes": 1
         }
-    ]
+    ],
+    "amr": null
 }

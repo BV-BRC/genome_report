@@ -68,8 +68,6 @@ async function getAllData(genomeID) {
     let proteinFeatures = await getProteinFeatures(genomeID, meta[0].cds);
     let amr = await getGenomeAMR(genomeID);
 
-
-
     // build master data json
     tmplData.meta = meta[0];
     tmplData.annotationMeta = annotationMeta;
@@ -77,6 +75,7 @@ async function getAllData(genomeID) {
     tmplData.specialtyGenes = specialtyGenes;
     tmplData.proteinFeatures = proteinFeatures;
     tmplData.amr = amr;
+
 
     // create genome folder if needed
     utils.createGenomeDir(genomeID);
@@ -298,10 +297,11 @@ function getGenomeAMR(genomeID) {
         `&facet((pivot,(resistant_phenotype,laboratory_typing_method,antibiotic)),(mincount,1))` +
         `&json(nl,map)&http_accept=application/solr+json`;
 
-    console.log(`fetching amr data...`);
     return rp.get(url, getOpts).then(res => {
         let data = res.facet_counts
             .facet_pivot['resistant_phenotype,laboratory_typing_method,antibiotic'];
+
+        if (!data.length) return null;
 
         let resistant = data[0].pivot[0].pivot.map(drug => drug.value);
         let susceptible = data[1].pivot[0].pivot.map(drug => drug.value);
