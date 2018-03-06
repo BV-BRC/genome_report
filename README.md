@@ -31,6 +31,10 @@ npm install --production
 
 ## Usage
 
+```
+cd scripts/
+```
+
 Fetch images and write to `reports/{genome-id}/`
 
 ```

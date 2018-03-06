@@ -79,8 +79,52 @@
         "bioproject_accession": "PRJNA33567",
         "document_type": "genome",
         "assembly_accession": "GCA_000158715.1",
-        "_version_": 1585509101794754600
+        "plfam_cds": 3434,
+        "partial_cds": 0,
+        "cds": 3434,
+        "contig_l50": 1,
+        "hypothetical_cds": 770,
+        "trna": 48,
+        "rrna": 3,
+        "cds_ratio": 1.031348,
+        "partial_cds_ratio": 0,
+        "contig_n50": 1923503,
+        "genome_quality": "High",
+        "contigs_new": 11,
+        "plfam_cds_ratio": 1,
+        "hypothetical_cds_ratio": 0.22422831,
+        "nearest_genomes": [
+            "520456.3",
+            "568815.3",
+            "520461.7",
+            "520459.3",
+            "204722.5",
+            "483179.4",
+            "262698.4",
+            "359391.4",
+            "224914.11",
+            "520448.3",
+            "444178.3"
+        ],
+        "outgroup_genomes": [
+            "419475.3"
+        ],
+        "missing_core_family_ids": [
+            "PGF_00025847",
+            "PGF_00194700",
+            "PGF_00458082",
+            "PGF_00716243",
+            "PGF_00734221",
+            "PGF_01030857",
+            "PGF_01030864",
+            "PGF_03067324",
+            "PGF_06264218"
+        ],
+        "core_families": 2052,
+        "core_family_ratio": 0.996,
+        "_version_": 1594129162875961300
     },
+    "annotationData": null,
     "annotationMeta": [
         {
             "name": "CDS",
@@ -102,5 +146,9 @@
             "name": "misc_RNA",
             "count": 1
         }
-    ]
+    ],
+    "wiki": {
+        "text": "<p><i><b>Brucella</b></i> is a genus of Gram-negative bacteria, named after David Bruce (1855–1931). They are small (0.5 to 0.7 by 0.6 to 1.5 µm), nonencapsulated, nonmotile, facultatively intracellular coccobacilli.</p>\n<p><i>Brucella</i> is the cause of brucellosis, which is a zoonosis transmitted by ingesting contaminated food (such as unpasteurized milk products), direct contact with an infected animal, or inhalation of aerosols. Transmission from human to human, for example through sexual intercourse or from mother to child, is exceedingly rare, but possible. Minimum infectious exposure is between 10 and 100 organisms.</p>\n<p>The different species of <i>Brucella</i> are genetically very similar, although each has a slightly different host specificity. Hence, the NCBI taxonomy includes most <i>Brucella</i> species under <i>B. melitensis</i>.</p>\n<p>The many names of brucellosis include (human disease/animal disease):</p>\n<ul><li>Malta fever/Bang's disease</li>\n<li>Undulant fever/enzootic abortion</li>\n<li>Mediterranean fever/epizootic abortion</li>\n<li>Rock fever of Gibraltar/slinking of calves</li>\n<li>Gastric fever/ram epididymitis</li>\n<li>Contagious abortion/spontaneous abortion</li>\n</ul><p></p>",
+        "imageSource": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Brucella_melitensis.jpg/400px-Brucella_melitensis.jpg"
+    }
 }

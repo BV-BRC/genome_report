@@ -3,14 +3,25 @@
     <head>
         <title>PATRIC Genome Report | {{org.id}}</title>
 
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700,800,900" rel="stylesheet">
+
         <style>
 
             body {
-                font-family: 'Open Sans', sans-serif;
+                font-family: 'Work Sans', sans-serif;
                 color: #444;
+                /*
                 display: flex;
                 flex-direction: column;
+                */
             }
+            /*
+            header {
+                display:flex;
+                flex-direction: row;
+                align-items: flex-start;
+                flex-wrap: nowrap;
+            }*/
             a {
                 text-decoration: none;
                 color: #0d78ef;
@@ -18,44 +29,87 @@
             a:hover {
                 text-decoration: underline;
             }
+
+            h2 {
+                font-size: 1.45em;
+                font-weight: 500;
+            }
+
+            .pull-left {
+                float: left;
+            }
+            .pull-right {
+                float: right;
+            }
+
             h2 small {
                 color: #aaa;
             }
             table {
                 border-collapse: collapse;
             }
-            tr {
-                page-break-inside: avoid;
+
+            /* standard key-value table */
+            .kv-table {
+                text-align: left;
             }
-            .report-title {
-                display: inline-block;
-                position: relative;
+            .kv-table td:first-child,
+            .kv-table td:nth-child(3) {
+                font-weight: 600;
+            }
+
+            .table-header {
+                color: #fff;
+                background: #196E9C;
+                padding: 5px;
+            }
+            .table-header th {
+                font-weight: 400;
+            }
+            th, td {
+                padding: 5px;
+            }
+            th  {
+                border-bottom: 2px solid #196E9C;
+            }
+            tr {
+                border-bottom: 1px solid #aaa;
+            }
+
+            .overview-table {
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .small-table {
+                width: 40%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .logo {
+                width: 200px;
+                border-right: 3px solid #444;
+                padding-right: 10px;
+                margin-right: 10px;
             }
             .title {
-                float: left;
-                margin-left: 10px;
-                position:absolute;
-                bottom: 0;
+                padding: 10px 0 0 0px;
                 font-size: 1.3em;
                 color: #444;
             }
             .report-info {
-                float: right;
-                position: relative;
                 text-align: right;
                 margin-right: 30px;
                 font-size:.8em;
                 color: #777;
             }
-            span.v-divide {
-                width: 5px;
-                height: 90px;
-                border-right: 5px solid #444;
-                float: left;
+
+            .main-img {
+                width: 250px;
             }
-            .logo {
-                width: 40%;
-            }
+
             .subsystem-img {
                 width: 1200px;
                 height: 600px;
@@ -64,19 +118,15 @@
 
     </head>
     <body>
-        <header>
-            <div class="report-title">
-                <span>
-                    <img src="../../patric-logo.svg" class="logo">
-                </span>
-
-                <span class="v-divide"></span>
-                <span class="title">Genome Report</span>
+        <header style="width: 100%">
+            <div>
+                <img src="../../patric-logo.svg" class="logo pull-left">
+                <div class="title">Genome Report</div>
             </div>
 
-            <div class="report-info">
+            <div class="report-info pull-right">
                 Report Date: {{reportDate}}<br>
-                Organism: {{org.name}}
+                Organism: {{meta.genome_name}}
             </div>
         </header>
 
@@ -86,18 +136,12 @@
         <section>
             <h2>Introduction</h2>
             <p>
-            Brucella is a genus of Gram-negative bacteria. They are small (0.5 to 0.7 by 0.6 to 1.5 µm), nonencapsulated, nonmotile, facultative intracellular coccobacilli.
-            Brucella is the cause of brucellosis, which is a zoonosis transmitted by ingesting
-            contaminated food (such as unpasteurized milk products), direct contact with an
-            infected animal, or inhalation of aerosols. Transmission from human to human,
-            for example through sexual intercourse or from mother to child, is exceedingly
-            rare, but possible. Minimum infectious exposure is between 10 and 100 organisms.
-            The different species of Brucella are genetically very similar, although each has a
-            slightly different host specificity.
+                <img src={{wiki.imageSource}} class="pull-left main-img"/>
+                <span class="pull-left">{{{wiki.text}}}</span>
             </p>
 
             <p>
-            Brucella neotomae BNWLG2-S2 was isolated from the urine of a 49 year-old female who presented to a clinic in Pennsylvania on April 26th 2016 with symptoms indicative of a UTI. It harbors mcr-1 and blaCTX-M on a Novel IncF Plasmid, First report of mcr-1 in the USA.
+                Brucella neotomae BNWLG2-S2 was isolated from the urine of a 49 year-old female who presented to a clinic in Pennsylvania on April 26th 2016 with symptoms indicative of a UTI. It harbors mcr-1 and blaCTX-M on a Novel IncF Plasmid, First report of mcr-1 in the USA.
             </p>
         </section>
 
@@ -110,46 +154,76 @@
             </p>
             <p>
                 The assembled genome has 33 contigs, with the total length of 3.31 Mbp and %GC of 57.26%.
-
-                {{TABLE!}}
             </p>
+
+            <table class="overview-table kv-table">
+                <thead class="table-header">
+                    <tr><th colspan="4">Table 1. Assembly details for {{meta.genome_name}}</th></tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Contigs</td><td>{{meta.contigs}}</td>
+                        <td>GC Content</td><td>{{meta.gc_content}}</td>
+                    </tr>
+                    <tr>
+                        <td>Plasmids</td><td>{{meta.plasmids}}</td>
+                        <td>Contig L50</td><td>{{meta.contig_l50}}</td>
+                    </tr>
+                    <tr>
+                        <td>Genome Length</td><td>{{meta.genome_length}}</td>
+                        <td>Contig N50</td><td>{{meta.contig_n50}}</td>
+                    </tr>
+                    <tr>
+                        <td>Chromosomes</td><td>{{meta.chromosomes}}</td>
+                        <td></td><td></td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
         <section>
             <h2>Genome Annotation</h2>
             <p>
                 The Genome Annotation Service in PATRIC [1] uses the RAST tool kit (RASTtk) [6] to
-                provide annotation of genomic features.  The job for B. neotomae BNWLG2-S2
-                    ran under job number 685fb8c1-348a-4cea-a298-496b037af1f8.
+                provide annotation of genomic features. The job for B. neotomae BNWLG2-S2
+                ran under job number 685fb8c1-348a-4cea-a298-496b037af1f8.
                 The annotation job started at 10/9/17, 7:10 AM and completed at 10/9/17, 8:16 AM,
                 after 1h 5m 3623s.  The selected domain was Bacteria, the Taxonomy ID was 234.128.
                 The Genetic code was 11.  The taxonomy of B. neotomae BNWLG2-S2 is:
             </p>
 
-            <taxonomy></taxonomy>
+            {{getTaxonomy}}<br>
+            <br>
 
-            The annotations includes 3349 CDS, 50 tRNAs and 3 rRNAs. All annotated genome features for this genome are summarized in Table 3.
+            <p>
+                The annotations includes 3349 CDS, 50 tRNAs and 3 rRNAs.
+                All annotated genome features for this genome are summarized in Table 3.
+            </p>
 
-            The functional annotation included 655 hypothetical proteins and 2694 proteins with functional assignments. Furthermore, 963 proteins were  assigned EC numbers and 749 proteins were mapped to KEGG pathways.  A breakdown of the proteins that have been annotated for this isolate is provided in Table 4.
+            <p>
+                The functional annotation included 655 hypothetical proteins and 2694 proteins with functional assignments.
+                Furthermore, 963 proteins were  assigned EC numbers and 749 proteins were mapped to KEGG pathways.
+                A breakdown of the proteins that have been annotated for this isolate is provided in Table 4.
+            </p>
+
+
+            <table class="small-table kv-table">
+                <thead class="table-header">
+                    <tr>
+                        <th colspan="2">Table 3. Annotated Genome Features</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr><td></td> <td><b>PATRIC</b></td></tr>
+                    {{#annotationMeta}}
+                    <tr><td>{{name}}</td><td>{{count}}</td></tr>
+                    {{/annotationMeta}}
+                </tbody>
+            </table>
 
         </section>
 
-
-
-        <!--
-        <section>
-            <h2>Details on specialty genes for {{org.name}}</h2>
-            A graphical display of the distribution of the CDS on each strand, the repeat_regions, GC content and GC skew are provided (Figure 1).
-            <small>[<a href="https://patricbrc.org/view/Genome/{{org.id}}#view_tab=circular">view online</a>]</small>
-            <div>
-                <img src="{{org.id}}-circular.png">
-            </div>
-
-
-            <div>
-                <img src="{{org.id}}-subsystem.svg" class="subsystem-img">
-            </div>
-        </section>
-        -->
     </body>
 </html>

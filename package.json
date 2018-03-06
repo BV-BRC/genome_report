@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/live-server/live-server.js  --entry-file=/templates/gr-template.html"
+    "start": "./node_modules/live-server/live-server.js",
+    "start:dev": "./node_modules/live-server/live-server.js  --entry-file=/templates/gr-template.html"
   },
   "repository": {
     "type": "git",

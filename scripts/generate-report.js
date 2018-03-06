@@ -30,10 +30,12 @@ const tmplData = {
     author: {
         name: 'nconrad'
     },
-    org: {
-        name: "Mycobacterium tuberculosis H37Rv"
-    },
-    reportDate: new Date().toJSON().slice(0,10).replace(/-/g,'/')
+    reportDate: new Date().toJSON().slice(0,10).replace(/-/g,'/'),
+    getTaxonomy: function() {
+        console.log(this)
+        let taxonLineage = this.meta.taxon_lineage_names;
+        return taxonLineage.slice(1).join(' >> ')
+    }
 }
 
 
@@ -46,23 +48,27 @@ if (require.main === module){
         process.exit(1);
     }
 
-    let genomeId = opts.genome_id;
-    tmplData.org.id = genomeId;
+    let genomeID = opts.genome_id;
 
     // fill html template and save as pdf
-    buildPdf(genomeId);
+    buildPdf(genomeID);
 }
 
 
-function buildPdf(genomeId) {
+async function buildPdf(genomeID) {
+    let genomeDir = utils.createGenomeDir(genomeID);
+    let d = await utils.readFile(`${genomeDir}/${genomeID}-data.json`, 'utf8');
+    let reportData = JSON.parse(d);
+
+    // merge in report data
+    Object.assign(tmplData, reportData);
+
     console.log('Reading template...')
     fs.readFile(TEMPLATE_PATH, (err, data) => {
         if (err) throw err;
 
         console.log('Filling template...');
         let output = mustache.render(data.toString(), tmplData);
-
-        let genomeDir = utils.createGenomeDir(genomeId);
 
         let htmlPath = path.resolve(`${genomeDir}/genome-report.html`);
         console.log(`Writing html to ${htmlPath}...`);
@@ -75,17 +81,20 @@ function buildPdf(genomeId) {
 
 
 async function generatePdf(htmlPath, outPath) {
-    let browser = await puppeteer.launch();
+    let browser = await puppeteer.launch({ headless: true } );
     let page = await browser.newPage();
     await page.goto(`file://${htmlPath}`, {waitUntil: 'networkidle2'});
 
     console.log(`Generating pdf ${outPath}...`)
-    await page.pdf({path: outPath, format: 'A4', margin: {
-        top: pdfMargin,
-        left: pdfMargin,
-        right: pdfMargin,
-        bottom: pdfMargin
-    }});
+    await page.pdf({path: outPath, format: 'letter',
+        margin: {
+            top: pdfMargin,
+            left: pdfMargin,
+            right: pdfMargin,
+            bottom: pdfMargin
+        },
+        printBackground: true
+    });
     await browser.close();
 
     console.log('Done.');

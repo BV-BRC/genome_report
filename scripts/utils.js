@@ -14,7 +14,8 @@ const fs = require('fs'),
     process = require('process'),
     Promise = require("bluebird");
 
-const writeFile = Promise.promisify(fs.writeFile);
+const writeFile = Promise.promisify(fs.writeFile),
+    readFile = Promise.promisify(fs.readFile);
 
 const config = require('../config.json');
 
@@ -41,5 +42,6 @@ function createGenomeDir(id) {
 
 module.exports = {
     createGenomeDir: createGenomeDir,
-    writeFile: writeFile
+    writeFile: writeFile,
+    readFile: readFile
 }
