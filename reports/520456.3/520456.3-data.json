@@ -124,7 +124,6 @@
         "core_family_ratio": 0.996,
         "_version_": 1594129162875961300
     },
-    "annotationData": null,
     "annotationMeta": [
         {
             "name": "CDS",
@@ -150,5 +149,57 @@
     "wiki": {
         "text": "<p><i><b>Brucella</b></i> is a genus of Gram-negative bacteria, named after David Bruce (1855–1931). They are small (0.5 to 0.7 by 0.6 to 1.5 µm), nonencapsulated, nonmotile, facultatively intracellular coccobacilli.</p>\n<p><i>Brucella</i> is the cause of brucellosis, which is a zoonosis transmitted by ingesting contaminated food (such as unpasteurized milk products), direct contact with an infected animal, or inhalation of aerosols. Transmission from human to human, for example through sexual intercourse or from mother to child, is exceedingly rare, but possible. Minimum infectious exposure is between 10 and 100 organisms.</p>\n<p>The different species of <i>Brucella</i> are genetically very similar, although each has a slightly different host specificity. Hence, the NCBI taxonomy includes most <i>Brucella</i> species under <i>B. melitensis</i>.</p>\n<p>The many names of brucellosis include (human disease/animal disease):</p>\n<ul><li>Malta fever/Bang's disease</li>\n<li>Undulant fever/enzootic abortion</li>\n<li>Mediterranean fever/epizootic abortion</li>\n<li>Rock fever of Gibraltar/slinking of calves</li>\n<li>Gastric fever/ram epididymitis</li>\n<li>Contagious abortion/spontaneous abortion</li>\n</ul><p></p>",
         "imageSource": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Brucella_melitensis.jpg/400px-Brucella_melitensis.jpg"
-    }
+    },
+    "specialtyGenes": [
+        {
+            "type": "Essential Gene",
+            "source": "PATRIC",
+            "genes": 224
+        },
+        {
+            "type": "Virulence Factor",
+            "source": "Victors",
+            "genes": 224
+        },
+        {
+            "type": "Human Homolog",
+            "source": "Human",
+            "genes": 79
+        },
+        {
+            "type": "Virulence Factor",
+            "source": "VFDB",
+            "genes": 44
+        },
+        {
+            "type": "Transporter",
+            "source": "TCDB",
+            "genes": 25
+        },
+        {
+            "type": "Antibiotic Resistance",
+            "source": "PATRIC",
+            "genes": 11
+        },
+        {
+            "type": "Drug Target",
+            "source": "DrugBank",
+            "genes": 4
+        },
+        {
+            "type": "Antibiotic Resistance",
+            "source": "CARD",
+            "genes": 3
+        },
+        {
+            "type": "Drug Target",
+            "source": "TTD",
+            "genes": 1
+        },
+        {
+            "type": "Virulence Factor",
+            "source": "PATRIC_VF",
+            "genes": 1
+        }
+    ]
 }

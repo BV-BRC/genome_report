@@ -1,27 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PATRIC Genome Report | {{org.id}}</title>
+        <title>PATRIC Genome Report | {{meta.genome_name}}</title>
 
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700,800,900" rel="stylesheet">
 
         <style>
-
             body {
                 font-family: 'Work Sans', sans-serif;
                 color: #444;
-                /*
-                display: flex;
-                flex-direction: column;
-                */
             }
-            /*
-            header {
-                display:flex;
-                flex-direction: row;
-                align-items: flex-start;
-                flex-wrap: nowrap;
-            }*/
             a {
                 text-decoration: none;
                 color: #0d78ef;
@@ -29,19 +17,16 @@
             a:hover {
                 text-decoration: underline;
             }
-
             h2 {
                 font-size: 1.45em;
                 font-weight: 500;
             }
-
             .pull-left {
                 float: left;
             }
             .pull-right {
                 float: right;
             }
-
             h2 small {
                 color: #aaa;
             }
@@ -49,12 +34,15 @@
                 border-collapse: collapse;
             }
 
-            /* standard key-value table */
-            .kv-table {
+            /* standard key-value table (single or 2 columns)*/
+            .kv-table,
+            .kv-table-2 {
                 text-align: left;
             }
+
             .kv-table td:first-child,
-            .kv-table td:nth-child(3) {
+            .kv-table-2 td:first-child,
+            .kv-table-2 td:nth-child(3) {
                 font-weight: 600;
             }
 
@@ -76,6 +64,7 @@
                 border-bottom: 1px solid #aaa;
             }
 
+
             .overview-table {
                 width: 80%;
                 margin-left: auto;
@@ -84,6 +73,12 @@
 
             .small-table {
                 width: 40%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .med-table {
+                width: 60%;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -110,7 +105,12 @@
                 width: 250px;
             }
 
-            .subsystem-img {
+            .circular-fig {
+                width: 90%;
+                padding-left: 1in;
+            }
+
+            .subsystem-fig {
                 width: 1200px;
                 height: 600px;
             }
@@ -207,8 +207,7 @@
                 A breakdown of the proteins that have been annotated for this isolate is provided in Table 4.
             </p>
 
-
-            <table class="small-table kv-table">
+            <table class="small-table kv-table-2">
                 <thead class="table-header">
                     <tr>
                         <th colspan="2">Table 3. Annotated Genome Features</th>
@@ -222,6 +221,68 @@
                     {{/annotationMeta}}
                 </tbody>
             </table>
+        </section>
+
+
+        <section>
+            <h2>Genome Quality</h2>
+            <p>
+                Based on the analysis of genome assembly and annotation statistics and comparing
+                them to other closely related genomes available in PATRIC for the same species, the
+                overall genome seems to be of [high/medium/low] quality.
+                The reasons affecting the quality of genome are: [genome qc flags].
+            </p>
+        </section>
+         <section>
+            <h2>Specialty Genes</h2>
+            <p>
+                PATRIC [1] annotation also includes identification of proteins that have homology to
+                known virulence factors, drug targets, and antibiotic resistance genes (Reference
+                the sources).  A breakdown of the distribution is provided (Table 5).
+            </p>
+
+            <table class="med-table kv-table">
+                <thead class="table-header">
+                    <tr>
+                        <th colspan="3">Table 3. Annotated Genome Features</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr><td></td> <td><b>Source</b></td> <td><b>Genes</b></td></tr>
+                    {{#specialtyGenes}}
+                    <tr>
+                        <td>{{type}}</td>
+                        <td>{{source}}</td>
+                        <td>{{genes}}</td>
+                    </tr>
+                    {{/specialtyGenes}}
+                </tbody>
+            </table>
+
+            <p>
+                A graphical display of the distribution of the CDS on each strand, the repeat_regions,
+                GC content and GC skew are provided (Figure 1).
+            </p>
+
+            <img src="../{{meta.genome_id}}/{{meta.genome_id}}-circular.png" class="circular-fig" />
+
+        </section>
+
+
+
+        <section>
+
+            <h2>Subsystem Analysis</h2>
+            <p>
+                A subsystem is a set of protein functions that are related. Frequently, subsystems
+                represent the collection of functional roles that make up a metabolic pathway, a complex
+                (e.g., the ribosome), or a class of proteins (e.g., two-component signal-transduction
+                proteins or AMR genes) [Overbeek].  An overview of the subsystems for this genome
+                is provided in Figure 2.
+            </p>
+
+            <img src="../{{meta.genome_id}}/{{meta.genome_id}}-subsystem.svg" class="subsystem-fig" />
 
         </section>
 

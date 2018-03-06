@@ -34,7 +34,9 @@ const getOpts = {
 
 const tmplData = {
     meta: null,
-    annotationData: null
+    annotationMeta: null,
+    wiki: null,
+    specialtyGenes: null
 }
 
 
@@ -57,15 +59,16 @@ if (require.main === module){
 async function getAllData(genomeID) {
 
     // fetch all data
-    let meta = await getGenomeQC(genomeID);
+    let meta = await getGenomeMeta(genomeID);
     let annotationMeta = await getAnnotationMeta(genomeID);
     let wiki = await getWiki(meta[0].species, meta[0].genus);
-    console.log('wiki', wiki)
+    let specialtyGenes = await getSpecialtyGenes(genomeID);
 
     // build master data json
     tmplData.meta = meta[0];
     tmplData.annotationMeta = annotationMeta;
     tmplData.wiki = wiki;
+    tmplData.specialtyGenes = specialtyGenes;
 
     // create genome folder if needed
     utils.createGenomeDir(genomeID);
@@ -95,13 +98,12 @@ async function getWiki(species, genus) {
     })
 
     // if description found, get image, return
-    if (speciesText.length != 0) {
+    if (speciesText && speciesText.length != 0) {
         let imageSource = await getWikiImage(species);
         return {text: speciesText, imageSource: imageSource};
     }
 
     let genusQuery = url + genus;
-    console.log(`Attempting to query genus on wiki...`)
     let genusText = await rp.get(genusQuery, getOpts).then(res => {
         let extract = res.query.pages[0].extract;
         return extract;
@@ -109,7 +111,7 @@ async function getWiki(species, genus) {
         console.error(e.message);
     })
 
-    if (genusText.length != 0) {
+    if (genusText && genusText.length != 0) {
         let imageSource = await getWikiImage(genus);
         return {text: genusText, imageSource: imageSource};
     }
@@ -120,15 +122,11 @@ async function getWiki(species, genus) {
 
 async function getWikiImage(query) {
     let imageUrl = `${config.wikiUrl}?action=query&prop=pageimages` +
-    `&exintro=&format=json&formatversion=2&pithumbsize=400&titles=`;
+        `&format=json&formatversion=2&pithumbsize=400&titles=`;
 
     let queryUrl = imageUrl + query;
     let data = await rp.get(queryUrl, getOpts).then(res => {
-        console.log('image', JSON.stringify(res, null, 4))
-
-        let imageSource = res.query.pages[0].thumbnail.source;
-        console.log('\n\nimage response', JSON.stringify(imageSource))
-        return imageSource;
+        return res.query.pages[0].thumbnail.source;
     }).catch((e) => {
         console.error(e.message);
     })
@@ -137,23 +135,12 @@ async function getWikiImage(query) {
 }
 
 
-function getMeta(genomeID) {
-    let url = `${config.dataAPIUrl}/genome/${genomeID}`;
 
-    console.log(`fetching genome meta...`)
-    return rp.get(url, getOpts).then(meta => {
-        return meta;
-    }).catch((e) => {
-        console.error(e.message);
-    })
-}
-
-function getGenomeQC(genomeID) {
+function getGenomeMeta(genomeID) {
     let url = `${config.dataAPIUrl}/genome_test/?eq(genome_id,${genomeID})&select(*)`;
 
-    console.log(`fetching genome QC..`)
+    console.log(`fetching genome QC...`)
     return rp.get(url, getOpts).then(res => {
-       //console.log('res', JSON.stringify(res, null, 4))
         return res;
     }).catch((e) => {
         console.error(e.message);
@@ -168,7 +155,6 @@ function getAnnotationMeta(genomeID) {
 
     console.log(`fetching anotation meta...`)
     return rp.get(url, getOpts).then(res => {
-        //console.log('res', JSON.stringify(res, null, 4))
         let d = res.facet_counts.facet_pivot['annotation,feature_type'][0].pivot;
 
         let data  = d.map(o => {
@@ -184,3 +170,31 @@ function getAnnotationMeta(genomeID) {
     })
 }
 
+
+function getSpecialtyGenes(genomeID) {
+    let url = `${config.dataAPIUrl}/sp_gene/?eq(genome_id,${genomeID})&limit(1)`+
+        `&facet((field,property_source),(mincount,1))&json(nl,map)&http_accept=application/solr+json`;
+
+    console.log(`fetching specialty genes...`)
+    return rp.get(url, getOpts).then(res => {
+        let data = res.facet_counts.facet_fields.property_source;
+        data = processSpecGenes(data)
+        return data;
+    }).catch((e) => {
+        console.error(e.message);
+    })
+}
+
+
+function processSpecGenes(data) {
+    let rows = [];
+    for (let key in data) {
+        rows.push({
+            type: key.split(':')[0],
+            source: key.split(':')[1].trim(),
+            genes: data[key]
+        })
+    }
+
+    return rows;
+}

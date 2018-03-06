@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  *
- * generate-report.js
+ * create-report.js
  *
  * Example usage:
- *      ./generate-report.js --genome_id=83332.12
+ *      ./create-report.js --genome_id=83332.12
  *
  * Author(s):
  *      nconrad
@@ -32,7 +32,6 @@ const tmplData = {
     },
     reportDate: new Date().toJSON().slice(0,10).replace(/-/g,'/'),
     getTaxonomy: function() {
-        console.log(this)
         let taxonLineage = this.meta.taxon_lineage_names;
         return taxonLineage.slice(1).join(' >> ')
     }
