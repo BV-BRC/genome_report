@@ -51,37 +51,17 @@
                 background: #196E9C;
                 padding: 5px;
             }
-            .table-header th {
-                font-weight: 400;
-            }
-            th, td {
-                padding: 5px;
-            }
-            th  {
-                border-bottom: 2px solid #196E9C;
-            }
-            tr {
-                border-bottom: 1px solid #aaa;
-            }
+            .table-header th { font-weight: 400; }
+            .row-header { border-bottom: 1px solid #196E9C; font-weight: 600;}
+            th, td { padding: 5px; }
+            th  { border-bottom: 2px solid #196E9C; }
+            tr { border-bottom: 1px solid #aaa; }
 
+            .overview-table { width: 80%; }
+            .small-table { width: 40%; }
+            .med-table { width: 60%; }
 
-            .overview-table {
-                width: 80%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .small-table {
-                width: 40%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .med-table {
-                width: 60%;
-                margin-left: auto;
-                margin-right: auto;
-            }
+            .center-table { margin-left: auto; margin-right: auto; }
 
             .logo {
                 width: 200px;
@@ -166,7 +146,7 @@
                 The assembled genome has 33 contigs, with the total length of 3.31 Mbp and %GC of 57.26%.
             </p>
 
-            <table class="overview-table kv-table">
+            <table class="overview-table kv-table-2 center-table">
                 <thead class="table-header">
                     <tr><th colspan="4">Table 1. Assembly details for Brucella neotomae 5K33</th></tr>
                 </thead>
@@ -217,7 +197,7 @@
                 A breakdown of the proteins that have been annotated for this isolate is provided in Table 4.
             </p>
 
-            <table class="small-table kv-table-2">
+            <table class="small-table kv-table-2 center-table">
                 <thead class="table-header">
                     <tr>
                         <th colspan="2">Table 3. Annotated Genome Features</th>
@@ -225,7 +205,7 @@
                 </thead>
 
                 <tbody>
-                    <tr><td></td> <td><b>PATRIC</b></td></tr>
+                    <tr class="row-header"><td></td> <td>PATRIC</td></tr>
                     <tr><td>CDS</td><td>3434</td></tr>
                     <tr><td>tRNA</td><td>48</td></tr>
                     <tr><td>pseudogene</td><td>23</td></tr>
@@ -253,7 +233,7 @@
                 the sources).  A breakdown of the distribution is provided (Table 5).
             </p>
 
-            <table class="med-table kv-table">
+            <table class="med-table kv-table center-table">
                 <thead class="table-header">
                     <tr>
                         <th colspan="3">Table 3. Annotated Genome Features</th>
@@ -261,7 +241,7 @@
                 </thead>
 
                 <tbody>
-                    <tr><td></td> <td><b>Source</b></td> <td><b>Genes</b></td></tr>
+                    <tr class="row-header"><td></td> <td>Source</td> <td>Genes</td></tr>
                     <tr>
                         <td>Essential Gene</td>
                         <td>PATRIC</td>
