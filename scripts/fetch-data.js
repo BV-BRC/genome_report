@@ -55,14 +55,17 @@ if (require.main === module){
 
 // # contigs, genome length, gc, n50, L50, genome coverage
 async function getAllData(genomeID) {
-    // fetching meta
-    let meta = await getMeta(genomeID);
+
+    // fetch all data
+    let meta = await getGenomeQC(genomeID);
     let annotationMeta = await getAnnotationMeta(genomeID);
+    let wiki = await getWiki(meta[0].species, meta[0].genus);
+    console.log('wiki', wiki)
 
     // build master data json
-    tmplData.meta = meta;
+    tmplData.meta = meta[0];
     tmplData.annotationMeta = annotationMeta;
-
+    tmplData.wiki = wiki;
 
     // create genome folder if needed
     utils.createGenomeDir(genomeID);
@@ -78,16 +81,83 @@ async function getAllData(genomeID) {
 }
 
 
+async function getWiki(species, genus) {
+    let url = `${config.wikiUrl}?action=query&prop=extracts` +
+        `&exintro=&format=json&formatversion=2&titles=`;
+
+    let speciesQuery = url + species;
+    console.log(`Attempting to query species on wiki...`)
+    let speciesText = await rp.get(speciesQuery, getOpts).then(res => {
+        let extract = res.query.pages[0].extract;
+        return extract;
+    }).catch((e) => {
+        console.error(e.message);
+    })
+
+    // if description found, get image, return
+    if (speciesText.length != 0) {
+        let imageSource = await getWikiImage(species);
+        return {text: speciesText, imageSource: imageSource};
+    }
+
+    let genusQuery = url + genus;
+    console.log(`Attempting to query genus on wiki...`)
+    let genusText = await rp.get(genusQuery, getOpts).then(res => {
+        let extract = res.query.pages[0].extract;
+        return extract;
+    }).catch((e) => {
+        console.error(e.message);
+    })
+
+    if (genusText.length != 0) {
+        let imageSource = await getWikiImage(genus);
+        return {text: genusText, imageSource: imageSource};
+    }
+
+    return null;
+}
+
+
+async function getWikiImage(query) {
+    let imageUrl = `${config.wikiUrl}?action=query&prop=pageimages` +
+    `&exintro=&format=json&formatversion=2&pithumbsize=400&titles=`;
+
+    let queryUrl = imageUrl + query;
+    let data = await rp.get(queryUrl, getOpts).then(res => {
+        console.log('image', JSON.stringify(res, null, 4))
+
+        let imageSource = res.query.pages[0].thumbnail.source;
+        console.log('\n\nimage response', JSON.stringify(imageSource))
+        return imageSource;
+    }).catch((e) => {
+        console.error(e.message);
+    })
+
+    return data;
+}
+
 
 function getMeta(genomeID) {
     let url = `${config.dataAPIUrl}/genome/${genomeID}`;
 
     console.log(`fetching genome meta...`)
     return rp.get(url, getOpts).then(meta => {
-            return meta;
-        }).catch((e) => {
-            console.error(e.message);
-        })
+        return meta;
+    }).catch((e) => {
+        console.error(e.message);
+    })
+}
+
+function getGenomeQC(genomeID) {
+    let url = `${config.dataAPIUrl}/genome_test/?eq(genome_id,${genomeID})&select(*)`;
+
+    console.log(`fetching genome QC..`)
+    return rp.get(url, getOpts).then(res => {
+       //console.log('res', JSON.stringify(res, null, 4))
+        return res;
+    }).catch((e) => {
+        console.error(e.message);
+    })
 }
 
 
@@ -98,6 +168,7 @@ function getAnnotationMeta(genomeID) {
 
     console.log(`fetching anotation meta...`)
     return rp.get(url, getOpts).then(res => {
+        //console.log('res', JSON.stringify(res, null, 4))
         let d = res.facet_counts.facet_pivot['annotation,feature_type'][0].pivot;
 
         let data  = d.map(o => {
@@ -112,5 +183,4 @@ function getAnnotationMeta(genomeID) {
         console.error(e.message);
     })
 }
-
 
