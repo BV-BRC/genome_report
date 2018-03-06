@@ -50,7 +50,7 @@ Fetch data and write to `reports/{genome-id}/`
 Generate and write html/pdf to `reports/{genome-id}/`
 
 ```
-./generate-report.js --genome_id=83332.12
+./create-report.js --genome_id=83332.12
 ```
 
 
