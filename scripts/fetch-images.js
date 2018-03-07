@@ -4,7 +4,7 @@
  * fetch-images.js
  *
  * Example usage:
- *      ./fetch-images.js --genome_id=83332.12
+ *      ./fetch-images.js --genome_id=520456.3
  *
  * Authors:
  *      nconrad
@@ -46,10 +46,8 @@ async function getImage(id) {
 
     // get circular viewer
     console.log('fetching circular viewer...')
-    await page.goto(`https://patricbrc.org/view/Genome/${id}#view_tab=circular`);
-    await page.waitFor(7000)
-    svgContent = await page.$eval('#dijit_layout_TabContainer_0_circular svg', el => el.innerHTML)
-    svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg">' + svgContent + '</svg>'
+    await page.goto(`https://patricbrc.org/view/Genome/${id}#view_tab=circular`, {waitUntil: 'networkidle2'});
+    svg = await page.$eval('#dijit_layout_TabContainer_0_circular svg', el => el.outerHTML)
 
     let genomeDir = utils.createGenomeDir(id);
     let outPath = path.resolve(`${genomeDir}/${id}-circular.svg`);
@@ -57,19 +55,12 @@ async function getImage(id) {
     console.log(`writing ${outPath}...`);
     await utils.writeFile(outPath, svg);
 
-    png = await convert(svg, {width: 1200, height: 800});
-    outPath = path.resolve(`${genomeDir}/${id}-circular.png`);
-    await utils.writeFile(outPath, png);
-
 
 
     // get subsystems chart
     console.log('fetching subsystems viewer...')
-    await page.goto(`https://www.alpha.patricbrc.org/view/Genome/${id}#view_tab=subsystems`);
-    await page.waitFor(10000)
-    svgContent = await page.$eval('#subsystemspiechart svg', el => el.innerHTML)
-    svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg">' + svgContent + '</svg>'
-
+    await page.goto(`https://www.alpha.patricbrc.org/view/Genome/${id}#view_tab=subsystems`, {waitUntil: 'networkidle0'});
+    svg = await page.$eval('#subsystemspiechart svg', el => el.outerHTML)
     outPath = path.resolve(`${genomeDir}/${id}-subsystem.svg`);
 
     console.log(`writing ${outPath}...`)

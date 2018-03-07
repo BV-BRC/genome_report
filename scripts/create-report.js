@@ -4,7 +4,7 @@
  * create-report.js
  *
  * Example usage:
- *      ./create-report.js --genome_id=83332.12
+ *      ./create-report.js --genome_id=520456.3
  *
  * Author(s):
  *      nconrad

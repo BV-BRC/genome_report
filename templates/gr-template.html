@@ -91,10 +91,7 @@
                 margin-right: .2in;
             }
 
-            .circular-fig {
-                width: 90%;
-                padding-left: 1in;
-            }
+            .circular-fig {}
 
             .subsystem-fig {
                 width: 1300px;
@@ -105,7 +102,6 @@
                 width: 1200px;
                 height: 150px;
             }
-
 
             .clearfix:after {
                 visibility: hidden;
@@ -256,7 +252,7 @@
                 GC content and GC skew are provided (Figure 1).
             </p>
 
-            <img src="../{{meta.genome_id}}/{{meta.genome_id}}-circular.png" class="circular-fig" />
+            <img src="../{{meta.genome_id}}/{{meta.genome_id}}-circular.svg" class="circular-fig" />
         </section>
         <br>
 
@@ -342,6 +338,7 @@
             </p>
 
             <img src="../{{meta.genome_id}}/{{meta.genome_id}}-subsystem.svg" class="subsystem-fig" />
+
         </section>
         <br>
 
@@ -374,6 +371,8 @@
 
             <h3>Comparison to Reference Genomes in the Same Genus</h3>
             <img src="../{{meta.genome_id}}/{{meta.genome_id}}-tree.svg" class="tree-fig" />
+
+
         </section>
     </body>
 </html>
