@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
+<!DOCTYPE html><html><head>
         <title>PATRIC Genome Report | Brucella neotomae 5K33</title>
 
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700,800,900" rel="stylesheet">
@@ -42,6 +40,10 @@
                 page-break-inside: avoid;
             }
 
+            table-num {
+                font-weight: 600;
+            }
+
             /* standard key-value table (single or 2 columns)*/
             .kv-table,
             .kv-table-2 {
@@ -51,7 +53,17 @@
             .kv-table td:first-child,
             .kv-table-2 td:first-child,
             .kv-table-2 td:nth-child(3) {
-                font-weight: 600;
+                font-weight: 700;
+
+            }
+
+            .kb-table-2 td {
+                border-collapse: separate;
+                border-spacing: 0px 50px;
+            }
+
+            table td.align-right {
+                text-align: right;
             }
 
             .table-header {
@@ -63,11 +75,12 @@
             .row-header { border-bottom: 1px solid #196E9C; font-weight: 600;}
             th, td { padding: 5px; }
             th  { border-bottom: 2px solid #196E9C; }
-            tr { border-bottom: 1px solid #aaa; }
+            tr:last-child { border-bottom: 1px solid #196E9C; }
 
-            .large-table { width: 80%; }
+            .lg-table { width: 80%; }
             .med-table { width: 60%; }
-            .small-table { width: 40%; }
+            .sm-table { width: 40%; }
+            .xs-table {width: 20%; }
 
             .center-table { margin-left: auto; margin-right: auto; }
 
@@ -93,8 +106,6 @@
                 width: 250px;
                 margin-right: .2in;
             }
-
-            .circular-fig {}
 
             .subsystem-fig {
                 width: 1300px;
@@ -130,7 +141,7 @@
             </div>
 
             <div class="report-info pull-right">
-                Report Date: 2018&#x2F;03&#x2F;08<br>
+                Report Date: 2018/03/10<br>
                 Organism: Brucella neotomae 5K33
             </div>
         </header>
@@ -141,19 +152,19 @@
         <section>
             <h2>Introduction</h2>
             <p>
-                <img src=https:&#x2F;&#x2F;upload.wikimedia.org&#x2F;wikipedia&#x2F;commons&#x2F;thumb&#x2F;c&#x2F;c3&#x2F;Brucella_melitensis.jpg&#x2F;400px-Brucella_melitensis.jpg class="pull-left main-img"/>
-                <span class="pull-left"><p><i><b>Brucella</b></i> is a genus of Gram-negative bacteria, named after David Bruce (1855–1931). They are small (0.5 to 0.7 by 0.6 to 1.5 µm), nonencapsulated, nonmotile, facultatively intracellular coccobacilli.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Brucella_melitensis.jpg/400px-Brucella_melitensis.jpg" class="pull-left main-img">
+                <span class="pull-left"></span></p><p><i><b>Brucella</b></i> is a genus of Gram-negative bacteria, named after David Bruce (1855&#x2013;1931). They are small (0.5 to 0.7 by 0.6 to 1.5&#xA0;&#xB5;m), nonencapsulated, nonmotile, facultatively intracellular coccobacilli.</p>
 <p><i>Brucella</i> is the cause of brucellosis, which is a zoonosis transmitted by ingesting contaminated food (such as unpasteurized milk products), direct contact with an infected animal, or inhalation of aerosols. Transmission from human to human, for example through sexual intercourse or from mother to child, is exceedingly rare, but possible. Minimum infectious exposure is between 10 and 100 organisms.</p>
 <p>The different species of <i>Brucella</i> are genetically very similar, although each has a slightly different host specificity. Hence, the NCBI taxonomy includes most <i>Brucella</i> species under <i>B. melitensis</i>.</p>
 <p>The many names of brucellosis include (human disease/animal disease):</p>
-<ul><li>Malta fever/Bang's disease</li>
+<ul><li>Malta fever/Bang&apos;s disease</li>
 <li>Undulant fever/enzootic abortion</li>
 <li>Mediterranean fever/epizootic abortion</li>
 <li>Rock fever of Gibraltar/slinking of calves</li>
 <li>Gastric fever/ram epididymitis</li>
 <li>Contagious abortion/spontaneous abortion</li>
-</ul><p></p></span>
-            </p>
+</ul><p></p>
+            <p></p>
 
             <p>
                 Brucella neotomae was first isolated in 1957 from wood rats (Neotoma lepida) in North America and  has been considered nonzoonotic. Brucella neotomae 5K33 (ATCC 23459) is the type strain and will be used for comparative analysis with other Brucella species.
@@ -166,32 +177,45 @@
             <h2>Genome Assembly</h2>
             <p>
                 Brucella neotomae BNWLG2-S2 ran under job ID 2fee1c1b-f8bb-4781-bb20-f08fa66398e1 at PATRIC (1).  The assembly job started at 10/6/17, 2:53 PM and completed at 10/7/17, 4:41 PM, after 25h 47m 90011s.  The auto assembly strategy was selected, and it runs BayesHammer [2] on short reads, followed by three assembly strategies that include Velvet [3], IDBA [4] and Spades [5], each of which is given an assembly score by ARAST, an in-house script. The minimum contig length was 120bp, and smaller contigs were not included in the assembly. The minimum contig coverage was 5, and contigs with less coverage were not included in the assembly.
-                Also add reference to QUAST. ARAST ranked the Spades assembly best (Table 1).
+                Also add reference to QUAST. ARAST ranked the Spades assembly best (<table-ref>Table 1</table-ref>).
             </p>
             <p>
-                The assembled genome has 33 contigs, with the total length of 3.31 Mbp and %GC of 57.26%.
+                The assembled genome has 11 contigs, with the total length of 3.31 Mbp and %GC of 57.3%.
             </p>
 
-            <table class="large-table kv-table-2 center-table">
+
+            <table class="lg-table kv-table-2 center-table">
+
                 <thead class="table-header">
-                    <tr><th colspan="4">Table 1. Assembly details for Brucella neotomae 5K33</th></tr>
+                    <tr>
+                        <th colspan="4">
+                            <table-num>Table 1.</table-num> Assembly details for Brucella neotomae 5K33
+                        </th>
+                    </tr>
                 </thead>
 
                 <tbody>
                     <tr>
-                        <td>Contigs</td><td>11</td>
-                        <td>GC Content</td><td>57.3</td>
+                        <td>Contigs</td>
+                        <td class="align-right">11</td>
+                        <td>GC Content</td>
+                        <td class="align-right">57.3</td>
                     </tr>
                     <tr>
-                        <td>Plasmids</td><td>0</td>
-                        <td>Contig L50</td><td>1</td>
+                        <td>Plasmids</td>
+                        <td class="align-right">0</td>
+                        <td>Contig L50</td>
+                        <td class="align-right">1</td>
                     </tr>
                     <tr>
-                        <td>Genome Length</td><td>3329623</td>
-                        <td>Contig N50</td><td>1923503</td>
+                        <td>Genome Length</td>
+                        <td class="align-right">3329623</td>
+                        <td>Contig N50</td>
+                        <td class="align-right">1923503</td>
                     </tr>
                     <tr>
-                        <td>Chromosomes</td><td>0</td>
+                        <td>Chromosomes</td>
+                        <td class="align-right">0</td>
                         <td></td><td></td>
                     </tr>
                 </tbody>
@@ -211,62 +235,87 @@
                 The Genetic code was 11.  The taxonomy of B. neotomae BNWLG2-S2 is:
             </p>
 
-            <div style="width: 80%;" class="center-table"><i>Bacteria &gt;&gt; Proteobacteria &gt;&gt; Alphaproteobacteria &gt;&gt; Rhizobiales &gt;&gt; Brucellaceae &gt;&gt; Brucella &gt;&gt; Brucella neotomae &gt;&gt; Brucella neotomae 5K33</i></div><br>
+            <div style="width: 80%;" class="center-table"><i>Bacteria; Proteobacteria; Alphaproteobacteria; Rhizobiales; Brucellaceae; Brucella; Brucella neotomae; Brucella neotomae 5K33</i></div><br>
 
             <p>
                 The annotations includes 3349 CDS, 50 tRNAs and 3 rRNAs.
-                All annotated genome features for this genome are summarized in Table 2.
+                All annotated genome features for this genome are summarized in <table-ref>Table 2</table-ref>.
             </p>
 
             <p>
                 The functional annotation included 655 hypothetical proteins and 2694 proteins with functional assignments.
                 Furthermore, 963 proteins were  assigned EC numbers and 749 proteins were mapped to KEGG pathways.
-                A breakdown of the proteins that have been annotated for this isolate is provided in Table 3.
+                A breakdown of the proteins that have been annotated for this isolate is provided in <table-ref>Table 3</table-ref>.
             </p>
 
-            <table class="small-table kv-table-2 center-table">
+            <table class="sm-table kv-table center-table">
                 <thead class="table-header">
                     <tr>
-                        <th colspan="2">Table 2. Annotated Genome Features</th>
+                        <th colspan="2"><table-num>Table 2.</table-num> Annotated Genome Features</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr class="row-header"><td></td> <td>PATRIC</td></tr>
-                    <tr><td>CDS</td><td>3434</td></tr>
-                    <tr><td>tRNA</td><td>48</td></tr>
-                    <tr><td>pseudogene</td><td>23</td></tr>
-                    <tr><td>rRNA</td><td>3</td></tr>
-                    <tr><td>misc_RNA</td><td>1</td></tr>
+                    <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
+                        <tr>
+                            <td>CDS</td><td class="align-right">3434</td>
+                        </tr>
+                        <tr>
+                            <td>tRNA</td><td class="align-right">48</td>
+                        </tr>
+                        <tr>
+                            <td>pseudogene</td><td class="align-right">23</td>
+                        </tr>
+                        <tr>
+                            <td>rRNA</td><td class="align-right">3</td>
+                        </tr>
+                        <tr>
+                            <td>misc_RNA</td><td class="align-right">1</td>
+                        </tr>
                 </tbody>
             </table>
 
 
-            <table class="med-table kv-table-2 center-table">
+            <table class="med-table kv-table center-table">
                 <thead class="table-header">
                     <tr>
-                        <th colspan="2">Table 3. Protein Features</th>
+                        <th colspan="2"><table-num>Table 3.</table-num> Protein Features</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr class="row-header"><td></td> <td>PATRIC</td></tr>
-                    <tr><td>Hypothetical proteins</td><td>772</td></tr>
-                    <tr><td>Proteins with functional assignments</td><td>2662</td></tr>
-                    <tr><td>Proteins with EC number assignments</td><td>947</td></tr>
-                    <tr><td>Proteins with GO assignments</td><td>934</td></tr>
-                    <tr><td>Proteins with Pathway assignments</td><td>746</td></tr>
-                    <tr><td>Proteins with PATRIC genus-specific family (PLfam) assignments</td><td>3434</td></tr>
-                    <tr><td>Proteins with PATRIC cross-genus family (PGfam) assignments</td><td>3434</td></tr>
+                    <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
+                    <tr>
+                        <td>Hypothetical proteins</td><td class="align-right">772</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with functional assignments</td><td class="align-right">2662</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with EC number assignments</td><td class="align-right">947</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with GO assignments</td><td class="align-right">934</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with Pathway assignments</td><td class="align-right">746</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with PATRIC genus-specific family (PLfam) assignments</td><td class="align-right">3434</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with PATRIC cross-genus family (PGfam) assignments</td><td class="align-right">3434</td>
+                    </tr>
                 </tbody>
             </table>
 
             <p>
                 A graphical display of the distribution of the CDS on each strand, the repeat_regions,
-                GC content and GC skew are provided (Figure 1).
+                GC content and GC skew are provided (<fig-ref>Figure 1</fig-ref>).
             </p>
 
-            <img src="../520456.3/520456.3-circular.svg" class="circular-fig" />
+            <fig-num>Figure 1</fig-num>
+            <img src="../520456.3/520456.3-circular.svg" class="circular-fig">
         </section>
 
 
@@ -286,13 +335,13 @@
             <p>
                 PATRIC [1] annotation also includes identification of proteins that have homology to
                 known virulence factors, drug targets, and antibiotic resistance genes (Reference
-                the sources).  A breakdown of the distribution is provided (Table 4).
+                the sources).  A breakdown of the distribution is provided (<table-ref>Table 4</table-ref>).
             </p>
 
-            <table class="med-table kv-table center-table">
+            <table class="sm-table kv-table center-table">
                 <thead class="table-header">
                     <tr>
-                        <th colspan="3">Table 4. Annotated Genome Features</th>
+                        <th colspan="3"><table-num>Table 4.</table-num> Annotated Genome Features</th>
                     </tr>
                 </thead>
 
@@ -301,52 +350,52 @@
                     <tr>
                         <td>Essential Gene</td>
                         <td>PATRIC</td>
-                        <td>224</td>
+                        <td class="align-right">224</td>
                     </tr>
                     <tr>
                         <td>Virulence Factor</td>
                         <td>Victors</td>
-                        <td>224</td>
+                        <td class="align-right">224</td>
                     </tr>
                     <tr>
                         <td>Human Homolog</td>
                         <td>Human</td>
-                        <td>79</td>
+                        <td class="align-right">79</td>
                     </tr>
                     <tr>
                         <td>Virulence Factor</td>
                         <td>VFDB</td>
-                        <td>44</td>
+                        <td class="align-right">44</td>
                     </tr>
                     <tr>
                         <td>Transporter</td>
                         <td>TCDB</td>
-                        <td>25</td>
+                        <td class="align-right">25</td>
                     </tr>
                     <tr>
                         <td>Antibiotic Resistance</td>
                         <td>PATRIC</td>
-                        <td>11</td>
+                        <td class="align-right">11</td>
                     </tr>
                     <tr>
                         <td>Drug Target</td>
                         <td>DrugBank</td>
-                        <td>4</td>
+                        <td class="align-right">4</td>
                     </tr>
                     <tr>
                         <td>Antibiotic Resistance</td>
                         <td>CARD</td>
-                        <td>3</td>
+                        <td class="align-right">3</td>
                     </tr>
                     <tr>
                         <td>Drug Target</td>
                         <td>TTD</td>
-                        <td>1</td>
+                        <td class="align-right">1</td>
                     </tr>
                     <tr>
                         <td>Virulence Factor</td>
                         <td>PATRIC_VF</td>
-                        <td>1</td>
+                        <td class="align-right">1</td>
                     </tr>
                 </tbody>
             </table>
@@ -364,10 +413,11 @@
                 represent the collection of functional roles that make up a metabolic pathway, a complex
                 (e.g., the ribosome), or a class of proteins (e.g., two-component signal-transduction
                 proteins or AMR genes) [Overbeek].  An overview of the subsystems for this genome
-                is provided in Figure 2.
+                is provided in <fig-ref>Figure 2</fig-ref>.
             </p>
 
-            <img src="../520456.3/520456.3-subsystem.svg" class="subsystem-fig" />
+            <fig-num>Figure 2</fig-num>
+            <img src="../520456.3/520456.3-subsystem.svg" class="subsystem-fig">
 
         </section>
 
@@ -399,7 +449,9 @@
 
 
             <h3>Comparison to Reference Genomes in the Same Genus</h3>
-            <img src="../520456.3/520456.3-tree.svg" class="tree-fig" />
+
+            <fig-num>Figure 3</fig-num>
+            <img src="../520456.3/520456.3-tree.svg" class="tree-fig">
         </section>
-    </body>
-</html>
+    
+</body></html>

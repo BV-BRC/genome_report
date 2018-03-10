@@ -16,7 +16,8 @@ const fs = require('fs'),
     opts = require('commander'),
     rp = require('request-promise'),
     mustache = require('mustache'),
-    utils = require('./utils');
+    utils = require('./utils'),
+    cheerio = require('cheerio');
 
 const puppeteer = require('puppeteer');
 
@@ -33,7 +34,7 @@ const tmplData = {
     reportDate: new Date().toJSON().slice(0,10).replace(/-/g,'/'),
     getTaxonomy: function() {
         let taxonLineage = this.meta.taxon_lineage_names;
-        return taxonLineage.slice(1).join(' >> ')
+        return taxonLineage.slice(1).join('; ')
     }
 }
 
@@ -67,15 +68,41 @@ async function buildPdf(genomeID) {
         if (err) throw err;
 
         console.log('Filling template...');
-        let output = mustache.render(data.toString(), tmplData);
+        let content = mustache.render(data.toString(), tmplData);
+
+        console.log('Adding table/figure numbers...')
+        content = addTableNumbers(content);
 
         let htmlPath = path.resolve(`${genomeDir}/genome-report.html`);
         console.log(`Writing html to ${htmlPath}...`);
-        fs.writeFileSync(htmlPath, output);
+        fs.writeFileSync(htmlPath, content);
 
         let pdfPath = path.resolve(`${genomeDir}/genome-report.pdf`);
         generatePdf(htmlPath, pdfPath);
     });
+}
+
+
+
+function addTableNumbers(content) {
+    const $ = cheerio.load(content);
+    $('table-ref').each((i, elem) => {
+        $(elem).html(`Table ${i+1}`);
+    });
+
+    $('table-num').each((i, elem) => {
+        $(elem).html(`Table ${i+1}.`);
+    });
+
+    $('fig-ref').each((i, elem) => {
+        $(elem).html(`Figure ${i+1}`);
+    });
+
+    $('fig-num').each((i, elem) => {
+        $(elem).html(`Figure ${i+1}`);
+    });
+
+    return $.html();
 }
 
 
