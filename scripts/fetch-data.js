@@ -86,8 +86,7 @@ async function getAllData(genomeID) {
     let jsonStr = JSON.stringify(tmplData, null, 4);
     await utils.writeFile(outPath, jsonStr);
 
-    console.log(`Done.`);
-    process.exit();
+    return;
 }
 
 
@@ -317,6 +316,8 @@ function getGenomeAMR(genomeID) {
     })
 }
 
+
+module.exports = getAllData;
 
 
 

@@ -22,9 +22,7 @@ const fs = require('fs'),
 const puppeteer = require('puppeteer');
 
 const config = require('../config.json');
-const TEMPLATE_PATH = path.resolve(`../${config.templatePath}`);
-
-
+const templatePath = path.resolve(`../${config.templatePath}`);
 const pdfMargin = '35px';
 
 const tmplData = {
@@ -64,7 +62,7 @@ async function buildPdf(genomeID) {
     Object.assign(tmplData, reportData);
 
     console.log('Reading template...')
-    fs.readFile(TEMPLATE_PATH, (err, data) => {
+    fs.readFile(templatePath, (err, data) => {
         if (err) throw err;
 
         console.log('Filling template...');
@@ -86,21 +84,12 @@ async function buildPdf(genomeID) {
 
 function addTableNumbers(content) {
     const $ = cheerio.load(content);
-    $('table-ref').each((i, elem) => {
-        $(elem).html(`Table ${i+1}`);
-    });
 
-    $('table-num').each((i, elem) => {
-        $(elem).html(`Table ${i+1}.`);
-    });
+    $('table-ref').each((i, elem) => { $(elem).html(`Table ${i+1}`); });
+    $('table-num').each((i, elem) => { $(elem).html(`Table ${i+1}.`); });
 
-    $('fig-ref').each((i, elem) => {
-        $(elem).html(`Figure ${i+1}`);
-    });
-
-    $('fig-num').each((i, elem) => {
-        $(elem).html(`Figure ${i+1}`);
-    });
+    $('fig-ref').each((i, elem) => { $(elem).html(`Figure ${i+1}`); });
+    $('fig-num').each((i, elem) => { $(elem).html(`Figure ${i+1}`); });
 
     return $.html();
 }
@@ -122,8 +111,8 @@ async function generatePdf(htmlPath, outPath) {
         printBackground: true
     });
     await browser.close();
-
-    console.log('Done.');
 }
 
+
+module.exports = buildPdf;
 

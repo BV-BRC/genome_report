@@ -66,10 +66,13 @@ async function getImage(id) {
     console.log(`writing ${outPath}...`)
     await utils.writeFile(outPath, svg);
 
-
     await browser.close();
+
+    return;
 };
 
+
+module.exports = getImage;
 
 
 
