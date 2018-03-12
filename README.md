@@ -31,30 +31,34 @@ npm install --production
 
 ## Usage
 
+##### Fetch all assets/data and generate html/pdf
+
 ```
 cd scripts/
+./generate-report --genome_id=520456.3
 ```
+
+
+##### To run scripts individually
 
 Fetch images and write to `reports/{genome-id}/`
 
 ```
-./fetch-images.js --genome_id=83332.12
+./fetch-images.js --genome_id=520456.3
 ```
 
 Fetch data and write to `reports/{genome-id}/`
 
 ```
-./fetch-images.js --genome_id=83332.12
+./fetch-data.js --genome_id=520456.3
 ```
 
 Generate and write html/pdf to `reports/{genome-id}/`
 
 ```
-./create-report.js --genome_id=83332.12
+./create-report.js --genome_id=520456.3
 ```
 
-### Todo: 
-- one script to rule them all
 
 ## Contributing
 
