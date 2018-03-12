@@ -60,7 +60,9 @@ async function getImage(id) {
     // get subsystems chart
     console.log('fetching subsystems viewer...')
     await page.goto(`https://www.alpha.patricbrc.org/view/Genome/${id}#view_tab=subsystems`, {waitUntil: 'networkidle0'});
-    svg = await page.$eval('#subsystemspiechart svg', el => el.outerHTML)
+    svgInner = await page.$eval('#subsystemspiechart svg', el => el.innerHTML)
+    svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg">' + svgInner + '</svg>'
+
     outPath = path.resolve(`${genomeDir}/${id}-subsystem.svg`);
 
     console.log(`writing ${outPath}...`)
