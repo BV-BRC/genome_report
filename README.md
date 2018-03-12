@@ -35,7 +35,7 @@ npm install --production
 
 ```
 cd scripts/
-./generate-report.js --genome_id=520456.3
+./genome-report.js --genome_id=520456.3
 ```
 
 
