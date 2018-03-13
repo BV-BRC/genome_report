@@ -21,7 +21,7 @@ const config = require('../config.json');
 
 
 function createGenomeDir(id) {
-    let baseDir = path.resolve(`../${config.reportDir}`);
+    let baseDir = path.resolve(`${config.reportDir}`);
 
     // create reports directory if needed
     if (!fs.existsSync(baseDir)){

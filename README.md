@@ -34,8 +34,7 @@ npm install --production
 ##### Fetch all assets/data and generate html/pdf
 
 ```
-cd scripts/
-./genome-report.js --genome_id=520456.3
+node scripts/genome-report.js --genome_id=520456.3
 ```
 
 
@@ -44,19 +43,19 @@ cd scripts/
 Fetch images and write to `reports/{genome-id}/`
 
 ```
-./fetch-images.js --genome_id=520456.3
+node scripts/fetch-images.js --genome_id=520456.3
 ```
 
 Fetch data and write to `reports/{genome-id}/`
 
 ```
-./fetch-data.js --genome_id=520456.3
+node scripts/fetch-data.js --genome_id=520456.3
 ```
 
 Generate and write html/pdf to `reports/{genome-id}/`
 
 ```
-./create-report.js --genome_id=520456.3
+node scripts/create-report.js --genome_id=520456.3
 ```
 
 

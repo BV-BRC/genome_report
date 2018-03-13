@@ -78,10 +78,10 @@ async function getAllData(genomeID) {
 
 
     // create genome folder if needed
-    utils.createGenomeDir(genomeID);
+    let genomeDir = utils.createGenomeDir(genomeID);
 
     // write output
-    let outPath = path.resolve(`../${config.reportDir}/${genomeID}/${genomeID}-data.json`);
+    let outPath = path.resolve(`${genomeDir}/${genomeID}-data.json`);
     console.log(`writing ${outPath}...`);
     let jsonStr = JSON.stringify(tmplData, null, 4);
     await utils.writeFile(outPath, jsonStr);

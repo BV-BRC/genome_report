@@ -22,7 +22,7 @@ const fs = require('fs'),
 const puppeteer = require('puppeteer');
 
 const config = require('../config.json');
-const templatePath = path.resolve(`../${config.templatePath}`);
+const templatePath = path.resolve(`${config.templatePath}`);
 const pdfMargin = '35px';
 
 const tmplData = {

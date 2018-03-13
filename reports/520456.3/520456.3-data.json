@@ -86,13 +86,13 @@
         "hypothetical_cds": 770,
         "trna": 48,
         "rrna": 3,
-        "cds_ratio": 1.031348,
+        "cds_ratio": 1.03,
         "partial_cds_ratio": 0,
         "contig_n50": 1923503,
         "genome_quality": "High",
         "contigs_new": 11,
         "plfam_cds_ratio": 1,
-        "hypothetical_cds_ratio": 0.22422831,
+        "hypothetical_cds_ratio": 0.22,
         "nearest_genomes": [
             "520456.3",
             "568815.3",
@@ -122,7 +122,7 @@
         ],
         "core_families": 2052,
         "core_family_ratio": 0.996,
-        "_version_": 1594211500375933000
+        "_version_": 1594821690708197400
     },
     "annotationMeta": [
         {
