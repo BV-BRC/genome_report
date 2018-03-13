@@ -46,7 +46,10 @@ async function getImage(id) {
 
     // get circular viewer
     console.log('fetching circular viewer...')
-    await page.goto(`https://patricbrc.org/view/Genome/${id}#view_tab=circular`, {waitUntil: 'networkidle2'});
+    await page.goto(`https://patricbrc.org/view/Genome/${id}#view_tab=circular`, {
+        waitUntil: 'networkidle2',
+        timeout: 0
+    });
     svg = await page.$eval('#dijit_layout_TabContainer_0_circular svg', el => el.outerHTML)
 
     let genomeDir = utils.createGenomeDir(id);
@@ -59,7 +62,10 @@ async function getImage(id) {
 
     // get subsystems chart
     console.log('fetching subsystems viewer...')
-    await page.goto(`https://www.alpha.patricbrc.org/view/Genome/${id}#view_tab=subsystems`, {waitUntil: 'networkidle0'});
+    await page.goto(`https://www.alpha.patricbrc.org/view/Genome/${id}#view_tab=subsystems`, {
+        waitUntil: 'networkidle0',
+        timeout: 0
+    });
     svgInner = await page.$eval('#subsystemspiechart svg', el => el.innerHTML)
     svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg">' + svgInner + '</svg>'
 
