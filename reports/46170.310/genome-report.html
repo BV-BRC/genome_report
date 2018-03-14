@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
+<!DOCTYPE html><html><head>
         <title>PATRIC Genome Report | Staphylococcus aureus subsp. aureus strain VB4283</title>
 
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700,800,900" rel="stylesheet">
@@ -10,6 +8,9 @@
                 font-family: 'Work Sans', sans-serif;
                 color: #444;
             }
+            header { padding-bottom: .5in; }
+            section { margin-bottom: .5in; }
+
             a {
                 text-decoration: none;
                 color: #0d78ef;
@@ -39,6 +40,13 @@
                 page-break-inside: avoid;
             }
 
+            table-num,
+            table-ref,
+            fig-num,
+            fig-ref {
+                font-weight: 600;
+            }
+
             /* standard key-value table (single or 2 columns)*/
             .kv-table,
             .kv-table-2 {
@@ -48,7 +56,17 @@
             .kv-table td:first-child,
             .kv-table-2 td:first-child,
             .kv-table-2 td:nth-child(3) {
-                font-weight: 600;
+                font-weight: 700;
+
+            }
+
+            .kb-table-2 td {
+                border-collapse: separate;
+                border-spacing: 0px 50px;
+            }
+
+            table td.align-right {
+                text-align: right;
             }
 
             .table-header {
@@ -60,16 +78,17 @@
             .row-header { border-bottom: 1px solid #196E9C; font-weight: 600;}
             th, td { padding: 5px; }
             th  { border-bottom: 2px solid #196E9C; }
-            tr { border-bottom: 1px solid #aaa; }
+            tr:last-child { border-bottom: 1px solid #196E9C; }
 
-            .large-table { width: 80%; }
+            .lg-table { width: 80%; }
             .med-table { width: 60%; }
-            .small-table { width: 40%; }
+            .sm-table { width: 40%; }
+            .xs-table {width: 20%; }
 
             .center-table { margin-left: auto; margin-right: auto; }
 
             .logo {
-                width: 200px;
+                width: 3in;
                 border-right: 3px solid #444;
                 padding-right: 10px;
                 margin-right: 10px;
@@ -91,11 +110,6 @@
                 margin-right: .2in;
             }
 
-            .circular-fig {
-                width: 90%;
-                padding-left: 1in;
-            }
-
             .subsystem-fig {
                 width: 1300px;
                 height: 600px;
@@ -105,7 +119,6 @@
                 width: 1200px;
                 height: 150px;
             }
-
 
             .clearfix:after {
                 visibility: hidden;
@@ -119,81 +132,93 @@
 
             * html .clearfix { height: 1%; }
             .clearfix { display: block; }
-
         </style>
 
     </head>
     <body>
-        <header style="width: 100%">
+        <header>
             <div class="pull-left">
                 <img src="../../patric-logo.svg" class="logo pull-left">
                 <div class="title pull-left">Genome Report</div>
             </div>
 
             <div class="report-info pull-right">
-                Report Date: 2018&#x2F;03&#x2F;06<br>
+                Report Date: 2018/03/13<br>
                 Organism: Staphylococcus aureus subsp. aureus strain VB4283
             </div>
         </header>
         <div class="clearfix"></div>
-        <br>
+
 
 
         <section>
             <h2>Introduction</h2>
             <p>
-                <img src=https:&#x2F;&#x2F;upload.wikimedia.org&#x2F;wikipedia&#x2F;commons&#x2F;thumb&#x2F;5&#x2F;57&#x2F;Staphylococcus_aureus_01.jpg&#x2F;400px-Staphylococcus_aureus_01.jpg class="pull-left main-img"/>
-                <span class="pull-left"><p><i><b>Staphylococcus</b></i> (from the Greek: <span lang="el" xml:lang="el">σταφυλή</span>, <i>staphylē</i>, "grape" and κόκκος, <i>kókkos</i>, "granule") is a genus of Gram-positive bacteria. Under the microscope, they appear round (cocci), and form in grape-like clusters.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Staphylococcus_aureus_01.jpg/400px-Staphylococcus_aureus_01.jpg" class="pull-left main-img">
+                <span class="pull-left"></span></p><p><i><b>Staphylococcus</b></i> (from the Greek: <span lang="el" xml:lang="el">&#x3C3;&#x3C4;&#x3B1;&#x3C6;&#x3C5;&#x3BB;&#x3AE;</span>, <i>staphyl&#x113;</i>, &quot;grape&quot; and &#x3BA;&#x3CC;&#x3BA;&#x3BA;&#x3BF;&#x3C2;, <i>k&#xF3;kkos</i>, &quot;granule&quot;) is a genus of Gram-positive bacteria. Under the microscope, they appear round (cocci), and form in grape-like clusters.</p>
 <p>The <i>Staphylococcus</i> genus includes at least 40 species. Of these, nine have two subspecies, one has three subspecies, and one has four subspecies. Most are harmless and reside normally on the skin and mucous membranes of humans and other organisms. Staphylococcus has been found to be a nectar-inhabiting microbe. Found worldwide, they are a small component of soil microbial flora.</p>
 <p></p>
 
 <p></p>
-</span>
-            </p>
+
+            <p></p>
 
             <p>
                 Heteroresistant vancomycin-intermediate Staphylococcus aureus VB4283
             </p>
         </section>
-        <br>
+
 
 
         <section>
             <h2>Genome Assembly</h2>
             <p>
                 Brucella neotomae BNWLG2-S2 ran under job ID 2fee1c1b-f8bb-4781-bb20-f08fa66398e1 at PATRIC (1).  The assembly job started at 10/6/17, 2:53 PM and completed at 10/7/17, 4:41 PM, after 25h 47m 90011s.  The auto assembly strategy was selected, and it runs BayesHammer [2] on short reads, followed by three assembly strategies that include Velvet [3], IDBA [4] and Spades [5], each of which is given an assembly score by ARAST, an in-house script. The minimum contig length was 120bp, and smaller contigs were not included in the assembly. The minimum contig coverage was 5, and contigs with less coverage were not included in the assembly.
-                Also add reference to QUAST. ARAST ranked the Spades assembly best (Table 1).
+                Also add reference to QUAST. ARAST ranked the Spades assembly best (<table-ref>Table 1</table-ref>).
             </p>
             <p>
-                The assembled genome has 33 contigs, with the total length of 3.31 Mbp and %GC of 57.26%.
+                The assembled genome has 78 contigs, with the total length of 3.31 Mbp and %GC of 32.7%.
             </p>
 
-            <table class="large-table kv-table-2 center-table">
+            <table class="lg-table kv-table-2 center-table">
+
                 <thead class="table-header">
-                    <tr><th colspan="4">Table 1. Assembly details for Staphylococcus aureus subsp. aureus strain VB4283</th></tr>
+                    <tr>
+                        <th colspan="4">
+                            <table-num>Table 1.</table-num> Assembly details for Staphylococcus aureus subsp. aureus strain VB4283
+                        </th>
+                    </tr>
                 </thead>
 
                 <tbody>
                     <tr>
-                        <td>Contigs</td><td>78</td>
-                        <td>GC Content</td><td>32.7</td>
+                        <td>Contigs</td>
+                        <td class="align-right">78</td>
+                        <td>GC Content</td>
+                        <td class="align-right">32.7</td>
                     </tr>
                     <tr>
-                        <td>Plasmids</td><td></td>
-                        <td>Contig L50</td><td>9</td>
+                        <td>Plasmids</td>
+                        <td class="align-right"></td>
+                        <td>Contig L50</td>
+                        <td class="align-right">9</td>
                     </tr>
                     <tr>
-                        <td>Genome Length</td><td>2796422</td>
-                        <td>Contig N50</td><td>105363</td>
+                        <td>Genome Length</td>
+                        <td class="align-right">2796422</td>
+                        <td>Contig N50</td>
+                        <td class="align-right">105363</td>
                     </tr>
                     <tr>
-                        <td>Chromosomes</td><td></td>
+                        <td>Chromosomes</td>
+                        <td class="align-right"></td>
                         <td></td><td></td>
                     </tr>
                 </tbody>
             </table>
         </section>
-        <br>
+
+
 
         <section>
             <h2>Genome Annotation</h2>
@@ -206,72 +231,96 @@
                 The Genetic code was 11.  The taxonomy of B. neotomae BNWLG2-S2 is:
             </p>
 
-            <div style="width: 80%;" class="center-table"><i>Bacteria &gt;&gt; Terrabacteria group &gt;&gt; Firmicutes &gt;&gt; Bacilli &gt;&gt; Bacillales &gt;&gt; Staphylococcaceae &gt;&gt; Staphylococcus &gt;&gt; Staphylococcus aureus &gt;&gt; Staphylococcus aureus subsp. aureus</i></div><br>
-
+            <div style="width: 90%;" class="center-table">
+                cellular organisms &gt; Bacteria &gt; Terrabacteria group &gt; Firmicutes &gt; Bacilli &gt; Bacillales &gt; Staphylococcaceae &gt; Staphylococcus &gt; Staphylococcus aureus &gt; Staphylococcus aureus subsp. aureus
+            </div><br>
 
             <p>
                 The annotations includes 3349 CDS, 50 tRNAs and 3 rRNAs.
-                All annotated genome features for this genome are summarized in Table 2.
+                All annotated genome features for this genome are summarized in <table-ref>Table 2</table-ref>.
             </p>
 
             <p>
                 The functional annotation included 655 hypothetical proteins and 2694 proteins with functional assignments.
                 Furthermore, 963 proteins were  assigned EC numbers and 749 proteins were mapped to KEGG pathways.
-                A breakdown of the proteins that have been annotated for this isolate is provided in Table 3.
+                A breakdown of the proteins that have been annotated for this isolate is provided in <table-ref>Table 3</table-ref>.
             </p>
 
-            <table class="small-table kv-table-2 center-table">
+            <table class="sm-table kv-table center-table">
                 <thead class="table-header">
                     <tr>
-                        <th colspan="2">Table 2. Annotated Genome Features</th>
+                        <th colspan="2"><table-num>Table 2.</table-num> Annotated Genome Features</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr class="row-header"><td></td> <td>PATRIC</td></tr>
-                    <tr><td>CDS</td><td>2903</td></tr>
-                    <tr><td>repeat_region</td><td>127</td></tr>
-                    <tr><td>classifier_predicted_region</td><td>66</td></tr>
-                    <tr><td>tRNA</td><td>56</td></tr>
-                    <tr><td>misc_RNA</td><td>12</td></tr>
-                    <tr><td>regulatory</td><td>10</td></tr>
-                    <tr><td>rRNA</td><td>6</td></tr>
+                    <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
+                        <tr>
+                            <td>CDS</td><td class="align-right">2903</td>
+                        </tr>
+                        <tr>
+                            <td>repeat_region</td><td class="align-right">127</td>
+                        </tr>
+                        <tr>
+                            <td>classifier_predicted_region</td><td class="align-right">66</td>
+                        </tr>
+                        <tr>
+                            <td>tRNA</td><td class="align-right">56</td>
+                        </tr>
+                        <tr>
+                            <td>misc_RNA</td><td class="align-right">12</td>
+                        </tr>
+                        <tr>
+                            <td>regulatory</td><td class="align-right">10</td>
+                        </tr>
+                        <tr>
+                            <td>rRNA</td><td class="align-right">6</td>
+                        </tr>
                 </tbody>
             </table>
 
-            <div class="clearfix"></div>
-            <br>
 
-            <table class="med-table kv-table-2 center-table">
+            <table class="med-table kv-table center-table">
                 <thead class="table-header">
                     <tr>
-                        <th colspan="2">Table 3. Protein Features</th>
+                        <th colspan="2"><table-num>Table 3.</table-num> Protein Features</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr class="row-header"><td></td> <td>PATRIC</td></tr>
-                    <tr><td>Hypothetical proteins</td><td>740</td></tr>
-                    <tr><td>Proteins with functional assignments</td><td>2163</td></tr>
-                    <tr><td>Proteins with EC number assignments</td><td>947</td></tr>
-                    <tr><td>Proteins with GO assignments</td><td>640</td></tr>
-                    <tr><td>Proteins with Pathway assignments</td><td>561</td></tr>
-                    <tr><td>Proteins with PATRIC genus-specific family (PLfam) assignments</td><td>2845</td></tr>
-                    <tr><td>Proteins with PATRIC cross-genus family (PGfam) assignments</td><td>2845</td></tr>
+                    <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
+                    <tr>
+                        <td>Hypothetical proteins</td><td class="align-right">740</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with functional assignments</td><td class="align-right">2163</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with EC number assignments</td><td class="align-right">947</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with GO assignments</td><td class="align-right">640</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with Pathway assignments</td><td class="align-right">561</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with PATRIC genus-specific family (PLfam) assignments</td><td class="align-right">2845</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with PATRIC cross-genus family (PGfam) assignments</td><td class="align-right">2845</td>
+                    </tr>
                 </tbody>
             </table>
-
-            <div class="clearfix"></div>
-            <br>
 
             <p>
                 A graphical display of the distribution of the CDS on each strand, the repeat_regions,
-                GC content and GC skew are provided (Figure 1).
+                GC content and GC skew are provided (<fig-ref>Figure 1</fig-ref>).
             </p>
 
-            <img src="../46170.310/46170.310-circular.png" class="circular-fig" />
+            <fig-num>Figure 1</fig-num>
+            <img src="../46170.310/46170.310-circular.svg" class="circular-fig">
         </section>
-        <br>
 
 
         <section>
@@ -283,8 +332,6 @@
                 The reasons affecting the quality of genome are: [genome qc flags].
             </p>
         </section>
-        <br>
-
 
 
         <section>
@@ -292,13 +339,13 @@
             <p>
                 PATRIC [1] annotation also includes identification of proteins that have homology to
                 known virulence factors, drug targets, and antibiotic resistance genes (Reference
-                the sources).  A breakdown of the distribution is provided (Table 4).
+                the sources).  A breakdown of the distribution is provided (<table-ref>Table 4</table-ref>).
             </p>
 
-            <table class="med-table kv-table center-table">
+            <table class="sm-table kv-table center-table">
                 <thead class="table-header">
                     <tr>
-                        <th colspan="3">Table 4. Annotated Genome Features</th>
+                        <th colspan="3"><table-num>Table 4.</table-num> Annotated Genome Features</th>
                     </tr>
                 </thead>
 
@@ -307,71 +354,77 @@
                     <tr>
                         <td>Virulence Factor</td>
                         <td>VFDB</td>
-                        <td>70</td>
+                        <td class="align-right">70</td>
                     </tr>
                     <tr>
                         <td>Virulence Factor</td>
                         <td>Victors</td>
-                        <td>35</td>
+                        <td class="align-right">35</td>
                     </tr>
                     <tr>
                         <td>Antibiotic Resistance</td>
                         <td>CARD</td>
-                        <td>32</td>
+                        <td class="align-right">32</td>
                     </tr>
                     <tr>
                         <td>Drug Target</td>
                         <td>DrugBank</td>
-                        <td>30</td>
+                        <td class="align-right">30</td>
                     </tr>
                     <tr>
                         <td>Human Homolog</td>
                         <td>Human</td>
-                        <td>20</td>
+                        <td class="align-right">20</td>
                     </tr>
                     <tr>
                         <td>Antibiotic Resistance</td>
                         <td>PATRIC</td>
-                        <td>19</td>
+                        <td class="align-right">19</td>
                     </tr>
                     <tr>
                         <td>Antibiotic Resistance</td>
                         <td>ARDB</td>
-                        <td>10</td>
+                        <td class="align-right">10</td>
                     </tr>
                     <tr>
                         <td>Drug Target</td>
                         <td>TTD</td>
-                        <td>10</td>
+                        <td class="align-right">10</td>
                     </tr>
                 </tbody>
             </table>
         </section>
-        <br>
 
 
 
         <section>
             <h2>Antimicrobial Resistance Analysis</h2>
-            <table class="large-table kv-table-2 center-table">
+            <table class="lg-table kv-table center-table">
                 <thead class="table-header">
                     <tr>
-                        <th colspan="2">Table 5. Antimicrobial Resistance</th>
+                        <th colspan="2"><table-num>Table 5.</table-num> Antimicrobial Resistance</th>
                     </tr>
                 </thead>
 
+
                 <tbody>
                     <tr class="row-header"><td></td> <td>Antibiotics</td></tr>
-                    <tr><td>Resistant</td><td>ciprofloxacin, erythromycin, gentamicin, methicillin, penicillin, trimethoprim&#x2F;sulfamethoxazole</td></tr>
-                    <tr><td>susceptible</td><td>clindamycin, tetracycline</td></tr>
+                    <tr>
+                        <td>Resistant</td>
+                        <td>ciprofloxacin, erythromycin, gentamicin, methicillin, penicillin, trimethoprim/sulfamethoxazole</td>
+                    </tr>
+                    <tr>
+                        <td>Susceptible</td>
+                        <td>clindamycin, tetracycline</td>
+                    </tr>
                 </tbody>
+
             </table>
 
             <h2>Antimicrobial Resistance Genes</h2>
 
             [Incomplete]
         </section>
-        <br>
 
 
 
@@ -382,12 +435,13 @@
                 represent the collection of functional roles that make up a metabolic pathway, a complex
                 (e.g., the ribosome), or a class of proteins (e.g., two-component signal-transduction
                 proteins or AMR genes) [Overbeek].  An overview of the subsystems for this genome
-                is provided in Figure 2.
+                is provided in <fig-ref>Figure 2</fig-ref>.
             </p>
 
-            <img src="../46170.310/46170.310-subsystem.svg" class="subsystem-fig" />
+            <fig-num>Figure 2</fig-num>
+            <img src="../46170.310/46170.310-subsystem.svg" class="subsystem-fig">
+
         </section>
-        <br>
 
 
         <section>
@@ -414,10 +468,12 @@
                 The trimmed alignments are concatenated and this concatenated alignment is
                 used to build the main tree with either RAxML or FastTree.
             </p>
-            <br>
+
 
             <h3>Comparison to Reference Genomes in the Same Genus</h3>
-            <img src="../46170.310/46170.310-tree.svg" class="tree-fig" />
+
+            <fig-num>Figure 3</fig-num>
+            <img src="../46170.310/46170.310-tree.svg" class="tree-fig">
         </section>
-    </body>
-</html>
+    
+</body></html>

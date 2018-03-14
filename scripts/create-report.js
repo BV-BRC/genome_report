@@ -14,27 +14,27 @@ const fs = require('fs'),
     path = require('path'),
     process = require('process'),
     opts = require('commander'),
-    rp = require('request-promise'),
-    mustache = require('mustache'),
+    puppeteer = require('puppeteer');
+    handlebars = require('handlebars'),
+    helpers = require('handlebars-helpers'),
     utils = require('./utils'),
     cheerio = require('cheerio');
-
-const puppeteer = require('puppeteer');
 
 const config = require('../config.json');
 const templatePath = path.resolve(`${config.templatePath}`);
 const pdfMargin = '35px';
 
+// load template helpers
+helpers.array();
+
+// template data to be used
 const tmplData = {
     author: {
         name: 'nconrad'
     },
-    reportDate: new Date().toJSON().slice(0,10).replace(/-/g,'/'),
-    getTaxonomy: function() {
-        let taxonLineage = this.meta.taxon_lineage_names;
-        return taxonLineage.slice(1).join('; ')
-    }
+    reportDate: new Date().toJSON().slice(0,10).replace(/-/g,'/')
 }
+
 
 
 if (require.main === module){
@@ -52,7 +52,6 @@ if (require.main === module){
     buildPdf(genomeID);
 }
 
-
 async function buildPdf(genomeID) {
     let genomeDir = utils.createGenomeDir(genomeID);
     let d = await utils.readFile(`${genomeDir}/${genomeID}-data.json`, 'utf8');
@@ -62,11 +61,12 @@ async function buildPdf(genomeID) {
     Object.assign(tmplData, reportData);
 
     console.log('Reading template...')
-    fs.readFile(templatePath, (err, data) => {
+    fs.readFile(templatePath, (err, source) => {
         if (err) throw err;
 
         console.log('Filling template...');
-        let content = mustache.render(data.toString(), tmplData);
+        let template = handlebars.compile(source.toString());
+        let content = template(tmplData);
 
         console.log('Adding table/figure numbers...')
         content = addTableNumbers(content);

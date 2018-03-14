@@ -21,14 +21,6 @@ Serve the template and listen for changes with
 npm start
 ```
 
-## Prod Installation
-
-The following will not install any dev dependencies
-
-```
-npm install --production
-```
-
 ## Usage
 
 ##### Fetch all assets/data and generate html/pdf
@@ -57,6 +49,20 @@ Generate and write html/pdf to `reports/{genome-id}/`
 ```
 node scripts/create-report.js --genome_id=520456.3
 ```
+
+## Prod Installation
+
+The following will not install any dev dependencies
+
+```
+npm install --production
+```
+
+
+## Dev Notes
+
+[Handlebars](https://github.com/wycats/handlebars.js/) is used for templating (`templates/gr-template.html).  A full list of helps is available here: [handlebars-helpers](https://github.com/helpers/handlebars-helpers)
+
 
 
 ## Contributing

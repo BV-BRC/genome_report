@@ -307,9 +307,7 @@ function getGenomeAMR(genomeID) {
 
         return {
             resistant,
-            susceptible,
-            resistantStr: resistant.join(', '),
-            susceptibleStr: susceptible.join(', '),
+            susceptible
         };
     }).catch((e) => {
         console.error(e.message);

@@ -22,6 +22,8 @@
     "cheerio": "1.0.0-rc.2",
     "commander": "2.14.1",
     "convert-svg-to-png": "0.4.0",
+    "handlebars": "4.0.11",
+    "handlebars-helpers": "0.10.0",
     "mustache": "2.3.0",
     "puppeteer": "1.1.1",
     "request": "2.83.0",

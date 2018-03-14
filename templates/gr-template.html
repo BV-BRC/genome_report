@@ -134,7 +134,6 @@
 
             * html .clearfix { height: 1%; }
             .clearfix { display: block; }
-
         </style>
 
     </head>
@@ -177,7 +176,6 @@
             <p>
                 The assembled genome has {{meta.contigs}} contigs, with the total length of 3.31 Mbp and %GC of {{meta.gc_content}}%.
             </p>
-
 
             <table class="lg-table kv-table-2 center-table">
 
@@ -230,7 +228,9 @@
                 The Genetic code was 11.  The taxonomy of B. neotomae BNWLG2-S2 is:
             </p>
 
-            <div style="width: 80%;" class="center-table"><i>{{getTaxonomy}}</i></div><br>
+            <div style="width: 90%;" class="center-table">
+                {{join meta.taxon_lineage_names ' > '}}
+            </div><br>
 
             <p>
                 The annotations includes 3349 CDS, 50 tRNAs and 3 rRNAs.
@@ -339,11 +339,19 @@
                     </tr>
                 </thead>
 
+
                 <tbody>
                     <tr class="row-header"><td></td> <td>Antibiotics</td></tr>
-                    <tr><td>Resistant</td><td>{{amr.resistantStr}}</td></tr>
-                    <tr><td>susceptible</td><td>{{amr.susceptibleStr}}</td></tr>
+                    <tr>
+                        <td>Resistant</td>
+                        <td>{{join resistant ', '}}</td>
+                    </tr>
+                    <tr>
+                        <td>Susceptible</td>
+                        <td>{{join susceptible ', '}}</td>
+                    </tr>
                 </tbody>
+
             </table>
 
             <h2>Antimicrobial Resistance Genes</h2>
