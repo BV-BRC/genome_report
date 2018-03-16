@@ -62,6 +62,7 @@ async function getAllData(genomeID) {
 
     // fetch all data
     let meta = await getGenomeMeta(genomeID);
+    let proteinFamily = await getProteinFamily(meta[0].missing_core_family_ids);
     let annotationMeta = await getAnnotationMeta(genomeID);
     let wiki = await getWiki(meta[0].species, meta[0].genus);
     let specialtyGenes = await getSpecialtyGenes(genomeID);
@@ -75,6 +76,7 @@ async function getAllData(genomeID) {
     tmplData.specialtyGenes = specialtyGenes;
     tmplData.proteinFeatures = proteinFeatures;
     tmplData.amr = amr;
+    tmplData.proteinFamily = proteinFamily;
 
 
     // create genome folder if needed
@@ -309,6 +311,26 @@ function getGenomeAMR(genomeID) {
             resistant,
             susceptible
         };
+    }).catch((e) => {
+        console.error(e.message);
+    })
+}
+
+
+function getProteinFamily(missingCoreFamilyIDs) {
+    let url = `${config.dataAPIUrl}/protein_family_ref/` +
+        `?in(family_id,(${missingCoreFamilyIDs.join(',')}))&sort(+family_id)&select(*)`;
+
+    console.log(`fetching protein comparison...`)
+    return rp.get(url, getOpts).then(res => {
+        console.log('res', JSON.stringify(res, null, 4))
+        let data = res.map(o => {
+            return {
+                family_id: o.family_id,
+                family_product: o.family_product
+            }
+        })
+        return data;
     }).catch((e) => {
         console.error(e.message);
     })

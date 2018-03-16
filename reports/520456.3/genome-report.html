@@ -57,7 +57,6 @@
             .kv-table-2 td:first-child,
             .kv-table-2 td:nth-child(3) {
                 font-weight: 700;
-
             }
 
             .kb-table-2 td {
@@ -73,6 +72,7 @@
                 color: #fff;
                 background: #196E9C;
                 padding: 5px;
+                text-align: left;
             }
             .table-header th { font-weight: 400; }
             .row-header { border-bottom: 1px solid #196E9C; font-weight: 600;}
@@ -132,7 +132,6 @@
 
             * html .clearfix { height: 1%; }
             .clearfix { display: block; }
-
         </style>
 
     </head>
@@ -144,7 +143,7 @@
             </div>
 
             <div class="report-info pull-right">
-                Report Date: 2018/03/13<br>
+                Report Date: 2018/03/16<br>
                 Organism: Brucella neotomae 5K33
             </div>
         </header>
@@ -185,7 +184,6 @@
             <p>
                 The assembled genome has 11 contigs, with the total length of 3.31 Mbp and %GC of 57.3%.
             </p>
-
 
             <table class="lg-table kv-table-2 center-table">
 
@@ -238,7 +236,9 @@
                 The Genetic code was 11.  The taxonomy of B. neotomae BNWLG2-S2 is:
             </p>
 
-            <div style="width: 80%;" class="center-table"><i>Bacteria; Proteobacteria; Alphaproteobacteria; Rhizobiales; Brucellaceae; Brucella; Brucella neotomae; Brucella neotomae 5K33</i></div><br>
+            <div style="width: 90%;" class="center-table">
+                cellular organisms &gt; Bacteria &gt; Proteobacteria &gt; Alphaproteobacteria &gt; Rhizobiales &gt; Brucellaceae &gt; Brucella &gt; Brucella neotomae &gt; Brucella neotomae 5K33
+            </div><br>
 
             <p>
                 The annotations includes 3349 CDS, 50 tRNAs and 3 rRNAs.
@@ -406,7 +406,7 @@
 
 
 
-
+        
 
 
         <section>
@@ -452,9 +452,72 @@
 
 
             <h3>Comparison to Reference Genomes in the Same Genus</h3>
-
             <fig-num>Figure 3</fig-num>
             <img src="../520456.3/520456.3-tree.svg" class="tree-fig">
         </section>
+
+
+        <section>
+            <h2>Unique Protein Families</h2>
+
+            <p>
+                In <table-ref>Table 5</table-ref> we present protein families that the isolate has which
+                all reference genomes lack.
+            </p>
+
+
+            <table class="lg-table center-table">
+                <thead class="table-header">
+                    <tr>
+                        <th colspan="3"><table-num>Table 5.</table-num> Core Protein Families Missing in the Genome</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="row-header">
+                        <td>Protein Family ID</td>
+                        <td>Description</td>
+                    </tr>
+                    <tr>
+                        <td>PGF_00025847</td>
+                        <td>Nitrite reductase accessory protein NirV</td>
+                    </tr>
+                    <tr>
+                        <td>PGF_00194700</td>
+                        <td>hypothetical protein</td>
+                    </tr>
+                    <tr>
+                        <td>PGF_00458082</td>
+                        <td>Transposase</td>
+                    </tr>
+                    <tr>
+                        <td>PGF_00716243</td>
+                        <td>Transposase</td>
+                    </tr>
+                    <tr>
+                        <td>PGF_00734221</td>
+                        <td>Xanthine and CO dehydrogenases maturation factor, XdhC/CoxF family</td>
+                    </tr>
+                    <tr>
+                        <td>PGF_01030857</td>
+                        <td>hypothetical protein</td>
+                    </tr>
+                    <tr>
+                        <td>PGF_01030864</td>
+                        <td>hypothetical protein</td>
+                    </tr>
+                    <tr>
+                        <td>PGF_03067324</td>
+                        <td>Putative protease</td>
+                    </tr>
+                    <tr>
+                        <td>PGF_06264218</td>
+                        <td>hypothetical protein</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+
     
 </body></html>

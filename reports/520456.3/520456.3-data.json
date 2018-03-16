@@ -232,5 +232,43 @@
             "genes": 1
         }
     ],
-    "amr": null
+    "amr": null,
+    "proteinFamily": [
+        {
+            "family_id": "PGF_00025847",
+            "family_product": "Nitrite reductase accessory protein NirV"
+        },
+        {
+            "family_id": "PGF_00194700",
+            "family_product": "hypothetical protein"
+        },
+        {
+            "family_id": "PGF_00458082",
+            "family_product": "Transposase"
+        },
+        {
+            "family_id": "PGF_00716243",
+            "family_product": "Transposase"
+        },
+        {
+            "family_id": "PGF_00734221",
+            "family_product": "Xanthine and CO dehydrogenases maturation factor, XdhC/CoxF family"
+        },
+        {
+            "family_id": "PGF_01030857",
+            "family_product": "hypothetical protein"
+        },
+        {
+            "family_id": "PGF_01030864",
+            "family_product": "hypothetical protein"
+        },
+        {
+            "family_id": "PGF_03067324",
+            "family_product": "Putative protease"
+        },
+        {
+            "family_id": "PGF_06264218",
+            "family_product": "hypothetical protein"
+        }
+    ]
 }
