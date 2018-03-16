@@ -26,6 +26,11 @@ const pdfMargin = '35px';
 
 // load template helpers
 helpers.array();
+helpers.number();
+utils.helpers(handlebars);
+
+
+
 
 // template data to be used
 const tmplData = {

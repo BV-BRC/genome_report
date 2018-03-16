@@ -178,11 +178,18 @@
         <section>
             <h2>Genome Assembly</h2>
             <p>
-                Brucella neotomae BNWLG2-S2 ran under job ID 2fee1c1b-f8bb-4781-bb20-f08fa66398e1 at PATRIC (1).  The assembly job started at 10/6/17, 2:53 PM and completed at 10/7/17, 4:41 PM, after 25h 47m 90011s.  The auto assembly strategy was selected, and it runs BayesHammer [2] on short reads, followed by three assembly strategies that include Velvet [3], IDBA [4] and Spades [5], each of which is given an assembly score by ARAST, an in-house script. The minimum contig length was 120bp, and smaller contigs were not included in the assembly. The minimum contig coverage was 5, and contigs with less coverage were not included in the assembly.
+                Brucella neotomae 5K33 ran under job ID 2fee1c1b-f8bb-4781-bb20-f08fa66398e1 at PATRIC[1].
+                The assembly job started at 10/6/17, 2:53 PM and completed at 10/7/17, 4:41 PM, after 25h 47m 90011s.
+                The auto assembly strategy was selected, and it runs BayesHammer [2] on short reads, followed by three
+                assembly strategies that include Velvet [3], IDBA [4] and Spades [5], each of which is given
+                an assembly score by ARAST, an in-house script. The minimum contig length was 120bp,
+                and smaller contigs were not included in the assembly. The minimum contig coverage was 5,
+                and contigs with less coverage were not included in the assembly.
                 Also add reference to QUAST. ARAST ranked the Spades assembly best (<table-ref>Table 1</table-ref>).
             </p>
             <p>
-                The assembled genome has 11 contigs, with the total length of 3.31 Mbp and %GC of 57.3%.
+                The assembled genome has 11 contigs,
+                with the total length of 3.33 Mbp and %GC of 57.3%.
             </p>
 
             <table class="lg-table kv-table-2 center-table">
@@ -210,7 +217,7 @@
                     </tr>
                     <tr>
                         <td>Genome Length</td>
-                        <td class="align-right">3329623</td>
+                        <td class="align-right">3,329,623</td>
                         <td>Contig N50</td>
                         <td class="align-right">1923503</td>
                     </tr>
@@ -229,11 +236,11 @@
             <h2>Genome Annotation</h2>
             <p>
                 The Genome Annotation Service in PATRIC [1] uses the RAST tool kit (RASTtk) [6] to
-                provide annotation of genomic features. The job for B. neotomae BNWLG2-S2
+                provide annotation of genomic features. The job for Brucella neotomae 5K33
                 ran under job number 685fb8c1-348a-4cea-a298-496b037af1f8.
                 The annotation job started at 10/9/17, 7:10 AM and completed at 10/9/17, 8:16 AM,
                 after 1h 5m 3623s.  The selected domain was Bacteria, the Taxonomy ID was 234.128.
-                The Genetic code was 11.  The taxonomy of B. neotomae BNWLG2-S2 is:
+                The Genetic code was 11.  The taxonomy of Brucella neotomae 5K33 is:
             </p>
 
             <div style="width: 90%;" class="center-table">
@@ -241,13 +248,22 @@
             </div><br>
 
             <p>
-                The annotations includes 3349 CDS, 50 tRNAs and 3 rRNAs.
+                The annotations includes
+                    3434 CDS,
+                    48 tRNAs and
+                    3 rRNAs.
+
                 All annotated genome features for this genome are summarized in <table-ref>Table 2</table-ref>.
             </p>
 
             <p>
-                The functional annotation included 655 hypothetical proteins and 2694 proteins with functional assignments.
-                Furthermore, 963 proteins were  assigned EC numbers and 749 proteins were mapped to KEGG pathways.
+                The functional annotation included
+                    772 hypothetical proteins and
+                    2662 proteins with functional assignments.
+                Furthermore,
+                    947 proteins were  assigned EC numbers and
+                    746 proteins were mapped to KEGG pathways.
+
                 A breakdown of the proteins that have been annotated for this isolate is provided in <table-ref>Table 3</table-ref>.
             </p>
 
@@ -349,7 +365,11 @@
                 </thead>
 
                 <tbody>
-                    <tr class="row-header"><td></td> <td>Source</td> <td>Genes</td></tr>
+                    <tr class="row-header">
+                        <td></td>
+                        <td>Source</td>
+                        <td class="align-right">Genes</td>
+                    </tr>
                     <tr>
                         <td>Essential Gene</td>
                         <td>PATRIC</td>

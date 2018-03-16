@@ -14,11 +14,11 @@ const fs = require('fs'),
     process = require('process'),
     Promise = require("bluebird");
 
-const writeFile = Promise.promisify(fs.writeFile),
-    readFile = Promise.promisify(fs.readFile);
-
 const config = require('../config.json');
 
+
+const writeFile = Promise.promisify(fs.writeFile),
+    readFile = Promise.promisify(fs.readFile);
 
 function createGenomeDir(id) {
     let baseDir = path.resolve(`${config.reportDir}`);
@@ -40,8 +40,52 @@ function createGenomeDir(id) {
 }
 
 
+
+function helpers(handlebars) {
+
+    // helper to format base pairs to Bps, Kbps, etc.
+    handlebars.registerHelper('basePairs', function(number, precision, options) {
+        if (number == null) return '0 Bp';
+
+        if (isNaN(number)) {
+            number = number.length;
+            if (!number) return '0 Bp';
+        }
+
+        if (isNaN(precision)) {
+            precision = 2;
+        }
+
+        var abbr = ['Bp', 'Kbps', 'Mbp', 'Gb'];
+        precision = Math.pow(10, precision);
+        number = Number(number);
+
+        var len = abbr.length - 1;
+        while (len-- >= 0) {
+            var size = Math.pow(10, len * 3);
+            if (size <= (number + 1)) {
+                number = Math.round(number * precision / size) / precision;
+                number += ' ' + abbr[len];
+                break;
+            }
+        }
+
+        return number;
+    })
+
+    // returns specified value (given key) from list of objects
+    // if name in object matches "match"
+    handlebars.registerHelper('get', function(key, match, objs) {
+        console.log('key, match, obj', key, match)
+        return objs.filter(o => o.name === match)[0][key];
+    })
+}
+
+
+
 module.exports = {
-    createGenomeDir: createGenomeDir,
-    writeFile: writeFile,
-    readFile: readFile
+    createGenomeDir,
+    writeFile,
+    readFile,
+    helpers
 }
