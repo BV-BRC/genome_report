@@ -17,25 +17,13 @@
                 text-decoration: none;
                 color: #0d78ef;
             }
-            a:hover {
-                text-decoration: underline;
-            }
-            h2 {
-                font-size: 1.45em;
+            a:hover { text-decoration: underline; }
+            h2 { font-size: 1.45em; }
+            h2, h3 { font-weight: 500; }
+            h2 small { color: #aaa; }
+            .pull-left { float: left; }
+            .pull-right { float: right; }
 
-            }
-            h2, h3 {
-                font-weight: 500;
-            }
-            .pull-left {
-                float: left;
-            }
-            .pull-right {
-                float: right;
-            }
-            h2 small {
-                color: #aaa;
-            }
             table {
                 margin: .1in 0;
                 border-collapse: collapse;
@@ -50,25 +38,6 @@
             }
 
             /* standard key-value table (single or 2 columns)*/
-            .kv-table,
-            .kv-table-2 {
-                text-align: left;
-            }
-
-            .kv-table td:first-child,
-            .kv-table-2 td:first-child,
-            .kv-table-2 td:nth-child(3) {
-                font-weight: 700;
-            }
-
-            .kb-table-2 td {
-                border-collapse: separate;
-                border-spacing: 0px 50px;
-            }
-
-            table td.align-right {
-                text-align: right;
-            }
 
             .table-header {
                 color: #fff;
@@ -77,11 +46,32 @@
                 text-align: left;
             }
             .table-header th { font-weight: 400; }
-            .row-header { border-bottom: 1px solid #196E9C; font-weight: 600;}
+            .row-header { border-bottom: 1px solid #196E9C; font-weight: 600; }
             th, td { padding: 5px; }
             th  { border-bottom: 2px solid #196E9C; }
             tr:last-child { border-bottom: 1px solid #196E9C; }
 
+            .kv-table,
+            .kv-table-2 {
+                text-align: left;
+            }
+
+            .kv-table-2 td:nth-child(2) {
+                border-right: 1px solid rgb(172, 172, 172)
+            }
+
+            .kv-table td:first-child,
+            .kv-table-2 td:first-child,
+            .kv-table-2 td:nth-child(3) {
+                font-weight: 700;
+            }
+
+            table td.align-right {
+                text-align: right;
+            }
+
+            .kv-table-2 td:nth-child(2) { padding-right: 10px; }
+            .kv-table-2 td:nth-child(3) { padding-left: 10px; }
             .lg-table { width: 80%; }
             .med-table { width: 60%; }
             .sm-table { width: 40%; }
@@ -91,20 +81,23 @@
 
             .logo {
                 width: 3in;
-                border-right: 3px solid #444;
+                border-right: 3px solid #777;
                 padding-right: 10px;
                 margin-right: 10px;
             }
             .title {
-                padding: 10px 0 0 0px;
-                font-size: 1.3em;
-                color: #444;
+                padding: 15px 0 0 0px;
+                font-size: 2.0em;
+                color: #777;
             }
             .report-info {
                 text-align: right;
                 margin-right: 30px;
                 font-size:.8em;
                 color: #777;
+            }
+            .report-info span {
+                font-weight: 600;
             }
 
             .main-img {
@@ -145,12 +138,12 @@
             </div>
 
             <div class="report-info pull-right">
-                Report Date: {{reportDate}}<br>
-                Organism: {{meta.genome_name}}
+                <span>Report Date:</span> {{reportDate}}<br>
+                <span>Organism:</span> {{meta.genome_name}}
             </div>
         </header>
-        <div class="clearfix"></div>
 
+        <div class="clearfix"></div>
 
 
         <section>
@@ -184,8 +177,7 @@
                 with the total length of {{basePairs meta.genome_length}} and %GC of {{meta.gc_content}}%.
             </p>
 
-            <table class="lg-table kv-table-2 center-table">
-
+            <table class="med-table kv-table-2 center-table">
                 <thead class="table-header">
                     <tr>
                         <th colspan="4">

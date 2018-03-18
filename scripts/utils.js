@@ -76,7 +76,6 @@ function helpers(handlebars) {
     // returns specified value (given key) from list of objects
     // if name in object matches "match"
     handlebars.registerHelper('get', function(key, match, objs) {
-        console.log('key, match, obj', key, match)
         return objs.filter(o => o.name === match)[0][key];
     })
 }
