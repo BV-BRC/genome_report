@@ -90,13 +90,13 @@
         "hypothetical_cds": 737,
         "trna": 56,
         "rrna": 6,
-        "cds_ratio": 1.0381123,
+        "cds_ratio": 1.04,
         "partial_cds_ratio": 0,
         "contig_n50": 105363,
         "genome_quality": "High",
         "contigs_new": 78,
-        "plfam_cds_ratio": 0.98002064,
-        "hypothetical_cds_ratio": 0.25387532,
+        "plfam_cds_ratio": 0.98,
+        "hypothetical_cds_ratio": 0.25,
         "nearest_genomes": [
             "1241616.6",
             "1293.6",
@@ -114,7 +114,7 @@
         ],
         "core_families": 1326,
         "core_family_ratio": 1,
-        "_version_": 1594212801304330200
+        "_version_": 1594821634014838800
     },
     "annotationMeta": [
         {
@@ -148,8 +148,12 @@
     ],
     "proteinFeatures": [
         {
-            "name": "Hypothetical proteins",
-            "count": 740
+            "name": "Proteins with PATRIC genus-specific family (PLfam) assignments",
+            "count": 2845
+        },
+        {
+            "name": "Proteins with PATRIC cross-genus family (PGfam) assignments",
+            "count": 2845
         },
         {
             "name": "Proteins with functional assignments",
@@ -160,20 +164,16 @@
             "count": 947
         },
         {
+            "name": "Hypothetical proteins",
+            "count": 740
+        },
+        {
             "name": "Proteins with GO assignments",
             "count": 640
         },
         {
             "name": "Proteins with Pathway assignments",
             "count": 561
-        },
-        {
-            "name": "Proteins with PATRIC genus-specific family (PLfam) assignments",
-            "count": 2845
-        },
-        {
-            "name": "Proteins with PATRIC cross-genus family (PGfam) assignments",
-            "count": 2845
         }
     ],
     "wiki": {
@@ -234,8 +234,7 @@
         "susceptible": [
             "clindamycin",
             "tetracycline"
-        ],
-        "resistantStr": "ciprofloxacin, erythromycin, gentamicin, methicillin, penicillin, trimethoprim/sulfamethoxazole",
-        "susceptibleStr": "clindamycin, tetracycline"
-    }
+        ]
+    },
+    "proteinFamily": null
 }
