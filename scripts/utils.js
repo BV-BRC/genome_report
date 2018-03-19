@@ -78,6 +78,11 @@ function helpers(handlebars) {
     handlebars.registerHelper('get', function(key, match, objs) {
         return objs.filter(o => o.name === match)[0][key];
     })
+
+
+    handlebars.registerHelper('default', function(item, str) {
+        return item ? item : str;
+    })
 }
 
 

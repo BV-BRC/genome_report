@@ -24,12 +24,6 @@
             .pull-left { float: left; }
             .pull-right { float: right; }
 
-            table {
-                margin: .1in 0;
-                border-collapse: collapse;
-                page-break-inside: avoid;
-            }
-
             table-num,
             table-ref,
             fig-num,
@@ -37,8 +31,12 @@
                 font-weight: 600;
             }
 
-            /* standard key-value table (single or 2 columns)*/
-
+            /* tables */
+            table {
+                margin: .1in 0 .5in 0;
+                border-collapse: collapse;
+                page-break-inside: avoid;
+            }
             .table-header {
                 color: #fff;
                 background: #196E9C;
@@ -195,19 +193,19 @@
                     </tr>
                     <tr>
                         <td>Plasmids</td>
-                        <td class="align-right">{{meta.plasmids}}</td>
+                        <td class="align-right">{{default meta.plasmids '-'}}</td>
                         <td>Contig L50</td>
                         <td class="align-right">{{meta.contig_l50}}</td>
                     </tr>
                     <tr>
                         <td>Genome Length</td>
-                        <td class="align-right">{{addCommas meta.genome_length}}</td>
+                        <td class="align-right">{{addCommas meta.genome_length}} Bps</td>
                         <td>Contig N50</td>
-                        <td class="align-right">{{meta.contig_n50}}</td>
+                        <td class="align-right">{{addCommas meta.contig_n50}}</td>
                     </tr>
                     <tr>
                         <td>Chromosomes</td>
-                        <td class="align-right">{{meta.chromosomes}}</td>
+                        <td class="align-right">{{default meta.chromosomes '-'}}</td>
                         <td></td><td></td>
                     </tr>
                 </tbody>
@@ -262,7 +260,7 @@
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
                     {{#annotationMeta}}
                         <tr>
-                            <td>{{name}}</td><td class="align-right">{{count}}</td>
+                            <td>{{name}}</td><td class="align-right">{{addCommas count}}</td>
                         </tr>
                     {{/annotationMeta}}
                 </tbody>
@@ -280,7 +278,7 @@
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
                     {{#proteinFeatures}}
                     <tr>
-                        <td>{{name}}</td><td class="align-right">{{count}}</td>
+                        <td>{{name}}</td><td class="align-right">{{addCommas count}}</td>
                     </tr>
                     {{/proteinFeatures}}
                 </tbody>
@@ -422,6 +420,8 @@
         </section>
 
 
+
+        {{#proteinFamily}} <!-- only shown if data is available -->
         <section>
             <h2>Unique Protein Families</h2>
 
@@ -451,8 +451,8 @@
                     {{/proteinFamily}}
                 </tbody>
             </table>
-
         </section>
+        {{/proteinFamily}}
 
     </body>
 </html>

@@ -31,7 +31,6 @@ utils.helpers(handlebars);
 
 
 
-
 // template data to be used
 const tmplData = {
     author: {

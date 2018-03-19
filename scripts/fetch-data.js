@@ -38,7 +38,8 @@ const tmplData = {
     proteinFeatures: null,
     wiki: null,
     specialtyGenes: null,
-    amr: null
+    amr: null,
+    proteinFamily: null
 }
 
 
@@ -70,14 +71,15 @@ async function getAllData(genomeID) {
     let amr = await getGenomeAMR(genomeID);
 
     // build master data json
-    tmplData.meta = meta[0];
-    tmplData.annotationMeta = annotationMeta;
-    tmplData.wiki = wiki;
-    tmplData.specialtyGenes = specialtyGenes;
-    tmplData.proteinFeatures = proteinFeatures;
-    tmplData.amr = amr;
-    tmplData.proteinFamily = proteinFamily;
-
+    Object.assign(tmplData, {
+        meta: meta[0],
+        annotationMeta,
+        wiki,
+        specialtyGenes,
+        proteinFeatures,
+        amr,
+        proteinFamily
+    })
 
     // create genome folder if needed
     let genomeDir = utils.createGenomeDir(genomeID);
@@ -280,6 +282,9 @@ async function getProteinFeatures(genomeID, CDS) {
         count: pgFamAssignments
     }]
 
+    // dsc order
+    data.sort((a, b) => b.count - a.count);
+
     return data;
 }
 
@@ -318,12 +323,13 @@ function getGenomeAMR(genomeID) {
 
 
 function getProteinFamily(missingCoreFamilyIDs) {
+    if (!missingCoreFamilyIDs) return null;
+
     let url = `${config.dataAPIUrl}/protein_family_ref/` +
         `?in(family_id,(${missingCoreFamilyIDs.join(',')}))&sort(+family_id)&select(*)`;
 
     console.log(`fetching protein comparison...`)
     return rp.get(url, getOpts).then(res => {
-        console.log('res', JSON.stringify(res, null, 4))
         let data = res.map(o => {
             return {
                 family_id: o.family_id,
