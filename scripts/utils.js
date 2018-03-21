@@ -85,11 +85,23 @@ function helpers(handlebars) {
     })
 }
 
+function parseToken(token) {
+    var dataArr = token.split('|');
+    var keyValueArr = [];
+    var dataobj =  {};
+    for (var i = 0; i < dataArr.length; i++) {
+        keyValueArr = dataArr[i].split('=');
+        dataobj[keyValueArr[0]] = keyValueArr[1];
+    }
+
+    return dataobj;
+}
 
 
 module.exports = {
     createGenomeDir,
     writeFile,
     readFile,
-    helpers
+    helpers,
+    parseToken
 }

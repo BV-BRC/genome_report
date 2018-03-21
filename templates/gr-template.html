@@ -195,13 +195,13 @@
                         <td>Plasmids</td>
                         <td class="align-right">{{default meta.plasmids '-'}}</td>
                         <td>Contig L50</td>
-                        <td class="align-right">{{meta.contig_l50}}</td>
+                        <td class="align-right">{{default meta.contig_l50 '-'}}</td>
                     </tr>
                     <tr>
                         <td>Genome Length</td>
-                        <td class="align-right">{{addCommas meta.genome_length}} Bps</td>
+                        <td class="align-right">{{meta.genome_length}} Bps</td>
                         <td>Contig N50</td>
-                        <td class="align-right">{{addCommas meta.contig_n50}}</td>
+                        <td class="align-right">{{default meta.contig_n50 '-'}}</td>
                     </tr>
                     <tr>
                         <td>Chromosomes</td>
@@ -260,7 +260,7 @@
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
                     {{#annotationMeta}}
                         <tr>
-                            <td>{{name}}</td><td class="align-right">{{addCommas count}}</td>
+                            <td>{{name}}</td><td class="align-right">{{default count '-'}}</td>
                         </tr>
                     {{/annotationMeta}}
                 </tbody>
@@ -278,7 +278,7 @@
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
                     {{#proteinFeatures}}
                     <tr>
-                        <td>{{name}}</td><td class="align-right">{{addCommas count}}</td>
+                        <td>{{name}}</td><td class="align-right">{{default count '-'}}</td>
                     </tr>
                     {{/proteinFeatures}}
                 </tbody>
@@ -290,7 +290,7 @@
             </p>
 
             <fig-num></fig-num>
-            <img src="../{{meta.genome_id}}/{{meta.genome_id}}-circular.svg" class="circular-fig" />
+            <!--<img src="../{{meta.genome_id}}/{{meta.genome_id}}-circular.svg" class="circular-fig" />-->
         </section>
 
 
@@ -383,7 +383,7 @@
             </p>
 
             <fig-num></fig-num>
-            <img src="../{{meta.genome_id}}/{{meta.genome_id}}-subsystem.svg" class="subsystem-fig" />
+            <!--<img src="../{{meta.genome_id}}/{{meta.genome_id}}-subsystem.svg" class="subsystem-fig" />-->
 
         </section>
 
@@ -416,7 +416,7 @@
 
             <h3>Comparison to Reference Genomes in the Same Genus</h3>
             <fig-num></fig-num>
-            <img src="../{{meta.genome_id}}/{{meta.genome_id}}-tree.svg" class="tree-fig" />
+            <!--<img src="../{{meta.genome_id}}/{{meta.genome_id}}-tree.svg" class="tree-fig" />-->
         </section>
 
 

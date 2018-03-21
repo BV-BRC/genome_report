@@ -27,10 +27,9 @@ const getOpts = {
     json: true,
     headers: {
       "content-type": "application/json",
-      "authorization": opts.token || ''
+      "authorization": null
     }
 }
-
 
 const tmplData = {
     meta: null,
@@ -45,6 +44,7 @@ const tmplData = {
 
 if (require.main === module){
     opts.option('-g, --genome_id [value]', 'Genome ID to fetch data for.')
+        .option('-t, --token [value]', 'Auth token (for private data)')
         .parse(process.argv)
 
     if (!opts.genome_id) {
@@ -54,12 +54,12 @@ if (require.main === module){
 
     let genomeID = opts.genome_id;
 
-    getAllData(genomeID);
+    getAllData(genomeID, opts.token);
 }
 
 
-// # contigs, genome length, gc, n50, L50, genome coverage
-async function getAllData(genomeID) {
+async function getAllData(genomeID, token) {
+    getOpts.headers.authorization = token;
 
     // fetch all data
     let meta = await getGenomeMeta(genomeID);
@@ -99,8 +99,9 @@ async function getWiki(species, genus) {
         `&exintro=&format=json&formatversion=2&titles=`;
 
     let speciesQuery = url + species;
-    console.log(`Attempting to query species on wiki...`)
+    console.log(`Attempting to query species (${speciesQuery}) on wiki...`)
     let speciesText = await rp.get(speciesQuery, getOpts).then(res => {
+
         let extract = res.query.pages[0].extract;
         return extract;
     }).catch((e) => {

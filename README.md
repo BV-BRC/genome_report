@@ -1,5 +1,5 @@
 # genome-report
-Server-side Generation of PATRIC Genome Reports.
+Server-side generation of PATRIC Genome Reports.
 
 ## Requirements
 
@@ -61,7 +61,7 @@ npm install --production
 
 ## Dev Notes
 
-[Handlebars](https://github.com/wycats/handlebars.js/) is used for templating (`templates/gr-template.html).  A full list of helps is available here: [handlebars-helpers](https://github.com/helpers/handlebars-helpers)
+[Handlebars](https://github.com/wycats/handlebars.js/) is used for templating (`templates/gr-template.html).  A full list of helpers is available here: [handlebars-helpers](https://github.com/helpers/handlebars-helpers)
 
 
 

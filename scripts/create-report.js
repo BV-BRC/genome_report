@@ -56,7 +56,7 @@ if (require.main === module){
     buildPdf(genomeID);
 }
 
-async function buildPdf(genomeID) {
+async function buildPdf(genomeID, includePDF) {
     let genomeDir = utils.createGenomeDir(genomeID);
     let d = await utils.readFile(`${genomeDir}/${genomeID}-data.json`, 'utf8');
     let reportData = JSON.parse(d);
@@ -79,8 +79,10 @@ async function buildPdf(genomeID) {
         console.log(`Writing html to ${htmlPath}...`);
         fs.writeFileSync(htmlPath, content);
 
-        let pdfPath = path.resolve(`${genomeDir}/genome-report.pdf`);
-        generatePdf(htmlPath, pdfPath);
+        if (includePDF) {
+            let pdfPath = path.resolve(`${genomeDir}/genome-report.pdf`);
+            generatePdf(htmlPath, pdfPath);
+        }
     });
 }
 
