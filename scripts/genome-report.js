@@ -27,14 +27,13 @@ if (require.main === module){
         console.error("\nMust provide a genome ID.\n");
         process.exit(1);
     }
-    console.log('include pdf', opts.include_pdf)
+
     genomeReport(opts.genome_id, opts.token, opts.include_pdf);
 }
 
 
 async function genomeReport(genomeID, token, includePDF) {
     // await fetchImages(genomeID);
-
     await fetchData(genomeID, token);
     await createReport(genomeID, includePDF);
 
