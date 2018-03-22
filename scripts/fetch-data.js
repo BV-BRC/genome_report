@@ -148,7 +148,7 @@ async function getWikiImage(query) {
 
 
 function getGenomeMeta(genomeID) {
-    let url = `${config.dataAPIUrl}/genome_test/?eq(genome_id,${genomeID})&select(*)`;
+    let url = `${config.dataAPIUrl}/genome/?eq(genome_id,${genomeID})&select(*)`;
 
     console.log(`fetching genome QC...`)
     return rp.get(url, getOpts).then(res => {

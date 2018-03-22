@@ -1,6 +1,0 @@
-{
-    "reportDir": "reports/",
-    "dataAPIUrl": "https://p3.theseed.org/services/data_api",
-    "wikiUrl": "https://en.wikipedia.org/w/api.php",
-    "templatePath": "templates/gr-template.html"
-}

@@ -17,12 +17,12 @@ NODE = $(DEPLOY_RUNTIME)/bin/node-v8
 export NODE
 
 DATA_API_URL = https://p3.theseed.org/services/data_api
-TEMPLATE_DIR = templates
+TEMPLATE_DIR = $(shell pwd)/templates
 DEPLOY_TEMPLATE_DIR = $(SERVICE_APP_DIR)/templates
 
 TPAGE_BUILD_ARGS =  \
 	--define kb_top=$(TARGET) \
-	--define kb_runtime=$(DEPLOY_RUNTIME)
+	--define kb_runtime=$(DEPLOY_RUNTIME) \
 	--define template_dir=$(TEMPLATE_DIR)
 
 TPAGE_DEPLOY_ARGS =  \
@@ -47,8 +47,8 @@ npm.completed: package.json
 	cd $(APP_DIR); $(NPM) install
 	touch npm.completed
 
-config.json: config.json.tt
-	$(TPAGE) $(TPAGE_BUILD_ARGS) $(TPAGE_ARGS) $^ > $@
+config.json: config.json.tt Makefile 
+	$(TPAGE) $(TPAGE_BUILD_ARGS) $(TPAGE_ARGS) $< > $@
 
 dist: 
 
