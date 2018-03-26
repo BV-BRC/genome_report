@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  *
- * create-report.js
+ * fill-template.js
  *
  * Example usage:
  *      ./create-report.js --genome_id=520456.3
@@ -42,7 +42,8 @@ const tmplData = {
 
 
 if (require.main === module){
-    opts.option('-g, --genome_id [value]', 'Genome ID to create report for.')
+    opts.option('-g, --genome_id [value]',
+        'Genome ID to create report for **assuming the necessary data is available.')
         .parse(process.argv)
 
     if (!opts.genome_id) {
@@ -53,10 +54,10 @@ if (require.main === module){
     let genomeID = opts.genome_id;
 
     // fill html template and save as pdf
-    buildPdf(genomeID);
+    buildReport(genomeID);
 }
 
-async function buildPdf(genomeID, includePDF) {
+async function buildReport(genomeID, includePDF) {
     let genomeDir = utils.createGenomeDir(genomeID);
     let d = await utils.readFile(`${genomeDir}/${genomeID}-data.json`, 'utf8');
     let reportData = JSON.parse(d);
@@ -120,5 +121,5 @@ async function generatePdf(htmlPath, outPath) {
 }
 
 
-module.exports = buildPdf;
+module.exports = buildReport;
 
