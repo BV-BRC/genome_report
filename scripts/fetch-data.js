@@ -4,8 +4,6 @@
  * fetch-data.js
  *
  * Example usage:
- *      ./fetch-data.js --genome_id=83332.12
- *
  *      ./fetch-data.js --genome_id=520456.3
  *
  *
@@ -19,17 +17,9 @@ const fs = require('fs'),
     opts = require('commander'),
     rp = require('request-promise');
 
-const utils = require('./utils');
 const config = require('../config.json');
-
-
-const getOpts = {
-    json: true,
-    headers: {
-      "content-type": "application/json",
-      "authorization": null
-    }
-}
+const utils = require('./utils');
+const reqOpts = utils.requestOpts;
 
 const tmplData = {
     meta: null,
@@ -59,7 +49,7 @@ if (require.main === module){
 
 
 async function getAllData(genomeID, token) {
-    getOpts.headers.authorization = token;
+    reqOpts.headers.authorization = token;
 
     // fetch all data
     let meta = await getGenomeMeta(genomeID);
@@ -100,7 +90,7 @@ async function getWiki(species, genus) {
 
     let speciesQuery = url + species;
     console.log(`Attempting to query species (${speciesQuery}) on wiki...`)
-    let speciesText = await rp.get(speciesQuery, getOpts).then(res => {
+    let speciesText = await rp.get(speciesQuery, reqOpts).then(res => {
 
         let extract = res.query.pages[0].extract;
         return extract;
@@ -115,7 +105,7 @@ async function getWiki(species, genus) {
     }
 
     let genusQuery = url + genus;
-    let genusText = await rp.get(genusQuery, getOpts).then(res => {
+    let genusText = await rp.get(genusQuery, reqOpts).then(res => {
         let extract = res.query.pages[0].extract;
         return extract;
     }).catch((e) => {
@@ -136,7 +126,7 @@ async function getWikiImage(query) {
         `&format=json&formatversion=2&pithumbsize=400&titles=`;
 
     let queryUrl = imageUrl + query;
-    let data = await rp.get(queryUrl, getOpts).then(res => {
+    let data = await rp.get(queryUrl, reqOpts).then(res => {
         return res.query.pages[0].thumbnail.source;
     }).catch((e) => {
         console.error(e.message);
@@ -151,7 +141,7 @@ function getGenomeMeta(genomeID) {
     let url = `${config.dataAPIUrl}/genome_test/?eq(genome_id,${genomeID})&select(*)`;
 
     console.log(`fetching genome QC...`)
-    return rp.get(url, getOpts).then(res => {
+    return rp.get(url, reqOpts).then(res => {
         return res;
     }).catch((e) => {
         console.error(e.message);
@@ -165,7 +155,7 @@ function getAnnotationMeta(genomeID) {
         `&facet((pivot,(annotation,feature_type)),(mincount,0))&http_accept=application/solr+json`;
 
     console.log(`fetching anotation meta...`)
-    return rp.get(url, getOpts).then(res => {
+    return rp.get(url, reqOpts).then(res => {
         let d = res.facet_counts.facet_pivot['annotation,feature_type'][0].pivot;
 
         let data  = d.map(o => {
@@ -187,7 +177,7 @@ function getSpecialtyGenes(genomeID) {
         `&facet((field,property_source),(mincount,1))&json(nl,map)&http_accept=application/solr+json`;
 
     console.log(`fetching specialty genes...`)
-    return rp.get(url, getOpts).then(res => {
+    return rp.get(url, reqOpts).then(res => {
         let data = res.facet_counts.facet_fields.property_source;
         data = processSpecGenes(data)
         return data;
@@ -290,7 +280,7 @@ async function getProteinFeatures(genomeID, CDS) {
 }
 
 function getPFCount(url) {
-    return rp.get(url, getOpts).then(res => {
+    return rp.get(url, reqOpts).then(res => {
         let data = res.facet_counts.facet_fields.annotation.PATRIC;
         return data;
     }).catch((e) => {
@@ -304,7 +294,7 @@ function getGenomeAMR(genomeID) {
         `&facet((pivot,(resistant_phenotype,laboratory_typing_method,antibiotic)),(mincount,1))` +
         `&json(nl,map)&http_accept=application/solr+json`;
 
-    return rp.get(url, getOpts).then(res => {
+    return rp.get(url, reqOpts).then(res => {
         let data = res.facet_counts
             .facet_pivot['resistant_phenotype,laboratory_typing_method,antibiotic'];
 
@@ -330,7 +320,7 @@ function getProteinFamily(missingCoreFamilyIDs) {
         `?in(family_id,(${missingCoreFamilyIDs.join(',')}))&sort(+family_id)&select(*)`;
 
     console.log(`fetching protein comparison...`)
-    return rp.get(url, getOpts).then(res => {
+    return rp.get(url, reqOpts).then(res => {
         let data = res.map(o => {
             return {
                 family_id: o.family_id,

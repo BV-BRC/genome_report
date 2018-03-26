@@ -20,6 +20,16 @@ const config = require('../config.json');
 const writeFile = Promise.promisify(fs.writeFile),
     readFile = Promise.promisify(fs.readFile);
 
+
+const requestOpts = {
+    json: true,
+    headers: {
+      "content-type": "application/json",
+      "authorization": null
+    }
+}
+
+
 function createGenomeDir(id) {
     let baseDir = path.resolve(`${config.reportDir}`);
 
@@ -103,5 +113,6 @@ module.exports = {
     writeFile,
     readFile,
     helpers,
-    parseToken
+    parseToken,
+    requestOpts
 }
