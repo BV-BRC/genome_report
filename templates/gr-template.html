@@ -172,10 +172,10 @@
             </p>
             <p>
                 The assembled genome has {{meta.contigs}} contigs,
-                with the total length of {{basePairs meta.genome_length}} and %GC of {{meta.gc_content}}%.
+                with the total length of ~{{basePairs meta.genome_length}} and %GC of {{meta.gc_content}}%.
             </p>
 
-            <table class="med-table kv-table-2 center-table">
+            <table class="sm-table kv-table center-table">
                 <thead class="table-header">
                     <tr>
                         <th colspan="4">
@@ -188,25 +188,35 @@
                     <tr>
                         <td>Contigs</td>
                         <td class="align-right">{{meta.contigs}}</td>
+                    </tr>
+                    <tr>
                         <td>GC Content</td>
                         <td class="align-right">{{meta.gc_content}}</td>
                     </tr>
                     <tr>
                         <td>Plasmids</td>
                         <td class="align-right">{{default meta.plasmids '-'}}</td>
+                    <tr>
+                    </tr>
                         <td>Contig L50</td>
                         <td class="align-right">{{default meta.contig_l50 '-'}}</td>
                     </tr>
                     <tr>
                         <td>Genome Length</td>
-                        <td class="align-right">{{meta.genome_length}} Bps</td>
+                        <td class="align-right">
+                            {{#if meta.genome_length}}
+                                {{addCommas meta.genome_length}} Bps
+                            {{else}} -
+                            {{/if}}
+                        </td>
+                    </tr>
+                    <tr>
                         <td>Contig N50</td>
                         <td class="align-right">{{default meta.contig_n50 '-'}}</td>
                     </tr>
                     <tr>
                         <td>Chromosomes</td>
                         <td class="align-right">{{default meta.chromosomes '-'}}</td>
-                        <td></td><td></td>
                     </tr>
                 </tbody>
             </table>
@@ -260,7 +270,10 @@
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
                     {{#annotationMeta}}
                         <tr>
-                            <td>{{name}}</td><td class="align-right">{{default count '-'}}</td>
+                            <td>{{name}}</td>
+                            <td class="align-right">
+                                {{#if count}}{{addCommas count}}{{else}}-{{/if}}
+                            </td>
                         </tr>
                     {{/annotationMeta}}
                 </tbody>
@@ -278,7 +291,10 @@
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
                     {{#proteinFeatures}}
                     <tr>
-                        <td>{{name}}</td><td class="align-right">{{default count '-'}}</td>
+                        <td>{{name}}</td>
+                        <td class="align-right">
+                            {{#if count}}{{addCommas count}}{{else}}-{{/if}}
+                        </td>
                     </tr>
                     {{/proteinFeatures}}
                 </tbody>
@@ -421,7 +437,7 @@
 
 
 
-        {{#proteinFamily}} <!-- only shown if data is available -->
+        {{#if proteinFamily}} <!-- only shown if data is available -->
         <section>
             <h2>Unique Protein Families</h2>
 
@@ -452,7 +468,7 @@
                 </tbody>
             </table>
         </section>
-        {{/proteinFamily}}
+        {{/if}}
 
     </body>
 </html>
