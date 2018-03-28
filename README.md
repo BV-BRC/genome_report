@@ -43,7 +43,7 @@ npm start
 
 ## Dev Notes
 
-[Handlebars](https://github.com/wycats/handlebars.js/) is used for templating (`templates/gr-template.html).  A full list of helpers is available here: [handlebars-helpers](https://github.com/helpers/handlebars-helpers)
+[Handlebars](https://github.com/wycats/handlebars.js/) is used for templating (`templates/gr-template.html`).  A full list of helpers is available here: [handlebars-helpers](https://github.com/helpers/handlebars-helpers)
 
 
 
