@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  *
- * fill-template.js
+ * create-report.js
  *
  * Example usage:
- *      ./create-report.js --genome_id=520456.3
+ *      ./create-report.js -i example-data/buchnera.genome.new  -o reports/test-report.html
  *
  * Author(s):
  *      nconrad
