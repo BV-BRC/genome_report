@@ -28,7 +28,8 @@ const tmplData = {
     wiki: null,
     specialtyGenes: null,
     amr: null,
-    proteinFamily: null
+    proteinFamily: null,
+    subsystemSVG: null
 }
 
 
@@ -60,6 +61,7 @@ async function getAllData(genomeID, token) {
     let proteinFeatures = await getProteinFeatures(genomeID, meta[0].cds);
     let amr = await getGenomeAMR(genomeID);
 
+
     // build master data json
     Object.assign(tmplData, {
         meta: meta[0],
@@ -73,6 +75,14 @@ async function getAllData(genomeID, token) {
 
     // create genome folder if needed
     let genomeDir = utils.createGenomeDir(genomeID);
+
+
+    // add SVGs
+    let subsystemSVG = await utils.readFile(`${genomeDir}/${genomeID}-subsystem.svg`, 'utf8');
+    Object.assign(tmplData, {
+        subsystemSVG
+    })
+
 
     // write output
     let outPath = path.resolve(`${genomeDir}/${genomeID}-data.json`);
@@ -138,9 +148,9 @@ async function getWikiImage(query) {
 
 
 function getGenomeMeta(genomeID) {
-    let url = `${config.dataAPIUrl}/genome_test/?eq(genome_id,${genomeID})&select(*)`;
+    let url = `${config.dataAPIUrl}/genome/?eq(genome_id,${genomeID})&select(*)`;
 
-    console.log(`fetching genome QC...`)
+    console.log(`fetching genome meta...`)
     return rp.get(url, reqOpts).then(res => {
         return res;
     }).catch((e) => {
@@ -332,6 +342,8 @@ function getProteinFamily(missingCoreFamilyIDs) {
         console.error(e.message);
     })
 }
+
+
 
 
 module.exports = getAllData;

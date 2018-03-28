@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  *
- * fetch-images.js
+ * fetch-svgs-from-ui.js
  *
  * Example usage:
- *      ./fetch-images.js --genome_id=520456.3
+ *      ./fetch-svgs-from-ui.js --genome_id=520456.3
  *
  * Authors:
  *      nconrad

@@ -1,0 +1,4 @@
+
+Possible Decisions to Make
+
+- How to handle assets external to report, such as images/svgs.

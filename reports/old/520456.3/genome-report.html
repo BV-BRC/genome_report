@@ -22,12 +22,6 @@
             .pull-left { float: left; }
             .pull-right { float: right; }
 
-            table {
-                margin: .1in 0;
-                border-collapse: collapse;
-                page-break-inside: avoid;
-            }
-
             table-num,
             table-ref,
             fig-num,
@@ -35,8 +29,12 @@
                 font-weight: 600;
             }
 
-            /* standard key-value table (single or 2 columns)*/
-
+            /* tables */
+            table {
+                margin: .1in 0 .5in 0;
+                border-collapse: collapse;
+                page-break-inside: avoid;
+            }
             .table-header {
                 color: #fff;
                 background: #196E9C;
@@ -103,10 +101,12 @@
                 margin-right: .2in;
             }
 
+            /*
             .subsystem-fig {
                 width: 1300px;
                 height: 600px;
             }
+            */
 
             .tree-fig {
                 width: 1200px;
@@ -136,7 +136,7 @@
             </div>
 
             <div class="report-info pull-right">
-                <span>Report Date:</span> 2018/03/18<br>
+                <span>Report Date:</span> 2018/03/26<br>
                 <span>Organism:</span> Brucella neotomae 5K33
             </div>
         </header>
@@ -159,13 +159,10 @@
 <li>Gastric fever/ram epididymitis</li>
 <li>Contagious abortion/spontaneous abortion</li>
 </ul><p></p>
-
-<p></p>
-
             <p></p>
 
             <p>
-                Brucella neotomae was first isolated in 1957 from wood rats (Neotoma lepida) in North America and  has been considered nonzoonotic. Brucella neotomae 5K33 (ATCC 23459) is the type strain and will be used for comparative analysis with other Brucella species.
+                Brucella neotomae 5K33. Brucella neotomae 5K33 (ATCC 23459) is the type strain and will be used for comparative analysis with other Brucella species. 
             </p>
         </section>
 
@@ -185,10 +182,10 @@
             </p>
             <p>
                 The assembled genome has 11 contigs,
-                with the total length of 3.33 Mbp and %GC of 57.3%.
+                with the total length of ~3.33 Mbp and %GC of 57.3%.
             </p>
 
-            <table class="med-table kv-table-2 center-table">
+            <table class="sm-table kv-table center-table">
                 <thead class="table-header">
                     <tr>
                         <th colspan="4">
@@ -201,25 +198,32 @@
                     <tr>
                         <td>Contigs</td>
                         <td class="align-right">11</td>
+                    </tr>
+                    <tr>
                         <td>GC Content</td>
                         <td class="align-right">57.3</td>
                     </tr>
                     <tr>
                         <td>Plasmids</td>
-                        <td class="align-right">0</td>
-                        <td>Contig L50</td>
-                        <td class="align-right">1</td>
+                        <td class="align-right">-</td>
+                    </tr><tr>
+                    </tr>
+                        <tr><td>Contig L50</td>
+                        <td class="align-right">-</td>
                     </tr>
                     <tr>
                         <td>Genome Length</td>
-                        <td class="align-right">3,329,623 Bps</td>
+                        <td class="align-right">
+                                3,329,623 Bps
+                                                    </td>
+                    </tr>
+                    <tr>
                         <td>Contig N50</td>
-                        <td class="align-right">1,923,503</td>
+                        <td class="align-right">-</td>
                     </tr>
                     <tr>
                         <td>Chromosomes</td>
-                        <td class="align-right">0</td>
-                        <td></td><td></td>
+                        <td class="align-right">-</td>
                     </tr>
                 </tbody>
             </table>
@@ -253,11 +257,11 @@
 
             <p>
                 The functional annotation included
-                    772 hypothetical proteins and
-                    2662 proteins with functional assignments.
+                    762 hypothetical proteins and
+                     proteins with functional assignments.
                 Furthermore,
-                    947 proteins were  assigned EC numbers and
-                    746 proteins were mapped to KEGG pathways.
+                    925 proteins were  assigned EC numbers and
+                    726 proteins were mapped to KEGG pathways.
 
                 A breakdown of the proteins that have been annotated for this isolate is provided in <table-ref>Table 3</table-ref>.
             </p>
@@ -272,19 +276,34 @@
                 <tbody>
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
                         <tr>
-                            <td>CDS</td><td class="align-right">3,434</td>
+                            <td>CDS</td>
+                            <td class="align-right">
+                                3,434
+                            </td>
                         </tr>
                         <tr>
-                            <td>tRNA</td><td class="align-right">48</td>
+                            <td>tRNA</td>
+                            <td class="align-right">
+                                48
+                            </td>
                         </tr>
                         <tr>
-                            <td>pseudogene</td><td class="align-right">23</td>
+                            <td>pseudogene</td>
+                            <td class="align-right">
+                                23
+                            </td>
                         </tr>
                         <tr>
-                            <td>rRNA</td><td class="align-right">3</td>
+                            <td>rRNA</td>
+                            <td class="align-right">
+                                3
+                            </td>
                         </tr>
                         <tr>
-                            <td>misc_RNA</td><td class="align-right">1</td>
+                            <td>misc_RNA</td>
+                            <td class="align-right">
+                                1
+                            </td>
                         </tr>
                 </tbody>
             </table>
@@ -300,25 +319,46 @@
                 <tbody>
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
                     <tr>
-                        <td>Proteins with PATRIC genus-specific family (PLfam) assignments</td><td class="align-right">3,434</td>
+                        <td>Hypothetical proteins</td>
+                        <td class="align-right">
+                            762
+                        </td>
                     </tr>
                     <tr>
-                        <td>Proteins with PATRIC cross-genus family (PGfam) assignments</td><td class="align-right">3,434</td>
+                        <td>Proteins with functional assignments</td>
+                        <td class="align-right">
+                            -
+                        </td>
                     </tr>
                     <tr>
-                        <td>Proteins with functional assignments</td><td class="align-right">2,662</td>
+                        <td>Proteins with PATRIC genus-specific family (PLfam) assignments</td>
+                        <td class="align-right">
+                            3,434
+                        </td>
                     </tr>
                     <tr>
-                        <td>Proteins with EC number assignments</td><td class="align-right">947</td>
+                        <td>Proteins with PATRIC cross-genus family (PGfam) assignments</td>
+                        <td class="align-right">
+                            3,434
+                        </td>
                     </tr>
                     <tr>
-                        <td>Proteins with GO assignments</td><td class="align-right">934</td>
+                        <td>Proteins with EC number assignments</td>
+                        <td class="align-right">
+                            925
+                        </td>
                     </tr>
                     <tr>
-                        <td>Hypothetical proteins</td><td class="align-right">772</td>
+                        <td>Proteins with GO assignments</td>
+                        <td class="align-right">
+                            903
+                        </td>
                     </tr>
                     <tr>
-                        <td>Proteins with Pathway assignments</td><td class="align-right">746</td>
+                        <td>Proteins with Pathway assignments</td>
+                        <td class="align-right">
+                            726
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -329,7 +369,7 @@
             </p>
 
             <fig-num>Figure 1</fig-num>
-            <img src="../520456.3/520456.3-circular.svg" class="circular-fig">
+            <!--<img src="../520456.3/520456.3-circular.svg" class="circular-fig" />-->
         </section>
 
 
@@ -434,8 +474,10 @@
                 is provided in <fig-ref>Figure 2</fig-ref>.
             </p>
 
-            <fig-num>Figure 2</fig-num>
-            <img src="../520456.3/520456.3-subsystem.svg" class="subsystem-fig">
+            <!--<fig-num></fig-num>-->
+            <!--<img src="../520456.3/520456.3-subsystem.svg" class="subsystem-fig" />-->
+            <svg class="pie" width="200" height="200"><g transform="translate(100,100)"><g><path d="M5.8170722959499274e-15,-95A95,95,0,0,1,52.78750584323118,78.98404412823412L0,0Z" fill="#1f77b4" style="opacity: 0.8; stroke: white;"/></g><g><path d="M52.78750584323118,78.98404412823412A95,95,0,0,1,-39.35166799454686,86.46644566562776L0,0Z" fill="#ff7f0e" style="opacity: 0.8; stroke: white;"/></g><g><path d="M-39.35166799454686,86.46644566562776A95,95,0,0,1,-87.46640078898955,37.07598593456212L0,0Z" fill="#2ca02c" style="opacity: 0.8; stroke: white;"/></g><g><path d="M-87.46640078898955,37.07598593456212A95,95,0,0,1,-94.85705848175219,-5.209458339352079L0,0Z" fill="#d62728" style="opacity: 0.8; stroke: white;"/></g><g><path d="M-94.85705848175219,-5.209458339352079A95,95,0,0,1,-85.68625123230791,-41.02275404886672L0,0Z" fill="#9467bd" style="opacity: 0.8; stroke: white;"/></g><g><path d="M-85.68625123230791,-41.02275404886672A95,95,0,0,1,-66.11804957457785,-68.21585974283154L0,0Z" fill="#8c564b" style="opacity: 0.8; stroke: white;"/></g><g><path d="M-66.11804957457785,-68.21585974283154A95,95,0,0,1,-47.47685049269493,-82.28577439201926L0,0Z" fill="#e377c2" style="opacity: 0.8; stroke: white;"/></g><g><path d="M-47.47685049269493,-82.28577439201926A95,95,0,0,1,-28.42468823400059,-90.6478742100435L0,0Z" fill="#7f7f7f" style="opacity: 0.8; stroke: white;"/></g><g><path d="M-28.42468823400059,-90.6478742100435A95,95,0,0,1,-19.113224543109517,-93.05742661155355L0,0Z" fill="#bcbd22" style="opacity: 0.8; stroke: white;"/></g><g><path d="M-19.113224543109517,-93.05742661155355A95,95,0,0,1,-11.199894756669963,-94.33749179111938L0,0Z" fill="#17becf" style="opacity: 0.8; stroke: white;"/></g><g><path d="M-11.199894756669963,-94.33749179111938A95,95,0,0,1,-4.1683195384210565,-94.90850916659484L0,0Z" fill="#1f77b4" style="opacity: 0.8; stroke: white;"/></g><g><path d="M-4.1683195384210565,-94.90850916659484A95,95,0,0,1,-1.0182816675936167e-13,-95L0,0Z" fill="#ff7f0e" style="opacity: 0.8; stroke: white;"/></g></g><g class="legend" style="margin-top: 30px;"/></svg><div class="key" style="display: flex; margin-right: 20px;"><g class="key-box" style="height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(31, 119, 180);"></g><g class="name">Metabolism (756)</g></div><div class="key" style="display: flex; margin-right: 20px;"><g class="key-box" style="height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(255, 127, 14);"></g><g class="name">Energy (301)</g></div><div class="key" style="display: flex; margin-right: 20px;"><g class="key-box" style="height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(44, 160, 44);"></g><g class="name">Protein Processing (220)</g></div><div class="key" style="display: flex; margin-right: 20px;"><g class="key-box" style="height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(214, 39, 40);"></g><g class="name">Membrane Transport (135)</g></div><div class="key" style="display: flex; margin-right: 20px;"><g class="key-box" style="height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(148, 103, 189);"></g><g class="name">Stress Response, Defense, Virulence (116)</g></div><div class="key" style="display: flex; margin-right: 20px;"><g class="key-box" style="height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(140, 86, 75);"></g><g class="name">Cellular Processes (105)</g></div><div class="key" style="display: flex; margin-right: 20px;"><g class="key-box" style="height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(227, 119, 194);"></g><g class="name">DNA Processing (73)</g></div><div class="key" style="display: flex; margin-right: 20px;"><g class="key-box" style="height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(127, 127, 127);"></g><g class="name">RNA Processing (65)</g></div><div class="key" style="display: flex; margin-right: 20px;"><g class="key-box" style="height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(188, 189, 34);"></g><g class="name">Cell Envelope (30)</g></div><div class="key" style="display: flex; margin-right: 20px;"><g class="key-box" style="height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(23, 190, 207);"></g><g class="name">Miscellaneous (25)</g></div><div class="key" style="display: flex; margin-right: 20px;"><g class="key-box" style="height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(31, 119, 180);"></g><g class="name"> (22)</g></div><div class="key" style="display: flex; margin-right: 20px;"><g class="key-box" style="height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(255, 127, 14);"></g><g class="name">Regulation And Cell Signaling (13)</g></div>
+
 
         </section>
 
@@ -467,72 +509,12 @@
 
 
             <h3>Comparison to Reference Genomes in the Same Genus</h3>
-            <fig-num>Figure 3</fig-num>
-            <img src="../520456.3/520456.3-tree.svg" class="tree-fig">
+            <fig-num>Figure 2</fig-num>
+            <!--<img src="../520456.3/520456.3-tree.svg" class="tree-fig" />-->
         </section>
 
 
-        <section>
-            <h2>Unique Protein Families</h2>
 
-            <p>
-                In <table-ref>Table 5</table-ref> we present protein families that the isolate has which
-                all reference genomes lack.
-            </p>
-
-
-            <table class="lg-table center-table">
-                <thead class="table-header">
-                    <tr>
-                        <th colspan="3"><table-num>Table 5.</table-num> Core Protein Families Missing in the Genome</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr class="row-header">
-                        <td>Protein Family ID</td>
-                        <td>Description</td>
-                    </tr>
-                    <tr>
-                        <td>PGF_00025847</td>
-                        <td>Nitrite reductase accessory protein NirV</td>
-                    </tr>
-                    <tr>
-                        <td>PGF_00194700</td>
-                        <td>hypothetical protein</td>
-                    </tr>
-                    <tr>
-                        <td>PGF_00458082</td>
-                        <td>Transposase</td>
-                    </tr>
-                    <tr>
-                        <td>PGF_00716243</td>
-                        <td>Transposase</td>
-                    </tr>
-                    <tr>
-                        <td>PGF_00734221</td>
-                        <td>Xanthine and CO dehydrogenases maturation factor, XdhC/CoxF family</td>
-                    </tr>
-                    <tr>
-                        <td>PGF_01030857</td>
-                        <td>hypothetical protein</td>
-                    </tr>
-                    <tr>
-                        <td>PGF_01030864</td>
-                        <td>hypothetical protein</td>
-                    </tr>
-                    <tr>
-                        <td>PGF_03067324</td>
-                        <td>Putative protease</td>
-                    </tr>
-                    <tr>
-                        <td>PGF_06264218</td>
-                        <td>hypothetical protein</td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </section>
-
+        
     
 </body></html>
