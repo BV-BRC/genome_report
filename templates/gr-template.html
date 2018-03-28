@@ -176,7 +176,7 @@
             </p>
             <p>
                 The assembled genome has {{meta.contigs}} contigs,
-                with the total length of ~{{basePairs meta.genome_length}} and %GC of {{meta.gc_content}}%.
+                with the total length of ~{{basePairs meta.genome_length}} and %GC of {{number meta.gc_content "0.00"}}%.
             </p>
 
             <table class="sm-table kv-table center-table">
@@ -195,7 +195,7 @@
                     </tr>
                     <tr>
                         <td>GC Content</td>
-                        <td class="align-right">{{meta.gc_content}}</td>
+                        <td class="align-right">{{number meta.gc_content "0.00" }}</td>
                     </tr>
                     <tr>
                         <td>Plasmids</td>
@@ -203,7 +203,7 @@
                     <tr>
                     </tr>
                         <td>Contig L50</td>
-                        <td class="align-right">{{default meta.contig_l50 '-'}}</td>
+                        <td class="align-right">{{default meta.genome_metrics.L50 '-'}}</td>
                     </tr>
                     <tr>
                         <td>Genome Length</td>
@@ -214,7 +214,7 @@
                     <tr>
                         <td>Contig N50</td>
                         <td class="align-right">
-                            {{addCommas meta.contig_n50 '-'}}
+                            {{addCommas meta.genome_metrics.N50 '-'}}
                         </td>
                     </tr>
                     <tr>
@@ -239,7 +239,8 @@
             </p>
 
             <div style="width: 90%;" class="center-table">
-                {{join meta.taxon_lineage_names ' > '}}
+	    	  {{#each gto.ncbi_lineage}} {{ this.[0] }} {{#unless @last }} > {{/unless }} {{/each}}
+
             </div><br>
 
             <p>

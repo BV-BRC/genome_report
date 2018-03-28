@@ -16,6 +16,7 @@ const fs = require('fs'),
     opts = require('commander'),
     handlebars = require('handlebars'),
     helpers = require('handlebars-helpers'),
+    helpers_numeral = require('handlebars.numeral'),
     utils = require('./utils'),
     cheerio = require('cheerio');
 
@@ -27,6 +28,9 @@ const pdfMargin = '35px';
 helpers.array();
 helpers.number();
 helpers.comparison();
+
+helpers_numeral.registerHelpers(handlebars);
+
 utils.helpers(handlebars);
 
 
@@ -77,6 +81,7 @@ async function buildReport(input, output) {
     meta.genome_name = data.scientific_name;
     Object.assign(tmplData, {
         meta: meta,
+        gto: data,
         annotationMeta: parseFeatureSummary(meta.feature_summary),
         proteinFeatures: parseProteinFeatures(meta.protein_summary),
         specialtyGenes: parseSpecGenes(meta.specialty_gene_summary),

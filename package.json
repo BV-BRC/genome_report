@@ -25,6 +25,7 @@
     "d3": "5.0.0",
     "handlebars": "4.0.11",
     "handlebars-helpers": "0.10.0",
+    "handlebars.numeral": "0.2.0",
     "jsdom": "11.6.2",
     "puppeteer": "1.1.1",
     "request": "2.83.0",
