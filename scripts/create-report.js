@@ -28,6 +28,7 @@ const templatePath = path.resolve(`${config.templatePath}`);
 helpers.array();
 helpers.number();
 helpers.comparison();
+
 utils.helpers(handlebars);
 
 
@@ -80,7 +81,8 @@ async function buildReport(input, output) {
     let meta = data.genome_quality_measure;
     meta.genome_name = data.scientific_name;
     Object.assign(tmplData, {
-        meta,
+        meta: meta,
+        gto: data,
         annotationMeta: parseFeatureSummary(meta.feature_summary),
         proteinFeatures: parseProteinFeatures(meta.protein_summary),
         specialtyGenes: parseSpecGenes(meta.specialty_gene_summary),
