@@ -1,0 +1,6 @@
+{
+    "reportDir": "reports/",
+    "dataAPIUrl": "https://p3.theseed.org/services/data_api",
+    "wikiUrl": "https://en.wikipedia.org/w/api.php",
+    "templatePath": "/homes/olson/P3/dev-binning/dev_container/modules/genome_report/templates/gr-template.html"
+}

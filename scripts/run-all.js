@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- *
  * genome-report.js
+ * Main script to create svgs, fetch data, and produce report.
  *
  * Example usage:
- *      ./generate-report.js --genome_id=520456.3
+ *      ./run-all.js --g 520456.3
  *
  * Authors:
  *      nconrad
@@ -12,7 +12,7 @@
 */
 const opts = require('commander');
 
-const fetchImages = require('./fetch-images');
+const subsysChart = require('./create-subsystem-chart');
 const fetchData = require('./fetch-data');
 const createReport = require('./create-report');
 
@@ -33,7 +33,9 @@ if (require.main === module){
 
 
 async function genomeReport(genomeID, token, includePDF) {
-    // await fetchImages(genomeID);
+    await subsysChart(genomeID, token);
+    console.log('created subsystem svg.')
+
     await fetchData(genomeID, token);
     await createReport(genomeID, includePDF);
 

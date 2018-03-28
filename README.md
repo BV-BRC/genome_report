@@ -13,43 +13,6 @@ cd genome_report
 npm install
 ```
 
-## Development
-
-Serve the template and listen for changes with
-
-```
-npm start
-```
-
-## Usage
-
-##### Fetch all assets/data and generate html/pdf
-
-```
-node scripts/genome-report.js --genome_id=520456.3
-```
-
-
-##### To run scripts individually
-
-Fetch images and write to `reports/{genome-id}/`
-
-```
-node scripts/fetch-images.js --genome_id=520456.3
-```
-
-Fetch data and write to `reports/{genome-id}/`
-
-```
-node scripts/fetch-data.js --genome_id=520456.3
-```
-
-Generate and write html/pdf to `reports/{genome-id}/`
-
-```
-node scripts/create-report.js --genome_id=520456.3
-```
-
 ## Prod Installation
 
 The following will not install any dev dependencies
@@ -59,9 +22,28 @@ npm install --production
 ```
 
 
+## Usage
+
+Create html report given GTO (Genome Typed Object)
+
+```
+./create-report.js -i example-data/buchnera.genome.new  -o reports/test-report.html
+```
+
+
+## Development
+
+Serve the template and listen for changes with
+
+```
+npm start
+```
+
+
+
 ## Dev Notes
 
-[Handlebars](https://github.com/wycats/handlebars.js/) is used for templating (`templates/gr-template.html).  A full list of helpers is available here: [handlebars-helpers](https://github.com/helpers/handlebars-helpers)
+[Handlebars](https://github.com/wycats/handlebars.js/) is used for templating (`templates/gr-template.html`).  A full list of helpers is available here: [handlebars-helpers](https://github.com/helpers/handlebars-helpers)
 
 
 

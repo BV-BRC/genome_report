@@ -20,8 +20,18 @@ const config = require('../config.json');
 const writeFile = Promise.promisify(fs.writeFile),
     readFile = Promise.promisify(fs.readFile);
 
+
+const requestOpts = {
+    json: true,
+    headers: {
+      "content-type": "application/json",
+      "authorization": null
+    }
+}
+
+
 function createGenomeDir(id) {
-    let baseDir = path.resolve(`${config.reportDir}`);
+    let baseDir = path.resolve(`${config.defaultReportDir}`);
 
     // create reports directory if needed
     if (!fs.existsSync(baseDir)){
@@ -75,13 +85,22 @@ function helpers(handlebars) {
 
     // returns specified value (given key) from list of objects
     // if name in object matches "match"
-    handlebars.registerHelper('get', function(key, match, objs) {
+    handlebars.registerHelper('get', function(key, match, objs, defaultStr) {
+        if (!objs) return defaultStr || '-';
+
         return objs.filter(o => o.name === match)[0][key];
     })
 
 
     handlebars.registerHelper('default', function(item, str) {
         return item ? item : str;
+    })
+
+    // modify helpers version
+    handlebars.registerHelper('addCommas', function(num, defaultStr) {
+        if (!num) return defaultStr || '-';
+
+        return num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
     })
 }
 
@@ -103,5 +122,6 @@ module.exports = {
     writeFile,
     readFile,
     helpers,
-    parseToken
+    parseToken,
+    requestOpts
 }

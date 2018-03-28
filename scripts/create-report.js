@@ -4,7 +4,7 @@
  * create-report.js
  *
  * Example usage:
- *      ./create-report.js --genome_id=520456.3
+ *      ./create-report.js -i example-data/buchnera.genome.new  -o reports/test-report.html
  *
  * Author(s):
  *      nconrad
@@ -14,7 +14,6 @@ const fs = require('fs'),
     path = require('path'),
     process = require('process'),
     opts = require('commander'),
-    //puppeteer = require('puppeteer'),
     handlebars = require('handlebars'),
     helpers = require('handlebars-helpers'),
     utils = require('./utils'),
@@ -27,42 +26,62 @@ const pdfMargin = '35px';
 // load template helpers
 helpers.array();
 helpers.number();
+helpers.comparison();
 utils.helpers(handlebars);
 
 
 
 // template data to be used
 const tmplData = {
-    author: {
-        name: 'nconrad'
-    },
     reportDate: new Date().toJSON().slice(0,10).replace(/-/g,'/')
 }
 
 
-
 if (require.main === module){
-    opts.option('-g, --genome_id [value]', 'Genome ID to create report for.')
+    opts.option('-i, --input [value] Path of input data for which report will be built \n\t\t\t' +
+                'a Genome Typed Object)')
+        .option('-o, --output [value] Path to write resulting html output')
         .parse(process.argv)
 
-    if (!opts.genome_id) {
-        console.error("\nMust provide a genome ID.\n");
-        process.exit(1);
+
+    if (!opts.input) {
+        console.error("\nMust provide path '-i' to data (genome typed object)\n");
+        opts.outputHelp();
+        return 1;
     }
 
-    let genomeID = opts.genome_id;
+    if (!opts.output) {
+        console.error("\nMust provide output path '-o' for html report\n");
+        opts.outputHelp();
+        return 1;
+    }
 
-    // fill html template and save as pdf
-    buildPdf(genomeID);
+    // fill html template and write html
+    buildReport(opts.input, opts.output);
 }
 
-async function buildPdf(genomeID, includePDF) {
-    let genomeDir = utils.createGenomeDir(genomeID);
-    let d = await utils.readFile(`${genomeDir}/${genomeID}-data.json`, 'utf8');
-    let reportData = JSON.parse(d);
+async function buildReport(input, output) {
+
+    console.log('Loading Genome Typed Object...');
+    let d, data;
+    try {
+        d = await utils.readFile(`${input}`, 'utf8');
+        data = JSON.parse(d);
+    } catch(e) {
+        console.error('\x1b[31m', '\nCould not read GTO!\n', '\x1b[0m', e)
+        return 1;
+    }
 
     // merge in report data
-    Object.assign(tmplData, reportData);
+    let meta = data.genome_quality_measure;
+    meta.genome_name = data.scientific_name;
+    Object.assign(tmplData, {
+        meta: meta,
+        annotationMeta: parseFeatureSummary(meta.feature_summary),
+        proteinFeatures: parseProteinFeatures(meta.protein_summary),
+        specialtyGenes: parseSpecGenes(meta.specialty_gene_summary),
+    } );
+
 
     console.log('Reading template...')
     fs.readFile(templatePath, (err, source) => {
@@ -75,16 +94,12 @@ async function buildPdf(genomeID, includePDF) {
         console.log('Adding table/figure numbers...')
         content = addTableNumbers(content);
 
-        let htmlPath = path.resolve(`${genomeDir}/genome-report.html`);
+        let htmlPath = path.resolve(output);
         console.log(`Writing html to ${htmlPath}...`);
         fs.writeFileSync(htmlPath, content);
-
-        if (includePDF) {
-            let pdfPath = path.resolve(`${genomeDir}/genome-report.pdf`);
-            generatePdf(htmlPath, pdfPath);
-        }
     });
 }
+
 
 
 
@@ -101,24 +116,70 @@ function addTableNumbers(content) {
 }
 
 
-async function generatePdf(htmlPath, outPath) {
-    let browser = await puppeteer.launch({ headless: true } );
-    let page = await browser.newPage();
-    await page.goto(`file://${htmlPath}`, {waitUntil: 'networkidle2'});
+function parseSpecGenes(data) {
+    let rows = [];
+    for (let key in data) {
+        rows.push({
+            type: key.split(':')[0],
+            source: key.split(':')[1].trim(),
+            genes: data[key]
+        })
+    }
 
-    console.log(`Generating pdf ${outPath}...`)
-    await page.pdf({path: outPath, format: 'letter',
-        margin: {
-            top: pdfMargin,
-            left: pdfMargin,
-            right: pdfMargin,
-            bottom: pdfMargin
-        },
-        printBackground: true
-    });
-    await browser.close();
+    rows.sort((a, b) => b.genes - a.genes);
+
+    return rows;
 }
 
 
-module.exports = buildPdf;
+function parseFeatureSummary(obj) {
+     let data = [{
+        name: "CDS",
+        count: obj.cds,
+    }, {
+        name: "rRNA",
+        count: obj.rRNA
+    }, {
+        name: "tRNA",
+        count: obj.tRNA
+    }]
+
+    // dsc order
+    data.sort((a, b) => b.count - a.count);
+
+    return data;
+}
+
+function parseProteinFeatures(obj) {
+    let data = [{
+        name: "Hypothetical proteins",
+        count: obj.hypothetical
+    }, {
+        name: "Proteins with functional assignments",
+        count: obj.function_assignment,
+    }, {
+        name: "Proteins with EC number assignments",
+        count: obj.ec_assignment
+    }, {
+        name: "Proteins with GO assignments",
+        count: obj.go_assignment
+    }, {
+        name: "Proteins with Pathway assignments",
+        count: obj.pathway_assignment
+    }, /*{
+        name: "Proteins with PATRIC genus-specific family (PLfam) assignments",
+        count: obj.pgfam_assignment
+    },*/ {
+        name: "Proteins with PATRIC cross-genus family (PGfam) assignments",
+        count: obj.pgfam_assignment
+    }]
+
+    // dsc order
+    data.sort((a, b) => b.count - a.count);
+
+    return data;
+}
+
+
+module.exports = buildReport;
 

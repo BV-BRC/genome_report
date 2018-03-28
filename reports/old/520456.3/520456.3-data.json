@@ -1,0 +1,195 @@
+{
+    "meta": {
+        "plasmids": 0,
+        "contigs": 11,
+        "sequences": 11,
+        "common_name": "Brucella_neotomae_5K33",
+        "temperature_range": "Mesophilic",
+        "oxygen_requirement": "Aerobic",
+        "owner": "PATRIC",
+        "completion_date": "2009-02-18T00:00:00Z",
+        "genome_id": "520456.3",
+        "genome_status": "WGS",
+        "strain": "5K33",
+        "motility": "No",
+        "patric_cds": 3434,
+        "sporulation": "No",
+        "gc_content": 57.3,
+        "refseq_cds": 3217,
+        "culture_collection": "ATCC 23459",
+        "gram_stain": "-",
+        "ncbi_project_id": "33567",
+        "disease": [
+            "Brucellosis"
+        ],
+        "sequencing_depth": "36.42x",
+        "organism_name": "Brucella neotomae 5K33",
+        "genome_name": "Brucella neotomae 5K33",
+        "sequencing_centers": "Broad Institute",
+        "genome_length": 3329623,
+        "cell_shape": "Coccobacillus",
+        "comments": [
+            "Brucella neotomae 5K33. Brucella neotomae 5K33 (ATCC 23459) is the type strain and will be used for comparative analysis with other Brucella species. "
+        ],
+        "genbank_accessions": "ACEH00000000",
+        "refseq_project_id": "55801",
+        "optimal_temperature": "-",
+        "public": true,
+        "sequencing_status": "assembly",
+        "brc1_cds": 0,
+        "p2_genome_id": 114381,
+        "type_strain": "Yes",
+        "refseq_accessions": "NZ_ACEH00000000",
+        "sequencing_platform": "454",
+        "chromosomes": 0,
+        "taxon_id": 520456,
+        "habitat": "Host-associated",
+        "taxon_lineage_ids": [
+            "131567",
+            "2",
+            "1224",
+            "28211",
+            "356",
+            "118882",
+            "234",
+            "29460",
+            "520456"
+        ],
+        "taxon_lineage_names": [
+            "cellular organisms",
+            "Bacteria",
+            "Proteobacteria",
+            "Alphaproteobacteria",
+            "Rhizobiales",
+            "Brucellaceae",
+            "Brucella",
+            "Brucella neotomae",
+            "Brucella neotomae 5K33"
+        ],
+        "phylum": "Proteobacteria",
+        "order": "Rhizobiales",
+        "genus": "Brucella",
+        "species": "Brucella neotomae",
+        "kingdom": "Bacteria",
+        "class": "Alphaproteobacteria",
+        "family": "Brucellaceae",
+        "date_inserted": "2014-12-08T22:10:39.671Z",
+        "date_modified": "2015-03-16T03:17:09.594Z",
+        "reference_genome": "Representative",
+        "bioproject_accession": "PRJNA33567",
+        "document_type": "genome",
+        "assembly_accession": "GCA_000158715.1",
+        "_version_": 1585509101794754600
+    },
+    "annotationMeta": [
+        {
+            "name": "CDS",
+            "count": 3434
+        },
+        {
+            "name": "tRNA",
+            "count": 48
+        },
+        {
+            "name": "pseudogene",
+            "count": 23
+        },
+        {
+            "name": "rRNA",
+            "count": 3
+        },
+        {
+            "name": "misc_RNA",
+            "count": 1
+        }
+    ],
+    "proteinFeatures": [
+        {
+            "name": "Hypothetical proteins",
+            "count": 762
+        },
+        {
+            "name": "Proteins with functional assignments",
+            "count": null
+        },
+        {
+            "name": "Proteins with PATRIC genus-specific family (PLfam) assignments",
+            "count": 3434
+        },
+        {
+            "name": "Proteins with PATRIC cross-genus family (PGfam) assignments",
+            "count": 3434
+        },
+        {
+            "name": "Proteins with EC number assignments",
+            "count": 925
+        },
+        {
+            "name": "Proteins with GO assignments",
+            "count": 903
+        },
+        {
+            "name": "Proteins with Pathway assignments",
+            "count": 726
+        }
+    ],
+    "wiki": {
+        "text": "<p><i><b>Brucella</b></i> is a genus of Gram-negative bacteria, named after David Bruce (1855–1931). They are small (0.5 to 0.7 by 0.6 to 1.5 µm), nonencapsulated, nonmotile, facultatively intracellular coccobacilli.</p>\n<p><i>Brucella</i> is the cause of brucellosis, which is a zoonosis transmitted by ingesting contaminated food (such as unpasteurized milk products), direct contact with an infected animal, or inhalation of aerosols. Transmission from human to human, for example through sexual intercourse or from mother to child, is exceedingly rare, but possible. Minimum infectious exposure is between 10 and 100 organisms.</p>\n<p>The different species of <i>Brucella</i> are genetically very similar, although each has a slightly different host specificity. Hence, the NCBI taxonomy includes most <i>Brucella</i> species under <i>B. melitensis</i>.</p>\n<p>The many names of brucellosis include (human disease/animal disease):</p>\n<ul><li>Malta fever/Bang's disease</li>\n<li>Undulant fever/enzootic abortion</li>\n<li>Mediterranean fever/epizootic abortion</li>\n<li>Rock fever of Gibraltar/slinking of calves</li>\n<li>Gastric fever/ram epididymitis</li>\n<li>Contagious abortion/spontaneous abortion</li>\n</ul><p></p>",
+        "imageSource": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Brucella_melitensis.jpg/400px-Brucella_melitensis.jpg"
+    },
+    "specialtyGenes": [
+        {
+            "type": "Essential Gene",
+            "source": "PATRIC",
+            "genes": 224
+        },
+        {
+            "type": "Virulence Factor",
+            "source": "Victors",
+            "genes": 224
+        },
+        {
+            "type": "Human Homolog",
+            "source": "Human",
+            "genes": 79
+        },
+        {
+            "type": "Virulence Factor",
+            "source": "VFDB",
+            "genes": 44
+        },
+        {
+            "type": "Transporter",
+            "source": "TCDB",
+            "genes": 25
+        },
+        {
+            "type": "Antibiotic Resistance",
+            "source": "PATRIC",
+            "genes": 11
+        },
+        {
+            "type": "Drug Target",
+            "source": "DrugBank",
+            "genes": 4
+        },
+        {
+            "type": "Antibiotic Resistance",
+            "source": "CARD",
+            "genes": 3
+        },
+        {
+            "type": "Drug Target",
+            "source": "TTD",
+            "genes": 1
+        },
+        {
+            "type": "Virulence Factor",
+            "source": "PATRIC_VF",
+            "genes": 1
+        }
+    ],
+    "amr": null,
+    "proteinFamily": null,
+    "subsystemSVG": "<svg class=\"pie\" width=\"200\" height=\"200\"><g transform=\"translate(100,100)\"><g><path d=\"M5.8170722959499274e-15,-95A95,95,0,0,1,52.78750584323118,78.98404412823412L0,0Z\" fill=\"#1f77b4\" style=\"opacity: 0.8; stroke: white;\"></path></g><g><path d=\"M52.78750584323118,78.98404412823412A95,95,0,0,1,-39.35166799454686,86.46644566562776L0,0Z\" fill=\"#ff7f0e\" style=\"opacity: 0.8; stroke: white;\"></path></g><g><path d=\"M-39.35166799454686,86.46644566562776A95,95,0,0,1,-87.46640078898955,37.07598593456212L0,0Z\" fill=\"#2ca02c\" style=\"opacity: 0.8; stroke: white;\"></path></g><g><path d=\"M-87.46640078898955,37.07598593456212A95,95,0,0,1,-94.85705848175219,-5.209458339352079L0,0Z\" fill=\"#d62728\" style=\"opacity: 0.8; stroke: white;\"></path></g><g><path d=\"M-94.85705848175219,-5.209458339352079A95,95,0,0,1,-85.68625123230791,-41.02275404886672L0,0Z\" fill=\"#9467bd\" style=\"opacity: 0.8; stroke: white;\"></path></g><g><path d=\"M-85.68625123230791,-41.02275404886672A95,95,0,0,1,-66.11804957457785,-68.21585974283154L0,0Z\" fill=\"#8c564b\" style=\"opacity: 0.8; stroke: white;\"></path></g><g><path d=\"M-66.11804957457785,-68.21585974283154A95,95,0,0,1,-47.47685049269493,-82.28577439201926L0,0Z\" fill=\"#e377c2\" style=\"opacity: 0.8; stroke: white;\"></path></g><g><path d=\"M-47.47685049269493,-82.28577439201926A95,95,0,0,1,-28.42468823400059,-90.6478742100435L0,0Z\" fill=\"#7f7f7f\" style=\"opacity: 0.8; stroke: white;\"></path></g><g><path d=\"M-28.42468823400059,-90.6478742100435A95,95,0,0,1,-19.113224543109517,-93.05742661155355L0,0Z\" fill=\"#bcbd22\" style=\"opacity: 0.8; stroke: white;\"></path></g><g><path d=\"M-19.113224543109517,-93.05742661155355A95,95,0,0,1,-11.199894756669963,-94.33749179111938L0,0Z\" fill=\"#17becf\" style=\"opacity: 0.8; stroke: white;\"></path></g><g><path d=\"M-11.199894756669963,-94.33749179111938A95,95,0,0,1,-4.1683195384210565,-94.90850916659484L0,0Z\" fill=\"#1f77b4\" style=\"opacity: 0.8; stroke: white;\"></path></g><g><path d=\"M-4.1683195384210565,-94.90850916659484A95,95,0,0,1,-1.0182816675936167e-13,-95L0,0Z\" fill=\"#ff7f0e\" style=\"opacity: 0.8; stroke: white;\"></path></g></g><g class=\"legend\" style=\"margin-top: 30px;\"><div class=\"key\" style=\"display: flex; margin-right: 20px;\"><g class=\"key-box\" style=\"height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(31, 119, 180);\"></g><g class=\"name\">Metabolism (756)</g></div><div class=\"key\" style=\"display: flex; margin-right: 20px;\"><g class=\"key-box\" style=\"height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(255, 127, 14);\"></g><g class=\"name\">Energy (301)</g></div><div class=\"key\" style=\"display: flex; margin-right: 20px;\"><g class=\"key-box\" style=\"height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(44, 160, 44);\"></g><g class=\"name\">Protein Processing (220)</g></div><div class=\"key\" style=\"display: flex; margin-right: 20px;\"><g class=\"key-box\" style=\"height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(214, 39, 40);\"></g><g class=\"name\">Membrane Transport (135)</g></div><div class=\"key\" style=\"display: flex; margin-right: 20px;\"><g class=\"key-box\" style=\"height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(148, 103, 189);\"></g><g class=\"name\">Stress Response, Defense, Virulence (116)</g></div><div class=\"key\" style=\"display: flex; margin-right: 20px;\"><g class=\"key-box\" style=\"height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(140, 86, 75);\"></g><g class=\"name\">Cellular Processes (105)</g></div><div class=\"key\" style=\"display: flex; margin-right: 20px;\"><g class=\"key-box\" style=\"height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(227, 119, 194);\"></g><g class=\"name\">DNA Processing (73)</g></div><div class=\"key\" style=\"display: flex; margin-right: 20px;\"><g class=\"key-box\" style=\"height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(127, 127, 127);\"></g><g class=\"name\">RNA Processing (65)</g></div><div class=\"key\" style=\"display: flex; margin-right: 20px;\"><g class=\"key-box\" style=\"height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(188, 189, 34);\"></g><g class=\"name\">Cell Envelope (30)</g></div><div class=\"key\" style=\"display: flex; margin-right: 20px;\"><g class=\"key-box\" style=\"height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(23, 190, 207);\"></g><g class=\"name\">Miscellaneous (25)</g></div><div class=\"key\" style=\"display: flex; margin-right: 20px;\"><g class=\"key-box\" style=\"height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(31, 119, 180);\"></g><g class=\"name\"> (22)</g></div><div class=\"key\" style=\"display: flex; margin-right: 20px;\"><g class=\"key-box\" style=\"height: 12px; width: 12px; margin: 3px 5px 5px 5px; background-color: rgb(255, 127, 14);\"></g><g class=\"name\">Regulation And Cell Signaling (13)</g></div></g></svg>"
+}
