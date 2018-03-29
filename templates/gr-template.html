@@ -175,8 +175,9 @@
                 Also add reference to QUAST. ARAST ranked the Spades assembly best (<table-ref></table-ref>).
             </p>
             <p>
-                The assembled genome has {{meta.contigs}} contigs,
-                with the total length of ~{{basePairs meta.genome_length}} and %GC of {{meta.gc_content}}%.
+                The assembled genome has {{addCommas meta.contigs 0}} contigs,
+                with the total length of ~{{basePairs meta.genome_length}} and %GC of
+                {{default (toFixed meta.gc_content 2) 0}}%.
             </p>
 
             <table class="sm-table kv-table center-table">
@@ -191,35 +192,35 @@
                 <tbody>
                     <tr>
                         <td>Contigs</td>
-                        <td class="align-right">{{meta.contigs}}</td>
+                        <td class="align-right">{{addCommas meta.contigs 0}}</td>
                     </tr>
                     <tr>
                         <td>GC Content</td>
-                        <td class="align-right">{{meta.gc_content}}</td>
+                        <td class="align-right">{{default (toFixed meta.gc_content 2) 0}}</td>
                     </tr>
                     <tr>
                         <td>Plasmids</td>
-                        <td class="align-right">{{default meta.plasmids '-'}}</td>
+                        <td class="align-right">{{addCommas meta.plasmids 0}}</td>
                     <tr>
                     </tr>
                         <td>Contig L50</td>
-                        <td class="align-right">{{default meta.contig_l50 '-'}}</td>
+                        <td class="align-right">{{addCommas meta.contig_l50 0}}</td>
                     </tr>
                     <tr>
                         <td>Genome Length</td>
                         <td class="align-right">
-                            {{addCommas meta.genome_length '-'}} Bps
+                            {{addCommas meta.genome_length 0}} Bps
                         </td>
                     </tr>
                     <tr>
                         <td>Contig N50</td>
                         <td class="align-right">
-                            {{addCommas meta.contig_n50 '-'}}
+                            {{addCommas meta.contig_n50 0}}
                         </td>
                     </tr>
                     <tr>
                         <td>Chromosomes</td>
-                        <td class="align-right">{{default meta.chromosomes '-'}}</td>
+                        <td class="align-right">{{addCommas meta.chromosomes 0}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -244,20 +245,20 @@
 
             <p>
                 The annotations includes
-                    {{get 'count' 'CDS' annotationMeta}} CDS,
-                    {{get 'count' 'tRNA' annotationMeta}} tRNAs and
-                    {{get 'count' 'rRNA' annotationMeta}} rRNAs.
+                    {{addCommas (get 'count' 'CDS' annotationMeta) 0}} CDS,
+                    {{addCommas (get 'count' 'tRNA' annotationMeta) 0}} tRNAs and
+                    {{addCommas (get 'count' 'rRNA' annotationMeta) 0}} rRNAs.
 
                 All annotated genome features for this genome are summarized in <table-ref></table-ref>.
             </p>
 
             <p>
                 The functional annotation included
-                    {{get 'count' 'Hypothetical proteins' proteinFeatures}} hypothetical proteins and
-                    {{get 'count' 'Proteins with functional assignments' proteinFeatures}} proteins with functional assignments.
+                    {{addCommas (get 'count' 'Hypothetical proteins' proteinFeatures) 0}} hypothetical proteins and
+                    {{addCommas (get 'count' 'Proteins with functional assignments' proteinFeatures) 0}} proteins with functional assignments.
                 Furthermore,
-                    {{get 'count' 'Proteins with EC number assignments' proteinFeatures}} proteins were assigned EC numbers and
-                    {{get 'count' 'Proteins with Pathway assignments' proteinFeatures}} proteins were mapped to KEGG pathways.
+                    {{addCommas (get 'count' 'Proteins with EC number assignments' proteinFeatures) 0}} proteins were assigned EC numbers and
+                    {{addCommas (get 'count' 'Proteins with Pathway assignments' proteinFeatures) 0}} proteins were mapped to KEGG pathways.
 
                 A breakdown of the proteins that have been annotated for this isolate is provided in <table-ref></table-ref>.
             </p>
@@ -271,14 +272,14 @@
 
                 <tbody>
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
-                    {{#annotationMeta}}
+                    {{#each annotationMeta}}
                         <tr>
                             <td>{{name}}</td>
                             <td class="align-right">
-                                {{addCommas count}}
+                                {{addCommas count 0}}
                             </td>
                         </tr>
-                    {{/annotationMeta}}
+                    {{/each}}
                 </tbody>
             </table>
 
@@ -292,14 +293,14 @@
 
                 <tbody>
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
-                    {{#proteinFeatures}}
+                    {{#each proteinFeatures}}
                     <tr>
                         <td>{{name}}</td>
                         <td class="align-right">
-                            {{addCommas count}}
+                            {{addCommas count 0}}
                         </td>
                     </tr>
-                    {{/proteinFeatures}}
+                    {{/each}}
                 </tbody>
             </table>
 
@@ -350,13 +351,13 @@
                         <td>Source</td>
                         <td class="align-right">Genes</td>
                     </tr>
-                    {{#specialtyGenes}}
+                    {{#each specialtyGenes}}
                     <tr>
                         <td>{{type}}</td>
                         <td>{{source}}</td>
-                        <td class="align-right">{{genes}}</td>
+                        <td class="align-right">{{addCommas genes 0}}</td>
                     </tr>
-                    {{/specialtyGenes}}
+                    {{/each}}
                 </tbody>
             </table>
         </section>

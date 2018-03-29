@@ -4,7 +4,7 @@
  * create-report.js
  *
  * Example usage:
- *      ./create-report.js -i example-data/buchnera.genome.new  -o reports/test-report.html
+ *      ./create-report.js -i example-data/bin2.1.genome  -o reports/test-report.html
  *
  * Author(s):
  *      nconrad
@@ -95,7 +95,7 @@ async function buildReport(input, output) {
         content = addTableNumbers(content);
 
         let htmlPath = path.resolve(output);
-        console.log(`Writing html to ${htmlPath}...`);
+        console.log(`Writing html to: ${htmlPath}...`);
         fs.writeFileSync(htmlPath, content);
     });
 }
@@ -132,17 +132,28 @@ function parseSpecGenes(data) {
 }
 
 
+// https://github.com/olsonanl/genome_annotation/blob/master/GenomeAnnotation.spec#L242
 function parseFeatureSummary(obj) {
-     let data = [{
+    let data = [{
         name: "CDS",
         count: obj.cds,
+    }, {
+        name: "Partial CDS",
+        count: obj.partial_cds
     }, {
         name: "rRNA",
         count: obj.rRNA
     }, {
         name: "tRNA",
         count: obj.tRNA
+    }, {
+        name: "Miscellaneous RNA",
+        count: obj.miscRNA
+    }, {
+        name: "Repeat Regions",
+        count: obj.repeat_region
     }]
+
 
     // dsc order
     data.sort((a, b) => b.count - a.count);
@@ -166,10 +177,10 @@ function parseProteinFeatures(obj) {
     }, {
         name: "Proteins with Pathway assignments",
         count: obj.pathway_assignment
-    }, /*{
+    }, {
         name: "Proteins with PATRIC genus-specific family (PLfam) assignments",
-        count: obj.pgfam_assignment
-    },*/ {
+        count: obj.plfam_assignment
+    }, {
         name: "Proteins with PATRIC cross-genus family (PGfam) assignments",
         count: obj.pgfam_assignment
     }]

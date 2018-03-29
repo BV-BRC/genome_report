@@ -27,7 +27,7 @@ npm install --production
 Create html report given GTO (Genome Typed Object)
 
 ```
-./create-report.js -i example-data/buchnera.genome.new  -o reports/test-report.html
+./create-report.js -i example-data/bin2.1.genome  -o reports/test-report.html
 ```
 
 
