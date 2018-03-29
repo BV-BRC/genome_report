@@ -3,7 +3,7 @@
  *
  * utils.js
  *
- * Utitilty functions for genome-report file organization and such.
+ * Utility functions for genome-report file organization and such.
  *
  * Author(s):
  *      nconrad
@@ -54,7 +54,7 @@ function createGenomeDir(id) {
 function helpers(handlebars) {
 
     // helper to format base pairs to Bps, Kbps, etc.
-    handlebars.registerHelper('basePairs', function(number, precision, options) {
+    handlebars.registerHelper('basePairs', function(number, precision) {
         if (number == null) return '0 Bp';
 
         if (isNaN(number)) {
