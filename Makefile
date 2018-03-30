@@ -9,7 +9,7 @@ SERVICE_DIR  = $(SERVICE_NAME)
 SERVICE_APP_DIR      = $(TARGET)/lib/$(SERVICE_NAME)
 
 APP_DIR = .
-APP_COMPONENTS = config.json fonts node_modules scripts templates
+APP_COMPONENTS = config.json node_modules scripts templates
 
 PATH := $(DEPLOY_RUNTIME)/build-tools/bin:$(PATH)
 NPM = $(DEPLOY_RUNTIME)/bin/npm-v8
@@ -64,7 +64,7 @@ deploy-service:
 
 deploy-app: build-app 
 	-mkdir $(SERVICE_APP_DIR)
-	cd $(APP_DIR); rsync --delete -arv $(APP_COMPONENTS) $(SERVICE_APP_DIR)
+	cd $(APP_DIR); rsync --delete -ar $(APP_COMPONENTS) $(SERVICE_APP_DIR)
 	$(TPAGE) $(TPAGE_DEPLOY_ARGS) $(TPAGE_ARGS) config.json.tt > $(SERVICE_APP_DIR)/config.json
 
 deploy-docs:
