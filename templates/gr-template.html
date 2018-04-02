@@ -75,7 +75,7 @@
             .sm-table { width: 40%; }
             .xs-table {width: 20%; }
 
-            .center-table { margin-left: auto; margin-right: auto; }
+            .center { margin-left: auto; margin-right: auto; }
 
             .logo {
                 width: 3in;
@@ -103,12 +103,9 @@
                 margin-right: .2in;
             }
 
-            /*
             .subsystem-fig {
-                width: 1300px;
-                height: 600px;
+                width: 8in;
             }
-            */
 
             .tree-fig {
                 width: 1200px;
@@ -180,7 +177,7 @@
                 {{default (toFixed meta.gc_content 2) 0}}%.
             </p>
 
-            <table class="sm-table kv-table center-table">
+            <table class="sm-table kv-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="4">
@@ -239,7 +236,7 @@
                 The Genetic code was 11.  The taxonomy of {{meta.genome_name}} is:
             </p>
 
-            <div style="width: 90%;" class="center-table">
+            <div style="width: 90%;" class="center">
                 {{join meta.taxon_lineage_names ' > '}}
             </div><br>
 
@@ -263,7 +260,7 @@
                 A breakdown of the proteins that have been annotated for this isolate is provided in <table-ref></table-ref>.
             </p>
 
-            <table class="sm-table kv-table center-table">
+            <table class="sm-table kv-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="2"><table-num></table-num> Annotated Genome Features</th>
@@ -284,7 +281,7 @@
             </table>
 
 
-            <table class="med-table kv-table center-table">
+            <table class="med-table kv-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="2"><table-num></table-num> Protein Features</th>
@@ -338,7 +335,7 @@
                 the sources).  A breakdown of the distribution is provided (<table-ref></table-ref>).
             </p>
 
-            <table class="sm-table kv-table center-table">
+            <table class="sm-table kv-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="3"><table-num></table-num> Specialty Genes</th>
@@ -367,7 +364,7 @@
         {{#amr}} <!-- only shown if data is available -->
         <section>
             <h2>Antimicrobial Resistance Analysis</h2>
-            <table class="lg-table kv-table center-table">
+            <table class="lg-table kv-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="2"><table-num></table-num> Antimicrobial Resistance</th>
@@ -407,11 +404,11 @@
                 is provided in <fig-ref></fig-ref>.
             </p>
 
-            <!--<fig-num></fig-num>-->
+
             <!--<img src="../{{meta.genome_id}}/{{meta.genome_id}}-subsystem.svg" class="subsystem-fig" />-->
-            {{{subsystemSVG}}}
 
-
+            <fig-num></fig-num>
+            <div class="center subsystem-fig" >{{{subsystemSVG}}}</div>
         </section>
 
 
@@ -462,7 +459,7 @@
             </p>
 
 
-            <table class="lg-table center-table">
+            <table class="lg-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="3"><table-num></table-num> Core Protein Families Missing in the Genome</th>
