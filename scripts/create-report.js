@@ -19,9 +19,10 @@ const fs = require('fs'),
     utils = require('./utils'),
     cheerio = require('cheerio');
 
+const createSubsystemChart = require('./create-subsystem-chart');
 const config = require('../config.json');
 const templatePath = path.resolve(`${config.templatePath}`);
-const pdfMargin = '35px';
+
 
 // load template helpers
 helpers.array();
@@ -38,8 +39,8 @@ const tmplData = {
 
 
 if (require.main === module){
-    opts.option('-i, --input [value] Path of input data for which report will be built \n\t\t\t' +
-                'a Genome Typed Object)')
+    opts.option('-i, --input [value] Path of input data (Genome Typed Object)\n\t\t\t ' +
+                'for which report will be built')
         .option('-o, --output [value] Path to write resulting html output')
         .parse(process.argv)
 
@@ -63,23 +64,27 @@ if (require.main === module){
 async function buildReport(input, output) {
 
     console.log('Loading Genome Typed Object...');
-    let d, data;
+    let contents, data;
     try {
-        d = await utils.readFile(`${input}`, 'utf8');
-        data = JSON.parse(d);
+        contents = await utils.readFile(`${input}`, 'utf8');
+        data = JSON.parse(contents);
     } catch(e) {
         console.error('\x1b[31m', '\nCould not read GTO!\n', '\x1b[0m', e)
         return 1;
     }
 
+    console.log('Creating subsystem chart...');
+    let subsystemSVG = await createSubsystemChart(data);
+
     // merge in report data
     let meta = data.genome_quality_measure;
     meta.genome_name = data.scientific_name;
     Object.assign(tmplData, {
-        meta: meta,
+        meta,
         annotationMeta: parseFeatureSummary(meta.feature_summary),
         proteinFeatures: parseProteinFeatures(meta.protein_summary),
         specialtyGenes: parseSpecGenes(meta.specialty_gene_summary),
+        subsystemSVG
     } );
 
 

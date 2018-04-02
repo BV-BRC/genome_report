@@ -24,7 +24,7 @@ npm install --production
 
 ## Usage
 
-Create html report given GTO (Genome Typed Object)
+Create html report, given GTO (Genome Typed Object) as input
 
 ```
 ./create-report.js -i example-data/bin2.1.genome  -o reports/test-report.html
@@ -33,7 +33,7 @@ Create html report given GTO (Genome Typed Object)
 
 ## Development
 
-Serve the template and listen for changes with
+Serve repo and listen for changes with
 
 ```
 npm start
