@@ -61,9 +61,12 @@ async function fsCreateChart(input, output) {
 
 async function createChart(genomeTypedObject) {
     let subsystemSummary = genomeTypedObject.genome_quality_measure.subsystem_summary;
-    let subsystemData = parseSubsystemSummary(subsystemSummary)
+    let data = parseSubsystemSummary(subsystemSummary);
 
-    let svg = pieChart({data: subsystemData});
+    let svg = pieChart({
+        data,
+        legendText: 'Subsystem (Subsystems, Genes)'
+    });
 
     return svg;
 }
