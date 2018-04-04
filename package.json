@@ -1,6 +1,6 @@
 {
   "name": "genome-report",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "P3 Genome Report Protoype",
   "main": "index.js",
   "scripts": {
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nconrad/genome-report.git"
+    "url": "git+https://github.com/PATRIC3/genome_report.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nconrad/genome-report/issues"
+    "url": "https://github.com/PATRIC3/genome_report/issues"
   },
-  "homepage": "https://github.com/nconrad/genome-report#readme",
+  "homepage": "https://github.com/PATRIC3/genome_report#readme",
   "dependencies": {
     "cheerio": "1.0.0-rc.2",
     "commander": "2.14.1",

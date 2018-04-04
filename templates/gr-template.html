@@ -75,7 +75,7 @@
             .sm-table { width: 40%; }
             .xs-table {width: 20%; }
 
-            .center-table { margin-left: auto; margin-right: auto; }
+            .center { margin-left: auto; margin-right: auto; }
 
             .logo {
                 width: 3in;
@@ -103,12 +103,9 @@
                 margin-right: .2in;
             }
 
-            /*
             .subsystem-fig {
-                width: 1300px;
-                height: 600px;
+                width: 8in;
             }
-            */
 
             .tree-fig {
                 width: 1200px;
@@ -175,11 +172,12 @@
                 Also add reference to QUAST. ARAST ranked the Spades assembly best (<table-ref></table-ref>).
             </p>
             <p>
-                The assembled genome has {{meta.contigs}} contigs,
-                with the total length of ~{{basePairs meta.genome_length}} and %GC of {{number meta.gc_content "0.00"}}%.
+                The assembled genome has {{addCommas meta.contigs 0}} contigs,
+                with the total length of ~{{basePairs meta.genome_length}} and %GC of
+                {{default (toFixed meta.gc_content 2) 0}}%.
             </p>
 
-            <table class="sm-table kv-table center-table">
+            <table class="sm-table kv-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="4">
@@ -191,35 +189,35 @@
                 <tbody>
                     <tr>
                         <td>Contigs</td>
-                        <td class="align-right">{{meta.contigs}}</td>
+                        <td class="align-right">{{addCommas meta.contigs 0}}</td>
                     </tr>
                     <tr>
                         <td>GC Content</td>
-                        <td class="align-right">{{number meta.gc_content "0.00" }}</td>
+                        <td class="align-right">{{default (toFixed meta.gc_content 2) 0}}</td>
                     </tr>
                     <tr>
                         <td>Plasmids</td>
-                        <td class="align-right">{{default meta.plasmids '-'}}</td>
+                        <td class="align-right">{{addCommas meta.plasmids 0}}</td>
                     <tr>
                     </tr>
                         <td>Contig L50</td>
-                        <td class="align-right">{{default meta.genome_metrics.L50 '-'}}</td>
+                        <td class="align-right">{{addCommas meta.genome_metrics.L50 0}}</td>
                     </tr>
                     <tr>
                         <td>Genome Length</td>
                         <td class="align-right">
-                            {{addCommas meta.genome_length '-'}} Bps
+                            {{addCommas meta.genome_length 0}} Bps
                         </td>
                     </tr>
                     <tr>
                         <td>Contig N50</td>
                         <td class="align-right">
-                            {{addCommas meta.genome_metrics.N50 '-'}}
+                            {{addCommas meta.genome_metrics.N50 0}}
                         </td>
                     </tr>
                     <tr>
                         <td>Chromosomes</td>
-                        <td class="align-right">{{default meta.chromosomes '-'}}</td>
+                        <td class="align-right">{{addCommas meta.chromosomes 0}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -238,32 +236,31 @@
                 The Genetic code was 11.  The taxonomy of {{meta.genome_name}} is:
             </p>
 
-            <div style="width: 90%;" class="center-table">
+            <div style="width: 90%;" class="center">
 	    	  {{#each gto.ncbi_lineage}} {{ this.[0] }} {{#unless @last }} > {{/unless }} {{/each}}
-
             </div><br>
 
             <p>
                 The annotations includes
-                    {{get 'count' 'CDS' annotationMeta}} CDS,
-                    {{get 'count' 'tRNA' annotationMeta}} tRNAs and
-                    {{get 'count' 'rRNA' annotationMeta}} rRNAs.
+                    {{addCommas (get 'count' 'CDS' annotationMeta) 0}} CDS,
+                    {{addCommas (get 'count' 'tRNA' annotationMeta) 0}} tRNAs and
+                    {{addCommas (get 'count' 'rRNA' annotationMeta) 0}} rRNAs.
 
                 All annotated genome features for this genome are summarized in <table-ref></table-ref>.
             </p>
 
             <p>
                 The functional annotation included
-                    {{get 'count' 'Hypothetical proteins' proteinFeatures}} hypothetical proteins and
-                    {{get 'count' 'Proteins with functional assignments' proteinFeatures}} proteins with functional assignments.
+                    {{addCommas (get 'count' 'Hypothetical proteins' proteinFeatures) 0}} hypothetical proteins and
+                    {{addCommas (get 'count' 'Proteins with functional assignments' proteinFeatures) 0}} proteins with functional assignments.
                 Furthermore,
-                    {{get 'count' 'Proteins with EC number assignments' proteinFeatures}} proteins were assigned EC numbers and
-                    {{get 'count' 'Proteins with Pathway assignments' proteinFeatures}} proteins were mapped to KEGG pathways.
+                    {{addCommas (get 'count' 'Proteins with EC number assignments' proteinFeatures) 0}} proteins were assigned EC numbers and
+                    {{addCommas (get 'count' 'Proteins with Pathway assignments' proteinFeatures) 0}} proteins were mapped to KEGG pathways.
 
                 A breakdown of the proteins that have been annotated for this isolate is provided in <table-ref></table-ref>.
             </p>
 
-            <table class="sm-table kv-table center-table">
+            <table class="sm-table kv-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="2"><table-num></table-num> Annotated Genome Features</th>
@@ -272,19 +269,19 @@
 
                 <tbody>
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
-                    {{#annotationMeta}}
+                    {{#each annotationMeta}}
                         <tr>
                             <td>{{name}}</td>
                             <td class="align-right">
-                                {{addCommas count}}
+                                {{addCommas count 0}}
                             </td>
                         </tr>
-                    {{/annotationMeta}}
+                    {{/each}}
                 </tbody>
             </table>
 
 
-            <table class="med-table kv-table center-table">
+            <table class="med-table kv-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="2"><table-num></table-num> Protein Features</th>
@@ -293,14 +290,14 @@
 
                 <tbody>
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
-                    {{#proteinFeatures}}
+                    {{#each proteinFeatures}}
                     <tr>
                         <td>{{name}}</td>
                         <td class="align-right">
-                            {{addCommas count}}
+                            {{addCommas count 0}}
                         </td>
                     </tr>
-                    {{/proteinFeatures}}
+                    {{/each}}
                 </tbody>
             </table>
 
@@ -338,7 +335,7 @@
                 the sources).  A breakdown of the distribution is provided (<table-ref></table-ref>).
             </p>
 
-            <table class="sm-table kv-table center-table">
+            <table class="sm-table kv-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="3"><table-num></table-num> Specialty Genes</th>
@@ -351,13 +348,13 @@
                         <td>Source</td>
                         <td class="align-right">Genes</td>
                     </tr>
-                    {{#specialtyGenes}}
+                    {{#each specialtyGenes}}
                     <tr>
                         <td>{{type}}</td>
                         <td>{{source}}</td>
-                        <td class="align-right">{{genes}}</td>
+                        <td class="align-right">{{addCommas genes 0}}</td>
                     </tr>
-                    {{/specialtyGenes}}
+                    {{/each}}
                 </tbody>
             </table>
         </section>
@@ -367,7 +364,7 @@
         {{#amr}} <!-- only shown if data is available -->
         <section>
             <h2>Antimicrobial Resistance Analysis</h2>
-            <table class="lg-table kv-table center-table">
+            <table class="lg-table kv-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="2"><table-num></table-num> Antimicrobial Resistance</th>
@@ -407,11 +404,11 @@
                 is provided in <fig-ref></fig-ref>.
             </p>
 
-            <!--<fig-num></fig-num>-->
+
             <!--<img src="../{{meta.genome_id}}/{{meta.genome_id}}-subsystem.svg" class="subsystem-fig" />-->
-            {{{subsystemSVG}}}
 
-
+            <fig-num></fig-num>
+            <div class="center subsystem-fig" >{{{subsystemSVG}}}</div>
         </section>
 
 
@@ -462,7 +459,7 @@
             </p>
 
 
-            <table class="lg-table center-table">
+            <table class="lg-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="3"><table-num></table-num> Core Protein Families Missing in the Genome</th>
