@@ -4,7 +4,7 @@
  * create-report.js
  *
  * Example usage:
- *      ./create-report.js -i example-data/buchnera.genome.new  -o reports/test-report.html
+ *      ./create-report.js -i example-data/bin2.1.genome  -o reports/test-report.html
  *
  * Author(s):
  *      nconrad
@@ -16,20 +16,18 @@ const fs = require('fs'),
     opts = require('commander'),
     handlebars = require('handlebars'),
     helpers = require('handlebars-helpers'),
-    helpers_numeral = require('handlebars.numeral'),
     utils = require('./utils'),
     cheerio = require('cheerio');
 
+const createSubsystemChart = require('./create-subsystem-chart');
 const config = require('../config.json');
 const templatePath = path.resolve(`${config.templatePath}`);
-const pdfMargin = '35px';
+
 
 // load template helpers
 helpers.array();
 helpers.number();
 helpers.comparison();
-
-helpers_numeral.registerHelpers(handlebars);
 
 utils.helpers(handlebars);
 
@@ -42,8 +40,8 @@ const tmplData = {
 
 
 if (require.main === module){
-    opts.option('-i, --input [value] Path of input data for which report will be built \n\t\t\t' +
-                'a Genome Typed Object)')
+    opts.option('-i, --input [value] Path of input data (Genome Typed Object)\n\t\t\t ' +
+                'for which report will be built')
         .option('-o, --output [value] Path to write resulting html output')
         .parse(process.argv)
 
@@ -67,14 +65,17 @@ if (require.main === module){
 async function buildReport(input, output) {
 
     console.log('Loading Genome Typed Object...');
-    let d, data;
+    let contents, data;
     try {
-        d = await utils.readFile(`${input}`, 'utf8');
-        data = JSON.parse(d);
+        contents = await utils.readFile(`${input}`, 'utf8');
+        data = JSON.parse(contents);
     } catch(e) {
         console.error('\x1b[31m', '\nCould not read GTO!\n', '\x1b[0m', e)
         return 1;
     }
+
+    console.log('Creating subsystem chart...');
+    let subsystemSVG = await createSubsystemChart(data);
 
     // merge in report data
     let meta = data.genome_quality_measure;
@@ -85,6 +86,7 @@ async function buildReport(input, output) {
         annotationMeta: parseFeatureSummary(meta.feature_summary),
         proteinFeatures: parseProteinFeatures(meta.protein_summary),
         specialtyGenes: parseSpecGenes(meta.specialty_gene_summary),
+        subsystemSVG
     } );
 
 
@@ -100,7 +102,7 @@ async function buildReport(input, output) {
         content = addTableNumbers(content);
 
         let htmlPath = path.resolve(output);
-        console.log(`Writing html to ${htmlPath}...`);
+        console.log(`Writing html to: ${htmlPath}...`);
         fs.writeFileSync(htmlPath, content);
     });
 }
@@ -137,17 +139,28 @@ function parseSpecGenes(data) {
 }
 
 
+// https://github.com/olsonanl/genome_annotation/blob/master/GenomeAnnotation.spec#L242
 function parseFeatureSummary(obj) {
-     let data = [{
+    let data = [{
         name: "CDS",
         count: obj.cds,
+    }, {
+        name: "Partial CDS",
+        count: obj.partial_cds
     }, {
         name: "rRNA",
         count: obj.rRNA
     }, {
         name: "tRNA",
         count: obj.tRNA
+    }, {
+        name: "Miscellaneous RNA",
+        count: obj.miscRNA
+    }, {
+        name: "Repeat Regions",
+        count: obj.repeat_region
     }]
+
 
     // dsc order
     data.sort((a, b) => b.count - a.count);
@@ -171,10 +184,10 @@ function parseProteinFeatures(obj) {
     }, {
         name: "Proteins with Pathway assignments",
         count: obj.pathway_assignment
-    }, /*{
+    }, {
         name: "Proteins with PATRIC genus-specific family (PLfam) assignments",
-        count: obj.pgfam_assignment
-    },*/ {
+        count: obj.plfam_assignment
+    }, {
         name: "Proteins with PATRIC cross-genus family (PGfam) assignments",
         count: obj.pgfam_assignment
     }]
