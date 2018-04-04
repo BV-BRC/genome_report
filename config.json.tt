@@ -1,0 +1,6 @@
+{
+    "reportDir": "reports/",
+    "dataAPIUrl": "[% data_api_url %]",
+    "wikiUrl": "https://en.wikipedia.org/w/api.php",
+    "templatePath": "[% template_dir %]/gr-template.html"
+}
