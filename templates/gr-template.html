@@ -173,8 +173,8 @@
             </p>
             <p>
                 The assembled genome has {{addCommas meta.contigs 0}} contigs,
-                with the total length of ~{{basePairs meta.genome_length}} and %GC of
-                {{default (toFixed meta.gc_content 2) 0}}%.
+                with the total length of ~{{basePairs meta.genome_length}}
+                and %GC of {{default (toFixed meta.gc_content 2) 0}}%.
             </p>
 
             <table class="sm-table kv-table center">
@@ -201,7 +201,7 @@
                     <tr>
                     </tr>
                         <td>Contig L50</td>
-                        <td class="align-right">{{addCommas meta.genome_metrics.L50 0}}</td>
+                        <td class="align-right">{{default meta.genome_metrics.L50 0}}</td>
                     </tr>
                     <tr>
                         <td>Genome Length</td>
@@ -236,9 +236,11 @@
                 The Genetic code was 11.  The taxonomy of {{meta.genome_name}} is:
             </p>
 
-            <div style="width: 90%;" class="center">
-	    	  {{#each gto.ncbi_lineage}} {{ this.[0] }} {{#unless @last }} > {{/unless }} {{/each}}
-            </div><br>
+            <div style="width: 90%;" class="center-table">
+	    	        {{#each gto.ncbi_lineage}} {{ this.[0] }} {{#unless @last }} > {{/unless }} {{/each}}
+            </div>
+            <br>
+
 
             <p>
                 The annotations includes
