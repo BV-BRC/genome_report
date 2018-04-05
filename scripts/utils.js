@@ -31,7 +31,7 @@ const requestOpts = {
 
 
 function createGenomeDir(id) {
-    let baseDir = path.resolve(`${config.defaultReportDir}`);
+    let baseDir = path.resolve(`${config.reportDir}`);
 
     // create reports directory if needed
     if (!fs.existsSync(baseDir)){

@@ -17,8 +17,8 @@ const fs = require('fs'),
     opts = require('commander'),
     rp = require('request-promise');
 
-const config = require('../config.json');
-const utils = require('./utils');
+const config = require('../../config.json');
+const utils = require('../utils');
 const reqOpts = utils.requestOpts;
 
 const tmplData = {
