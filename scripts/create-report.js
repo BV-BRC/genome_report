@@ -70,7 +70,7 @@ if (require.main === module){
 async function buildReport(input, output) {
 
     console.log('Loading Genome Typed Object...');
-    let contents, data;222
+    let contents, data;
     try {
         contents = await readFile(`${input}`, 'utf8');
         data = JSON.parse(contents);
