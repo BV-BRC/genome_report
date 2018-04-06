@@ -15,10 +15,25 @@ const fs = require('fs'),
     path = require('path'),
     process = require('process'),
     opts = require('commander'),
-    rp = require('request-promise');
+    axios = require('axios');
 
 const config = require('../../config.json');
 const utils = require('../utils');
+
+const p3api = axios.create();
+
+p3api.defaults.headers.post['Content-Type'] = "application/json";
+p3api.interceptors.response.use(
+    (res) => res.data,
+    (error) =>  Promise.reject(error)
+);
+
+axios.interceptors.response.use(
+    (res) => res.data,
+    (error) =>  Promise.reject(error)
+);
+
+
 const reqOpts = utils.requestOpts;
 
 const tmplData = {
@@ -50,7 +65,7 @@ if (require.main === module){
 
 
 async function getAllData(genomeID, token) {
-    reqOpts.headers.authorization = token;
+    p3api.defaults.headers.common['Authorization'] = token || null;
 
     // fetch all data
     let meta = await getGenomeMeta(genomeID);
@@ -78,10 +93,14 @@ async function getAllData(genomeID, token) {
 
 
     // add SVGs
-    let subsystemSVG = await utils.readFile(`${genomeDir}/${genomeID}-subsystem.svg`, 'utf8');
-    Object.assign(tmplData, {
-        subsystemSVG
-    })
+    try {
+        let subsystemSVG = await utils.readFile(`${genomeDir}/${genomeID}-subsystem.svg`, 'utf8');
+        Object.assign(tmplData, {
+            subsystemSVG
+        })
+    } catch(e) {
+
+    }
 
 
     // write output
@@ -94,14 +113,50 @@ async function getAllData(genomeID, token) {
 }
 
 
+
+function getGenomeMeta(genomeID) {
+    let url = `${config.dataAPIUrl}/genome/?eq(genome_id,${genomeID})&select(*)`;
+
+    console.log(`fetching genome meta...`)
+    return p3api.get(url)
+        .then(res => {
+            return res
+        }).catch((e) => {
+            console.error(e.message);
+        })
+}
+
+
+function getAnnotationMeta(genomeID) {
+    let url = `${config.dataAPIUrl}/genome_feature/?eq(genome_id,${genomeID})&limit(1)`+
+        `&in(annotation,(PATRIC,RefSeq))&ne(feature_type,source)`+
+        `&facet((pivot,(annotation,feature_type)),(mincount,0))&http_accept=application/solr+json`;
+
+    console.log(`fetching anotation meta...`)
+    return p3api.get(url).then(res => {
+        let d = res.facet_counts.facet_pivot['annotation,feature_type'][0].pivot;
+
+        let data  = d.map(o => {
+            return {
+                name: o.value,
+                count: o.count
+            }
+        })
+
+        return data;
+    }).catch((e) => {
+        console.error(e.message);
+    })
+}
+
+
 async function getWiki(species, genus) {
     let url = `${config.wikiUrl}?action=query&prop=extracts` +
         `&exintro=&format=json&formatversion=2&titles=`;
 
     let speciesQuery = url + species;
     console.log(`Attempting to query species (${speciesQuery}) on wiki...`)
-    let speciesText = await rp.get(speciesQuery, reqOpts).then(res => {
-
+    let speciesText = await axios.get(speciesQuery).then(res => {
         let extract = res.query.pages[0].extract;
         return extract;
     }).catch((e) => {
@@ -115,7 +170,7 @@ async function getWiki(species, genus) {
     }
 
     let genusQuery = url + genus;
-    let genusText = await rp.get(genusQuery, reqOpts).then(res => {
+    let genusText = await axios.get(genusQuery).then(res => {
         let extract = res.query.pages[0].extract;
         return extract;
     }).catch((e) => {
@@ -136,7 +191,7 @@ async function getWikiImage(query) {
         `&format=json&formatversion=2&pithumbsize=400&titles=`;
 
     let queryUrl = imageUrl + query;
-    let data = await rp.get(queryUrl, reqOpts).then(res => {
+    let data = await axios.get(queryUrl).then(res => {
         return res.query.pages[0].thumbnail.source;
     }).catch((e) => {
         console.error(e.message);
@@ -147,47 +202,12 @@ async function getWikiImage(query) {
 
 
 
-function getGenomeMeta(genomeID) {
-    let url = `${config.dataAPIUrl}/genome/?eq(genome_id,${genomeID})&select(*)`;
-
-    console.log(`fetching genome meta...`)
-    return rp.get(url, reqOpts).then(res => {
-        return res;
-    }).catch((e) => {
-        console.error(e.message);
-    })
-}
-
-
-function getAnnotationMeta(genomeID) {
-    let url = `${config.dataAPIUrl}/genome_feature/?eq(genome_id,${genomeID})&limit(1)`+
-        `&in(annotation,(PATRIC,RefSeq))&ne(feature_type,source)`+
-        `&facet((pivot,(annotation,feature_type)),(mincount,0))&http_accept=application/solr+json`;
-
-    console.log(`fetching anotation meta...`)
-    return rp.get(url, reqOpts).then(res => {
-        let d = res.facet_counts.facet_pivot['annotation,feature_type'][0].pivot;
-
-        let data  = d.map(o => {
-            return {
-                name: o.value,
-                count: o.count
-            }
-        })
-
-        return data;
-    }).catch((e) => {
-        console.error(e.message);
-    })
-}
-
-
 function getSpecialtyGenes(genomeID) {
     let url = `${config.dataAPIUrl}/sp_gene/?eq(genome_id,${genomeID})&limit(1)`+
         `&facet((field,property_source),(mincount,1))&json(nl,map)&http_accept=application/solr+json`;
 
     console.log(`fetching specialty genes...`)
-    return rp.get(url, reqOpts).then(res => {
+    return p3api.get(url).then(res => {
         let data = res.facet_counts.facet_fields.property_source;
         data = processSpecGenes(data)
         return data;
@@ -290,7 +310,7 @@ async function getProteinFeatures(genomeID, CDS) {
 }
 
 function getPFCount(url) {
-    return rp.get(url, reqOpts).then(res => {
+    return p3api.get(url).then(res => {
         let data = res.facet_counts.facet_fields.annotation.PATRIC;
         return data;
     }).catch((e) => {
@@ -304,7 +324,7 @@ function getGenomeAMR(genomeID) {
         `&facet((pivot,(resistant_phenotype,laboratory_typing_method,antibiotic)),(mincount,1))` +
         `&json(nl,map)&http_accept=application/solr+json`;
 
-    return rp.get(url, reqOpts).then(res => {
+    return p3api.get(url).then(res => {
         let data = res.facet_counts
             .facet_pivot['resistant_phenotype,laboratory_typing_method,antibiotic'];
 
@@ -330,7 +350,7 @@ function getProteinFamily(missingCoreFamilyIDs) {
         `?in(family_id,(${missingCoreFamilyIDs.join(',')}))&sort(+family_id)&select(*)`;
 
     console.log(`fetching protein comparison...`)
-    return rp.get(url, reqOpts).then(res => {
+    return p3api.get(url).then(res => {
         let data = res.map(o => {
             return {
                 family_id: o.family_id,
@@ -360,7 +380,7 @@ function getSubsystemData(genomeID) {
 
 
     console.log(`fetching subsystem data...`)
-    return rp.get(url, reqOpts).then(res => {
+    return p3api.get(url).then(res => {
         let buckets = res.facets.stat.buckets;
 
         let data = buckets.map(b => {

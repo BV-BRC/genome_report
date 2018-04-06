@@ -16,7 +16,6 @@ const fs = require('fs'),
     path = require('path'),
     process = require('process'),
     opts = require('commander'),
-    rp = require('request-promise'),
     puppeteer = require('puppeteer');
 
 const utils = require('../utils');
