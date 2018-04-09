@@ -4,7 +4,7 @@
  * create-subsystem-chart.js
  *
  * Example usage:
- *      ./create-subsystem-chart.js -g 520456.3
+ *      ./create-subsystem-chart.js -i example-data/bin2.1.genome  -o reports/subsystem.svg
  *
  *
  * Author(s):
@@ -12,16 +12,17 @@
 */
 
 const fs = require('fs'),
+    util = require('util'),
     path = require('path'),
     process = require('process'),
-    opts = require('commander'),
-    rp = require('request-promise');
+    opts = require('commander');
 
+const writeFile = util.promisify(fs.writeFile);
+const readFile = util.promisify(fs.readFile);
 
 const config = require('../config.json');
-const utils = require('./utils');
 const pieChart = require('../lib/pie-chart');
-const reqOpts = utils.requestOpts;
+
 
 
 if (require.main === module){
@@ -48,14 +49,14 @@ if (require.main === module){
 async function fsCreateChart(input, output) {
 
     console.log('Reading genome object for subsystem data...');
-    let d = await utils.readFile(input, 'utf8');
+    let d = await readFile(input, 'utf8');
     let data = JSON.parse(d);
 
     console.log('Creating pie chart...')
     let svg = await createChart(data);
 
     console.log('writing pie chart to file....');
-    await utils.writeFile(output, svg, 'utf8');
+    await writeFile(output, svg, 'utf8');
 }
 
 

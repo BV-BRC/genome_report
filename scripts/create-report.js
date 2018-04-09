@@ -11,6 +11,7 @@
 */
 
 const fs = require('fs'),
+    util = require('util'),
     path = require('path'),
     process = require('process'),
     opts = require('commander'),
@@ -18,6 +19,9 @@ const fs = require('fs'),
     helpers = require('handlebars-helpers'),
     utils = require('./utils'),
     cheerio = require('cheerio');
+
+const writeFile = util.promisify(fs.writeFile);
+const readFile = util.promisify(fs.readFile);
 
 const createSubsystemChart = require('./create-subsystem-chart');
 const config = require('../config.json');
@@ -62,12 +66,13 @@ if (require.main === module){
     buildReport(opts.input, opts.output);
 }
 
+
 async function buildReport(input, output) {
 
     console.log('Loading Genome Typed Object...');
     let contents, data;
     try {
-        contents = await utils.readFile(`${input}`, 'utf8');
+        contents = await readFile(`${input}`, 'utf8');
         data = JSON.parse(contents);
     } catch(e) {
         console.error('\x1b[31m', '\nCould not read GTO!\n', '\x1b[0m', e)
@@ -91,20 +96,30 @@ async function buildReport(input, output) {
 
 
     console.log('Reading template...')
-    fs.readFile(templatePath, (err, source) => {
-        if (err) throw err;
+    let source;
+    try {
+        source = await readFile(templatePath);
+    } catch(e) {
+        console.error('\x1b[31m', '\nCould not read html template file!\n', '\x1b[0m', e)
+        return 1;
+    }
 
-        console.log('Filling template...');
-        let template = handlebars.compile(source.toString());
-        let content = template(tmplData);
+    console.log('Filling template...');
+    let template = handlebars.compile(source.toString());
+    let content = template(tmplData);
 
-        console.log('Adding table/figure numbers...')
-        content = addTableNumbers(content);
+    console.log('Adding table/figure numbers...')
+    content = addTableNumbers(content);
 
-        let htmlPath = path.resolve(output);
-        console.log(`Writing html to: ${htmlPath}...`);
-        fs.writeFileSync(htmlPath, content);
-    });
+    let htmlPath = path.resolve(output);
+    console.log(`Writing html to: ${htmlPath}...`);
+
+    try {
+        await writeFile(htmlPath, content);
+    } catch(e) {
+        console.error('\x1b[31m', '\nCould not write html file!\n', '\x1b[0m', e)
+        return 1;
+    }
 }
 
 

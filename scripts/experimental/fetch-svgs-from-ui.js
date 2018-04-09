@@ -16,11 +16,10 @@ const fs = require('fs'),
     path = require('path'),
     process = require('process'),
     opts = require('commander'),
-    rp = require('request-promise'),
     puppeteer = require('puppeteer');
 
-const utils = require('./utils');
-const config = require('../config.json');
+const utils = require('../utils');
+const config = require('../../config.json');
 const { convert } = require('convert-svg-to-png');
 
 
