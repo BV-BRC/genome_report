@@ -141,16 +141,45 @@ function addTableNumbers(content) {
 
 
 function getSpecialGenes(data) {
-    let rows = [];
+    let groups = {}
     for (let key in data) {
-        rows.push({
-            type: key.split(':')[0],
-            source: key.split(':')[1].trim(),
+        let parts = key.split(':');
+        let type = parts[0],
+            source = parts[1];
+
+        let obj = {
+            type: type,
+            source: source.trim(),
             genes: data[key]
-        })
+        }
+
+        if (type in groups) {
+            groups[type].push(obj);
+        } else {
+            groups[type] = [obj];
+        }
     }
 
-    rows.sort((a, b) => b.genes - a.genes);
+    // sort by sources
+    for (type in groups) {
+        groups[type].sort((a, b) => {
+            if(a.source < b.source) return -1;
+            if(a.source > b.source) return 1;
+            return 0;
+        });
+    }
+
+    let rows = [];
+    Object.keys(groups).forEach(k => {
+        rows = rows.concat(groups[k]);
+    });
+
+    // sort by type
+    rows.sort((a, b) => {
+        if(a.type < b.type) return -1;
+        if(a.type > b.type) return 1;
+        return 0;
+    });
 
     return rows;
 }
