@@ -91,7 +91,7 @@ async function buildReport(input, output) {
         annotationMeta: getFeatureSummary(meta.feature_summary),
         proteinFeatures: getProteinFeatures(meta.protein_summary),
         specialtyGenes: getSpecialGenes(meta.specialty_gene_summary),
-        amr: getAMRPhenotypes(gto.classifications),
+        amr: 'classifications' in gto && getAMRPhenotypes(gto.classifications),
         subsystemSVG
     });
 
@@ -215,7 +215,10 @@ function getProteinFeatures(obj) {
 }
 
 function getAMRPhenotypes(classifications) {
-    let data = {resistant: [], susceptible: []};
+    let data = {
+        resistant: [],
+        susceptible: []
+    };
     classifications.forEach(c => {
         if (c.sensitivity == 'resistant')
             data.resistant.push(c.name.replace(/_/g, '/'));
