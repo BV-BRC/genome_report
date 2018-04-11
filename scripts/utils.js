@@ -13,8 +13,6 @@ const fs = require('fs'),
     path = require('path'),
     moment = require('moment');
 
-const config = require('../config.json');
-
 
 
 function helpers(handlebars) {
@@ -24,6 +22,7 @@ function helpers(handlebars) {
     })
 
     handlebars.registerHelper('elapsed', function(seconds) {
+        console.log('seconds', seconds)
         const duration = moment.duration(seconds, 'S')
         const days = Math.round(duration.days()),
             hours = Math.round(duration.hours()),
