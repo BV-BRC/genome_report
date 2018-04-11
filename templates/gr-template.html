@@ -164,8 +164,8 @@
 	    {{#if gto.job_data.assembly.job_id}}
             <p>
                 {{meta.genome_name}} ran under job ID {{gto.job_data.assembly.job_id}} at PATRIC[1].
-                The assembly job started at {{gto.job_data.assembly.start_time}} and completed at {{gto.job_data.assembly.completion_time}}
-		after {{gto.job_data.assembly.elapsed_time}} seconds.
+                The assembly job started at {{datetime gto.job_data.assembly.start_time}} and completed at {{datetime gto.job_data.assembly.completion_time}}
+		after {{elapsed gto.job_data.assembly.elapsed_time}}.
                 The {{gto.job_data.assembly.parameters.recipe}} assembly strategy was selected.
 		The auto strategy runs three
                 assembly strategies that include Velvet [3], IDBA [4] and Spades [5], each of which is given
@@ -173,7 +173,7 @@
                 and smaller contigs were not included in the assembly. The minimum contig coverage was
 		{{gto.job_data.assembly.min_contig_cov}}
                 and contigs with less coverage were not included in the assembly.
-                Also add reference to QUAST. ARAST ranked the "{{gto.job_data.assembly.attributes.chosen_assembly}}" 
+                Also add reference to QUAST. ARAST ranked the "{{gto.job_data.assembly.attributes.chosen_assembly}}"
 		assembly as the highest quality.  (<table-ref></table-ref>).
             </p>
 	    {{/if}}

@@ -11,34 +11,31 @@
 
 const fs = require('fs'),
     path = require('path'),
-    process = require('process'),
-    util = require('util');
+    moment = require('moment');
 
 const config = require('../config.json');
 
 
-function createGenomeDir(id) {
-    let baseDir = path.resolve(`${config.reportDir}`);
-
-    // create reports directory if needed
-    if (!fs.existsSync(baseDir)){
-        console.log(`\ncreating genome directory ${baseDir} ...` )
-        fs.mkdirSync(baseDir);
-    }
-
-    // create genome directory if needed
-    let genomeDir = path.resolve(`${baseDir}/${id}/`);
-    if (!fs.existsSync(genomeDir)){
-        console.log(`creating genome dir ${genomeDir} ...` )
-        fs.mkdirSync(genomeDir);
-    }
-
-    return genomeDir;
-}
-
-
 
 function helpers(handlebars) {
+
+    handlebars.registerHelper('datetime', function(date) {
+        return moment(date).format('MMMM Do YYYY, h:mm:ssa');
+    })
+
+    handlebars.registerHelper('elapsed', function(seconds) {
+        const duration = moment.duration(seconds, 'S')
+        const days = Math.round(duration.days()),
+            hours = Math.round(duration.hours()),
+            mins = Math.round(duration.minutes()),
+            secs = Math.round(duration.seconds());
+
+        if(days > 0) return `${days} days and ${hours} hours`;
+        if(hours > 0) return `${hours} hours and ${mins} minutes and ${secs} seconds`;
+        if(mins > 0) return `${mins} minutes and ${secs} seconds`;
+        if(secs > 0) return `${secs} seconds`;
+        return 0;
+    })
 
     // helper to format base pairs to Bps, Kbps, etc.
     handlebars.registerHelper('basePairs', function(number, precision) {
@@ -93,21 +90,8 @@ function helpers(handlebars) {
     })
 }
 
-function parseToken(token) {
-    var dataArr = token.split('|');
-    var keyValueArr = [];
-    var dataobj =  {};
-    for (var i = 0; i < dataArr.length; i++) {
-        keyValueArr = dataArr[i].split('=');
-        dataobj[keyValueArr[0]] = keyValueArr[1];
-    }
-
-    return dataobj;
-}
 
 
 module.exports = {
-    createGenomeDir,
     helpers,
-    parseToken,
 }
