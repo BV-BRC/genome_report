@@ -4,7 +4,7 @@
  * create-report.js
  *
  * Example usage:
- *      ./create-report.js -i example-data/bin2.1.genome  -o reports/test-report.html
+ *      ./scripts/create-report.js -i sample.genome -o reports/test-report.html
  *
  * Author(s):
  *      nconrad
@@ -32,6 +32,7 @@ const templatePath = path.resolve(`${config.templatePath}`);
 helpers.array();
 helpers.number();
 helpers.comparison();
+
 
 utils.helpers(handlebars);
 
@@ -73,26 +74,27 @@ async function buildReport(input, output) {
     let contents, data;
     try {
         contents = await readFile(`${input}`, 'utf8');
-        data = JSON.parse(contents);
+        gto = JSON.parse(contents);
     } catch(e) {
         console.error('\x1b[31m', '\nCould not read GTO!\n', '\x1b[0m', e)
         return 1;
     }
 
     console.log('Creating subsystem chart...');
-    let subsystemSVG = await createSubsystemChart(data);
+    let subsystemSVG = await createSubsystemChart(gto);
 
     // merge in report data
-    let meta = data.genome_quality_measure;
-    meta.genome_name = data.scientific_name;
+    let meta = gto.genome_quality_measure;
+    meta.genome_name = gto.scientific_name;
     Object.assign(tmplData, {
-        meta: meta,
-        gto: data,
-        annotationMeta: parseFeatureSummary(meta.feature_summary),
-        proteinFeatures: parseProteinFeatures(meta.protein_summary),
-        specialtyGenes: parseSpecGenes(meta.specialty_gene_summary),
+        gto,
+        meta,
+        annotationMeta: getFeatureSummary(meta.feature_summary),
+        proteinFeatures: getProteinFeatures(meta.protein_summary),
+        specialtyGenes: getSpecialGenes(meta.specialty_gene_summary),
+        amr: 'classifications' in gto && getAMRPhenotypes(gto.classifications),
         subsystemSVG
-    } );
+    });
 
 
     console.log('Reading template...')
@@ -138,7 +140,7 @@ function addTableNumbers(content) {
 }
 
 
-function parseSpecGenes(data) {
+function getSpecialGenes(data) {
     let rows = [];
     for (let key in data) {
         rows.push({
@@ -155,7 +157,7 @@ function parseSpecGenes(data) {
 
 
 // https://github.com/olsonanl/genome_annotation/blob/master/GenomeAnnotation.spec#L242
-function parseFeatureSummary(obj) {
+function getFeatureSummary(obj) {
     let data = [{
         name: "CDS",
         count: obj.cds,
@@ -183,7 +185,7 @@ function parseFeatureSummary(obj) {
     return data;
 }
 
-function parseProteinFeatures(obj) {
+function getProteinFeatures(obj) {
     let data = [{
         name: "Hypothetical proteins",
         count: obj.hypothetical
@@ -212,6 +214,22 @@ function parseProteinFeatures(obj) {
 
     return data;
 }
+
+function getAMRPhenotypes(classifications) {
+    let data = {
+        resistant: [],
+        susceptible: []
+    };
+    classifications.forEach(c => {
+        if (c.sensitivity == 'resistant')
+            data.resistant.push(c.name.replace(/_/g, '/'));
+        else if (c.sensitivity == 'sensitive')
+            data.susceptible.push(c.name.replace(/_/g, '/'));
+    })
+
+    return data;
+}
+
 
 
 module.exports = buildReport;

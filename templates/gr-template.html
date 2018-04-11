@@ -161,16 +161,21 @@
 
         <section>
             <h2>Genome Assembly</h2>
-            <p>
-                {{meta.genome_name}} ran under job ID 2fee1c1b-f8bb-4781-bb20-f08fa66398e1 at PATRIC[1].
-                The assembly job started at 10/6/17, 2:53 PM and completed at 10/7/17, 4:41 PM, after 25h 47m 90011s.
-                The auto assembly strategy was selected, and it runs BayesHammer [2] on short reads, followed by three
-                assembly strategies that include Velvet [3], IDBA [4] and Spades [5], each of which is given
-                an assembly score by ARAST, an in-house script. The minimum contig length was 120bp,
-                and smaller contigs were not included in the assembly. The minimum contig coverage was 5,
-                and contigs with less coverage were not included in the assembly.
-                Also add reference to QUAST. ARAST ranked the Spades assembly best (<table-ref></table-ref>).
-            </p>
+            {{#if gto.job_data.assembly.job_id}}
+                <p>
+                    {{meta.genome_name}} ran under job ID {{gto.job_data.assembly.job_id}} at PATRIC[1].
+                    The assembly job started at {{datetime gto.job_data.assembly.start_time}} and completed at {{datetime gto.job_data.assembly.completion_time}}
+                    after {{elapsed gto.job_data.assembly.elapsed_time}}.
+                    The {{gto.job_data.assembly.parameters.recipe}} assembly strategy was selected.
+                    The auto strategy runs three assembly strategies that include Velvet [3], IDBA [4] and Spades [5], each of which is given
+                    an assembly score by ARAST, an in-house script. The minimum contig length was {{gto.job_data.assembly.parameters.min_contig_len}}bp
+                    and smaller contigs were not included in the assembly. The minimum contig coverage was
+                    {{gto.job_data.assembly.min_contig_cov}}
+                    and contigs with less coverage were not included in the assembly.
+                    Also add reference to QUAST. ARAST ranked the "{{gto.job_data.assembly.attributes.chosen_assembly}}"
+                    assembly as the highest quality.  (<table-ref></table-ref>).
+                </p>
+            {{/if}}
             <p>
                 The assembled genome has {{addCommas meta.contigs 0}} contigs,
                 with the total length of ~{{basePairs meta.genome_length}}
@@ -230,14 +235,17 @@
             <p>
                 The Genome Annotation Service in PATRIC [1] uses the RAST tool kit (RASTtk) [6] to
                 provide annotation of genomic features. The job for {{meta.genome_name}}
-                ran under job number 685fb8c1-348a-4cea-a298-496b037af1f8.
-                The annotation job started at 10/9/17, 7:10 AM and completed at 10/9/17, 8:16 AM,
-                after 1h 5m 3623s.  The selected domain was Bacteria, the Taxonomy ID was 234.128.
-                The Genetic code was 11.  The taxonomy of {{meta.genome_name}} is:
+                ran under job number {{gto.job_data.annotation.job_id}}.
+                The annotation job started at {{gto.job_data.annotation.start_time}}
+        and completed at {{gto.job_data.annotation.completion_time}}
+        after {{gto.job_data.annotation.elapsed_time}} seconds.
+        This genome was described to be in the domain {{gto.domain}}
+        with genetic code {{gto.genetic_code}}. It was assigned genome identifier
+        {{gto.id}}. The taxonomy of {{meta.genome_name}} is:
             </p>
 
             <div style="width: 90%;" class="center">
-	    	        {{#each gto.ncbi_lineage}} {{ this.[0] }} {{#unless @last }} > {{/unless }} {{/each}}
+                    {{#each gto.ncbi_lineage}} {{ this.[0] }} {{#unless @last }} > {{/unless }} {{/each}}
             </div>
             <br>
 
@@ -366,7 +374,7 @@
         {{#amr}} <!-- only shown if data is available -->
         <section>
             <h2>Antimicrobial Resistance Analysis</h2>
-            <table class="lg-table kv-table center">
+            <table class="lg-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="2"><table-num></table-num> Antimicrobial Resistance</th>
@@ -375,7 +383,10 @@
 
 
                 <tbody>
-                    <tr class="row-header"><td></td> <td>Antibiotics</td></tr>
+                    <tr class="row-header">
+                        <td>Phenotypes</td>
+                        <td>Antibiotics</td>
+                    </tr>
                     <tr>
                         <td>Resistant</td>
                         <td>{{join resistant ', '}}</td>

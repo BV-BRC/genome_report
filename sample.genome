@@ -1,0 +1,4907 @@
+{
+   "owner" : "olson@patricbrc.org",
+   "domain" : "B",
+   "job_data" : {
+      "assembly" : {
+         "app_name" : "GenomeAssembly",
+         "parameters" : {
+            "output_path" : "/olson@patricbrc.org/home/cga-tst/.toy",
+            "recipe" : "auto",
+            "output_file" : "assembly",
+            "min_contig_cov" : 5,
+            "single_end_libs" : [],
+            "paired_end_libs" : [
+               {
+                  "read1" : "/olson@patricbrc.org/home/toy1.fq",
+                  "insert_size_mean" : null,
+                  "interleaved" : false,
+                  "read2" : "/olson@patricbrc.org/home/toy2.fq"
+               }
+            ],
+            "min_contig_len" : 300
+         },
+         "attributes" : {
+            "chosen_assembly" : "spades",
+            "arast_job_id" : "55",
+            "other_assemblies" : "idba"
+         },
+         "completion_time" : "2018-03-14T15:23:06.802-05:00",
+         "start_time" : "2018-03-14T15:15:46.761-05:00",
+         "elapsed_time" : 440.041000127792,
+         "job_id" : "0941e63f-7812-4602-98f2-858728e1e0d9"
+      },
+      "annotation" : {
+         "start_time" : "2018-03-14T15:15:46.761-05:00",
+         "completion_time" : "2018-03-14T15:23:06.802-05:00",
+         "attributes" : {},
+         "job_id" : "0941e63f-7812-4602-98f2-858728e1e0d9",
+         "app_name" : "GenomeAssembly",
+         "parameters" : {
+            "recipe" : "auto",
+            "output_file" : "assembly",
+            "output_path" : "/olson@patricbrc.org/home/cga-tst/.toy",
+            "single_end_libs" : [],
+            "paired_end_libs" : [
+               {
+                  "read2" : "/olson@patricbrc.org/home/toy2.fq",
+                  "interleaved" : false,
+                  "insert_size_mean" : null,
+                  "read1" : "/olson@patricbrc.org/home/toy1.fq"
+               }
+            ],
+            "min_contig_len" : 300,
+            "min_contig_cov" : 5
+         },
+         "elapsed_time" : 440.041000127792
+      }
+   },
+   "id" : "2.1368",
+   "close_genomes" : [
+      {
+         "closeness_measure" : 246,
+         "genome_name" : "Brucella abortus biovar 1 str. 9-941",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_id" : "262698.3"
+      },
+      {
+         "genome_name" : "Agrobacterium tumefaciens str. C58",
+         "closeness_measure" : 210,
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_id" : "176299.3"
+      },
+      {
+         "genome_id" : "224914.1",
+         "closeness_measure" : 200,
+         "genome_name" : "Brucella melitensis 16M",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70"
+      },
+      {
+         "closeness_measure" : 191,
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_name" : "Ochrobactrum intermedium LMG 3301",
+         "genome_id" : "641118.3"
+      },
+      {
+         "genome_id" : "439375.7",
+         "closeness_measure" : 189,
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_name" : "Ochrobactrum anthropi ATCC 49188"
+      },
+      {
+         "closeness_measure" : 170,
+         "genome_name" : "Chelativorans sp. BNC1",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_id" : "266779.9"
+      },
+      {
+         "closeness_measure" : 164,
+         "genome_name" : "Mesorhizobium loti MAFF303099",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_id" : "266835.1"
+      },
+      {
+         "genome_id" : "216596.11",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "closeness_measure" : 151,
+         "genome_name" : "Rhizobium leguminosarum bv. viciae 3841"
+      },
+      {
+         "genome_id" : "411684.3",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "closeness_measure" : 116,
+         "genome_name" : "Hoeflea phototrophica DFL-43"
+      },
+      {
+         "genome_name" : "Aurantimonas manganoxydans SI85-9A1",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "closeness_measure" : 116,
+         "genome_id" : "287752.3"
+      },
+      {
+         "genome_id" : "266834.1",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_name" : "Sinorhizobium meliloti 1021",
+         "closeness_measure" : 114
+      },
+      {
+         "genome_name" : "Agrobacterium radiobacter K84",
+         "closeness_measure" : 106,
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_id" : "311403.8"
+      },
+      {
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "closeness_measure" : 102,
+         "genome_name" : "Bradyrhizobium japonicum USDA 110",
+         "genome_id" : "224911.1"
+      },
+      {
+         "genome_id" : "323097.3",
+         "closeness_measure" : 100,
+         "genome_name" : "Nitrobacter hamburgensis X14",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70"
+      },
+      {
+         "closeness_measure" : 96,
+         "genome_name" : "Fulvimarina pelagi HTCC2506",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_id" : "314231.3"
+      },
+      {
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "closeness_measure" : 91,
+         "genome_name" : "Oligotropha carboxidovorans OM5",
+         "genome_id" : "504832.4"
+      },
+      {
+         "genome_id" : "288000.5",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "closeness_measure" : 85,
+         "genome_name" : "Bradyrhizobium sp. BTAi1"
+      },
+      {
+         "genome_id" : "438753.3",
+         "genome_name" : "Azorhizobium caulinodans ORS 571",
+         "closeness_measure" : 83,
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70"
+      },
+      {
+         "genome_id" : "582899.7",
+         "closeness_measure" : 83,
+         "genome_name" : "Hyphomicrobium denitrificans ATCC 51888",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70"
+      },
+      {
+         "genome_id" : "395965.4",
+         "genome_name" : "Methylocella silvestris BL2",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "closeness_measure" : 81
+      },
+      {
+         "genome_id" : "283166.1",
+         "genome_name" : "Bartonella henselae str. Houston-1",
+         "closeness_measure" : 80,
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70"
+      },
+      {
+         "closeness_measure" : 80,
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_name" : "Rhodopseudomonas palustris BisB18",
+         "genome_id" : "316056.14"
+      },
+      {
+         "closeness_measure" : 79,
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_name" : "Bartonella quintana str. Toulouse",
+         "genome_id" : "283165.1"
+      },
+      {
+         "genome_name" : "Afipia sp. 1NLS2",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "closeness_measure" : 79,
+         "genome_id" : "666684.3"
+      },
+      {
+         "genome_id" : "258594.1",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_name" : "Rhodopseudomonas palustris CGA009",
+         "closeness_measure" : 76
+      },
+      {
+         "genome_id" : "208964.1",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_name" : "Pseudomonas aeruginosa PAO1",
+         "closeness_measure" : 76
+      },
+      {
+         "genome_id" : "419610.8",
+         "genome_name" : "Methylobacterium extorquens PA1",
+         "closeness_measure" : 73,
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70"
+      },
+      {
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "closeness_measure" : 73,
+         "genome_name" : "Xanthomonas campestris pv. campestris ATCC 33913",
+         "genome_id" : "190485.1"
+      },
+      {
+         "genome_name" : "Starkeya novella DSM 506",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "closeness_measure" : 72,
+         "genome_id" : "639283.3"
+      },
+      {
+         "closeness_measure" : 65,
+         "genome_name" : "Rhodomicrobium vannielii ATCC 17100",
+         "analysis_method" : "KmerAnnotationByFigfam::estimate_closest_genomes:Release70",
+         "genome_id" : "648757.4"
+      }
+   ],
+   "subsystems" : [
+      {
+         "name" : "tRNA_aminoacylation,_Thr",
+         "classification" : [
+            "Protein Processing",
+            "Protein Synthesis",
+            "Aminoacyl-tRNA-synthetases"
+         ],
+         "event_id" : "d0850c52-2c5b-444c-af63-d799679a9587",
+         "variant_code" : "active",
+         "role_bindings" : [
+            {
+               "role_id" : "Threonyl-tRNA synthetase (EC 6.1.1.3)",
+               "features" : [
+                  "fig|2.1368.peg.32"
+               ]
+            },
+            {
+               "features" : [],
+               "role_id" : "Threonyl-tRNA synthetase fragment"
+            },
+            {
+               "role_id" : "Threonyl-tRNA synthetase-related protein",
+               "features" : []
+            },
+            {
+               "role_id" : "Threonyl-tRNA synthetase, C-terminal domain",
+               "features" : []
+            }
+         ]
+      },
+      {
+         "name" : "Copper_Transport_System",
+         "event_id" : "d0850c52-2c5b-444c-af63-d799679a9587",
+         "variant_code" : "likely",
+         "role_bindings" : [
+            {
+               "features" : [],
+               "role_id" : "Reductase or disulfide isomerase in copper uptake, YcnL"
+            },
+            {
+               "role_id" : "Transcriptional repressor in copper uptake, YcnK",
+               "features" : []
+            },
+            {
+               "role_id" : "Copper resistance protein CopC",
+               "features" : []
+            },
+            {
+               "role_id" : "Copper resistance protein CopD",
+               "features" : []
+            },
+            {
+               "role_id" : "Conserved membrane protein in copper uptake, YcnI",
+               "features" : []
+            },
+            {
+               "features" : [],
+               "role_id" : "Repressor CsoR of the copZA operon"
+            },
+            {
+               "features" : [],
+               "role_id" : "Copper(I) chaperone CopZ"
+            },
+            {
+               "features" : [],
+               "role_id" : "FIG00995371: possibly secreted protein"
+            },
+            {
+               "features" : [
+                  "fig|2.1368.peg.21"
+               ],
+               "role_id" : "Copper-translocating P-type ATPase (EC 3.6.3.4)"
+            }
+         ],
+         "classification" : [
+            "Membrane Transport",
+            "Membrane Transport",
+            "Cation transporters"
+         ]
+      }
+   ],
+   "features" : [
+      {
+         "annotations" : [
+            [
+               "Add feature",
+               "glimmer3",
+               1523297382.81934,
+               "a57d2611-8424-4fb9-a698-36e9a383d6af"
+            ],
+            [
+               "Function updated to Phage integrase family protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06574,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.28 to fig|2.1368.peg.1",
+               "olson@patricbrc.org",
+               1523297385.33435,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "protein_translation" : "MLGSRSRTDAREGYGDWTPDVICGEIDKLPRFDVKETDYRPTLRVMKPKPISEPYVRPKKTRGGKLVLTPRVPKG",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG01307911",
+               "site-specific recombinase, phage integrase family"
+            ],
+            [
+               "PGFAM",
+               "PGF_00031935",
+               "Phage integrase family protein",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "a57d2611-8424-4fb9-a698-36e9a383d6af",
+         "id" : "fig|2.1368.peg.1",
+         "quality" : {
+            "hit_count" : "61",
+            "priority" : 44.4440135613658,
+            "weighted_hit_count" : "67.3501"
+         },
+         "similarity_associations" : [],
+         "location" : [
+            [
+               "NODE_5_length_6823_cov_6.61502",
+               "1",
+               "+",
+               228
+            ]
+         ],
+         "type" : "CDS",
+         "function" : "Phage integrase family protein"
+      },
+      {
+         "protein_translation" : "MDHRVRVVLLNGDPWFVAADVVSLLGLATYADGSPNVTHATRVLNTTEKLLLRRTTPHLMSGSVEKLFAFRQPSLLSVSESGLYKLIMRSRKPEAKKFQNWVTQVVLPAIRKDGMYVRGEEKVSAGEMDLEELTLITLTD",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32486,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to BRO family protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06526,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.1 to fig|2.1368.peg.2",
+               "olson@patricbrc.org",
+               1523297385.33437,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "id" : "fig|2.1368.peg.2",
+         "quality" : {
+            "weighted_hit_count" : "105.242",
+            "hit_count" : "104",
+            "priority" : 65.8439419178988
+         },
+         "similarity_associations" : [],
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00451405",
+               "BRO family protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_00070916",
+               "BRO family protein",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_5_length_6823_cov_6.61502",
+               "323",
+               "+",
+               423
+            ]
+         ],
+         "function" : "BRO family protein"
+      },
+      {
+         "function" : "hypothetical protein",
+         "location" : [
+            [
+               "NODE_5_length_6823_cov_6.61502",
+               "758",
+               "+",
+               195
+            ]
+         ],
+         "type" : "CDS",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG01340118",
+               "hypothetical protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_00369871",
+               "hypothetical protein",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "a57d2611-8424-4fb9-a698-36e9a383d6af",
+         "id" : "fig|2.1368.peg.3",
+         "quality" : {
+            "weighted_hit_count" : "38.4994",
+            "priority" : 40.1040249574848,
+            "hit_count" : "53"
+         },
+         "similarity_associations" : [],
+         "protein_translation" : "MGQDGERTSWFVAVDLYDILFGLRTGISTRWFLKREETKTLRKAESAQYALSSRSQISSRPRPG",
+         "annotations" : [
+            [
+               "Add feature",
+               "glimmer3",
+               1523297382.81959,
+               "a57d2611-8424-4fb9-a698-36e9a383d6af"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06578,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.30 to fig|2.1368.peg.3",
+               "olson@patricbrc.org",
+               1523297385.33438,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ]
+      },
+      {
+         "protein_translation" : "MRCFRSTLALRPSCLLKNAEYTRPPRLGCRHDFRDGLPFVLQADNLVCLTLCCGCPALVLAACLGRCNTFPLAFQHQFPLELRNRSQKVQHKLPCRRCRVEVHGEDTQTDALAAELPGEINQVSNRTGQTVQLGNNERVAFSQMIEGALQFRPLTILGRGLFTEYAITPCRLKVSLLCGKSCLLIGCRCTSVPHKLTPVGSGDVGDGCIVHVGPHNPNRFIGVIGLIVHKVNTHSNWTLLLHTPSVQHPQALNGLQGRPRPEPGGYIRPPPCFCRGLALGAYLYCAGLALPLCNLLGMCCSYATLGPALPPLT",
+         "annotations" : [
+            [
+               "Add feature",
+               "glimmer3",
+               1523297382.81986,
+               "a57d2611-8424-4fb9-a698-36e9a383d6af"
+            ],
+            [
+               "Function updated to FIG00451200: hypothetical protein",
+               "annotate_proteins_kmer_v1",
+               1523297383.11178,
+               "13d3b68a-3fd5-4ef3-8f07-d627b75227ac"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.31 to fig|2.1368.peg.4",
+               "olson@patricbrc.org",
+               1523297385.33439,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00451199",
+               "FIG00451200: hypothetical protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_01032514",
+               "hypothetical protein",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "a57d2611-8424-4fb9-a698-36e9a383d6af",
+         "id" : "fig|2.1368.peg.4",
+         "quality" : {
+            "priority" : 132.252602629366,
+            "hit_count" : 257
+         },
+         "similarity_associations" : [],
+         "location" : [
+            [
+               "NODE_5_length_6823_cov_6.61502",
+               "2176",
+               "-",
+               942
+            ]
+         ],
+         "type" : "CDS",
+         "function" : "FIG00451200: hypothetical protein"
+      },
+      {
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00451756",
+               "FIG00451760: hypothetical protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_01979630",
+               "hypothetical protein",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "similarity_associations" : [],
+         "quality" : {
+            "hit_count" : "387",
+            "priority" : 183.093403079532,
+            "weighted_hit_count" : "554.37"
+         },
+         "id" : "fig|2.1368.peg.5",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32495,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06533,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.4 to fig|2.1368.peg.5",
+               "olson@patricbrc.org",
+               1523297385.33441,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "protein_translation" : "MVDYADDVDGVILEDDEQGNDSEPQEEDAETRRYSDMAFNPWRFAATVKAEALVREAVQAVEAAETRQKKRRATDQKVFEDTVEAIICDLMHHRICGHEHGIRVSRSNRSLGKSRYRNPIYSKVFPSILDKLEYAGWIEQTVGDRGKVVKGAQTVIYPGLRLVSRMDAVDISLADMGIADQSDPIILQRPKKDRRLFGAREEYEDNERTRQFRSEMDQINGWLGKADLEVLDASDIAVDDTGAAIIRLHDPAKRKLRRYFTDSDHTFTSGGRLFGGFWQNMTKAERRDLLLIEGESCVALDYSGMGLRIAYGHAGIDPGEGDLYLVPGLEDFRSGVKIVTSAMLAASTRLRRMPEGTRVKFPRLLKFSTVRDAIEGRHPSIRHLFYSGHGHAVQFTESQIMVDVLLRLMKMEIVALPVHDAVLIAESKADQTKAVMLEAFRDHVGFPGSVTFEN",
+         "function" : "hypothetical protein",
+         "location" : [
+            [
+               "NODE_5_length_6823_cov_6.61502",
+               "2719",
+               "+",
+               1365
+            ]
+         ],
+         "type" : "CDS"
+      },
+      {
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_5_length_6823_cov_6.61502",
+               "4666",
+               "-",
+               120
+            ]
+         ],
+         "function" : "hypothetical protein",
+         "protein_translation" : "MLRTSDLLAWMPSISARASHGRAFRQSESEESELPETPE",
+         "annotations" : [
+            [
+               "Add feature",
+               "glimmer3",
+               1523297382.82053,
+               "a57d2611-8424-4fb9-a698-36e9a383d6af"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06582,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.35 to fig|2.1368.peg.6",
+               "olson@patricbrc.org",
+               1523297385.33442,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "quality" : {
+            "hit_count" : "12",
+            "priority" : 10.7447356751017,
+            "weighted_hit_count" : "15.9748"
+         },
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.6",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00638284",
+               "hypothetical protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_01030706",
+               "hypothetical protein",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "a57d2611-8424-4fb9-a698-36e9a383d6af"
+      },
+      {
+         "function" : "FIG00451656: hypothetical protein",
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_5_length_6823_cov_6.61502",
+               "4656",
+               "+",
+               195
+            ]
+         ],
+         "quality" : {
+            "priority" : 33.5082703685165,
+            "hit_count" : 44
+         },
+         "id" : "fig|2.1368.peg.7",
+         "similarity_associations" : [],
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00451655",
+               "FIG00451656: hypothetical protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_06853857",
+               "hypothetical protein",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "a57d2611-8424-4fb9-a698-36e9a383d6af",
+         "protein_translation" : "MRSTGVVLLNGDPWFVAVDLYSILFKRRTGVASRRFLKPEETKTFRRSESAQYALSNLFEAKAS",
+         "annotations" : [
+            [
+               "Add feature",
+               "glimmer3",
+               1523297382.82061,
+               "a57d2611-8424-4fb9-a698-36e9a383d6af"
+            ],
+            [
+               "Function updated to FIG00451656: hypothetical protein",
+               "annotate_proteins_kmer_v1",
+               1523297383.1118,
+               "13d3b68a-3fd5-4ef3-8f07-d627b75227ac"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.36 to fig|2.1368.peg.7",
+               "olson@patricbrc.org",
+               1523297385.33443,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ]
+      },
+      {
+         "function" : "hypothetical protein",
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_5_length_6823_cov_6.61502",
+               "4850",
+               "+",
+               108
+            ]
+         ],
+         "quality" : {
+            "priority" : 0.890049932985172
+         },
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.8",
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "family_assignments" : [],
+         "protein_translation" : "MGFALARMTEDDDFLSGGLLGVPFALPVVQLEDHP",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32497,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.5 to fig|2.1368.peg.8",
+               "olson@patricbrc.org",
+               1523297385.33444,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "olson@patricbrc.org",
+               1523297405.09199,
+               "b9e1de14-99b4-469d-9041-1677ed275e49"
+            ]
+         ]
+      },
+      {
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_5_length_6823_cov_6.61502",
+               "5041",
+               "+",
+               141
+            ]
+         ],
+         "function" : "hypothetical protein",
+         "protein_translation" : "MEGRTGASRWFGAEINGGDSVTRYGGNKRTSDCHAFPQFNPQHFLP",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32499,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.6 to fig|2.1368.peg.9",
+               "olson@patricbrc.org",
+               1523297385.33446,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "olson@patricbrc.org",
+               1523297405.09201,
+               "b9e1de14-99b4-469d-9041-1677ed275e49"
+            ]
+         ],
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.9",
+         "quality" : {
+            "priority" : 1.13143652178502
+         },
+         "family_assignments" : [],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+      },
+      {
+         "protein_translation" : "MIAGRAGRRQQGSITPIYLLKTAAICAALISFITSSCSTPSYAYTAKEFKRTWDSKNFFNANKIALVIEYCSTIRTEREIMSYLIDEYIKKSRKETGLSYSISK",
+         "annotations" : [
+            [
+               "Add feature",
+               "glimmer3",
+               1523297382.8208,
+               "a57d2611-8424-4fb9-a698-36e9a383d6af"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06584,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.38 to fig|2.1368.peg.10",
+               "olson@patricbrc.org",
+               1523297385.33447,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.10",
+         "quality" : {
+            "priority" : 40.947268556056,
+            "hit_count" : "60",
+            "weighted_hit_count" : "41.748"
+         },
+         "family_assignments" : [
+            [
+               "PGFAM",
+               "PGF_04168828",
+               "hypothetical protein",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "a57d2611-8424-4fb9-a698-36e9a383d6af",
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_5_length_6823_cov_6.61502",
+               "5751",
+               "-",
+               315
+            ]
+         ],
+         "function" : "hypothetical protein"
+      },
+      {
+         "location" : [
+            [
+               "NODE_5_length_6823_cov_6.61502",
+               "6171",
+               "-",
+               405
+            ]
+         ],
+         "type" : "CDS",
+         "function" : "hypothetical protein",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32501,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06536,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.7 to fig|2.1368.peg.11",
+               "olson@patricbrc.org",
+               1523297385.33448,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "protein_translation" : "MNTQATIDTAAVAPLNFDPNAWHHSQMTTLEAIELSRSGGHPYSSPNVPKGFNTVVGFFFDTYDWYPAAYDDEEGNAMKDRELIQYEDWCAKYAWTLGLEVKEVEAPAALKVHGIMALKAYPEALLEIRLIEMP",
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00450749",
+               "FIG00450750: hypothetical protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_01030706",
+               "hypothetical protein",
+               "2017-1204"
+            ]
+         ],
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.11",
+         "quality" : {
+            "hit_count" : "112",
+            "priority" : 71.2974799961218,
+            "weighted_hit_count" : "138.749"
+         }
+      },
+      {
+         "family_assignments" : [
+            [
+               "PGFAM",
+               "PGF_01596042",
+               "Phage integrase family protein",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "id" : "fig|2.1368.peg.12",
+         "quality" : {
+            "priority" : 70.9444232845969,
+            "hit_count" : "117",
+            "weighted_hit_count" : "126.747"
+         },
+         "similarity_associations" : [],
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32503,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to Phage integrase family protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06538,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.8 to fig|2.1368.peg.12",
+               "olson@patricbrc.org",
+               1523297385.33449,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "protein_translation" : "ASDIWNLWQILEGTGCRLGEISGLLRSDVHLKGQIPYLDLVFHEHRRLKTVGSIRRVPLIGSALKAVKDALKESEGSEFLFPRYGRVRGADSASAALMKHLRAVSENPKHAVHSLRHGMEDKLTRAGVSEFDRNLVLGHSSGGMSERYGGAEVRLEIAFKAMKKVAGAGD",
+         "function" : "Phage integrase family protein",
+         "location" : [
+            [
+               "NODE_5_length_6823_cov_6.61502",
+               "6822",
+               "-",
+               513
+            ]
+         ],
+         "type" : "CDS"
+      },
+      {
+         "feature_creation_event" : "d2fbfdd2-0088-4efa-ad4b-31c529f35d21",
+         "quality" : {
+            "priority" : 30
+         },
+         "function" : "tRNA-Met-CAT",
+         "id" : "fig|2.1368.rna.1",
+         "location" : [
+            [
+               "NODE_6_length_6418_cov_10.5316",
+               "228",
+               "-",
+               77
+            ]
+         ],
+         "annotations" : [
+            [
+               "Add feature called by search_for_rnas",
+               "search_for_rnas",
+               1523297380.80798,
+               "d2fbfdd2-0088-4efa-ad4b-31c529f35d21"
+            ],
+            [
+               "Set function to tRNA-Met-CAT",
+               "search_for_rnas",
+               1523297380.80798,
+               "d2fbfdd2-0088-4efa-ad4b-31c529f35d21"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.rna.6 to fig|2.1368.rna.1",
+               "olson@patricbrc.org",
+               1523297385.33451,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "type" : "rna"
+      },
+      {
+         "type" : "rna",
+         "annotations" : [
+            [
+               "Add feature called by find_nucleotide_homologs based on data in RNA_reps_5S_rRNA",
+               "find_nucleotide_homologs",
+               1523297379.93306,
+               "c6a18424-8224-4daa-b186-d74fdc9bfe53"
+            ],
+            [
+               "Set function to 5S rRNA ## 5S ribosomal RNA",
+               "find_nucleotide_homologs",
+               1523297379.93306,
+               "c6a18424-8224-4daa-b186-d74fdc9bfe53"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.rna.1 to fig|2.1368.rna.2",
+               "olson@patricbrc.org",
+               1523297385.33452,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "location" : [
+            [
+               "NODE_6_length_6418_cov_10.5316",
+               452,
+               "-",
+               122
+            ]
+         ],
+         "quality" : {
+            "priority" : 30
+         },
+         "function" : "5S rRNA ## 5S ribosomal RNA",
+         "id" : "fig|2.1368.rna.2",
+         "feature_creation_event" : "c6a18424-8224-4daa-b186-d74fdc9bfe53"
+      },
+      {
+         "annotations" : [
+            [
+               "Add feature",
+               "glimmer3",
+               1523297382.82115,
+               "a57d2611-8424-4fb9-a698-36e9a383d6af"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.43 to fig|2.1368.peg.13",
+               "olson@patricbrc.org",
+               1523297385.33454,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "olson@patricbrc.org",
+               1523297405.09203,
+               "b9e1de14-99b4-469d-9041-1677ed275e49"
+            ]
+         ],
+         "protein_translation" : "MDIVNGSDQVDRAISTGKLHALPHFHTRPINVVVFHGSDREYSFSGGFPA",
+         "feature_creation_event" : "a57d2611-8424-4fb9-a698-36e9a383d6af",
+         "family_assignments" : [
+            [
+               "PGFAM",
+               "PGF_06845666",
+               "hypothetical protein",
+               "2017-1204"
+            ]
+         ],
+         "id" : "fig|2.1368.peg.13",
+         "similarity_associations" : [],
+         "quality" : {
+            "priority" : 1.01478498711157
+         },
+         "location" : [
+            [
+               "NODE_6_length_6418_cov_10.5316",
+               "644",
+               "+",
+               153
+            ]
+         ],
+         "type" : "CDS",
+         "function" : "hypothetical protein"
+      },
+      {
+         "protein_translation" : "MPSAVIPSVYSYPAMRLAPQQVHQRYVHPGPLVLGTDPVNIPTPTADRNRTVSRRSEPNSRTALNGEQPYPWDLLQPQDAMSRHRGAKQPRRYGLLGVISLLSPAYLLSVERWPFHAGPPDHYDRLSSLLDLSVLQSGRLMPLHSTNDFRPF",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32505,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to Cell wall-associated hydrolase",
+               "annotate_proteins_kmer_v2",
+               1523297383.0654,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.9 to fig|2.1368.peg.14",
+               "olson@patricbrc.org",
+               1523297385.33455,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "quality" : {
+            "priority" : 21.0231533159122,
+            "hit_count" : "30",
+            "weighted_hit_count" : "30.4409"
+         },
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.14",
+         "family_assignments" : [
+            [
+               "PGFAM",
+               "PGF_01640145",
+               "Cell wall-associated hydrolase",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_6_length_6418_cov_10.5316",
+               "797",
+               "+",
+               459
+            ]
+         ],
+         "function" : "Cell wall-associated hydrolase"
+      },
+      {
+         "protein_translation" : "MQELFPGTASLQDQSNKTSQHTRSVTTCRPTNINVVPIDYAFRPRLRGRLTLLRLTLSRNPWTFGEGVSHSLYRYSCQHSHFRYLQDVSRLSLHRLTERSATTHIRASTASVYGLSPGTFSAQRPLFRPVSCYAFFK",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32507,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06542,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.10 to fig|2.1368.peg.15",
+               "olson@patricbrc.org",
+               1523297385.33456,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "quality" : {
+            "weighted_hit_count" : "4.8653",
+            "priority" : 6.01850492845139,
+            "hit_count" : "5"
+         },
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.15",
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00638284",
+               "hypothetical protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_06003313",
+               "hypothetical protein",
+               "2017-1204"
+            ]
+         ],
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_6_length_6418_cov_10.5316",
+               "1932",
+               "+",
+               414
+            ]
+         ],
+         "function" : "hypothetical protein"
+      },
+      {
+         "feature_creation_event" : "a57d2611-8424-4fb9-a698-36e9a383d6af",
+         "family_assignments" : [
+            [
+               "PGFAM",
+               "PGF_05703650",
+               "hypothetical protein",
+               "2017-1204"
+            ]
+         ],
+         "quality" : {
+            "weighted_hit_count" : "6.2518",
+            "priority" : 5.01347896144708,
+            "hit_count" : "5"
+         },
+         "id" : "fig|2.1368.peg.16",
+         "similarity_associations" : [],
+         "annotations" : [
+            [
+               "Add feature",
+               "glimmer3",
+               1523297382.82139,
+               "a57d2611-8424-4fb9-a698-36e9a383d6af"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06591,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.45 to fig|2.1368.peg.16",
+               "olson@patricbrc.org",
+               1523297385.33457,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "protein_translation" : "MHRTERPVQTRFRCAYTYRLKLARYTKSLTHYTKGTLSPRTNLGLQLFVGIRFQVLFHSPRRGAFHLSLTVLVRYRSCTST",
+         "function" : "hypothetical protein",
+         "location" : [
+            [
+               "NODE_6_length_6418_cov_10.5316",
+               "2756",
+               "+",
+               246
+            ]
+         ],
+         "type" : "CDS"
+      },
+      {
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32509,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.11 to fig|2.1368.peg.17",
+               "olson@patricbrc.org",
+               1523297385.33458,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "olson@patricbrc.org",
+               1523297405.09204,
+               "b9e1de14-99b4-469d-9041-1677ed275e49"
+            ]
+         ],
+         "protein_translation" : "MGLHPYRPLGRRPMWAAPAERQHSSGMRTAREREQHSFLVIINKVSNLEYIGVRSEPGELKHLSTQRKGHQTRLR",
+         "family_assignments" : [],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "quality" : {
+            "priority" : 1.74371038542767
+         },
+         "id" : "fig|2.1368.peg.17",
+         "similarity_associations" : [],
+         "location" : [
+            [
+               "NODE_6_length_6418_cov_10.5316",
+               "3400",
+               "-",
+               228
+            ]
+         ],
+         "type" : "CDS",
+         "function" : "hypothetical protein"
+      },
+      {
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_6_length_6418_cov_10.5316",
+               "3442",
+               "+",
+               267
+            ]
+         ],
+         "function" : "hypothetical protein",
+         "protein_translation" : "MGCPIRKSSDQRVFAPPRRLSQRITSFIACACQGIHQMPLRHLITLIANIHQNSALKAALCDAECCHSTANARFNSISRKTSFSRYNR",
+         "annotations" : [
+            [
+               "Add feature",
+               "glimmer3",
+               1523297382.82156,
+               "a57d2611-8424-4fb9-a698-36e9a383d6af"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06594,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.47 to fig|2.1368.peg.18",
+               "olson@patricbrc.org",
+               1523297385.3346,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.18",
+         "quality" : {
+            "weighted_hit_count" : "28.4701",
+            "priority" : 14.5472965378119,
+            "hit_count" : "19"
+         },
+         "feature_creation_event" : "a57d2611-8424-4fb9-a698-36e9a383d6af",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00638284",
+               "hypothetical protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_00142196",
+               "hypothetical protein",
+               "2017-1204"
+            ]
+         ]
+      },
+      {
+         "location" : [
+            [
+               "NODE_6_length_6418_cov_10.5316",
+               "3969",
+               "-",
+               76
+            ]
+         ],
+         "annotations" : [
+            [
+               "Add feature called by search_for_rnas",
+               "search_for_rnas",
+               1523297380.80792,
+               "d2fbfdd2-0088-4efa-ad4b-31c529f35d21"
+            ],
+            [
+               "Set function to tRNA-Ala-TGC",
+               "search_for_rnas",
+               1523297380.80792,
+               "d2fbfdd2-0088-4efa-ad4b-31c529f35d21"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.rna.5 to fig|2.1368.rna.3",
+               "olson@patricbrc.org",
+               1523297385.33461,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "type" : "rna",
+         "feature_creation_event" : "d2fbfdd2-0088-4efa-ad4b-31c529f35d21",
+         "quality" : {
+            "priority" : 30
+         },
+         "id" : "fig|2.1368.rna.3",
+         "function" : "tRNA-Ala-TGC"
+      },
+      {
+         "location" : [
+            [
+               "NODE_6_length_6418_cov_10.5316",
+               "4059",
+               "-",
+               77
+            ]
+         ],
+         "annotations" : [
+            [
+               "Add feature called by search_for_rnas",
+               "search_for_rnas",
+               1523297380.80781,
+               "d2fbfdd2-0088-4efa-ad4b-31c529f35d21"
+            ],
+            [
+               "Set function to tRNA-Ile-GAT",
+               "search_for_rnas",
+               1523297380.80781,
+               "d2fbfdd2-0088-4efa-ad4b-31c529f35d21"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.rna.4 to fig|2.1368.rna.4",
+               "olson@patricbrc.org",
+               1523297385.33462,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "type" : "rna",
+         "feature_creation_event" : "d2fbfdd2-0088-4efa-ad4b-31c529f35d21",
+         "quality" : {
+            "priority" : 30
+         },
+         "id" : "fig|2.1368.rna.4",
+         "function" : "tRNA-Ile-GAT"
+      },
+      {
+         "feature_creation_event" : "5e3cb6ab-100f-4788-bad4-c424abb59fab",
+         "function" : "SSU rRNA ## 16S rRNA, small subunit ribosomal RNA",
+         "id" : "fig|2.1368.rna.5",
+         "quality" : {
+            "priority" : 30
+         },
+         "location" : [
+            [
+               "NODE_6_length_6418_cov_10.5316",
+               5827,
+               "-",
+               1491
+            ]
+         ],
+         "annotations" : [
+            [
+               "Add feature called by find_nucleotide_homologs based on data in RNA_reps_SSU_rRNA",
+               "find_nucleotide_homologs",
+               1523297379.93322,
+               "5e3cb6ab-100f-4788-bad4-c424abb59fab"
+            ],
+            [
+               "Set function to SSU rRNA ## 16S rRNA, small subunit ribosomal RNA",
+               "find_nucleotide_homologs",
+               1523297379.93322,
+               "5e3cb6ab-100f-4788-bad4-c424abb59fab"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.rna.3 to fig|2.1368.rna.5",
+               "olson@patricbrc.org",
+               1523297385.33464,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "type" : "rna"
+      },
+      {
+         "function" : "hypothetical protein",
+         "location" : [
+            [
+               "NODE_6_length_6418_cov_10.5316",
+               "5994",
+               "+",
+               267
+            ]
+         ],
+         "type" : "CDS",
+         "feature_creation_event" : "a57d2611-8424-4fb9-a698-36e9a383d6af",
+         "family_assignments" : [],
+         "id" : "fig|2.1368.peg.19",
+         "quality" : {
+            "priority" : 1.6749886983532
+         },
+         "similarity_associations" : [],
+         "annotations" : [
+            [
+               "Add feature",
+               "glimmer3",
+               1523297382.82206,
+               "a57d2611-8424-4fb9-a698-36e9a383d6af"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.52 to fig|2.1368.peg.19",
+               "olson@patricbrc.org",
+               1523297385.33465,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "olson@patricbrc.org",
+               1523297405.09205,
+               "b9e1de14-99b4-469d-9041-1677ed275e49"
+            ]
+         ],
+         "protein_translation" : "MTVRSLEPSADNAAHVSLSSVCSFQRTDDLNRPKSLPPNQTSNQSNPKVKSVSAPRLRCRASRSVKPTCQPLFLKKITNLFAVLLFKD"
+      },
+      {
+         "protein_translation" : "MHLECFKCHDTPPKIVPGRPERSWMSSFHSRAPYRCLPLTMANSTGWEILCPTDIEVSWNGGLAKQDLLVKNVANDSISIEHFAQSHFSHGILTFHTGYLFRTPANFALWVSGAPNHIKDGIQPLTALVETGWLPFPFTMNWHMTRPGTVRFEKGEPFCFIQIIEHKKMDDVVPTIKGLSDDPTLKAQYETWSASRSNFNQALADQVPEAVKQGWQKKYFRGEIIPSSAEEILAKNHIHKRKLNNPISG",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32515,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06546,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.14 to fig|2.1368.peg.20",
+               "olson@patricbrc.org",
+               1523297385.33466,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00451056",
+               "FIG00451057: hypothetical protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_01228159",
+               "hypothetical protein",
+               "2017-1204"
+            ]
+         ],
+         "quality" : {
+            "hit_count" : "10",
+            "priority" : 10.3251725776956,
+            "weighted_hit_count" : "6.958"
+         },
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.20",
+         "location" : [
+            [
+               "NODE_387_length_1764_cov_7.51184",
+               "833",
+               "-",
+               750
+            ]
+         ],
+         "type" : "CDS",
+         "function" : "hypothetical protein"
+      },
+      {
+         "type" : "repeat",
+         "annotations" : [
+            [
+               "Add feature",
+               "Unknown",
+               1523297381.0276,
+               "97b31de7-4811-45a0-b117-38d7f285fc94"
+            ],
+            [
+               "Set function to repeat region",
+               "Unknown",
+               1523297381.0276,
+               "97b31de7-4811-45a0-b117-38d7f285fc94"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.repeat.2 to fig|2.1368.repeat.1",
+               "olson@patricbrc.org",
+               1523297385.33468,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "location" : [
+            [
+               "NODE_387_length_1764_cov_7.51184",
+               "1140",
+               "+",
+               103
+            ]
+         ],
+         "quality" : {
+            "existence_confidence" : 0.9806,
+            "priority" : 0
+         },
+         "function" : "repeat region",
+         "id" : "fig|2.1368.repeat.1",
+         "feature_creation_event" : "97b31de7-4811-45a0-b117-38d7f285fc94"
+      },
+      {
+         "pathways" : [],
+         "function" : "Lead, cadmium, zinc and mercury transporting ATPase (EC 3.6.3.3) (EC 3.6.3.5); Copper-translocating P-type ATPase (EC 3.6.3.4)",
+         "ec_numbers" : [
+            [
+               "3.6.3.3",
+               "Cadmium-exporting ATPase"
+            ],
+            [
+               "3.6.3.5",
+               "Zinc-exporting ATPase"
+            ],
+            [
+               "3.6.3.4",
+               "Cu(2+)-exporting ATPase"
+            ]
+         ],
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_387_length_1764_cov_7.51184",
+               "1764",
+               "-",
+               525
+            ]
+         ],
+         "id" : "fig|2.1368.peg.21",
+         "quality" : {
+            "weighted_hit_count" : "270.564",
+            "priority" : 83.2191785150582,
+            "hit_count" : "139"
+         },
+         "similarity_associations" : [
+            [
+               "TCDB",
+               "TCDB|M5EWU5",
+               "86",
+               "16",
+               "80",
+               "3e-62"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00658111",
+               "Lead, cadmium, zinc and mercury transporting ATPase (EC 3.6.3.3) (EC 3.6.3.5); Copper-translocating P-type ATPase (EC 3.6.3.4)"
+            ],
+            [
+               "PGFAM",
+               "PGF_06093101",
+               "Lead, cadmium, zinc and mercury transporting ATPase (EC 3.6.3.3) (EC 3.6.3.5); Copper-translocating P-type ATPase (EC 3.6.3.4)",
+               "2017-1204"
+            ]
+         ],
+         "protein_translation" : "RADAIAGLKKLKDGGIATLMLTGDNRRTAEAIGRDLGIEVRAELLPEDKQRIVGELRKEGRIVAKVGDGINDAPALAAADVGIAMGGGTDVALETADAAILHGHVSDIAEMVDLSKRTMRNIHQNIGIALGLKAVFLVTTVLGITGLWPAILADTGATVLVTVNALRLLRQPVR",
+         "go_terms" : [
+            [
+               "GO:0008551",
+               "cadmium-exporting ATPase activity"
+            ],
+            [
+               "GO:0016463",
+               "zinc-exporting ATPase activity"
+            ],
+            [
+               "GO:0004008",
+               "copper-exporting ATPase activity"
+            ]
+         ],
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32518,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to Lead, cadmium, zinc and mercury transporting ATPase (EC 3.6.3.3) (EC 3.6.3.5); Copper-translocating P-type ATPase (EC 3.6.3.4)",
+               "annotate_proteins_kmer_v2",
+               1523297383.0655,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.15 to fig|2.1368.peg.21",
+               "olson@patricbrc.org",
+               1523297385.33469,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ]
+      },
+      {
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG01306568",
+               "Mobile element protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_06172466",
+               "Mobile element protein",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.22",
+         "quality" : {
+            "weighted_hit_count" : "397.727",
+            "hit_count" : "241",
+            "priority" : 127.258840402952
+         },
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.3252,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to Mobile element protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06551,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.16 to fig|2.1368.peg.22",
+               "olson@patricbrc.org",
+               1523297385.3347,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "protein_translation" : "MKFAFIDTEKAHMSLSRLCAFAGVSISGYYAWKHRLPSRRQLDDMIILAHIRNQFALSCETYGSPRMHVELNEEGIRAGRHRTARLMRENGLKARQKMRFKRTTDSNHGEPVAPNLLDQDFTCDGPDQKWGVDISYIWTAEGWLYLAIVVDLYSRRIIGWEARDRMKKDLAICALKKAIAIRYPKPGLIQHSDRGSQYASYEYRKILKSHSMLPSMSGKGNCYDNAMVETVFKTIKSELIWRAAFQTRNDAIKAIGEYIDGFYNPVRRHSTLGYKSPVKFEAMNRNLETE",
+         "function" : "Mobile element protein",
+         "location" : [
+            [
+               "NODE_756_length_1226_cov_6.9824",
+               "888",
+               "-",
+               873
+            ]
+         ],
+         "type" : "CDS"
+      },
+      {
+         "function" : "Mobile element protein",
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_756_length_1226_cov_6.9824",
+               "1166",
+               "-",
+               282
+            ]
+         ],
+         "id" : "fig|2.1368.peg.23",
+         "similarity_associations" : [],
+         "quality" : {
+            "hit_count" : 64,
+            "priority" : 44.8822292640842
+         },
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG01306568",
+               "Mobile element protein"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "protein_translation" : "MKQREFTEDFKREAVRILTTSGRNISSVAEDLGIGKSTLERWRRNFAEKDLLSGPHEDMDQELARLRKENELLRQERDLLKKATAFFARETSR",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32522,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to Mobile element protein",
+               "annotate_proteins_kmer_v1",
+               1523297383.11175,
+               "13d3b68a-3fd5-4ef3-8f07-d627b75227ac"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.17 to fig|2.1368.peg.23",
+               "olson@patricbrc.org",
+               1523297385.33472,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ]
+      },
+      {
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32524,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to YpfJ protein, zinc metalloprotease superfamily",
+               "annotate_proteins_kmer_v2",
+               1523297383.06554,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.18 to fig|2.1368.peg.24",
+               "olson@patricbrc.org",
+               1523297385.33473,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "protein_translation" : "ASGPFYCPGDRKLYIDLSFYKELANRFGASGDFAQAYVLAHEVGHHVQNLLGILPKFNQMRQQMSEAQANQMSVRVELQADCLAGVWGHYTDQKGILEAGDLEEALNAAHQIGDDTLQRRSQGYVVPESFNHGTSAQRAKWFQRGFDSGQLGSCDTFSGDV",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00003100",
+               "YpfJ protein, zinc metalloprotease superfamily"
+            ],
+            [
+               "PGFAM",
+               "PGF_00067401",
+               "YpfJ protein, zinc metalloprotease superfamily",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "quality" : {
+            "priority" : 89.7702661380749,
+            "hit_count" : "148",
+            "weighted_hit_count" : "287.302"
+         },
+         "id" : "fig|2.1368.peg.24",
+         "similarity_associations" : [],
+         "location" : [
+            [
+               "NODE_940_length_1025_cov_8.00907",
+               "1",
+               "+",
+               486
+            ]
+         ],
+         "type" : "CDS",
+         "function" : "YpfJ protein, zinc metalloprotease superfamily"
+      },
+      {
+         "feature_creation_event" : "97b31de7-4811-45a0-b117-38d7f285fc94",
+         "quality" : {
+            "priority" : 0,
+            "existence_confidence" : 0.9806
+         },
+         "id" : "fig|2.1368.repeat.2",
+         "function" : "repeat region",
+         "annotations" : [
+            [
+               "Add feature",
+               "Unknown",
+               1523297381.0275,
+               "97b31de7-4811-45a0-b117-38d7f285fc94"
+            ],
+            [
+               "Set function to repeat region",
+               "Unknown",
+               1523297381.0275,
+               "97b31de7-4811-45a0-b117-38d7f285fc94"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.repeat.1 to fig|2.1368.repeat.2",
+               "olson@patricbrc.org",
+               1523297385.33474,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "location" : [
+            [
+               "NODE_940_length_1025_cov_8.00907",
+               "484",
+               "+",
+               103
+            ]
+         ],
+         "type" : "repeat"
+      },
+      {
+         "function" : "Carbamoyl-phosphate synthase small chain (EC 6.3.5.5)",
+         "pathways" : [
+            [
+               "00240",
+               "Pyrimidine metabolism"
+            ],
+            [
+               "00250",
+               "Alanine, aspartate and glutamate metabolism"
+            ]
+         ],
+         "ec_numbers" : [
+            [
+               "6.3.5.5",
+               "Carbamoyl-phosphate synthase (glutamine-hydrolyzing)"
+            ]
+         ],
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_940_length_1025_cov_8.00907",
+               "1023",
+               "-",
+               366
+            ]
+         ],
+         "similarity_associations" : [
+            [
+               "Victors",
+               "Victors|161511156",
+               "100",
+               "29",
+               "100",
+               "3e-67"
+            ]
+         ],
+         "id" : "fig|2.1368.peg.25",
+         "quality" : {
+            "hit_count" : "107",
+            "priority" : 69.6649909903691,
+            "weighted_hit_count" : "284.458"
+         },
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00000130",
+               "Carbamoyl-phosphate synthase small chain (EC 6.3.5.5)"
+            ],
+            [
+               "PGFAM",
+               "PGF_05598173",
+               "Carbamoyl-phosphate synthase small chain (EC 6.3.5.5)",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32526,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to Carbamoyl-phosphate synthase small chain (EC 6.3.5.5)",
+               "annotate_proteins_kmer_v2",
+               1523297383.06555,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.19 to fig|2.1368.peg.25",
+               "olson@patricbrc.org",
+               1523297385.33475,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "go_terms" : [
+            [
+               "GO:0004088",
+               "carbamoyl-phosphate synthase (glutamine-hydrolyzing) activity"
+            ]
+         ],
+         "protein_translation" : "LGHQMLALALGGRTEKMHQGHHGANHPVKDYTTGKVEIVSMNHGFAVDSDSLPENVEETHVSLFDGTNCGLRVVGKPVFSVQHHPEASPGPQDSHYLFRRFINLIRERKGQAPLPEREQAA"
+      },
+      {
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32528,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to Mobile element protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06557,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.20 to fig|2.1368.peg.26",
+               "olson@patricbrc.org",
+               1523297385.33476,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "protein_translation" : "MTTKLHAVVDAIGLPLRIKPTPGHYGDCPQASSLLSGLKGVGHVIADAAYDADHLRAFIASDLKATAQIKANPTRSSVPTIDWRLYKERHQIECFFNKLKRYRRIALRCEKTLTAFMGFVHLACAMIW",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG01306568",
+               "Mobile element protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_06172466",
+               "Mobile element protein",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.26",
+         "quality" : {
+            "priority" : 73.9328141501364,
+            "hit_count" : "115",
+            "weighted_hit_count" : "254.588"
+         },
+         "location" : [
+            [
+               "NODE_1216_length_816_cov_25.1149",
+               "386",
+               "-",
+               384
+            ]
+         ],
+         "type" : "CDS",
+         "function" : "Mobile element protein"
+      },
+      {
+         "location" : [
+            [
+               "NODE_1216_length_816_cov_25.1149",
+               "751",
+               "-",
+               369
+            ]
+         ],
+         "type" : "CDS",
+         "function" : "Mobile element protein",
+         "protein_translation" : "MSRRSLTDEQWNRIEAYLPGRVGTPGRSGVDNRLFVDAILWMAANAAHWRDLPATFGKWTAVHARFRRWSHAGVWERLFHALADTPDFEYVLIDSTISKVHADAAGAKGGLKLPASVARAVD",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.3253,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to Mobile element protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06559,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.21 to fig|2.1368.peg.27",
+               "olson@patricbrc.org",
+               1523297385.33478,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG01306568",
+               "Mobile element protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_06172466",
+               "Mobile element protein",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.27",
+         "quality" : {
+            "priority" : 69.5480912332902,
+            "hit_count" : "107",
+            "weighted_hit_count" : "204.068"
+         }
+      },
+      {
+         "location" : [
+            [
+               "NODE_1271_length_783_cov_6.16",
+               "1",
+               "+",
+               387
+            ]
+         ],
+         "type" : "CDS",
+         "function" : "Zinc uptake regulation protein Zur",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32532,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to Zinc uptake regulation protein Zur",
+               "annotate_proteins_kmer_v2",
+               1523297383.06562,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.22 to fig|2.1368.peg.28",
+               "olson@patricbrc.org",
+               1523297385.33479,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "protein_translation" : "TLVFDVLSKADGPLSAYTILDQLRDDGFRAPLQVYRALEKLLDYGLIHRLESLNAFVACAHPQCHQQGLVAFAICEKCGQVTEFSDAAIENLVTAWSVQNGFKSRKTTLELRGICEACDDHESASRKV",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00000479",
+               "Zinc uptake regulation protein ZUR"
+            ],
+            [
+               "PGFAM",
+               "PGF_00067547",
+               "Zinc uptake regulation protein Zur",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.28",
+         "quality" : {
+            "weighted_hit_count" : "181.384",
+            "priority" : 71.9617712391828,
+            "hit_count" : "112"
+         }
+      },
+      {
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_1271_length_783_cov_6.16",
+               "514",
+               "+",
+               270
+            ]
+         ],
+         "function" : "hypothetical protein",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32534,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "annotate_proteins_kmer_v2",
+               1523297383.06564,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.23 to fig|2.1368.peg.29",
+               "olson@patricbrc.org",
+               1523297385.3348,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "protein_translation" : "MARVKPPQERRREERQRTRLRSGKIVNLDGRFVVECQFIDIAPHGAKIRVREALYLPERFWLFDDHYARALLARLAWRKGREFGVEFIID",
+         "quality" : {
+            "priority" : 36.4859047189893,
+            "hit_count" : "51",
+            "weighted_hit_count" : "44.0013"
+         },
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.29",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00450705",
+               "FIG00450706: hypothetical protein"
+            ],
+            [
+               "PGFAM",
+               "PGF_00111176",
+               "hypothetical protein",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+      },
+      {
+         "quality" : {
+            "hit_count" : "63",
+            "priority" : 45.8980182347434,
+            "weighted_hit_count" : "132.012"
+         },
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.30",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00554286",
+               "Manganese transport protein MntH"
+            ],
+            [
+               "PGFAM",
+               "PGF_00019236",
+               "Manganese transport protein MntH",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32536,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to Manganese transport protein MntH",
+               "annotate_proteins_kmer_v2",
+               1523297383.06566,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.24 to fig|2.1368.peg.30",
+               "olson@patricbrc.org",
+               1523297385.33481,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "protein_translation" : "MSDVHRTIRVNRSGSKFRRALSFFGPGYLVAVGYMDPGNWATSLAGGSRFGYALLSVVLLSNLMAVLLQALCTRLSLA",
+         "function" : "Manganese transport protein MntH",
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_1736_length_552_cov_5.41233",
+               "234",
+               "-",
+               234
+            ]
+         ]
+      },
+      {
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_1736_length_552_cov_5.41233",
+               "473",
+               "+",
+               78
+            ]
+         ],
+         "function" : "hypothetical protein",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32538,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.25 to fig|2.1368.peg.31",
+               "olson@patricbrc.org",
+               1523297385.33483,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ],
+            [
+               "Function updated to hypothetical protein",
+               "olson@patricbrc.org",
+               1523297405.09207,
+               "b9e1de14-99b4-469d-9041-1677ed275e49"
+            ]
+         ],
+         "protein_translation" : "MFWLYIAAATIFFTALLPYCPTALLP",
+         "id" : "fig|2.1368.peg.31",
+         "quality" : {
+            "priority" : 0.664076534236729
+         },
+         "similarity_associations" : [],
+         "family_assignments" : [],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+      },
+      {
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.3254,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to Threonyl-tRNA synthetase (EC 6.1.1.3)",
+               "annotate_proteins_kmer_v2",
+               1523297383.06568,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.26 to fig|2.1368.peg.32",
+               "olson@patricbrc.org",
+               1523297385.33484,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "go_terms" : [
+            [
+               "GO:0004829",
+               "threonine-tRNA ligase activity"
+            ]
+         ],
+         "protein_translation" : "MSNTVSLQFPDGSVREYDASMTGAALAESISKSLAKKAVAYAVDGTVRDLSDPLGASGKVEIITREDPRALELIRHDTAHVLAEAVQELFPGTQVTIGPVIENGFYYDFARN",
+         "id" : "fig|2.1368.peg.32",
+         "quality" : {
+            "priority" : 59.4012391208363,
+            "hit_count" : "89",
+            "weighted_hit_count" : "210.987"
+         },
+         "similarity_associations" : [],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00000101",
+               "Threonyl-tRNA synthetase (EC 6.1.1.3)"
+            ],
+            [
+               "PGFAM",
+               "PGF_01175575",
+               "Threonyl-tRNA synthetase (EC 6.1.1.3)",
+               "2017-1204"
+            ]
+         ],
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_1849_length_509_cov_7.61765",
+               "337",
+               "-",
+               336
+            ]
+         ],
+         "pathways" : [
+            [
+               "00970",
+               "Aminoacyl-tRNA biosynthesis"
+            ]
+         ],
+         "function" : "Threonyl-tRNA synthetase (EC 6.1.1.3)",
+         "ec_numbers" : [
+            [
+               "6.1.1.3",
+               "Threonine--tRNA ligase"
+            ]
+         ]
+      },
+      {
+         "function" : "Transcriptional regulator, MarR family",
+         "type" : "CDS",
+         "location" : [
+            [
+               "NODE_2376_length_372_cov_5.10619",
+               "207",
+               "+",
+               165
+            ]
+         ],
+         "similarity_associations" : [],
+         "id" : "fig|2.1368.peg.33",
+         "quality" : {
+            "hit_count" : "23",
+            "priority" : 18.8780547118134,
+            "weighted_hit_count" : "28.1051"
+         },
+         "family_assignments" : [
+            [
+               "FIGFAM",
+               "FIG00025887",
+               "Organic hydroperoxide resistance transcriptional regulator"
+            ],
+            [
+               "PGFAM",
+               "PGF_00059604",
+               "Transcriptional regulator, MarR family",
+               "2017-1204"
+            ]
+         ],
+         "feature_creation_event" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "annotations" : [
+            [
+               "Add feature called by PRODIGAL",
+               "prodigal",
+               1523297382.32542,
+               "83e7fabb-7650-4fb0-8318-4dff4fddd691"
+            ],
+            [
+               "Function updated to Transcriptional regulator, MarR family",
+               "annotate_proteins_kmer_v2",
+               1523297383.06571,
+               "dce42c3b-4a49-4646-afd6-a299c8710f3d"
+            ],
+            [
+               "Feature renumbered from fig|2.1368.peg.27 to fig|2.1368.peg.33",
+               "olson@patricbrc.org",
+               1523297385.33486,
+               "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+            ]
+         ],
+         "protein_translation" : "MSNGPEIPFETTLFVRDTCLCLHVQRAARALARLFDEALRPAGLTNGQFSLMMSL"
+      }
+   ],
+   "ncbi_taxonomy_id" : 2,
+   "genetic_code" : 11,
+   "ncbi_lineage" : [
+      [
+         "cellular organisms",
+         131567,
+         "no rank"
+      ],
+      [
+         "Bacteria",
+         2,
+         "superkingdom"
+      ]
+   ],
+   "contigs" : [
+      {
+         "dna" : "ATGCTAGGCAGTCGATCCCGGACGGACGCACGGGAGGGCTACGGAGATTGGACGCCGGATGTTATATGCGGGGAAATTGACAAGCTACCACGGTTCGACGTGAAGGAGACGGACTACCGCCCTACGCTCAGAGTAATGAAGCCGAAGCCTATAAGTGAGCCGTATGTGCGCCCGAAGAAGACCAGAGGCGGGAAGCTGGTCCTCACTCCAAGGGTGCCTAAAGGTTGACGAACGCCACCGCCGCAATGACCAAGAGCGCGGATGCGATGACGCGCAGCGATGCGCTTACTGAAATCTTCCATGCCGGAACGGCGAAGACTTCATGGACCACAGGGTTCGTGTGGTGCTGTTGAATGGGGACCCGTGGTTCGTGGCGGCTGATGTTGTGTCCTTGTTAGGGTTGGCGACATACGCAGACGGAAGCCCGAACGTGACCCACGCCACTCGCGTCCTGAACACGACAGAGAAACTGCTTCTTAGGCGGACTACCCCCCACTTAATGTCGGGTAGTGTGGAGAAGCTGTTCGCGTTCCGACAGCCTTCACTCTTGTCTGTCTCCGAAAGCGGCCTCTACAAACTCATCATGCGTTCCCGCAAACCGGAAGCCAAGAAGTTCCAGAACTGGGTAACTCAGGTCGTCCTCCCTGCAATCCGCAAGGACGGCATGTATGTGCGCGGGGAGGAGAAGGTTTCAGCCGGTGAGATGGACCTTGAAGAACTGACGCTCATCACCTTGACGGACTAACCGGCATTAAGTGTGGGGCAGGACGGAGAGCGTACCTCGTGGTTCGTGGCGGTTGACCTTTACGACATCCTTTTTGGACTCCGGACTGGTATTTCTACGAGATGGTTCCTGAAACGCGAAGAGACGAAGACGCTGCGTAAAGCAGAGAGCGCACAGTACGCGCTCAGTTCGCGCTCTCAAATCTCTTCGAGGCCAAGGCCCGGTTAGTATCCCTTATCTCCGAAGCTGGCCTTTACAAGCTGATCCTGAAATCACGGAAGAAAGAAGCCCAGAAGTTCCAGAACTGGCTAGCCCGAGAAGTCATCCCAGAATATTTGGCAGAAATTTCCGCGAACCACATCTGATTAAAGGCAACCGCGCACTACCCCCGTGGCCCCTTCCGTTTCCCTTGAATGCTGCCAGAAGGTGAAGCCGATAGAGCATTCAGCGCTTTCCGGTAGGTGGTGGGAGGCTGGAACCAGAGAGGTGCGAACGGCTTTCCTGAAGGCTTCACGTGAGGGGCGGGAGGGCTGGACCTAAGGTTGCATAGGAGCAGCACATGCCTAATAGGTTGCACAGTGGCAGAGCTAACCCGGCGCAGTAGAGATAAGCACCAAGAGCTAACCCTCTACAGAAGCAGGGCGGTGGTCTTATGTATCCTCCCGGCTCTGGCCTTGGTCTGCCTTGAAGTCCATTTAGGGCTTGGGGGTGTTGGACTGATGGCGTATGCAGCAATAAAGTCCAATTAGAGTGTGTATTGACTTTATGGACTATTAGTCCGATAACTCCTATAAACCTATTTGGATTATGGGGGCCAACATGAACAATGCAACCGTCGCCAACGTCGCCGCTACCTACCGGGGTCAGCTTGTGGGGTACGCTCGTACATCGACAACCGATCAGAAGGCAGGACTTGCCGCACAAGAGCGAGACCTTCAAGCGGCAGGGTGTGATCGCATATTCAGTGAACAGACCTCTGCCAAGGATAGTAAGAGGCCGGAACTGCAACGCGCCCTCGATCATCTGCGAGAAGGCGACACGTTCATTGTTACCAAGCTGGACCGTCTGGCCCGTTCGGTTGCTGACTTGGTTGATCTCACCGGGCAACTCAGCAGCAAGGGCGTCAGTTTGCGTATCCTCGCCATGAACCTCGACACGGCAACGCCGACAGGGAAGCTTATGCTGAACCTTTTGGGATCGATTGCGGAGTTCGAGCGGGAACTGATGCTGGAACGCCAGCGGGAAGGTATTGCAGCGGCCAAGGCAGGCGGCAAGTACAAGGGCAGGGCACCCACAGCACAGCGTCAGGCAGACGAGATTATCCGCTTGAAGGACGAAGGGAAGACCGTCGCGGAAATCATGGCGGCAACCAAGGCGGGGCGGTCTAGTGTATTCAGCATTCTTAAGGAGGCAGGAAGGACGGAGCGCCAGCGTTGACCGGAAGCAACGCAACGCTGTTCAGGACATGCTTGCCAGGGGAGCCGGTACATCTGAGATTGCGAAGGCGACGGGATTGACACGACAGACCGTTATCAGGATCGGTAAAGACCCTGTGAAGACTGACCAAACATTGAAGCAATGGGAGCCGCAAGGATACGACATGCAAAGAAAATGCTAGGCATTGAACGGTTTTTCCGTAATACAGTATCCAGAATTGAATAAGATCAAAGCAGGTAAATGTCAGGATGGTGAGGTAGACAGGAGCACGGACCTTGGCGTCACCTATGGCTAGACTAAGAGCGGTGCTGGATAAAGCTATAGAGATACTTAACTGAGAATAGGTCGCCCAGTAGCAGCTTAGCCACCCCAGCAGCACGACCTTAACGGAAATGTTCAGGCGCATCCCTGCGGATCAATGTCGGGGATGTTTCGACGCATGGCTCCATATCGGTGTATTTTTTTGAGGCTCCGTAAATATAATAGAGGACTTGTAAATAGGCGCATATGCGGTTAGGTGCGGGTTGAAATTCAGCATGATAGGGGGCGGGGCAGGCATGGTTGATTACGCTGACGACGTGGACGGTGTTATCCTTGAGGACGACGAGCAGGGCAACGATAGCGAGCCTCAGGAAGAGGATGCAGAAACCCGCAGATATAGCGATATGGCATTCAATCCGTGGCGCTTTGCGGCAACTGTGAAAGCGGAGGCTCTTGTTCGGGAAGCTGTACAGGCTGTCGAAGCCGCAGAGACACGACAGAAAAAACGCAGGGCTACCGATCAGAAAGTCTTCGAGGACACAGTAGAAGCCATTATCTGTGACCTCATGCACCACCGGATATGTGGCCATGAGCACGGCATTCGTGTCAGCCGCTCCAATCGTAGCCTTGGCAAGAGCCGATACCGCAATCCGATCTATTCCAAAGTGTTCCCGTCAATCCTCGATAAACTGGAATATGCTGGCTGGATCGAGCAGACTGTAGGCGACCGAGGGAAGGTTGTGAAGGGGGCGCAGACGGTCATCTATCCCGGCCTACGTCTGGTCAGCCGTATGGATGCTGTCGATATTTCCTTGGCTGACATGGGGATTGCCGATCAGTCTGACCCAATTATCCTACAGCGGCCCAAGAAGGATCGAAGGCTGTTCGGGGCGCGGGAAGAATATGAGGACAATGAACGGACGCGTCAATTCCGCAGTGAAATGGACCAGATCAACGGCTGGCTCGGTAAGGCCGATCTTGAAGTATTGGACGCTTCTGACATTGCTGTAGATGATACGGGCGCAGCTATAATACGGTTGCACGACCCGGCAAAGCGCAAGTTGCGGCGTTATTTCACCGACAGCGACCATACGTTCACCTCGGGCGGTCGTCTGTTCGGTGGCTTCTGGCAGAACATGACGAAGGCCGAGCGGCGGGACCTTTTGCTGATCGAGGGAGAGTCTTGCGTTGCGCTCGATTACAGCGGCATGGGACTTCGCATTGCTTACGGTCATGCTGGTATTGATCCCGGTGAGGGAGACCTCTATCTGGTTCCGGGCTTGGAAGATTTCCGATCAGGTGTGAAGATCGTTACCAGTGCGATGCTGGCAGCAAGCACACGATTGCGGAGAATGCCTGAGGGGACCCGTGTGAAGTTCCCGCGTCTGCTTAAGTTCTCGACAGTGCGGGACGCTATTGAGGGCCGACACCCATCCATACGGCATCTCTTCTATTCTGGTCATGGTCACGCTGTGCAGTTCACCGAAAGCCAGATCATGGTCGATGTGCTATTGCGTCTGATGAAGATGGAGATTGTCGCGTTGCCAGTGCATGACGCGGTACTGATTGCGGAGAGCAAGGCAGATCAGACGAAGGCTGTCATGCTGGAAGCATTCAGGGATCATGTCGGCTTTCCCGGAAGTGTCACCTTCGAGAACTGACCCGATGGAAATCTCGCGGGTGCCAAGCTTGGCTCTCCTTTCGGCTTCACAATAGGCAGATATTCGGTTCCCTTGTGCCGGGTAGAAAGGATGGTCAAGCCTTGTTATTGAGGTTATTTCTTTACTCCATAATCCTCAATCATCATTGAACGGCGGAAGCCGTCAACAAGTATCAGGCATCAGGAAGCTTCATGCTGCCCCTTGGTTCGGCACTAGCGTTCATCTTGGCATGGGACATGAGGATGCTGATGTCTTAACCTTAAGTGGATGTTGAATGGAGGAGTATGAAGTACGATACACCCTTGGTAACTCGATCAGGTGAGCCTAGGGATATAGGAGGTGAACCCAGAGAGATACCCTATATGTGGGACCCGTAAGAAGCTTTCCTGCATGTCCACTCGACATGTCCACCGCTCTGGGTTCTTCAACGCTCCCTATTTCTTCTCAGGATCGCCGTAGAGAGTCATTCTGGTGTTTCCGGTAGTTCCGACTCTTCCGACTCAGATTGCCTGAATGCCCGCCCGTGACTCGCTCTGGCGGAAATAGAGGGCATCCATGCCAGAAGGTCCGATGTGCGGAGCACGGGCGTGGTGCTCTTGAACGGGGACCCTTGGTTTGTAGCGGTTGACCTCTATTCGATCCTCTTCAAGCGCCGTACGGGTGTTGCGTCGCGTCGCTTCCTGAAGCCTGAGGAGACGAAGACGTTTCGTAGAAGTGAAAGCGCACAGTATGCGCTCTCAAATCTCTTCGAGGCCAAGGCCTCCTGATGGGCTTTGCCCTTGCGAGGATGACGGAGGACGATGATTTCTTGTCGGGTGGATTGCTTGGCGTCCCTTTCGCTCTCCCTGTCGTACAGCTAGAAGACCATCCTTAGGTTCACCGGGGCGATTGCCATGCACTTGTCCGTATTCCGACACACACGCTGGTGTTAAGCCGTAGAAAGGCGCTCAGGAGTCCATGGAGGGGCGTACAGGGGCTTCCCGGTGGTTCGGTGCGGAAATCAACGGAGGCGACTCAGTGACTCGCTATGGCGGAAATAAGCGTACATCTGATTGCCACGCTTTCCCTCAGTTCAATCCGCAGCACTTCCTGCCGTGATCGTCGCTAATGCGATGATTAGTGAACTACCGAAGGGTGGGCCGAAGGAGGCACGATAGGTTAAGCAAAAGGTTCCCCGTGGGTTTGCGCTCACGGGGACCTAACGGCAATTCTCAGAAGCCGTAAACGCTTCGGCAGGGAGTTGCGCCGGGAAGCCTGTTTTGGGAGTTTGTTAACCTATTACTTGGTGCAAAAAGCCATTTTCTCACTATATGATAGTGTATATCTAGATGTTTTTACGTAGTCATATAATATTTATTTAGATATGCTGTATGAAAGTCCTGTTTCTTTTCTTGATTTTTTAATATATTCATCAATTAAGTACGACATTATTTCTCTTTCTGTCCGTATAGTTGAGCAGTATTCAATCACTAGCGCAATCTTATTTGCATTGAAGAAATTTTTGCTATCCCATGTCCGTTTAAATTCTTTTGCGGTGTAAGCGTACGAGGGGGTGCTGCAACTTGAAGTGATAAATGAGATGAGAGCCGCACATATGGCGGCTGTCTTGAGTAGGTAAATCGGCGTTATGCTCCCCTGTTGTCGTCGCCCTGCTCGACCCGCTATCACGTTGAGTACCGACGCTCAAGGCATCTCGATAAGGCGGATTTCTAGCAAAGCCTCCGGGTAGGCCTTCAATGCCATGATGCCGTGCACCTTGAGTGCTGCCGGGGCTTCAACTTCTTTAACCTCAAGGCCCAGCGTCCAGGCGTACTTGGCGCACCAATCTTCATATTGGATCAGTTCCCGGTCTTTCATGGCGTTGCCTTCCTCGTCGTCATAGGCGGCGGGATACCAGTCGTAGGTGTCGAAGAAGAAGCCTACGACCGTATTGAAGCCTTTGGGGACGTTCGGGCTTGAATATGGGTGTCCGCCTGAGCGTGATAATTCAATGGCCTCCAAGGTCGTCATCTGGGAGTGATGCCAAGCGTTTGGATCAAAGTTCAAGGGAGCAACAGCGGCTGTATCTATTGTTGCTTGCGTGTTCATGGCTATTCTTCCTGTCAATTTCGGTTAAATTTCGCAGGAACGGCTATCAATGCGGCACGGTTCATGTCCAATGACTAATTTGAATCGATCACGAGCGATGGATTCATTCCATTGATGAGTGGATCGGTGTTGGATAGCTTAATCTCCCGCCCCTGCCACTTTCTTCATCGCCTTGAATGCAATCTCCAGCCGCACCTCAGCGCCCCCGTAACGCTCACTCATGCCGCCACTCGAATGCCCAAGGACAAGATTTCTGTCAAATTCGGATACACCCGCACGGGTCAATTTGTCTTCCATGCCATGACGGAGGGAGTGAACGGCGTGTTTAGGGTTCTCAGAAACGGCACGTAGATGTTTCATAAGGGCAGCGGAAGCGCTATCCGCACCACGTACACGACCGTACCGGGGAAACAGAAATTCGCTGCCTTCCGACTCTTTCAGGGCATCCTTTACGGCTTTCAGGGCGCTGCCAATGAGCGGCACACGCCGGATTGATCCAACTGTCTTGAGACGTCTATGCTCGTGAAAGACAAGATCAAGATAGGGGATTTGCCCTTTCAGGTGTACGTCTGATCGCAAAAGCCCCGATATTTCACCAAGACGACACCCAGTTCCCTCCAAGATTTGCCAAAGGTTCCATATGTCAGACGCG",
+         "genbank_locus" : {},
+         "id" : "NODE_5_length_6823_cov_6.61502"
+      },
+      {
+         "dna" : "GGCAGCGGAGACCTTCAAGCTGCGCCCCTTCAGATAGCGAGCCGAACACTTCTTGGGCTTCCGTGTCCGAATTGCACCAAACCCGGTTGCTTAAATAGGAGTTTGGCCGCCAAAAAAGCCCGCTAACCTTATTGGTTTAGCGGGCTTGATTTGGTTGCGGGGGCAGGATTTGAACCTGCGGCCTTCAGGTTATGAGCCTGACGAGCTACCGGGCTGCTCCACCCCGCGTCAAGGTGTTTGAGTATTTTCCGGTAAGAATGGTTATAGCGCGTTTTGCGCGATTGGTCTGTTTTGCATGATTGAGAGAAGATGGCTTTGTTTGTGTGCTTTGCAGACCTGGCAGCGACCTACTCTCCCGCGTCTTGAGACGAAGTACCATTGGCGCTGGAGCGTTTCACGGCCGAGTTCGGAATGGGATCGGGTGCAGCCGCTCCGCCATAACCACCAGGTCGGCGAAGAACACAAACATGAGAAGCTGGTTAGGGGCTTAAGGCATTAGGGGAATAGGGCAGTATGTTTGGGCTGCGCCTGTTCTTTGCCTTTGTGCTTTGTCTTTCTGCGTGGCGATGGTTGAGGGCTTTGGGCAAACATATTGCCTTATTGCCCTACTTCCATATTGCCTTCAACATCAAGCTTTTGCTTGATGGATATTGTAAATGGGAGTGATCAAGTCGATCGAGCTATTAGTACCGGTAAGCTGCATGCGTTGCCGCACTTCCACACCCGGCCTATCAACGTGGTGGTCTTCCACGGCTCTGATAGGGAATACTCGTTTTCAGGTGGGTTTCCCGCTTAGATGCCTTCAGCGGTTATCCCGTCCGTATATAGCTACCCTGCTATGCGGCTGGCGCCACAACAGGTCCACCAGAGATACGTCCATCCCGGTCCTCTCGTACTAGGGACAGATCCTGTCAATATTCCTACACCCACGGCAGATAGGAACCGAACTGTCTCACGACGTTCTGAACCCAACTCACGTACCGCTTTAAATGGCGAACAGCCATACCCTTGGGACCTGCTCCAGCCCCAGGATGCGATGAGTCGACATCGAGGTGCCAAACAACCCCGTCGATATGGACTCTTGGGGGTCATCAGCCTGTTATCCCCGGCGTACCTTTTATCCGTTGAGCGATGGCCCTTCCACGCGGGACCACCGGATCACTATGACCGACTTTCGTCTCTGCTCGACTTGTCAGTCTTGCAGTCAGGCAGGCTTATGCCATTGCACTCGACGAACGATTTCCGACCGTTCTGAGCCTACCATCGCGCGCCTCCGTTACTCTTTAGGAGGCGACCGCCCCAGTCAAACTACCCACCATACACGGTCCTGGACCCGGATAACGGGCCGCAGTTAGACATCCATAAAAACAAGGGTGGTATTTCAAGGGTGACTCCACAAAGGCTGGCGCCCCTGCTTCAAAGTCTACCACCTATCCTACACATGTCGTCACGAATGCCAGTGTAAAGCTATAGTAAAGGTGCACGGGGTCTTTCCGTCTAACCGCAGGAACCCCGCATCTTCACGGGGAATTCAATTTCACTGAGTCTGCGTTGGAGACAGCGGGGAAGTCGTTACGCCATTCGTGCAGGTCGGAACTTACCCGACAAGGAATTTCGCTACCTTAGGACCGTTATAGTTACGGCCGCCGTTTACTGGGGCTTCAATTCAAGGCTTGCACCTCTCCTCTTAACCTTCCAGCACCGGGCAGGCGTCAGACCCTATACGTCGTCTTGCGACTTCGCAGAGCCCTGTGTTTTTGGTAAACAGTCGCTACCCCCTGGTCTGTGCCACCCCCCTATGGTTGCCCATAGTGAGGTCACGCTTCTTCCGAAGTTACGCGTGCATTTTGCCGAGTTCCTTCAACGCAGTTCTCTCAAGCGCCTTGGTATTCTCTACCAGTCCACCAGTGTCGGTTTAGGGTACGGTCTATATGCAGGAGCTATTTCCTGGAACCGCTTCGCTGCAAGATCAATCCAATAAGACCTCACAACACACGCGATCCGTCACTACCTGCAGGCCCACGAATATTAACGTGGTTCCCATCGACTACGCCTTTCGGCCTCGCCTTAGGGGCCGGCTAACCCTGCTCAGATTAACTTTAAGCAGGAACCCTTGGACTTTCGGCGAGGGAGTCTCTCACTCCCTTTATCGTTACTCATGTCAGCATTCTCACTTCCGATACCTCCAGGATGTCTCACGACTGTCCCTTCACAGGCTTACGGAACGCTCCGCTACCACGCACATACGTGCATCCACAGCTTCGGTGTATGGCTTGAGCCCCGGTACATTTTCGGCGCAAAGACCCTTATTTAGACCAGTGAGCTGTTACGCTTTCTTTAAATGATGGCTGCTTCTAAGCCAACATCCTGGTTGTTTTGGGATCCTCACATCCTTTCCCACTTAGCCATAACTTAGGGACCTTAGATGGTGGTCAGGGTTGTTGCCCTCTCCACGACGGACGTTAGCACCCGCCGTGTGTCTGCCGATTAGTACTCCCCGGTATTCGGAGTTTGGTTAGGATCAGTAAGACGGTGAGTCCCCATAGCCCATCCAGTGCTCTACCCCCGGGGGTATTCGGTCGACGCTCTACCTAAATAGATTTCGCGGAGAACCAGCTATCTCCAAGTTTGATTGGCCTTTCACCCCTAGCCACAAGTCATCCCGATCTATTGCAACAGATATGGGTTCGGTCCTCCAGTACGTGTTACCGTACCTTCAACCTGCTCATGGCTAGATCACTTGGTTTCGGGTCTAATGCATCGAACTGAACGCCCTGTTCAGACTCGCTTTCGCTGCGCCTACACCTACCGGCTTAAGCTTGCTCGATACACTAAGTCGCTGACCCATTATACAAAAGGTACGCTGTCACCCAGGACAAACCTTGGGCTCCAACTGTTTGTAGGCATCCGGTTTCAGGTACTGTTTCACTCCCCTCGTCGGGGTGCTTTTCACCTTTCCCTCACGGTACTGGTTCGCTATCGGTCATGCACGAGTACTTAGGCTTGGATCGTGGTCGACCCATGTTCAGACAGGATTTCACGTGTCCCGCCCTACTCAAGGACTTCTGCTATTCTACGTGTACGGGACTATCACCCACTTCGGTCGAGTTTTCCAACTCGTTCCACTTTATTCACAAAAGCCACTGGCCTGGTCCGCGTTCGCTCGCCACTACTAGCGGAGTCTCGTTTGATGTCCTTTCCTCTGGGTACTTAGATGTTTCAGTTCCCCAGGTTCGCTTCTAACCCCTATGTATTCAAGGTTAGATACCTTATTTATGATGACTAGAAAGCTGTGCTGTTCTCGCTCACGCGCCGTACGCATTCCAGAGGAATGCTGGCGCTCCGCGGGGGCGGCCCACATGGGCCGACGACCTAGCGGTCTGTATGGGTGTAAACCCATCCAGCGTTGCTCCAACAAAACAGATTTTCTAGTCATCTAAGGTGGGTTGCCCCATTCGGAAATCGTCGGATCAAAGGGTATTCGCACCTCCCCGACGCTTATCGCAGCGTATCACGTCCTTCATCGCCTGTGCATGCCAAGGCATCCACCAAATGCCCTTAAGACACTTGATCACTCTCATTGCCAATATCCATCAAAACTCAGCTCTTAAAGCCGCATTATGCGACGCCGAATGTTGCCATTCGACTGCAAATGCTCGTTTCAACAGTATCAGCAGAAAGACCAGCTTCTCGAGATACAATCGGTGATGGCGGGTAAAAACATCAATCATTATGCAAGGCTTGAGCAAGCTTCTTGCGACATCAACTCTTCAGTTGATCCGATTACATCTTCTCTTCACGATTTCATACAGAACAGGCAGACTTTCGTAAAAGTCCGCAAACTTGTTTCTTTCTTTTGTTGATTGCCAATATCCGTCTCAACACCAACATGATGGTGGAGCCGGACGGGATCGAACCGACGACCCCCTGCTTGCAAAGCAGGTGCTCTCCCAGCTGAGCTACGGCCCCTCATCAAGTAACTTGGTGGGCCTGGGAGGACTTGAACCTCCGACCCCACGCTTATCAAGCGTGTGCTCTAACCAACTGAGCTACAAGCCCAGATACCGACGCAAACGCTACTACGCGATCCACAGATCCACCCCGAAGCGAAGCTTCGCAAGGCCGACCGGCCGTCGGCCCTGATGGGCCGCGCCTGCGCAGGGCCAGCAGCGTCAGCTGCGGTACGGCCCGTGAGCAATCAACAATGAAGAAAGAGAAACGAAGGCGGCACGCCTGCAAGCGATCGTCAGGCTGACTGGCCTGCGATCTATGTTCTAATAAGATGGAGAAGGATCATCCGGATAAATCCGGCCTCTTTCCAATTCTCGATCCTCCTTAGAAAGGAGGTGATCCAGCCGCAGGTTCCCCTACGGCTACCTTGTTACGACTTCACCCCAGTCGCTGACCCTACCGTGGTCGCCTGCCTCCTTGCGGTTAGCACAGCGCCTTCGGGTAAAACCAACTCCCATGGTGTGACGGGCGGTGTGTACAAGGCCCGGGAACGTATTCACCGCGGCATGCTGATCCGCGATTACTAGCGATTCCAACTTCATGCACTCGAGTTGCAGAGTGCAATCCGAACTGAGATGGCTTTTGGAGATTAGCTCACACTCGCGTGCTCGCTGCCCACTGTCACCACCATTGTAGCACGTGTGTAGCCCAGCCCGTAAGGGCCATGAGGACTTGACGTCATCCCCACCTTCCTCTCGGCTTATCACCGGCAGTCCCCTTAGAGTGCCCAACTGAATGCTGGCAACTAAGGGCGAGGGTTGCGCTCGTTGCGGGACTTAACCCAACATCTCACGACACGAGCTGACGACAGCCATGCAGCACCTGTCTCCGGTCCAGCCTAACTGAAGGATAGTGTCTCCACTAACCGCGACCGGGATGTCAAGGGCTGGTAAGGTTCTGCGCGTTGCTTCGAATTAAACCACATGCTCCACCGCTTGTGCGGGCCCCCGTCAATTCCTTTGAGTTTTAATCTTGCGACCGTACTCCCCAGGCGGAATGTTTAATGCGTTAGCTGCGCCACCGAAGTGTAAACACCCCGACGGCTAACATTCATCGTTTACGGCGTGGACTACCAGGGTATCTAATCCTGTTTGCTCCCCACGCTTTCGCACCTCAGCGTCAGTAATGGTCCAGTGAGCCGCCTTCGCCACTGGTGTTCCTCCGAATATCTACGAATTTCACCTCTACACTCGGAATTCCACTCACCTCTACCATACTCAAGACTTCCAGTATCAAAGGCAGTTCCGGGGTTGAGCCCCGGGATTTCACCCCTGACTTAAAAGTCCGCCTACGTGCGCTTTACGCCCAGTAAATCCGAACAACGCTAGCCCCCTTCGTATTACCGCGGCTGCTGGCACGAAGTTAGCCGGGGCTTCTTCTCCGGTTACCGTCATTATCTTCACCGGTGAAAGAGCTTTACAACCCTAGGGCCTTCATCACTCACGCGGCATGGCTGGATCAGGCTTGCGCCCATTGTCCAATATTCCCCACTGCTGCCTCCCGTAGGAGTCTGGGCCGTGTCTCAGTCCCAGTGTGGCTGATCATCCTCTCAGACCAGCTATGGATCGTCGCCTTGGTGAGCCTTTACCCCACCAACTAGCTAATCCAACGCGGGCCGATCATTTGCCGATAAATCTTTCCCCCGAAGGGCACATACGGTATTAGCACAAGTTTCCCTGAGTTATTCCGTAGCAAATGGTACGTTCCCACGCGTTACTCACCCGTCTGCCGCTCCCCTTGCGGGGCGCTCGACTTGCATGTGTTAAGCCTGCCGCCAGCGTTCGTTCTGAGCCAGGATCAAACTCTCAAGTTGAAAATTTGATATATGGCTATAATCAGTCGCACCCCCATGTAAAACACGGAGACGCAAACTTCTGGTCACGCTCAATTGACGAGAACATATTTACACACCAACTTCGATCCGAAAACCAAAGTCAGGTAACATAAGTTCTTACCAAGAAACGTGTCCGCCAAAGTTCATTGTGACAGTTCGATCTCTCGAACCATCCGCAGACAATGCCGCCCACGTTTCTCTTTCTTCTGTATGCAGTTTTCAAAGAACCGACGATCTAAACCGTCCAAAATCTCTTCCGCCTAACCAAACATCCAACCAGTCAAACCCGAAGGTCAAATCCGTGTCAGCGCCTCGTCTGCGGTGCCGGGCTTCTAGATCAGTCAAACCAACCTGTCAACCACTTTTTTTGAAGAAAATCACAAACTTATTCGCCGTTCTTCTCTTCAAGGATTAACCAGAGATAACCCCGGAAAACCACCCCCAACTACTCACAAATCAACAAACAGTCAATCCATTTTCATCAGTAACTCAAGGACGCATCAGACTGCCGCTGCCGGCGCCGCCGCCCTCGTTGTGGCGCTATATAGGCCCCACCAATCATAACTGTCAACG",
+         "id" : "NODE_6_length_6418_cov_10.5316",
+         "genbank_locus" : {}
+      },
+      {
+         "dna" : "ATCAAACATAATGGCTTGGGAAGTAGTTATTGTGTAGTTTAATGTCGCGTTAGACATATTACTTCCTATACTATTAAAATATATTATCCAGAAATAGGGTTGTTGAGTTTTCTTTTATGAATGTGGTTTTTGGCAAGTATTTCTTCTGCCGATGACGGAATGATTTCGCCACGAAAATATTTCTTTTGCCAGCCTTGCTTGACCGCTTCCGGGACTTGGTCAGCGAGCGCCTGATTGAAATTACTCCGGGACGCAGACCATGTTTCGTATTGGGCTTTGAGGGTCGGATCGTCGCTTAAACCTTTAATGGTCGGAACGACATCATCCATCTTTTTATGTTCGATTATCTGTATGAAACAGAAGGGTTCCCCTTTTTCAAAACGAACGGTGCCAGGCCGTGTCATGTGCCAGTTCATGGTGAATGGAAAAGGAAGCCACCCGGTTTCCACAAGAGCGGTCAGCGGCTGAATACCGTCTTTTATATGATTAGGTGCACCGCTTACCCATAGTGCAAAATTGGCTGGTGTTCGGAAAAGATATCCAGTGTGAAAGGTGAGGATGCCGTGTGAAAAGTGAGATTGGGCGAAATGTTCAATAGAAATAGAATCGTTCGCAACGTTTTTTACGAGCAAATCTTGTTTTGCGAGTCCTCCGTTCCAGCTTACTTCTATATCTGTAGGACATAGTATTTCCCACCCTGTAGAGTTCGCCATAGTTAATGGAAGACATCGGTAAGGTGCGCGTGAGTGAAAACTACTCATCCAGCTTCGTTCGGGGCGCCCAGGCACGATTTTAGGAGGCGTGTCATGGCATTTAAAGCATTCCAGATGCATCGCAGCCTCATACAGTTACACACGTGTATTGTTTTCCCTTTCGTCTAGAGCGGTTCCGTTTAAAACGGAATCATTGGAACGCTCTATCTCTTTGTTTTGTCACATTTTCCGACGCGAAACCGTTTCACGCTTTTGGCTCGAAAATGTTCTAAAGGAAAACTATTGAGAATAATGAACTGCAATTATCCCGGCGCTTACTATTTTGTAAACTGTAGATACTAACGGGAACGGACACGTTGCAAGCTTTCCTGCAAGAATAGTGGCGATGGTATACTCACTTTTCAAAGCTGAGAAATTTCAATGTTCTAGAGCGCGTTTCGATCTGATTGAATCAGATCGGCGCTCTAATCCTTTGTTTTGACGCGCATCTTTTCCGAAAACCGTTTCACACTTTTCGGGATGCGCTCTAGCGTACAGGTTGTCTCAAAAGTCGCAGCGCATTGACTGTCACCAAAACGGTTGCACCCGTATCGGCCAGAATGGCAGGCCAGAGGCCGGTAATGCCCAAAACCGTGGTGACGAGGAAGACCGCCTTCAACCCCAGAGCGATGCCGATATTCTGATGAATATTGCGCATGGTCCGCTTCGACAGATCAACCATTTCCGCGATATCGCTCACATGCCCGTGCAAGATGGCGGCATCGGCGGTTTCAAGTGCCACATCGGTTCCACCACCCATGGCAATGCCCACATCGGCTGCGGCAAGGGCTGGTGCATCATTGATGCCATCGCCCACTTTGGCAACGATCCGTCCTTCCTTGCGCAATTCGCCGACAATGCGCTGCTTGTCCTCCGGCAGAAGCTCGGCGCGCACTTCGATGCCAAGATCACGCCCGATGGCTTCCGCTGTGCGGCGGTTGTCGCCGGTCAGCATCAAGGTGGCGATGCCGCCGTCCTTCAGCTTTTTCAGGCCAGCGATAGCGTCAGCGCG",
+         "genbank_locus" : {},
+         "id" : "NODE_387_length_1764_cov_7.51184"
+      },
+      {
+         "id" : "NODE_756_length_1226_cov_6.9824",
+         "genbank_locus" : {},
+         "dna" : "AGCTTGATGACATGATTATTCTGTCTCTAAGTTTCGGTTCATTGCCTCGAATTTCACCGGCGATTTATAGCCCAGTGTAGAATGTCTGCGCACGGGATTATAGAAGCCGTCAATGTATTCGCCAATGGCTTTGATTGCGTCATTTCTGGTCTGGAATGCAGCGCGCCAGATCAGTTCCGACTTGATCGTTTTGAAGACGGTTTCCACCATTGCATTGTCATAGCAATTTCCTTTGCCGCTCATGGATGGAAGCATGCTGTGCGATTTGAGGATTTTGCGATACTCATAACTGGCATATTGGCTTCCCCTGTCGGAGTGTTGGATCAGCCCCGGCTTTGGGTACCGAATTGCAATGGCCTTCTTCAAAGCACAAATAGCAAGGTCCTTTTTCATTCGATCGCGCGCCTCCCAGCCAATGATGCGACGAGAATAAAGATCGACAACGATTGCCAGATATAACCAGCCTTCGGCGGTCCATATGTAACTGATATCGACACCCCATTTCTGATCTGGTCCGTCACAAGTGAAGTCCTGATCCAGAAGATTGGGAGCGACAGGCTCACCATGATTGCTGTCGGTCGTGCGTTTGAAGCGCATTTTCTGTCGGGCTTTCAAACCATTTTCACGCATCAGTCGCGCCGTGCGATGACGACCTGCTCGAATACCTTCTTCGTTCAGTTCAACATGCATTCGAGGGCTGCCATAGGTTTCACATGACAGCGCAAACTGATTACGAATGTGGGCCAGAATAATCATGTCATCAAGCTGACGACGACTGGGCAAACGATGCTTCCATGCATAATAACCGCTGATGCTGACGCCTGCGAAAGCGCACAGCCGTGACAGAGACATATGGGCCTTCTCCGTGTCGATGAACGCAAACTTCATCGACTTGTCTCCCGAGCGAAGAAGGCCGTCGCTTTTTTTAGTAGGTCACGTTCCTGTCGCAGAAGTTCGTTTTCTTTACGAAGCCGGGCAAGCTCCTGGTCCATGTCCTCATGTGGACCAGAAAGTAAATCTTTCTCAGCAAAATTGCGCCGCCAACGCTCAAGCGTTGACTTACCAATCCCAAGGTCCTCAGCAACTGATGAAATGTTTCGACCACTCGTGGTTAAAATCCGAACAGCTTCGCGCTTGAAATCTTCTGTAAATTCACGCTGCTTCAATTCTAAGTCTCCTGTCAGTCTTCTCTAACAGAAGCCCTCCACTTTTGAAGGGGAAGTCCA"
+      },
+      {
+         "id" : "NODE_940_length_1025_cov_8.00907",
+         "genbank_locus" : {},
+         "dna" : "GCTTCCGGCCCGTTCTACTGTCCCGGCGACCGTAAGCTTTATATCGACCTCAGCTTCTACAAGGAGCTTGCCAATCGCTTTGGCGCTTCGGGCGATTTCGCGCAGGCCTATGTTCTGGCGCATGAAGTGGGCCACCATGTCCAGAATCTTCTGGGCATCCTGCCGAAATTCAACCAGATGCGCCAGCAGATGAGCGAGGCGCAGGCCAACCAGATGTCGGTGCGCGTCGAGCTTCAGGCCGATTGCCTTGCGGGCGTATGGGGCCACTACACAGACCAGAAGGGCATTCTGGAAGCGGGCGACCTTGAGGAAGCCTTGAACGCGGCGCATCAGATCGGTGATGACACATTACAGCGTCGCAGCCAGGGCTATGTCGTACCGGAAAGCTTCAACCATGGCACCTCCGCGCAACGCGCCAAGTGGTTCCAGCGTGGGTTCGATAGCGGTCAGCTTGGATCGTGTGACACGTTCAGCGGTGATGTTTAGAGCGCGTTTCGATCTGATTGAATCAGATCGGCGCTCTAATCCTTTGTTTTGACGCGCATATTTTCCGAAAACCGTTTCACACTTTTCAGGATGCGCTCTAAAATCGCTTCCAGACTATAGAAAAAGGCGGCTTGTGACCGCCTTTTCCTTTGCGAAAATTTCAATTGCCGTTCAGGCAGCCTGTTCGCGCTCCGGCAGAGGAGCCTGGCCTTTCCTCTCGCGGATGAGATTGATGAACCGGCGGAACAGATAGTGCGAATCCTGCGGGCCGGGGGAGGCTTCCGGGTGATGCTGCACGGAGAAGACTGGCTTGCCGACGACACGCAGGCCGCAATTGGTGCCGTCGAAGAGCGACACATGGGTTTCCTCGACATTTTCCGGCAGCGAGTCCGAATCAACTGCGAAACCGTGATTCATCGAGACGATTTCCACCTTGCCGGTCGTATAATCCTTCACCGGGTGGTTTGCACCGTGATGTCCCTGATGCATCTTTTCCGTGCGTCCGCCGAGCGCCAGCGCCAGCATCTGGTGGCCGAGGC"
+      },
+      {
+         "dna" : "AACCAGATCATAGCGCATGCGAGATGGACGAAACCCATGAATGCGGTCAATGTTTTCTCGCATCGCAGCGCAATACGACGATAGCGTTTCAACTTGTTAAAAAAGCATTCAATCTGATGGCGTTCCTTGTACAGCCTCCAGTCGATTGTTGGGACACTGGAACGTGTTGGATTGGCCTTGATCTGAGCCGTTGCCTTGAGATCGCTGGCAATGAAGGCCCTTAAGTGATCGGCATCATAGGCTGCATCAGCAATGACATGCCCCACACCCTTCAAGCCGGATAGAAGGCTTGAAGCTTGCGGACAGTCACCATAATGGCCGGGTGTTGGCTTTATTCGCAGCGGTAGGCCGATAGCATCGACAACAGCATGCAGCTTGGTCGTCAATCCACCGCGCGAGCGACCGATGCAGGCAGCTTCAGCCCCCCTTTTGCGCCCGCCGCATCTGCGTGGACTTTCGATATGGTGCTATCAATGAGGACATATTCAAAGTCCGGCGTATCAGCCAGGGCATGGAAAAGCCTTTCCCATACACCGGCGTGCGACCATCGCCGAAAGCGGGCATGAACCGCTGTCCATTTGCCGAAGGTCGCAGGCAGATCGCGCCAGTGCGCTGCATTGGCAGCCATCCACAAGATGGCGTCGACAAATAATCGGTTATCGACGCCACTGCGGCCGGGCGTACCAACTCGCCCCGGAAGATATGCTTCGATCCGGTTCCATTGCTCATCTGTAAGGCTTCGTCTGCTCACGGCTGTTCTCCTTCAACAACCTTGAATCAGAATTTCATGCAAAAGGGAATCCTTGAATGCAGACA",
+         "genbank_locus" : {},
+         "id" : "NODE_1216_length_816_cov_25.1149"
+      },
+      {
+         "id" : "NODE_1271_length_783_cov_6.16",
+         "genbank_locus" : {},
+         "dna" : "ACGCTGGTTTTCGACGTTCTGTCCAAGGCCGACGGTCCGCTCAGCGCCTATACAATTCTCGACCAGTTACGGGACGATGGCTTTCGCGCGCCATTGCAGGTCTATCGGGCGCTGGAAAAACTGCTCGATTACGGGCTGATCCACCGCCTCGAAAGCCTCAACGCCTTCGTTGCCTGCGCGCATCCGCAATGCCACCAGCAGGGCCTCGTTGCTTTTGCGATCTGCGAAAAATGCGGGCAGGTCACGGAATTTTCCGATGCGGCCATTGAAAATCTCGTCACCGCATGGAGCGTGCAGAACGGTTTCAAGTCACGCAAAACGACGCTCGAATTGCGCGGCATCTGCGAAGCCTGCGACGATCATGAGAGCGCATCCCGAAAAGTGTGAAACGGTTTTCGGAAAAGATGCGCGTCAAAACAAAGGATGAGAGCATAATCCAGACAGAGCCGAAAAAGTAACGCTTCGGCAATCGAAACCTGCTAGAGCAAAAGAAATAGCAGGTAAGATTTTGATATGGCACGGGTTAAGCCACCACAAGAACGGCGCAGGGAAGAGAGACAGCGCACGCGATTGCGCTCCGGCAAGATCGTGAATCTGGATGGCCGGTTCGTCGTCGAATGCCAGTTCATCGATATTGCCCCCCATGGAGCGAAGATCAGGGTGCGGGAGGCCCTATACCTGCCGGAACGATTCTGGCTCTTTGACGATCATTATGCGCGCGCGCTTCTGGCCCGCCTTGCTTGGCGCAAGGGACGTGAATTCGGCGTGGAATTCATCATCGAT"
+      },
+      {
+         "id" : "NODE_1736_length_552_cov_5.41233",
+         "genbank_locus" : {},
+         "dna" : "GGCAAGGGAAAGCCGCGTGCAAAGTGCTTGCAGCAAAACCGCCATGAGGTTCGACAGAAGCACGACCGAGAGCAGTGCATAGCCGAAACGGGAGCCGCCAGCCAGAGAGGTGGCCCAGTTGCCGGGATCCATATAACCGACGGCTACAAGATAGCCCGGGCCGAAAAATGAAAGCGCGCGGCGGAATTTTGAACCAGAGCGGTTGACCCGGATGGTACGATGGACATCGGACATGGAGGCTTCTCCACGCTCGCGACGCCAGCCTTCAAATGTTACCTCTCTAGCGCCGGAGGGACATGATCCATGGGGTACCATATGAAATACCTTTATCCTTTATGCAGTTGCAAACTATTTGCATTAAGTAAAGGGATATGTGCCGGGTGTCAACGGCGGGGGGCGGAATAAGGCAGTAAGGCAATAGGGCAGTAAGGCAGTATGTTAAGGGAATAGGGGAATAAGGGAGTAGGGGAGTATGTTTTGGTTGTACATAGCCGCAGCGACCATATTCTTCACTGCCCTACTGCCCTACTGCCCTACTGCCCTACTGCCCTA"
+      },
+      {
+         "dna" : "CGTTGCGCGCAAAGTCGTAATAGAAGCCGTTTTCGATCACGGGGCCGATCGTTACCTGCGTTCCGGGAAAAAGCTCCTGCACGGCTTCTGCAAGCACATGGGCAGTGTCGTGGCGGATGAGTTCCAGCGCGCGCGGGTCTTCGCGGGTGATGATTTCCACCTTGCCGGAAGCGCCAAGCGGATCGGAAAGATCACGAACCGTGCCATCAACAGCGTAAGCGACAGCCTTCTTGGCAAGCGACTTGGAAATTGATTCCGCAAGGGCGGCCCCTGTCATCGATGCATCGTATTCACGTACGGAACCATCGGGAAATTGCAGGGAAACGGTATTCGACATTGTCATCATCCTTATCCAGTCCCGCCAACGATTGCGGGTGGTTCGTCTCATGCATAGAAAATGAGTTTGGCTCATATTCCCTTTTGCATAGGCAGTAAAGTGCAATCACTACAGCTAGAACGCATCCCGAAAAGTGTGAAACGGTTTTCGGAAAAAATGCGCGTCAAAACAA",
+         "genbank_locus" : {},
+         "id" : "NODE_1849_length_509_cov_7.61765"
+      },
+      {
+         "dna" : "CGCTCTAATCCTTTGTTTTGACGCGCATCTTTTCCGAAAATCGTTTCACACTTTTCGGGATGCGCTCTGATGGCGCGTCTCCAACCACTTTTCACGCGAGATAACTTGGTTCATGGCGCAAGCCCTCCTCCGGCTTTGCCCCTGACGCCCCTGTTTTTCTGAGTTTATTGCTTGACGATTTATATTGATATCAATATTATTAAGCTATGTCAAATGGCCCAGAAATCCCTTTTGAAACAACGCTTTTCGTTCGTGATACCTGCCTTTGCCTGCATGTTCAGCGCGCCGCGCGCGCGTTGGCCCGCCTTTTTGACGAAGCGCTTCGCCCAGCAGGGCTTACAAACGGGCAATTCTCGCTCATGATGTCGCTCA",
+         "id" : "NODE_2376_length_372_cov_5.10619",
+         "genbank_locus" : {}
+      }
+   ],
+   "genome_quality_measure" : {
+      "partial_cds_ratio" : 0,
+      "plfam_cds_ratio" : 0,
+      "feature_summary" : {
+         "misc_RNA" : 0,
+         "repeat_region" : 2,
+         "rRNA" : 2,
+         "partial_cds" : 0,
+         "cds" : 33,
+         "tRNA" : 3
+      },
+      "genome_quality_flags" : [
+         "Genome too short",
+         "Low CheckM completeness score",
+         "Abnormal CDS ratio"
+      ],
+      "cds_ratio" : 1.62657728706625,
+      "coarse_consistency" : 93.6,
+      "subsystem_summary" : {
+         "Protein Processing" : {
+            "genes" : 1,
+            "subsystems" : 1
+         },
+         "Membrane Transport" : {
+            "subsystems" : 1,
+            "genes" : 1
+         }
+      },
+      "genome_quality" : "Poor",
+      "genome_metrics" : {
+         "L50" : 1,
+         "N90" : 783,
+         "N70" : 1764,
+         "L70" : 2,
+         "complete" : 0,
+         "totlen" : 20288,
+         "L90" : 6,
+         "N50" : 6418
+      },
+      "contigs" : 10,
+      "protein_summary" : {
+         "function_assignment" : 15,
+         "pgfam_assignment" : 27,
+         "go_assignment" : 3,
+         "hypothetical" : 18,
+         "ec_assignment" : 3,
+         "pathway_assignment" : 2
+      },
+      "pgfam_cds_ratio" : 0.818181818181818,
+      "genome_length" : 20288,
+      "specialty_gene_summary" : {
+         "Virulence Factor:Victors" : 1,
+         "Transporter:TCDB" : 1
+      },
+      "hypothetical_cds_ratio" : 0.545454545454545,
+      "gc_content" : 52.7405362776025,
+      "checkm_data" : {
+         "2" : "0",
+         "Completeness" : "0.00",
+         "5+" : "0",
+         "Bin Id" : "contigs",
+         "Marker lineage" : "root (UID1)",
+         "Contamination" : "0.00",
+         "# markers" : "56",
+         "# genomes" : "5656",
+         "# marker sets" : "24",
+         "1" : "0",
+         "3" : "0",
+         "Strain heterogeneity" : "0.00",
+         "4" : "0",
+         "0" : "56"
+      },
+      "fine_consistency" : 93.6,
+      "problematic_roles_report" : {
+         "role_fids" : {
+            "CarbPhosSyntSmal" : [
+               "fig|2.1368.peg.25"
+            ],
+            "YpfjProtZincMeta" : [
+               "fig|2.1368.peg.24"
+            ],
+            "HypoProt3" : [
+               "fig|2.1368.peg.3",
+               "fig|2.1368.peg.5",
+               "fig|2.1368.peg.6",
+               "fig|2.1368.peg.8",
+               "fig|2.1368.peg.9",
+               "fig|2.1368.peg.10",
+               "fig|2.1368.peg.11",
+               "fig|2.1368.peg.13",
+               "fig|2.1368.peg.15",
+               "fig|2.1368.peg.16",
+               "fig|2.1368.peg.17",
+               "fig|2.1368.peg.18",
+               "fig|2.1368.peg.19",
+               "fig|2.1368.peg.20",
+               "fig|2.1368.peg.29",
+               "fig|2.1368.peg.31"
+            ],
+            "ZincUptaReguProt" : [
+               "fig|2.1368.peg.28"
+            ],
+            "CoppTranPTypeAtpa" : [
+               "fig|2.1368.peg.21"
+            ],
+            "ThreTrnaSynt" : [
+               "fig|2.1368.peg.32"
+            ]
+         },
+         "roles" : {
+            "CoppTranPTypeAtpa" : "Copper-translocating P-type ATPase (EC 3.6.3.4)",
+            "ThreTrnaSynt" : "Threonyl-tRNA synthetase (EC 6.1.1.3)",
+            "YpfjProtZincMeta" : "YpfJ protein, zinc metalloprotease superfamily",
+            "HypoProt3" : "hypothetical protein",
+            "CarbPhosSyntSmal" : "Carbamoyl-phosphate synthase small chain (EC 6.3.5.5)",
+            "ZincUptaReguProt" : "Zinc uptake regulation protein Zur"
+         },
+         "role_ok" : {
+            "LsuRiboProtL9p" : [
+               0,
+               0
+            ],
+            "AtpSyntEpsiChai" : [
+               0,
+               0
+            ],
+            "AtpDepeRnaHeliDbpa" : [
+               0,
+               0
+            ],
+            "NaTranNadhQuinRedu2" : [
+               0,
+               0
+            ],
+            "DemeMeth" : [
+               0,
+               0
+            ],
+            "NadhUbiqOxidChai7" : [
+               0,
+               0
+            ],
+            "NaTranNadhQuinRedu4" : [
+               0,
+               0
+            ],
+            "2Poly6HydrMeth" : [
+               0,
+               0
+            ],
+            "F4201LGlutLiga" : [
+               0,
+               0
+            ],
+            "PhosKina3" : [
+               0,
+               0
+            ],
+            "UbiqBiosProtUbij" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS5p" : [
+               0,
+               0
+            ],
+            "HypoProtPa30n1" : [
+               0,
+               0
+            ],
+            "GlutTrnaAmidSubu3" : [
+               0,
+               0
+            ],
+            "PhosInvoThreTA37n1" : [
+               0,
+               0
+            ],
+            "ImidGlycPhosSynt2" : [
+               0,
+               0
+            ],
+            "ThiaAbcTranAtpaComp" : [
+               0,
+               0
+            ],
+            "PeptChaiReleFact2" : [
+               0,
+               0
+            ],
+            "UnchSecrProtAsso" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS6p" : [
+               0,
+               0
+            ],
+            "HsprTranReprDnak" : [
+               0,
+               0
+            ],
+            "FmnAden" : [
+               0,
+               0
+            ],
+            "PhosSyntSyntSubu" : [
+               0,
+               0
+            ],
+            "AtpDepeDnaHeliRecg" : [
+               0,
+               0
+            ],
+            "GtpPyroPpgpSyntI" : [
+               0,
+               0
+            ],
+            "ChapProtHsca" : [
+               0,
+               0
+            ],
+            "Udp3O3HydrGlucNAcyl" : [
+               0,
+               0
+            ],
+            "CyclAmpReceProt" : [
+               0,
+               0
+            ],
+            "FlagMotoSwitProt" : [
+               0,
+               0
+            ],
+            "NicoNuclAden" : [
+               0,
+               0
+            ],
+            "OrgaSolvToleProt" : [
+               0,
+               0
+            ],
+            "ColdShocProtCspFami6" : [
+               0,
+               0
+            ],
+            "CobaPrec6aRedu" : [
+               0,
+               0
+            ],
+            "SimiRiboLargSubu" : [
+               0,
+               0
+            ],
+            "BactRiboSsuMatuProt" : [
+               0,
+               0
+            ],
+            "UnchProtWithLysm" : [
+               0,
+               0
+            ],
+            "RecoProtRecr" : [
+               0,
+               0
+            ],
+            "Pyri5PhosSynt" : [
+               0,
+               0
+            ],
+            "PeriThioDisuOxid" : [
+               0,
+               0
+            ],
+            "NadhUbiqOxidChai10" : [
+               0,
+               0
+            ],
+            "GlycTrnaSyntAlph" : [
+               0,
+               0
+            ],
+            "Trna5Carb2ThioSynt" : [
+               0,
+               0
+            ],
+            "PutaOligCyclDehy" : [
+               0,
+               0
+            ],
+            "N5CarbRiboMuta" : [
+               0,
+               0
+            ],
+            "CoprDecaHemq" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL30p" : [
+               0,
+               0
+            ],
+            "RodShapDeteProtMred" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS11p" : [
+               0,
+               0
+            ],
+            "PhosAden" : [
+               0,
+               0
+            ],
+            "Prec3bCMeth" : [
+               0,
+               0
+            ],
+            "PutaCystDesuAsso" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL16p" : [
+               0,
+               0
+            ],
+            "AtpSyntF0SectSubu2" : [
+               0,
+               0
+            ],
+            "FlagBasaBodyRodModi" : [
+               0,
+               0
+            ],
+            "FlagBiosProtFlhb" : [
+               0,
+               0
+            ],
+            "ArchPhosSynt" : [
+               0,
+               0
+            ],
+            "35Olig" : [
+               0,
+               0
+            ],
+            "RodShapDeteProtMreb" : [
+               0,
+               0
+            ],
+            "GlucMalaCystLiga" : [
+               0,
+               0
+            ],
+            "NadhUbiqOxidChai6" : [
+               0,
+               0
+            ],
+            "RiboReduClasIbBeta" : [
+               0,
+               0
+            ],
+            "PutaDeoxYjjv" : [
+               0,
+               0
+            ],
+            "SeriProtKinaPLoop" : [
+               0,
+               0
+            ],
+            "HypoRelaBroaSpec" : [
+               0,
+               0
+            ],
+            "AnthSyntAmidComp" : [
+               0,
+               0
+            ],
+            "RiboProtL11Meth" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL29p" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL4p" : [
+               0,
+               0
+            ],
+            "SeptAssoCellDivi" : [
+               0,
+               0
+            ],
+            "CobaPrec5bMeth" : [
+               0,
+               0
+            ],
+            "AspaTrnaAmidSubu2" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL14p" : [
+               0,
+               0
+            ],
+            "Nucl5TripRdgb" : [
+               0,
+               0
+            ],
+            "RhodLikeDomaRequ" : [
+               0,
+               0
+            ],
+            "Udp3O3HydrNAcetDeac" : [
+               0,
+               0
+            ],
+            "ExciAbcSubuB" : [
+               0,
+               0
+            ],
+            "PhosSyntGlutAmid" : [
+               0,
+               0
+            ],
+            "OSuccSynt" : [
+               0,
+               0
+            ],
+            "GtpBindProtEra" : [
+               0,
+               0
+            ],
+            "PhagShocProtB" : [
+               0,
+               0
+            ],
+            "TrnaLysiSynt" : [
+               0,
+               0
+            ],
+            "3Deme3OMeth" : [
+               0,
+               0
+            ],
+            "CompProtFHomoPhos" : [
+               0,
+               0
+            ],
+            "CoppSensHistKina" : [
+               0,
+               0
+            ],
+            "SepfFtszInteProt" : [
+               0,
+               0
+            ],
+            "FlagMotoSwitProt3" : [
+               0,
+               0
+            ],
+            "Fig0ProbFeTrafProt" : [
+               0,
+               0
+            ],
+            "RiboRecyFact" : [
+               0,
+               0
+            ],
+            "2Meth6Poly14Benz" : [
+               0,
+               0
+            ],
+            "Stag0SporProtYaat" : [
+               0,
+               0
+            ],
+            "UnchProtEcHemx" : [
+               0,
+               0
+            ],
+            "AtpPhosHisg2" : [
+               0,
+               0
+            ],
+            "ExciAbcSubuC" : [
+               0,
+               0
+            ],
+            "RiboT" : [
+               0,
+               0
+            ],
+            "RnaPolySporSpecSigm2" : [
+               0,
+               0
+            ],
+            "Indo3GlycPhosSynt" : [
+               0,
+               0
+            ],
+            "IsocSynt" : [
+               0,
+               0
+            ],
+            "NitrAlphChai" : [
+               0,
+               0
+            ],
+            "PurrTranReguAsso" : [
+               0,
+               0
+            ],
+            "ProtTranSubuSece" : [
+               0,
+               0
+            ],
+            "PeptProlCisTranIsom" : [
+               0,
+               0
+            ],
+            "16sRrna2OMeth2" : [
+               0,
+               0
+            ],
+            "RadiSamFamiEnzySimi" : [
+               0,
+               0
+            ],
+            "Glut3n2" : [
+               0,
+               0
+            ],
+            "CellDiviTopoSpec" : [
+               0,
+               0
+            ],
+            "GlycTrnaSyntBeta" : [
+               0,
+               0
+            ],
+            "5MethDctpPyro" : [
+               0,
+               0
+            ],
+            "DiphDeca" : [
+               0,
+               0
+            ],
+            "TranInitFact1n1" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS8p" : [
+               0,
+               0
+            ],
+            "NitrReduMatuProt" : [
+               0,
+               0
+            ],
+            "PhosAtpPyro" : [
+               0,
+               0
+            ],
+            "TolPalSystTprRepe" : [
+               0,
+               0
+            ],
+            "TrnaDihySyntDusb" : [
+               0,
+               0
+            ],
+            "Prec6aRedu" : [
+               0,
+               0
+            ],
+            "SignRecoPartProt" : [
+               0,
+               0
+            ],
+            "LipoAbcTranAtpBind" : [
+               0,
+               0
+            ],
+            "Glut1Semi21Amin" : [
+               0,
+               0
+            ],
+            "14Dihy6NaphSynt" : [
+               0,
+               0
+            ],
+            "PropLipoReguProt" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL10p" : [
+               0,
+               0
+            ],
+            "TmrnBindProtSmpb" : [
+               0,
+               0
+            ],
+            "NadhUbiqOxidChai4" : [
+               0,
+               0
+            ],
+            "NitrFemoCofaScaf2" : [
+               0,
+               0
+            ],
+            "ProtYrda" : [
+               0,
+               0
+            ],
+            "NaHAntiSubuF" : [
+               0,
+               0
+            ],
+            "FlagMotoSwitProt2" : [
+               0,
+               0
+            ],
+            "DnaPolyIiiChiSubu" : [
+               0,
+               0
+            ],
+            "ApagProt" : [
+               0,
+               0
+            ],
+            "MoxrLikeAtpaAero" : [
+               0,
+               0
+            ],
+            "CytoCHemeLyasSubu2" : [
+               0,
+               0
+            ],
+            "NaHAntiSubuG" : [
+               0,
+               0
+            ],
+            "AtpSyntF0SectSubu" : [
+               0,
+               0
+            ],
+            "UdpNAcetLAlanGamm" : [
+               0,
+               0
+            ],
+            "NaTranNadhQuinRedu3" : [
+               0,
+               0
+            ],
+            "DnaPolyIiiBetaSubu" : [
+               0,
+               0
+            ],
+            "TwitMotiProtPilt" : [
+               0,
+               0
+            ],
+            "TolPalSystProtTolq" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL7L12n1" : [
+               0,
+               0
+            ],
+            "AeroProtBata" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL36pZinc2" : [
+               0,
+               0
+            ],
+            "GlutTrnaRedu" : [
+               0,
+               0
+            ],
+            "AspaTrnaAmidSubu3" : [
+               0,
+               0
+            ],
+            "Trna5Meth2ThioSynt5" : [
+               0,
+               0
+            ],
+            "ChorPyruLyas" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS2p" : [
+               0,
+               0
+            ],
+            "CellDiviProtFtsz" : [
+               0,
+               0
+            ],
+            "Upf0ProtYqge" : [
+               0,
+               0
+            ],
+            "HemxProtNegaEffe" : [
+               0,
+               0
+            ],
+            "NaHAntiSubuE" : [
+               0,
+               0
+            ],
+            "TolPalSystPeptAsso" : [
+               0,
+               0
+            ],
+            "CellDiviProtFtsl" : [
+               0,
+               0
+            ],
+            "Upf0ProtYrzl" : [
+               0,
+               0
+            ],
+            "CobaPrec2CMeth" : [
+               0,
+               0
+            ],
+            "LeadPept" : [
+               0,
+               0
+            ],
+            "ArogDehy" : [
+               0,
+               0
+            ],
+            "AnthSyntAminComp" : [
+               0,
+               0
+            ],
+            "12Dihy3Keto5Meth" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL13p" : [
+               0,
+               0
+            ],
+            "TrnaSpec2ThioMnma" : [
+               0,
+               0
+            ],
+            "CobaPrec8Meth" : [
+               0,
+               0
+            ],
+            "NaHAntiSubu" : [
+               0,
+               0
+            ],
+            "FlagBiosProtFlha" : [
+               0,
+               0
+            ],
+            "RiboIii" : [
+               0,
+               0
+            ],
+            "Fig0SamDepeMeth" : [
+               0,
+               0
+            ],
+            "AtpSyntDeltChai" : [
+               0,
+               0
+            ],
+            "LipiDisaSynt" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL18p" : [
+               0,
+               0
+            ],
+            "TrnaDihySynt3" : [
+               0,
+               0
+            ],
+            "ThreTrnaSynt" : [
+               1,
+               1
+            ],
+            "UnchProtEcHemyProt" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS18p" : [
+               0,
+               0
+            ],
+            "PolyPoly" : [
+               0,
+               0
+            ],
+            "RecaProt" : [
+               0,
+               0
+            ],
+            "UdpNAcetTripDAlan" : [
+               0,
+               0
+            ],
+            "FlagBiosProtFliq" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS16p" : [
+               0,
+               0
+            ],
+            "DnaGyraSubuB" : [
+               0,
+               0
+            ],
+            "AeroProtBatd" : [
+               0,
+               0
+            ],
+            "GlutTrnaAmidSubu" : [
+               0,
+               0
+            ],
+            "AtpDepeClpProtAdap" : [
+               0,
+               0
+            ],
+            "1Hydr2Meth2Bute4n1" : [
+               0,
+               0
+            ],
+            "SuccDehyCytoB556n1" : [
+               0,
+               0
+            ],
+            "TypeIvPiluBiogProt4" : [
+               0,
+               0
+            ],
+            "ImidGlycPhosSynt" : [
+               0,
+               0
+            ],
+            "TrypSyntBetaChai" : [
+               0,
+               0
+            ],
+            "FlagBasaBodyRodProt2" : [
+               0,
+               0
+            ],
+            "AtpSyntBetaChai" : [
+               0,
+               0
+            ],
+            "FlagBasaBodyRodProt4" : [
+               0,
+               0
+            ],
+            "ProtYidd" : [
+               0,
+               0
+            ],
+            "NitrFemoCofaSynt" : [
+               0,
+               0
+            ],
+            "NaHAntiSubuD" : [
+               0,
+               0
+            ],
+            "RnaPolySigmFactFor" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL6p" : [
+               0,
+               0
+            ],
+            "AdenPentAdenPyro" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS12p" : [
+               0,
+               0
+            ],
+            "SeptSiteDeteProt2" : [
+               0,
+               0
+            ],
+            "TrnaPseuSynt3" : [
+               0,
+               0
+            ],
+            "NaHAntiSubuC" : [
+               0,
+               0
+            ],
+            "GtpBindProtYqehRequ" : [
+               0,
+               0
+            ],
+            "16sRrnaProcProtRimm" : [
+               0,
+               0
+            ],
+            "CytoCTypeBiogProt3" : [
+               0,
+               0
+            ],
+            "HypoProtCytoOxid" : [
+               0,
+               0
+            ],
+            "CytoCTypeBiogProt9" : [
+               0,
+               0
+            ],
+            "25Diam6RiboPyri5n2" : [
+               0,
+               0
+            ],
+            "Trna5Meth2ThioSynt6" : [
+               0,
+               0
+            ],
+            "RiboReduProtNrdi" : [
+               0,
+               0
+            ],
+            "FlagAsseProtFlih" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL32p" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL24p" : [
+               0,
+               0
+            ],
+            "HydrYqek" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS20p" : [
+               0,
+               0
+            ],
+            "QuinPhosDeca" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL23p" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL28pZinc2" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL15p" : [
+               0,
+               0
+            ],
+            "TrnaNuclAddi" : [
+               0,
+               0
+            ],
+            "23sRrnaNMeth3" : [
+               0,
+               0
+            ],
+            "TolaProt" : [
+               0,
+               0
+            ],
+            "Prec6yCMethDeca" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS13p" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL21p" : [
+               0,
+               0
+            ],
+            "RodShapDeteProtMrec" : [
+               0,
+               0
+            ],
+            "AtpDepeNuclSubuB" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL36pZinc" : [
+               0,
+               0
+            ],
+            "RiboD" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS7p" : [
+               0,
+               0
+            ],
+            "MultEfflSystMdta4" : [
+               0,
+               0
+            ],
+            "Phos5AminCarbRibo" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS19p" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS3p" : [
+               0,
+               0
+            ],
+            "CoenF4200LGlutLiga" : [
+               0,
+               0
+            ],
+            "PhosCyclLiga" : [
+               0,
+               0
+            ],
+            "DnaRecoRepaProtRecf" : [
+               0,
+               0
+            ],
+            "NLThreSynt" : [
+               0,
+               0
+            ],
+            "FlagHookBasaBody" : [
+               0,
+               0
+            ],
+            "UdpNAcetNAcetPyro" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL28pZinc" : [
+               0,
+               0
+            ],
+            "CellDiviProtFtsq" : [
+               0,
+               0
+            ],
+            "AtpDepeRnaHeliRhlb" : [
+               0,
+               0
+            ],
+            "TranElonFactTs" : [
+               0,
+               0
+            ],
+            "TrypSyntAlphChai" : [
+               0,
+               0
+            ],
+            "PorpDeam" : [
+               0,
+               0
+            ],
+            "NitrFemoCofaScaf" : [
+               0,
+               0
+            ],
+            "RiboHiii" : [
+               0,
+               0
+            ],
+            "78Dide8Hydr5Deaz2" : [
+               0,
+               0
+            ],
+            "ArgiSynt" : [
+               0,
+               0
+            ],
+            "AeroProtBatc" : [
+               0,
+               0
+            ],
+            "TranElonFactLepa" : [
+               0,
+               0
+            ],
+            "DnaDireRnaPolyOmeg" : [
+               0,
+               0
+            ],
+            "LipoExpoSystPerm" : [
+               0,
+               0
+            ],
+            "AtpDepeHeliDingRad3n1" : [
+               0,
+               0
+            ],
+            "Prec4CMeth" : [
+               0,
+               0
+            ],
+            "FlagBasaBodyRodProt3" : [
+               0,
+               0
+            ],
+            "LipoExpoSystProt" : [
+               0,
+               0
+            ],
+            "2345Tetr26DicaNSucc" : [
+               0,
+               0
+            ],
+            "LptaProtEsseForLps" : [
+               0,
+               0
+            ],
+            "2OxogDehyE1Comp" : [
+               0,
+               0
+            ],
+            "ProtPiiUrid" : [
+               0,
+               0
+            ],
+            "PhosAbcTranBindProt" : [
+               0,
+               0
+            ],
+            "AtpSyntF0SectSubu3" : [
+               0,
+               0
+            ],
+            "GtpBindProtEngb" : [
+               0,
+               0
+            ],
+            "FlagSpecAtpSyntFlii" : [
+               0,
+               0
+            ],
+            "OuteMembProtAsse2" : [
+               0,
+               0
+            ],
+            "PspOperTranActi" : [
+               0,
+               0
+            ],
+            "FlagBasaBodyPRing" : [
+               0,
+               0
+            ],
+            "Cog4PredOMeth" : [
+               0,
+               0
+            ],
+            "RiboBindFact" : [
+               0,
+               0
+            ],
+            "CytoCHemeLyasSubu" : [
+               0,
+               0
+            ],
+            "2Succ6Hydr24Cycl" : [
+               0,
+               0
+            ],
+            "3KetoCoaThioFadn" : [
+               0,
+               0
+            ],
+            "NMeth" : [
+               0,
+               0
+            ],
+            "ChorDehy" : [
+               0,
+               0
+            ],
+            "PorpSynt" : [
+               0,
+               0
+            ],
+            "Udp23DiacPyro" : [
+               0,
+               0
+            ],
+            "5AminSynt" : [
+               0,
+               0
+            ],
+            "4Diph2CMethDEryt" : [
+               0,
+               0
+            ],
+            "DihyKinaLikeProt2" : [
+               0,
+               0
+            ],
+            "FlagAsseFactFliw" : [
+               0,
+               0
+            ],
+            "Trna5Meth2ThioSynt8" : [
+               0,
+               0
+            ],
+            "NSuccLLDiamAminType" : [
+               0,
+               0
+            ],
+            "TranTermProtNusa" : [
+               0,
+               0
+            ],
+            "GlutTrnaAmidSubu2" : [
+               0,
+               0
+            ],
+            "HollJuncDnaHeliRuvb" : [
+               0,
+               0
+            ],
+            "TolBiopTranSystTolr" : [
+               0,
+               0
+            ],
+            "CellDiviProtBola" : [
+               0,
+               0
+            ],
+            "VTypeAtpSyntSubu2" : [
+               0,
+               0
+            ],
+            "Trna5Carb2ThioSynt2" : [
+               0,
+               0
+            ],
+            "MetaDepeHydrYbey" : [
+               0,
+               0
+            ],
+            "MenaViaFutaPoly" : [
+               0,
+               0
+            ],
+            "HistDehy" : [
+               0,
+               0
+            ],
+            "CobaPrec4CMeth" : [
+               0,
+               0
+            ],
+            "CytoCTypeBiogProt4" : [
+               0,
+               0
+            ],
+            "78Dide8Hydr5Deaz" : [
+               0,
+               0
+            ],
+            "ImidPhosDehy" : [
+               0,
+               0
+            ],
+            "CrosJuncEndoRuvc" : [
+               0,
+               0
+            ],
+            "FlagLRingProtFlgh" : [
+               0,
+               0
+            ],
+            "Prec8xMeth" : [
+               0,
+               0
+            ],
+            "FlagPRingProtFlgi" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL20p" : [
+               0,
+               0
+            ],
+            "NitrBetaChai" : [
+               0,
+               0
+            ],
+            "CytoCOxidPolyIv" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL17p" : [
+               0,
+               0
+            ],
+            "RiboJ2n1" : [
+               0,
+               0
+            ],
+            "SeptSiteDeteProt" : [
+               0,
+               0
+            ],
+            "ChroReplInitProt" : [
+               0,
+               0
+            ],
+            "TranAntiProtNusg" : [
+               0,
+               0
+            ],
+            "NaphSynt" : [
+               0,
+               0
+            ],
+            "CyclDehyFutaSynt" : [
+               0,
+               0
+            ],
+            "PutaPre16sRrnaNucl" : [
+               0,
+               0
+            ],
+            "PeptTrnaHydr" : [
+               0,
+               0
+            ],
+            "AnthPhos" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL1p" : [
+               0,
+               0
+            ],
+            "Upf0ProtYjga" : [
+               0,
+               0
+            ],
+            "2CMethDEryt24Cycl" : [
+               0,
+               0
+            ],
+            "FlagProtFlbd" : [
+               0,
+               0
+            ],
+            "PhosNAcetPentTran" : [
+               0,
+               0
+            ],
+            "UdpNAcetDGlutLiga" : [
+               0,
+               0
+            ],
+            "NadhUbiqOxidChai9" : [
+               0,
+               0
+            ],
+            "PhosAmpCycl" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL22p" : [
+               0,
+               0
+            ],
+            "ProtPiiUmpUridRemo" : [
+               0,
+               0
+            ],
+            "2OctaHydr" : [
+               0,
+               0
+            ],
+            "TypeIvPiluBiogProt3" : [
+               0,
+               0
+            ],
+            "NadhUbiqOxidChai3" : [
+               0,
+               0
+            ],
+            "DnaLiga2" : [
+               0,
+               0
+            ],
+            "SurvProtSuraPrec" : [
+               0,
+               0
+            ],
+            "ZnRibbContPossRna" : [
+               0,
+               0
+            ],
+            "PeptChaiReleFact" : [
+               0,
+               0
+            ],
+            "SignRecoPartRece2" : [
+               0,
+               0
+            ],
+            "DnaDireRnaPolyBeta" : [
+               0,
+               0
+            ],
+            "CobaPrec6bC15Meth" : [
+               0,
+               0
+            ],
+            "MultEfflSystMdta3" : [
+               0,
+               0
+            ],
+            "NaHAntiSubuB" : [
+               0,
+               0
+            ],
+            "HeatShocProtGrpe" : [
+               0,
+               0
+            ],
+            "TolPalSystAssoAcyl" : [
+               0,
+               0
+            ],
+            "AtpSyntF0SectSubu4" : [
+               0,
+               0
+            ],
+            "3DeoxMannOctuCyti" : [
+               0,
+               0
+            ],
+            "Udp23DiacDiph" : [
+               0,
+               0
+            ],
+            "VTypeAtpSyntSubu" : [
+               0,
+               0
+            ],
+            "InacPpgp3PyroDoma" : [
+               0,
+               0
+            ],
+            "16sRrnaNMethEc21n1" : [
+               0,
+               0
+            ],
+            "DephCoaKina" : [
+               0,
+               0
+            ],
+            "DnaGyraSubu" : [
+               0,
+               0
+            ],
+            "HeatShocProtYcim" : [
+               0,
+               0
+            ],
+            "FumaReduFlavSubu" : [
+               0,
+               0
+            ],
+            "AbcTranInvoCytoC" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL34p" : [
+               0,
+               0
+            ],
+            "DihyKinaLikeProt" : [
+               0,
+               0
+            ],
+            "TermOxidBiogProt" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL19p" : [
+               0,
+               0
+            ],
+            "Fig0Upf0ProtFami" : [
+               0,
+               0
+            ],
+            "Fig0HypoProt951" : [
+               0,
+               0
+            ],
+            "PeptB" : [
+               0,
+               0
+            ],
+            "TranTermProtNusb" : [
+               0,
+               0
+            ],
+            "UdpNAcetLMalaGlyc" : [
+               0,
+               0
+            ],
+            "TypeIvFimbAsseProt" : [
+               0,
+               0
+            ],
+            "UdpNAcetAlanLiga" : [
+               0,
+               0
+            ],
+            "3DeoxDMannOctuAcid5" : [
+               0,
+               0
+            ],
+            "UbiqBiosReguProt" : [
+               0,
+               0
+            ],
+            "AtpSyntGammChai" : [
+               0,
+               0
+            ],
+            "NaTranNadhQuinRedu6" : [
+               0,
+               0
+            ],
+            "PhagShocProtC" : [
+               0,
+               0
+            ],
+            "TranInitFact3n1" : [
+               0,
+               0
+            ],
+            "UnchHydrPa06n1" : [
+               0,
+               0
+            ],
+            "AtpSyntAlphChai" : [
+               0,
+               0
+            ],
+            "DnaRepaProtRada" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL28p" : [
+               0,
+               0
+            ],
+            "NadHHydrEpim" : [
+               0,
+               0
+            ],
+            "NaTranNadhQuinRedu5" : [
+               0,
+               0
+            ],
+            "DihySuccComp2Oxog" : [
+               0,
+               0
+            ],
+            "Fig0SpovLikeProt" : [
+               0,
+               0
+            ],
+            "DnaPolyIiiSubuGamm" : [
+               0,
+               0
+            ],
+            "HypoRadiSamFamiEnzy3" : [
+               0,
+               0
+            ],
+            "CobaPrec7Meth" : [
+               0,
+               0
+            ],
+            "MureHydrActiNlpd" : [
+               0,
+               0
+            ],
+            "DnaRecoRepaProtReco" : [
+               0,
+               0
+            ],
+            "FlagBiosProtFlgn" : [
+               0,
+               0
+            ],
+            "Prec2CMeth" : [
+               0,
+               0
+            ],
+            "SulfTranCyszType" : [
+               0,
+               0
+            ],
+            "FlagBiosProtFlis" : [
+               0,
+               0
+            ],
+            "NitrReguProtNtrb" : [
+               0,
+               0
+            ],
+            "GtpBindProtEnga" : [
+               0,
+               0
+            ],
+            "DnaDireRnaPolyBeta2" : [
+               0,
+               0
+            ],
+            "FlagBiosProtFlip" : [
+               0,
+               0
+            ],
+            "PhagShocProt" : [
+               0,
+               0
+            ],
+            "AcylAcylCarrProt" : [
+               0,
+               0
+            ],
+            "2OxogDeca" : [
+               0,
+               0
+            ],
+            "FkbpTypePeptProl" : [
+               0,
+               0
+            ],
+            "LactDiphGuan78Dide" : [
+               0,
+               0
+            ],
+            "CobaPrec3CMeth" : [
+               0,
+               0
+            ],
+            "AntiSigmFFactAnta" : [
+               0,
+               0
+            ],
+            "HollJuncDnaHeliRuva" : [
+               0,
+               0
+            ],
+            "SsuRrnaNAdenNDime" : [
+               0,
+               0
+            ],
+            "CobwGtpaInvoCoba" : [
+               0,
+               0
+            ],
+            "Olig" : [
+               0,
+               0
+            ],
+            "Upf0ProtYggs" : [
+               0,
+               0
+            ],
+            "DnaDireRnaPolyAlph" : [
+               0,
+               0
+            ],
+            "OSuccAcidCoaLiga" : [
+               0,
+               0
+            ],
+            "UbidFamiDecaAsso" : [
+               0,
+               0
+            ],
+            "UropIiiDeca" : [
+               0,
+               0
+            ],
+            "23sRrnaNMeth5" : [
+               0,
+               0
+            ],
+            "AeroProtBatb" : [
+               0,
+               0
+            ],
+            "4HydrPoly" : [
+               0,
+               0
+            ],
+            "OuteMembProtImpRequ" : [
+               0,
+               0
+            ],
+            "NegaReguFlagSynt" : [
+               0,
+               0
+            ],
+            "AspaTrnaAmidSubu" : [
+               0,
+               0
+            ],
+            "AtpDepeDnaHeliRep" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL36p" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL5p" : [
+               0,
+               0
+            ],
+            "Stag0SporTwoComp" : [
+               0,
+               0
+            ],
+            "FlagBiosProtFlir" : [
+               0,
+               0
+            ],
+            "AeroCobaCobtSubu" : [
+               0,
+               0
+            ],
+            "PolyNucl" : [
+               0,
+               0
+            ],
+            "OuteMembChanTolc" : [
+               0,
+               0
+            ],
+            "Tetr4Kina" : [
+               0,
+               0
+            ],
+            "Amid2" : [
+               0,
+               0
+            ],
+            "Fig0HypoProt585" : [
+               0,
+               0
+            ],
+            "LAspaOxid" : [
+               0,
+               0
+            ],
+            "Meth1PhosDehy" : [
+               0,
+               0
+            ],
+            "TsabProtRequForThre" : [
+               0,
+               0
+            ],
+            "Fig0PutaAlkaShoc" : [
+               0,
+               0
+            ],
+            "3HydrCoaDehyFadn" : [
+               0,
+               0
+            ],
+            "1DeoxDXylu5PhosRedu" : [
+               0,
+               0
+            ],
+            "PhosPhosSynt" : [
+               0,
+               0
+            ],
+            "DnaRecoDepeGrowFact" : [
+               0,
+               0
+            ],
+            "CoprFerr" : [
+               0,
+               0
+            ],
+            "CytoCTypeBiogProt7" : [
+               0,
+               0
+            ],
+            "IronSulfClusAsse" : [
+               0,
+               0
+            ],
+            "FumaReduIronSulf" : [
+               0,
+               0
+            ],
+            "RiboHibeProtYhbh" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL35p" : [
+               0,
+               0
+            ],
+            "InneMembProtTran" : [
+               0,
+               0
+            ],
+            "TypeIvPiluBiogProt5" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS14pZinc2" : [
+               0,
+               0
+            ],
+            "NadhUbiqOxidChai2" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS15p" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL27p" : [
+               0,
+               0
+            ],
+            "ApolNAcyl" : [
+               0,
+               0
+            ],
+            "FlagHookAssoProt2" : [
+               0,
+               0
+            ],
+            "PhosGlycLiga" : [
+               0,
+               0
+            ],
+            "TypeIvPiluBiogProt2" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS9p" : [
+               0,
+               0
+            ],
+            "QuinSynt" : [
+               0,
+               0
+            ],
+            "ThioDisuInteProt" : [
+               0,
+               0
+            ],
+            "AtpPhosHisg" : [
+               0,
+               0
+            ],
+            "AtpDepeNuclSubu" : [
+               0,
+               0
+            ],
+            "SimiPhosPhosClus3" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS10p" : [
+               0,
+               0
+            ],
+            "SuccDehyFlavAddi" : [
+               0,
+               0
+            ],
+            "FlagHookAssoProt3" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL3p" : [
+               0,
+               0
+            ],
+            "ChapProtHscb" : [
+               0,
+               0
+            ],
+            "LpsAsseLipoRlpbPrec" : [
+               0,
+               0
+            ],
+            "2Succ5Enol6Hydr3n1" : [
+               0,
+               0
+            ],
+            "Glyc3PhosAcyl" : [
+               0,
+               0
+            ],
+            "DnaRepaProtRecn" : [
+               0,
+               0
+            ],
+            "FkbpTypePeptProl5" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS17p" : [
+               0,
+               0
+            ],
+            "ColiVProdProt" : [
+               0,
+               0
+            ],
+            "NaTranNadhQuinRedu" : [
+               0,
+               0
+            ],
+            "TolPalSystBetaProp" : [
+               0,
+               0
+            ],
+            "RiboReduClasIbAlph" : [
+               0,
+               0
+            ],
+            "LateCompProtCome" : [
+               0,
+               0
+            ],
+            "FlagMRingProtFlif" : [
+               0,
+               0
+            ],
+            "SubsSpecCompRibu" : [
+               0,
+               0
+            ],
+            "CoprIiiOxidAero" : [
+               0,
+               0
+            ],
+            "LsuRiboProtL2p" : [
+               0,
+               0
+            ],
+            "AminSynt" : [
+               0,
+               0
+            ],
+            "EnerDepeTranThro" : [
+               0,
+               0
+            ],
+            "SaicLyas" : [
+               0,
+               0
+            ],
+            "RhodRelaSulfYibn" : [
+               0,
+               0
+            ],
+            "FlagBasaBodyRodProt" : [
+               0,
+               0
+            ],
+            "ReplDnaHeli2" : [
+               0,
+               0
+            ],
+            "PhosSystPhosProt" : [
+               0,
+               0
+            ],
+            "RiboY" : [
+               0,
+               0
+            ],
+            "14Dihy2NaphPoly" : [
+               0,
+               0
+            ],
+            "AeroCobaCobsSubu" : [
+               0,
+               0
+            ],
+            "AbcTranInvoCytoC2" : [
+               0,
+               0
+            ],
+            "SsuRiboProtS14p" : [
+               0,
+               0
+            ],
+            "NAcetLMalaNAcetHydr" : [
+               0,
+               0
+            ],
+            "RiboProtL3NGlutMeth" : [
+               0,
+               0
+            ],
+            "NadhUbiqOxidChai" : [
+               0,
+               0
+            ],
+            "GtpBindProtObg" : [
+               0,
+               0
+            ],
+            "GmpSyntGlutHydrAmid" : [
+               0,
+               0
+            ],
+            "PhosSuccSynt" : [
+               0,
+               0
+            ]
+         },
+         "role_problematic" : {
+            "CystTrnaSynt" : [
+               1,
+               0
+            ],
+            "MethTrnaSynt" : [
+               1,
+               0
+            ],
+            "TrnaIA37Meth" : [
+               1,
+               0
+            ],
+            "VTypeAtpSyntSubu7" : [
+               1,
+               0
+            ],
+            "Meth1PhosIsom" : [
+               1,
+               0
+            ],
+            "TranElonFactP" : [
+               1,
+               0
+            ],
+            "ValyTrnaSynt" : [
+               1,
+               0
+            ],
+            "UridMonoKina" : [
+               1,
+               0
+            ],
+            "IsopDiphDeltIsom2" : [
+               1,
+               0
+            ],
+            "HistTrnaSynt" : [
+               1,
+               0
+            ],
+            "GmpSyntGlutHydrAtp" : [
+               1,
+               0
+            ],
+            "GlutTrnaSynt2" : [
+               1,
+               0
+            ],
+            "PhenTrnaSyntBeta" : [
+               1,
+               0
+            ],
+            "GtpBindNuclAcidBind" : [
+               1,
+               0
+            ],
+            "IsolTrnaSynt" : [
+               1,
+               0
+            ],
+            "VTypeAtpSyntSubu4" : [
+               1,
+               0
+            ],
+            "HydrCoaSynt" : [
+               1,
+               0
+            ],
+            "Orot5PhosDeca" : [
+               1,
+               0
+            ],
+            "SeryTrnaSynt" : [
+               1,
+               0
+            ],
+            "VTypeAtpSyntSubu3" : [
+               1,
+               0
+            ],
+            "CtpSynt" : [
+               1,
+               0
+            ],
+            "LeucTrnaSynt" : [
+               1,
+               0
+            ],
+            "NadSynt" : [
+               1,
+               0
+            ],
+            "TyroTrnaSynt" : [
+               1,
+               0
+            ],
+            "AlanTrnaSynt" : [
+               1,
+               0
+            ],
+            "Inos1PhosSynt" : [
+               1,
+               0
+            ],
+            "PhenTrnaSyntAlph" : [
+               1,
+               0
+            ],
+            "LsuRiboProtL11p" : [
+               1,
+               0
+            ],
+            "GlycTrnaSynt" : [
+               1,
+               0
+            ],
+            "RiboHii" : [
+               1,
+               0
+            ],
+            "ArgiTrnaSynt" : [
+               1,
+               0
+            ],
+            "HydrCoaRedu" : [
+               1,
+               0
+            ],
+            "MevaKina" : [
+               1,
+               0
+            ]
+         }
+      }
+   },
+   "scientific_name" : "Toy box",
+   "analysis_events" : [
+      {
+         "tool_name" : "RNA_reps_5S_rRNA",
+         "parameters" : [
+            "coverage",
+            0.7,
+            "descript",
+            "5S rRNA ## 5S ribosomal RNA",
+            "extrapol",
+            10,
+            "ftrtype",
+            "rna",
+            "identity",
+            0.5,
+            "loc_format",
+            "CBDL",
+            "maxsplit",
+            20,
+            "seedexp",
+            1e-10,
+            "tag",
+            null
+         ],
+         "hostname" : "gum",
+         "execute_time" : 1523297379.52047,
+         "id" : "c6a18424-8224-4daa-b186-d74fdc9bfe53"
+      },
+      {
+         "tool_name" : "RNA_reps_LSU_rRNA",
+         "parameters" : [
+            "coverage",
+            0.2,
+            "descript",
+            "LSU rRNA ## 23S rRNA, large subunit ribosomal RNA",
+            "extrapol",
+            25,
+            "ftrtype",
+            "rna",
+            "identity",
+            0.5,
+            "loc_format",
+            "CBDL",
+            "maxsplit",
+            20,
+            "seedexp",
+            1e-20,
+            "tag",
+            null
+         ],
+         "hostname" : "gum",
+         "execute_time" : 1523297379.59542,
+         "id" : "9475b7fc-205b-498c-be1f-ef9abce0537d"
+      },
+      {
+         "id" : "5e3cb6ab-100f-4788-bad4-c424abb59fab",
+         "execute_time" : 1523297379.78973,
+         "hostname" : "gum",
+         "parameters" : [
+            "coverage",
+            0.2,
+            "descript",
+            "SSU rRNA ## 16S rRNA, small subunit ribosomal RNA",
+            "extrapol",
+            15,
+            "ftrtype",
+            "rna",
+            "identity",
+            0.5,
+            "loc_format",
+            "CBDL",
+            "maxsplit",
+            20,
+            "seedexp",
+            1e-20,
+            "tag",
+            null
+         ],
+         "tool_name" : "RNA_reps_SSU_rRNA"
+      },
+      {
+         "parameters" : [
+            "search_for_rnas",
+            "-rnas=tRNA",
+            "--contigs=/disks/tmp/tmpdir_search_for_rnas_KRz9RCQv/contigs",
+            "--orgid=1",
+            "--domain=B",
+            "--genus=Toy",
+            "--species=box"
+         ],
+         "hostname" : "gum",
+         "tool_name" : "search_for_rnas",
+         "id" : "d2fbfdd2-0088-4efa-ad4b-31c529f35d21",
+         "execute_time" : 1523297380.16992
+      },
+      {
+         "id" : "97b31de7-4811-45a0-b117-38d7f285fc94",
+         "tool_name" : "svr_big_repeats | svr_condense_repeats",
+         "execution_time" : 1523297381.02719,
+         "parameters" : [],
+         "hostname" : "gum"
+      },
+      {
+         "tool_name" : "find_special_proteins selenoprotein",
+         "parameters" : [
+            "-tmpdir",
+            "/disks/tmp/tmp_dir_2KEX3963"
+         ],
+         "hostname" : "gum",
+         "execute_time" : 1523297381.35166,
+         "id" : "1600977a-a0da-4716-adc1-75f2e7b86fd3"
+      },
+      {
+         "parameters" : [
+            "pyrrolysine",
+            1,
+            "-tmpdir",
+            "/disks/tmp/tmp_dir_unbm0lJp"
+         ],
+         "hostname" : "gum",
+         "tool_name" : "find_special_proteins pyrrolysylprotein",
+         "id" : "e6a98aaf-2aa0-4fb0-bfe2-b08a98592107",
+         "execute_time" : 1523297381.60442
+      },
+      {
+         "hostname" : "gum",
+         "parameters" : [],
+         "tool_name" : "rast_call_crisprs",
+         "id" : "da621dcc-d3a0-42f7-9592-935df5b28ee4",
+         "execute_time" : 1523297381.82665
+      },
+      {
+         "id" : "83e7fabb-7650-4fb0-8318-4dff4fddd691",
+         "execute_time" : 1523297382.08908,
+         "parameters" : [
+            "prodigal",
+            "-m",
+            "-a",
+            "/disks/tmp/tmpdir_prodigal_Qwp_HEcO/translations",
+            "-g",
+            "11",
+            "-i",
+            "/disks/tmp/tmpdir_prodigal_Qwp_HEcO/contigs",
+            "-f",
+            "sco",
+            "-o",
+            "/disks/tmp/tmpdir_prodigal_Qwp_HEcO/calls.sco",
+            "-p",
+            "meta"
+         ],
+         "hostname" : "gum",
+         "tool_name" : "prodigal"
+      },
+      {
+         "parameters" : [
+            "genetic_code=11"
+         ],
+         "hostname" : "gum",
+         "tool_name" : "glimmer3",
+         "execution_time" : 1523297382.81892,
+         "id" : "a57d2611-8424-4fb9-a698-36e9a383d6af"
+      },
+      {
+         "id" : "dce42c3b-4a49-4646-afd6-a299c8710f3d",
+         "execution_time" : 1523297383.06505,
+         "tool_name" : "kmer_search",
+         "parameters" : [
+            "-a",
+            "-g",
+            200,
+            "-m",
+            5,
+            "-d",
+            "/vol/patric3/fams/2017-1204/kmers",
+            "-u",
+            "http://cherry.mcs.anl.gov:6100/query"
+         ],
+         "hostname" : "gum"
+      },
+      {
+         "id" : "13d3b68a-3fd5-4ef3-8f07-d627b75227ac",
+         "parameters" : [
+            "annotate_null_only=1",
+            "dataset_name=Release70",
+            "kmer_size=8"
+         ],
+         "hostname" : "gum",
+         "execution_time" : 1523297383.09061,
+         "tool_name" : "KmerAnnotationByFigfam"
+      },
+      {
+         "execute_time" : 1523297383.32234,
+         "id" : "447eef5b-4c3a-48fb-958b-d96b372a8e6a",
+         "tool_name" : "annotate_proteins_similarity",
+         "hostname" : "gum",
+         "parameters" : [
+            [
+               "all",
+               "/disks/patric-common/data/phage-annotation/v01/phage.nr/phage.fasta.nr"
+            ]
+         ]
+      },
+      {
+         "id" : "8f2f3ba3-2b0b-4203-9e70-b786d57bbbf1",
+         "execute_time" : 1523297385.30531,
+         "parameters" : [],
+         "hostname" : "gum",
+         "tool_name" : "annotate_proteins_similarity"
+      },
+      {
+         "hostname" : "gum",
+         "parameters" : [],
+         "execution_time" : 1523297385.32144,
+         "tool_name" : "PropagateGBMetadata",
+         "id" : "118576c7-7373-4817-9f7d-6cdf138232ae"
+      },
+      {
+         "hostname" : "gum",
+         "parameters" : [],
+         "execution_time" : 1523297385.33174,
+         "tool_name" : "AdaboostClassify",
+         "id" : "ac7f89f4-f306-4df3-9015-466a04510d4a"
+      },
+      {
+         "parameters" : [],
+         "hostname" : "gum",
+         "execution_time" : 1523297385.33282,
+         "tool_name" : "GenomeAnnotation::renumber_features",
+         "id" : "f9c8ec26-97c0-4f79-bf91-c80201533aa8"
+      },
+      {
+         "id" : "bca6fb27-868a-4642-ae3b-06536a887b5b",
+         "execute_time" : 1523297404.8583,
+         "parameters" : [
+            "required-common-kmers",
+            3,
+            "kmer_dir",
+            "/vol/patric3/fams/2017-1204/kmers",
+            "url",
+            "http://cherry.mcs.anl.gov:6100",
+            "in_file",
+            "/disks/tmp/2nKSmHT9ae",
+            "family-mode",
+            "1",
+            "families",
+            "2017-1204",
+            "kmer",
+            "core.2017-1204"
+         ],
+         "hostname" : "gum",
+         "tool_name" : "/disks/p3/deployment/plbin/place_proteins_into_pattyfams.pl"
+      },
+      {
+         "hostname" : "gum",
+         "execution_time" : 1523297405.09184,
+         "tool_name" : "annotate_null_to_hypothetical",
+         "id" : "b9e1de14-99b4-469d-9041-1677ed275e49"
+      },
+      {
+         "id" : "d0850c52-2c5b-444c-af63-d799679a9587",
+         "tool_name" : "SubsystemProjector",
+         "execution_time" : 1523297405.4884,
+         "hostname" : "gum",
+         "parameters" : [
+            "subsystem_roles",
+            "/vol/patric3/fams/2017-1204/subsystem-import/all.roles",
+            "subsystem_variants",
+            "/vol/patric3/fams/2017-1204/subsystem-import/all.vc",
+            "subsystem_reference_data",
+            "/vol/patric3/fams/2017-1204/subsystem-import/subsystem.data.json",
+            "subsystem_variant_map",
+            "/vol/patric3/fams/2017-1204/subsystem-import/variantcodes.txt"
+         ]
+      },
+      {
+         "hostname" : "gum",
+         "tool_name" : "assign_st_to_genome",
+         "execution_time" : 1523297406.34067,
+         "id" : "1abe9a53-21ba-4b80-8dbe-cf1750b49d21"
+      },
+      {
+         "id" : "2cdba570-ff0e-4bce-bdf2-88dab5641eac",
+         "execution_time" : 1523297435.38539,
+         "tool_name" : "rast2QC",
+         "hostname" : "gum",
+         "parameters" : [
+            "--genomeobj-file",
+            "/disks/tmp/sa4b_kaSld",
+            "--new-genomeobj-file",
+            "/disks/tmp/q_k1TKOKF8"
+         ]
+      }
+   ]
+}
