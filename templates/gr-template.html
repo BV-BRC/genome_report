@@ -236,12 +236,12 @@
                 The Genome Annotation Service in PATRIC [1] uses the RAST tool kit (RASTtk) [6] to
                 provide annotation of genomic features. The job for {{meta.genome_name}}
                 ran under job number {{gto.job_data.annotation.job_id}}.
-                The annotation job started at {{gto.job_data.annotation.start_time}}
-        and completed at {{gto.job_data.annotation.completion_time}}
-        after {{gto.job_data.annotation.elapsed_time}} seconds.
-        This genome was described to be in the domain {{gto.domain}}
-        with genetic code {{gto.genetic_code}}. It was assigned genome identifier
-        {{gto.id}}. The taxonomy of {{meta.genome_name}} is:
+                The annotation job started at {{datetime gto.job_data.annotation.start_time}}
+                and completed at {{datetime gto.job_data.annotation.completion_time}}
+                after {{elapsed gto.job_data.annotation.elapsed_time}} seconds.
+                This genome was described to be in the domain {{gto.domain}}
+                with genetic code {{gto.genetic_code}}. It was assigned genome identifier
+                {{gto.id}}. The taxonomy of {{meta.genome_name}} is:
             </p>
 
             <div style="width: 90%;" class="center">
