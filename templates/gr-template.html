@@ -166,11 +166,11 @@
                 {{meta.genome_name}} ran under job ID {{gto.job_data.assembly.job_id}} at PATRIC[1].
                 The assembly job started at {{gto.job_data.assembly.start_time}} and completed at {{gto.job_data.assembly.completion_time}}
 		after {{gto.job_data.assembly.elapsed_time}} seconds.
-                The {{gto.job_data.assembly.parameters.recipe}} assembly strategy was selected. 
+                The {{gto.job_data.assembly.parameters.recipe}} assembly strategy was selected.
 		The auto strategy runs three
                 assembly strategies that include Velvet [3], IDBA [4] and Spades [5], each of which is given
                 an assembly score by ARAST, an in-house script. The minimum contig length was {{gto.job_data.assembly.parameters.min_contig_len}}bp
-                and smaller contigs were not included in the assembly. The minimum contig coverage was 
+                and smaller contigs were not included in the assembly. The minimum contig coverage was
 		{{gto.job_data.assembly.min_contig_cov}}
                 and contigs with less coverage were not included in the assembly.
                 Also add reference to QUAST. ARAST ranked the Spades assembly best (<table-ref></table-ref>).
@@ -236,10 +236,10 @@
                 The Genome Annotation Service in PATRIC [1] uses the RAST tool kit (RASTtk) [6] to
                 provide annotation of genomic features. The job for {{meta.genome_name}}
                 ran under job number {{gto.job_data.annotation.job_id}}.
-                The annotation job started at {{gto.job_data.annotation.start_time}} 
+                The annotation job started at {{gto.job_data.annotation.start_time}}
 		and completed at {{gto.job_data.annotation.completion_time}}
 		after {{gto.job_data.annotation.elapsed_time}} seconds.
-		This genome was described to be in the domain {{gto.domain}} 
+		This genome was described to be in the domain {{gto.domain}}
 		with genetic code {{gto.genetic_code}}. It was assigned genome identifier
 		{{gto.id}}. The taxonomy of {{meta.genome_name}} is:
             </p>
@@ -374,7 +374,7 @@
         {{#amr}} <!-- only shown if data is available -->
         <section>
             <h2>Antimicrobial Resistance Analysis</h2>
-            <table class="lg-table kv-table center">
+            <table class="lg-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="2"><table-num></table-num> Antimicrobial Resistance</th>
@@ -383,7 +383,10 @@
 
 
                 <tbody>
-                    <tr class="row-header"><td></td> <td>Antibiotics</td></tr>
+                    <tr class="row-header">
+                        <td>Phenotypes</td>
+                        <td>Antibiotics</td>
+                    </tr>
                     <tr>
                         <td>Resistant</td>
                         <td>{{join resistant ', '}}</td>
