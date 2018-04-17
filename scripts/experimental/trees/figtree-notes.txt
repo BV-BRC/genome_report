@@ -1,0 +1,4 @@
+
+# to run:
+java -client -Djava.awt.headless=true -Xms64m -Xmx512m -jar trees/figtree.jar
+    -graphic SVG -width 2000 -height 1200  trees/carnivore.tree output.svg
