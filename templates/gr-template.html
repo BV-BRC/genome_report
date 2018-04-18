@@ -78,14 +78,14 @@
             .center { margin-left: auto; margin-right: auto; }
 
             .logo {
-                width: 3in;
+                width: 2.5in;
                 border-right: 3px solid #777;
                 padding-right: 10px;
                 margin-right: 10px;
             }
             .title {
-                padding: 15px 0 0 0px;
-                font-size: 2.0em;
+                padding: 10px 0 0 0px;
+                font-size: 1.3em;
                 color: #777;
             }
             .report-info {
@@ -173,7 +173,7 @@
                     {{gto.job_data.assembly.min_contig_cov}}
                     and contigs with less coverage were not included in the assembly.
                     Also add reference to QUAST. ARAST ranked the "{{gto.job_data.assembly.attributes.chosen_assembly}}"
-                    assembly as the highest quality.  (<table-ref></table-ref>).
+                    assembly as the highest qualitye (<table-ref></table-ref>).
                 </p>
             {{/if}}
             <p>
@@ -186,7 +186,7 @@
                 <thead class="table-header">
                     <tr>
                         <th colspan="4">
-                            <table-num></table-num> Assembly details for {{meta.genome_name}}
+                            <table-num></table-num> Assembly Details
                         </th>
                     </tr>
                 </thead>
@@ -211,7 +211,7 @@
                     <tr>
                         <td>Genome Length</td>
                         <td class="align-right">
-                            {{addCommas meta.genome_length 0}} Bps
+                            {{addCommas meta.genome_length 0}} Bp
                         </td>
                     </tr>
                     <tr>
@@ -330,11 +330,15 @@
                 Based on the analysis of genome assembly and annotation statistics and comparing
                 them to other closely related genomes available in PATRIC for the same species, the
                 overall genome seems to be of <i>{{meta.genome_quality}}</i> quality.
-                The reasons affecting the quality of genome follows:<br>
-                <br>
-
+            </p>
+            <p>
+                {{#isnt meta.genome_quality 'Good'}}
+                    The reasons affecting the quality of genome follows:
+                {{/isnt}}
                 <i>{{join meta.genome_quality_flags ', '}}</i>
             </p>
+
+
         </section>
 
 
