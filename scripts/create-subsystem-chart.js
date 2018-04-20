@@ -22,7 +22,23 @@ const readFile = util.promisify(fs.readFile);
 
 const config = require('../config.json');
 const pieChart = require('../lib/pie-chart');
+const color = require('../lib/color').category20;
 
+let colors = {
+    'Metabolism': color[0],
+    'Protein Processing': color[1],
+    'Stress Response, Defense, Virulence': color[2],
+    'Energy': color[3],
+    'DNA Processing': color[4],
+    'Cellular Processes': color[5],
+    'Membrane Transport': color[6],
+    'RNA Processing': color[7],
+    'Regulation And Cell Signaling': color[8],
+    'Miscellaneous': color[9],
+    'Cell Envelope': color[10],
+    'Classification Node 0 (virtual)': color[11],
+    '': color[12]
+}
 
 
 if (require.main === module){
@@ -79,7 +95,8 @@ function parseSubsystemSummary(obj) {
 
         return {
             name: key + ` (${o.subsystems}, ${o.genes})`,
-            value: o.subsystems
+            value: o.subsystems,
+            color: colors[key]
         }
     })
 

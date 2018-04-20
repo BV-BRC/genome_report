@@ -3,7 +3,7 @@
  *
  * utils.js
  *
- * Utility functions for genome-report file organization and such.
+ * Utility functions for genome-report templating.
  *
  * Author(s):
  *      nconrad
@@ -48,7 +48,7 @@ function helpers(handlebars) {
             precision = 2;
         }
 
-        var abbr = ['Bp', 'Kbps', 'Mbp', 'Gb'];
+        var abbr = ['Bp', 'Kbp', 'Mbp', 'Gb'];
         precision = Math.pow(10, precision);
         number = Number(number);
 
@@ -91,5 +91,5 @@ function helpers(handlebars) {
 
 
 module.exports = {
-    helpers,
+    helpers
 }
