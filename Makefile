@@ -9,7 +9,7 @@ SERVICE_DIR  = $(SERVICE_NAME)
 SERVICE_APP_DIR      = $(TARGET)/lib/$(SERVICE_NAME)
 
 APP_DIR = .
-APP_COMPONENTS = config.json node_modules scripts templates
+APP_COMPONENTS = config.json node_modules scripts templates lib
 
 PATH := $(DEPLOY_RUNTIME)/build-tools/bin:$(PATH)
 NPM = $(DEPLOY_RUNTIME)/bin/npm-v8
