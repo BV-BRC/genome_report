@@ -1,0 +1,13 @@
+{
+   "Cellular Processes" : "#7f7f7f",
+   "Protein Processing" : "#1f77b4",
+   "Miscellaneous" : "#bcbd22",
+   "Membrane Transport" : "#e377c2",
+   "Metabolism" : "#ff7f0e",
+   "Cell Envelope" : "#aec7e8",
+   "Regulation And Cell Signaling" : "#17becf",
+   "RNA Processing" : "#9467bd",
+   "Stress Response, Defense, Virulence" : "#2ca02c",
+   "DNA Processing" : "#8c564b",
+   "Energy" : "#d62728"
+}

@@ -48,6 +48,7 @@ if (require.main === module){
     opts.option('-i, --input [value] Path of input data (Genome Typed Object)\n\t\t\t ' +
                 'for which report will be built')
         .option('-o, --output [value] Path to write resulting html output')
+	.option('-c, --circular-view [value] Path to SVG of circular view of genome')
         .parse(process.argv)
 
 
@@ -62,13 +63,12 @@ if (require.main === module){
         opts.outputHelp();
         return 1;
     }
-
     // fill html template and write html
-    buildReport(opts.input, opts.output);
+    buildReport(opts.input, opts.output, opts.circularView);
 }
 
 
-async function buildReport(input, output) {
+async function buildReport(input, output, circularView) {
 
     console.log('Loading Genome Typed Object...');
     let contents, data;
@@ -78,6 +78,14 @@ async function buildReport(input, output) {
     } catch(e) {
         console.error('\x1b[31m', '\nCould not read GTO!\n', '\x1b[0m', e)
         return 1;
+    }
+
+    let circularViewSVG;
+    try {
+	circularViewSVG = await readFile(circularView, 'utf8');
+    } catch (e) {
+	console.error('\x1b[31m', `\nCould not read circular view file ${circularView}\n`, '\x1b[0m', e);
+	circularViewSVG = "";
     }
 
     console.log('Creating subsystem chart...');
@@ -93,7 +101,8 @@ async function buildReport(input, output) {
         proteinFeatures: getProteinFeatures(meta.protein_summary),
         specialtyGenes: getSpecialGenes(meta.specialty_gene_summary),
         amr: 'classifications' in gto && getAMRPhenotypes(gto.classifications),
-        subsystemSVG
+	subsystemSVG,
+	circularViewSVG,
     });
 
 
