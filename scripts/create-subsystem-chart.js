@@ -103,15 +103,17 @@ async function createChart(genomeTypedObject, colorsPath) {
 
 
 function parseSubsystemSummary(obj, colorObj) {
-    let data = Object.keys(obj).map(key => {
-        let o = obj[key];
+    let data = Object.keys(obj)
+        .filter(k => k !== '')
+        .map(key => {
+            let o = obj[key];
 
-        return {
-            name: key + ` (${o.subsystems}, ${o.genes})`,
-            value: o.subsystems,
-            color: colorObj[key]
-        }
-    })
+            return {
+                name: key + ` (${o.subsystems}, ${o.genes})`,
+                value: o.subsystems,
+                color: colorObj[key]
+            }
+        })
 
     data.sort((a, b) => b.value - a.value );
 
