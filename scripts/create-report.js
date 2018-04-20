@@ -4,7 +4,7 @@
  * create-report.js
  *
  * Example usage:
- *      ./scripts/create-report.js -i sample.genome -o reports/test-report.html
+ *      ./scripts/create-report.js -i sample-data/sample.genome -o reports/test-report.html -c sample-data/myco.svg -s sample-data/myco.ss-colors 
  *
  * Author(s):
  *      nconrad
@@ -48,7 +48,8 @@ if (require.main === module){
     opts.option('-i, --input [value] Path of input data (Genome Typed Object)\n\t\t\t ' +
                 'for which report will be built')
         .option('-o, --output [value] Path to write resulting html output')
-	.option('-c, --circular-view [value] Path to SVG of circular view of genome')
+        .option('-c, --circular-view [value] Path to SVG of circular view of genome')
+        .option('-s, --color-scheme [value] Path to custom scheme for subsystem colors')        
         .parse(process.argv)
 
 
@@ -64,11 +65,12 @@ if (require.main === module){
         return 1;
     }
     // fill html template and write html
-    buildReport(opts.input, opts.output, opts.circularView);
+    buildReport(opts);
 }
 
 
-async function buildReport(input, output, circularView) {
+async function buildReport(params) {
+    let { input, output, circularView, colorScheme } = params;
 
     console.log('Loading Genome Typed Object...');
     let contents, data;
@@ -82,14 +84,14 @@ async function buildReport(input, output, circularView) {
 
     let circularViewSVG;
     try {
-	circularViewSVG = await readFile(circularView, 'utf8');
+        circularViewSVG = await readFile(circularView, 'utf8');
     } catch (e) {
-	console.error('\x1b[31m', `\nCould not read circular view file ${circularView}\n`, '\x1b[0m', e);
-	circularViewSVG = "";
+        console.error('\x1b[31m', `\nCould not read circular view file ${circularView}\n`, '\x1b[0m', e);
+        circularViewSVG = "";
     }
 
     console.log('Creating subsystem chart...');
-    let subsystemSVG = await createSubsystemChart(gto);
+    let subsystemSVG = await createSubsystemChart(gto, colorScheme);
 
     // merge in report data
     let meta = gto.genome_quality_measure;
@@ -101,8 +103,8 @@ async function buildReport(input, output, circularView) {
         proteinFeatures: getProteinFeatures(meta.protein_summary),
         specialtyGenes: getSpecialGenes(meta.specialty_gene_summary),
         amr: 'classifications' in gto && getAMRPhenotypes(gto.classifications),
-	subsystemSVG,
-	circularViewSVG,
+        subsystemSVG,
+        circularViewSVG,
     });
 
 
