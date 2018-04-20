@@ -108,8 +108,10 @@
             }
 
             .circular-view-fig {
-                width: 5.5in;
+                height: 100%;
+                width: 100%;
             }
+
 
             .tree-fig {
                 width: 1100px;
@@ -322,9 +324,10 @@
             </p>
 
             <fig-num></fig-num>
-            <p>
-            <div class="center circular-view-fig" >{{{circularViewSVG}}}</div>
-            </p>
+
+
+            <div class="circular-view-fig" >{{{circularViewSVG}}}</div>
+
         </section>
 
 
@@ -425,9 +428,6 @@
                 proteins or AMR genes) [Overbeek].  An overview of the subsystems for this genome
                 is provided in <fig-ref></fig-ref>.
             </p>
-
-
-            <!--<img src="../{{meta.genome_id}}/{{meta.genome_id}}-subsystem.svg" class="subsystem-fig" />-->
 
             <fig-num></fig-num>
             <div class="center subsystem-fig" >{{{subsystemSVG}}}</div>

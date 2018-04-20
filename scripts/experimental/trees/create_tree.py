@@ -1,8 +1,12 @@
-from ete3 import Tree
+from ete3 import Tree, TreeStyle
 
 
-with open('test.final.nwk', 'r') as f:
+with open('phylogeny_tree.nwk', 'r') as f:
     newick = f.read()
 
+
+style = TreeStyle()
+style.margin_right = 200
+
 t = Tree(newick)
-t.render('test.svg', w=800)
+t.render('test-etetools-tree.svg', tree_style=style)
