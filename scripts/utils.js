@@ -9,9 +9,7 @@
  *      nconrad
 */
 
-const fs = require('fs'),
-    path = require('path'),
-    moment = require('moment');
+const moment = require('moment');
 
 
 
@@ -34,6 +32,11 @@ function helpers(handlebars) {
         if(secs > 0) return `${secs} seconds`;
         return 0;
     })
+
+    handlebars.registerHelper('currentDate', function() {
+        return moment().format('MM/DD/YYYY');
+    })
+
 
     // helper to format base pairs to Bps, Kbps, etc.
     handlebars.registerHelper('basePairs', function(number, precision) {

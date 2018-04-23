@@ -4,7 +4,7 @@
  * create-report.js
  *
  * Example usage:
- *      ./scripts/create-report.js -i sample-data/sample.genome -o reports/test-report.html -c sample-data/myco.svg -s sample-data/myco.ss-colors 
+ *      ./scripts/create-report.js -i sample-data/sample.genome -o reports/test-report.html -c sample-data/myco.svg -s sample-data/myco.ss-colors
  *
  * Author(s):
  *      nconrad
@@ -33,15 +33,11 @@ helpers.array();
 helpers.number();
 helpers.comparison();
 
-
 utils.helpers(handlebars);
 
 
-
 // template data to be used
-const tmplData = {
-    reportDate: new Date().toJSON().slice(0,10).replace(/-/g,'/')
-}
+let tmplData = {}
 
 
 if (require.main === module){
@@ -49,7 +45,7 @@ if (require.main === module){
                 'for which report will be built')
         .option('-o, --output [value] Path to write resulting html output')
         .option('-c, --circular-view [value] Path to SVG of circular view of genome')
-        .option('-s, --color-scheme [value] Path to custom scheme for subsystem colors')        
+        .option('-s, --color-scheme [value] Path to custom scheme for subsystem colors')
         .parse(process.argv)
 
 
@@ -78,15 +74,16 @@ async function buildReport(params) {
         contents = await readFile(`${input}`, 'utf8');
         gto = JSON.parse(contents);
     } catch(e) {
-        console.error('\x1b[31m', '\nCould not read GTO!\n', '\x1b[0m', e)
+        console.error(`\nCould not read GTO: ${input}\n`, e)
         return 1;
     }
 
     let circularViewSVG;
     try {
         circularViewSVG = await readFile(circularView, 'utf8');
+        circularViewSVG = setSVGViewbox(circularViewSVG);
     } catch (e) {
-        console.error('\x1b[31m', `\nCould not read circular view file ${circularView}\n`, '\x1b[0m', e);
+        console.error(`\nCould not read circular view file: ${circularView}\n`, e);
         circularViewSVG = "";
     }
 
@@ -113,7 +110,7 @@ async function buildReport(params) {
     try {
         source = await readFile(templatePath);
     } catch(e) {
-        console.error('\x1b[31m', '\nCould not read html template file!\n', '\x1b[0m', e)
+        console.error(`\nCould not read html template file: ${templatePath}\n`, e)
         return 1;
     }
 
@@ -130,12 +127,10 @@ async function buildReport(params) {
     try {
         await writeFile(htmlPath, content);
     } catch(e) {
-        console.error('\x1b[31m', '\nCould not write html file!\n', '\x1b[0m', e)
+        console.error(`\nCould not write html file: ${htmlPath}\n`, e)
         return 1;
     }
 }
-
-
 
 
 function addTableNumbers(content) {
@@ -146,6 +141,17 @@ function addTableNumbers(content) {
 
     $('fig-ref').each((i, elem) => { $(elem).html(`Figure ${i+1}`); });
     $('fig-num').each((i, elem) => { $(elem).html(`Figure ${i+1}`); });
+
+    return $.html();
+}
+
+
+function setSVGViewbox(content) {
+    const $ = cheerio.load(content);
+
+    $('svg').removeAttr('width');
+    $('svg').removeAttr('height');
+    $('svg').attr('viewbox', '0 0 3000 3000');
 
     return $.html();
 }
@@ -248,9 +254,6 @@ function getProteinFeatures(obj) {
         name: "Proteins with PATRIC cross-genus family (PGfam) assignments",
         count: obj.pgfam_assignment
     }]
-
-    // dsc order
-    data.sort((a, b) => b.count - a.count);
 
     return data;
 }
