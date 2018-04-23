@@ -33,6 +33,11 @@ function helpers(handlebars) {
         return 0;
     })
 
+    handlebars.registerHelper('currentDate', function() {
+        return moment().format('MM/DD/YYYY');
+    })
+
+
     // helper to format base pairs to Bps, Kbps, etc.
     handlebars.registerHelper('basePairs', function(number, precision) {
         if (number == null) return '0 Bp';

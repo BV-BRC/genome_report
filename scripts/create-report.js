@@ -33,15 +33,11 @@ helpers.array();
 helpers.number();
 helpers.comparison();
 
-
 utils.helpers(handlebars);
 
 
-
 // template data to be used
-const tmplData = {
-    reportDate: new Date().toJSON().slice(0,10).replace(/-/g,'/')
-}
+let tmplData = {}
 
 
 if (require.main === module){

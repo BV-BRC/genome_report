@@ -108,9 +108,8 @@
             }
 
             .circular-view-fig {
-                width: 90%;
+                width: 80%;
             }
-
 
             .tree-fig {
                 width: 1100px;
@@ -142,7 +141,7 @@
             -->
 
             <div class="report-info pull-right">
-                <span>Report Date:</span> {{reportDate}}<br>
+                <span>Report Date:</span> {{currentDate}}<br>
                 <span>Organism:</span> {{meta.genome_name}}
             </div>
         </header>
@@ -385,10 +384,10 @@
         {{#amr}} <!-- only shown if data is available -->
         <section>
             <h2>Antimicrobial Resistance Analysis</h2>
-            <table class="lg-table center">
+            <table class="lg-table kv-table center">
                 <thead class="table-header">
                     <tr>
-                        <th colspan="2"><table-num></table-num> Antimicrobial Resistance Phenotypes</th>
+                        <th colspan="2"><table-num></table-num> Analysis of Antimicrobial Resistance Phenotypes</th>
                     </tr>
                 </thead>
 
