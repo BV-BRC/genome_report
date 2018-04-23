@@ -4,7 +4,7 @@
  * create-report.js
  *
  * Example usage:
- *      ./scripts/create-report.js -i sample-data/sample.genome -o reports/test-report.html -c sample-data/myco.svg -s sample-data/myco.ss-colors 
+ *      ./scripts/create-report.js -i sample-data/sample.genome -o reports/test-report.html -c sample-data/myco.svg -s sample-data/myco.ss-colors
  *
  * Author(s):
  *      nconrad
@@ -49,7 +49,7 @@ if (require.main === module){
                 'for which report will be built')
         .option('-o, --output [value] Path to write resulting html output')
         .option('-c, --circular-view [value] Path to SVG of circular view of genome')
-        .option('-s, --color-scheme [value] Path to custom scheme for subsystem colors')        
+        .option('-s, --color-scheme [value] Path to custom scheme for subsystem colors')
         .parse(process.argv)
 
 
@@ -85,6 +85,7 @@ async function buildReport(params) {
     let circularViewSVG;
     try {
         circularViewSVG = await readFile(circularView, 'utf8');
+        circularViewSVG = setSVGViewbox(circularViewSVG);
     } catch (e) {
         console.error('\x1b[31m', `\nCould not read circular view file ${circularView}\n`, '\x1b[0m', e);
         circularViewSVG = "";
@@ -136,8 +137,6 @@ async function buildReport(params) {
 }
 
 
-
-
 function addTableNumbers(content) {
     const $ = cheerio.load(content);
 
@@ -149,6 +148,18 @@ function addTableNumbers(content) {
 
     return $.html();
 }
+
+
+function setSVGViewbox(content) {
+    const $ = cheerio.load(content);
+
+    $('svg').removeAttr('width');
+    $('svg').removeAttr('height');
+    $('svg').attr('viewbox', '0 0 3000 3000');
+
+    return $.html();
+}
+
 
 
 function getSpecialGenes(data) {
