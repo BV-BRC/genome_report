@@ -9,9 +9,7 @@
  *      nconrad
 */
 
-const fs = require('fs'),
-    path = require('path'),
-    moment = require('moment');
+const moment = require('moment');
 
 
 

@@ -259,9 +259,6 @@ function getProteinFeatures(obj) {
         count: obj.pgfam_assignment
     }]
 
-    // dsc order
-    data.sort((a, b) => b.count - a.count);
-
     return data;
 }
 
