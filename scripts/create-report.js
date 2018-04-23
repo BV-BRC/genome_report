@@ -78,7 +78,7 @@ async function buildReport(params) {
         contents = await readFile(`${input}`, 'utf8');
         gto = JSON.parse(contents);
     } catch(e) {
-        console.error('\x1b[31m', '\nCould not read GTO!\n', '\x1b[0m', e)
+        console.error(`\nCould not read GTO: ${input}\n`, e)
         return 1;
     }
 
@@ -87,7 +87,7 @@ async function buildReport(params) {
         circularViewSVG = await readFile(circularView, 'utf8');
         circularViewSVG = setSVGViewbox(circularViewSVG);
     } catch (e) {
-        console.error('\x1b[31m', `\nCould not read circular view file ${circularView}\n`, '\x1b[0m', e);
+        console.error(`\nCould not read circular view file: ${circularView}\n`, e);
         circularViewSVG = "";
     }
 
@@ -114,7 +114,7 @@ async function buildReport(params) {
     try {
         source = await readFile(templatePath);
     } catch(e) {
-        console.error('\x1b[31m', '\nCould not read html template file!\n', '\x1b[0m', e)
+        console.error(`\nCould not read html template file: ${templatePath}\n`, e)
         return 1;
     }
 
@@ -131,7 +131,7 @@ async function buildReport(params) {
     try {
         await writeFile(htmlPath, content);
     } catch(e) {
-        console.error('\x1b[31m', '\nCould not write html file!\n', '\x1b[0m', e)
+        console.error(`\nCould not write html file: ${htmlPath}\n`, e)
         return 1;
     }
 }
@@ -159,7 +159,6 @@ function setSVGViewbox(content) {
 
     return $.html();
 }
-
 
 
 function getSpecialGenes(data) {

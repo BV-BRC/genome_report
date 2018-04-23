@@ -82,11 +82,11 @@ async function createChart(genomeTypedObject, colorsPath) {
             let d = await readFile(colorsPath);
             colorObj = JSON.parse(d);
         } catch(e) {
-            console.error('\x1b[31m', '\nCould not read color scheme file!\n', '\x1b[0m', e)
+            console.error(`\nCould not read color scheme file: ${colorsPath}\n`, e)
             return 1;
         }
     } else {
-        console.log('WARNING: using default colors!')
+        console.log('WARNING: using default colors for subsystem chart.')
         colorObj = colors;
     }
 
