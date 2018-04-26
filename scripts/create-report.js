@@ -38,7 +38,9 @@ const readFile = util.promisify(fs.readFile);
 const createSubsystemChart = require('./create-subsystem-chart');
 const config = require('../config.json');
 const templatePath = path.resolve(`${config.templatePath}`);
+const referencesPath = path.resolve(`${config.referencesPath}`);
 
+let refAnchors = true;   // probably can't use anchors with iFrames
 
 // load template helpers
 helpers.array();
@@ -131,6 +133,10 @@ async function buildReport(params) {
     console.log('Adding table/figure numbers...')
     content = addTableNumbers(content);
 
+
+    console.log('Adding references...')
+    content = await addReferences(content);
+
     let htmlPath = path.resolve(output);
     console.log(`Writing html to: ${htmlPath}...`);
 
@@ -151,6 +157,54 @@ function addTableNumbers(content) {
 
     $('fig-ref').each((i, elem) => { $(elem).html(`Figure ${i+1}`); });
     $('fig-num').each((i, elem) => { $(elem).html(`Figure ${i+1}`); });
+
+    return $.html();
+}
+
+
+async function addReferences(content) {
+    // load references json file (specified in config.json)
+    let refObj;
+    try {
+        let f = await readFile(referencesPath, 'utf8');
+        refObj = JSON.parse(f);
+    } catch(e) {
+        console.error(`\nCould not read references file: ${referencesPath}\n`, e)
+        return 1;
+    }
+
+    const $ = cheerio.load(content);
+
+    let refCache = {}; // keep mapping of included refs
+
+    // iterate <ref> tags, get corresponding references from the json
+    // and replace <ref> tags with superscripts (links)
+    let references = [];
+    let i = 1
+    $('ref').each((idx, elem) => {
+        let cites = $(elem).text().trim();
+
+        sups = '';
+        cites.split(';').forEach(ref => {
+            if (ref in refCache)
+                i = refCache[ref];
+
+            let citation = refObj[ref];
+            references.push(citation);
+            sups += `<sup class="reference">[`+
+                (refAnchors ? `<a href="#citation-${i}">${i}</a>` : [i])+
+            `]</sup>`
+            refCache[ref] = i;
+
+            i += 1;
+        })
+
+        $(elem).replaceWith(sups)
+    });
+
+    // create references section
+    refHTML = '<ol>' + references.map((r, i) => `<li id="citation-${i}">${r}</li>` ).join('') + '</ol>';
+    $('references').html(refHTML);
 
     return $.html();
 }

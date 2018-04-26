@@ -23,6 +23,7 @@
             h2 small { color: #888; font-size: 0.65em; }
             .pull-left { float: left; }
             .pull-right { float: right; }
+            sup { display: inline-block; }
 
             table-num,
             table-ref,
@@ -170,9 +171,9 @@
         -->
         <section>
             <h2>Genome Assembly</h2>
-            {{#if gto.job_data.assembly.job_id}}
+            {{#if false}}
                 <p>
-                    {{meta.genome_name}} ran under job ID {{gto.job_data.assembly.job_id}} at PATRIC[1].
+                    {{meta.genome_name}} ran under job ID {{gto.job_data.assembly.job_id}} at PATRIC<ref>Wattam, et al. 2017</ref>.
                     The assembly job started at {{datetime gto.job_data.assembly.start_time}} and completed at {{datetime gto.job_data.assembly.completion_time}}
                     after {{elapsed gto.job_data.assembly.elapsed_time}}.
                     The {{gto.job_data.assembly.parameters.recipe}} assembly strategy was selected.
@@ -246,7 +247,7 @@
           ## Genome Annotation
         -->
         <section>
-            <h2>Genome Annotation <small>(Job ID: {{gto.job_data.annotation.job_id}})</small></h2>
+            <h2>Genome Annotation</h2>
 
             <table class="med-table kv-table center">
                 <thead class="table-header">
@@ -279,7 +280,7 @@
 
             <p>
                 The {{meta.genome_name}} genome was annotated
-                using RAST tool kit (RASTtk) (Brettin, et al. 2015) and assigned a unique genome
+                using RAST tool kit (RASTtk)<ref>Brettin, et al. 2015</ref> and assigned a unique genome
                 identifier of {{gto.id}}. This genome is in the superkingdom
                 {{#eq gto.domain 'B'}}Bacteria{{/eq}}{{#eq gto.domain 'A'}}Archaea{{/eq}}
                 and was annotated using genetic code {{gto.genetic_code}}.
@@ -327,12 +328,12 @@
 
                 The proteins with functional assignments included
                     {{addCommas (get 'count' 'Proteins with EC number assignments' proteinFeatures) 0}}
-                proteins with Enzyme Commission (EC) numbers (Schomburg, et al. 2004),
+                proteins with Enzyme Commission (EC) numbers<ref>Schomburg, et al. 2004</ref>,
                     {{addCommas (get 'count' 'Proteins with GO assignments' proteinFeatures) 0}}
-                with Gene Ontology (GO) assignments (Ashburner, et al. 2000), and
+                with Gene Ontology (GO) assignments<ref>Ashburner, et al. 2000</ref>, and
                     {{addCommas (get 'count' 'Proteins with Pathway assignments' proteinFeatures) 0}}
-                    proteins that were mapped to KEGG pathways (Kanehisa, et al. 2016).
-                PATRIC annotation includes two types of protein families (Davis, et al. 2016),
+                    proteins that were mapped to KEGG pathways<ref>Kanehisa, et al. 2016</ref>.
+                PATRIC annotation includes two types of protein families<ref>Davis, et al. 2016</ref>,
                 and this genome has
                     {{addCommas (get 'count' 'Proteins with PATRIC genus-specific family (PLfam) assignments' proteinFeatures) 0}}
                     proteins that belong to the genus-specific protein families (PLFams)
@@ -407,9 +408,9 @@
             <h2>Specialty Genes</h2>
             <p>
                 Many of the genes annotated in {{gto.genome_id}} have homology to known known
-                transporters (Saier Jr, et al. 2015), virulence factors (Mao, et al. 2015; Chen, et al. 2016),
-                drug targets (Zhu, et al. 2009; Law, et al. 2014),
-                and antibiotic resistance genes (McArthur, et al. 2013).
+                transporters<ref>Saier Jr, et al. 2015</ref>, virulence factors (Mao, et al. 2015; Chen, et al. 2016),
+                drug targets<ref>Zhu, et al. 2009; Law, et al. 2014</ref>,
+                and antibiotic resistance genes<ref>McArthur, et al. 2013</ref>.
 
                 The number of genes and the specific source database where homology was found is provided (<table-ref></table-ref>).
             </p>
@@ -485,7 +486,7 @@
             <h2>Subsystem Analysis</h2>
             <p>
                 A subsystem is a set of proteins that together implement a specific biological
-                process or structural complex (Overbeek, et al. 2005) and PATRIC annotation
+                process or structural complex<ref>Overbeek, et al. 2005</ref> and PATRIC annotation
                 includes an analysis of the subsystems unique to each genome.
                 An overview of the subsystems for this genome is provided in <fig-ref></fig-ref>.
             </p>
@@ -503,14 +504,14 @@
 
             <p>
                 The closest reference and representative genomes to {{gto.genome_name}}
-                were identified by Mash/MinHash (Ondov, et al. 2016). PATRIC global
-                protein families (PGFams) (Davis, et al. 2016) were selected from these
+                were identified by Mash/MinHash<ref>Ondov, et al. 2016</ref>. PATRIC global
+                protein families (PGFams)<ref>Davis, et al. 2016</ref> were selected from these
                 genomes to determine the phylogenetic placement of this genome.  The
-                protein sequences from these families were aligned with MUSCLE (Edgar 2004),
+                protein sequences from these families were aligned with MUSCLE<ref>Edgar 2004</ref>,
                 and the nucleotides for each of those sequences were mapped to the protein alignment.
                 The joint set of amino acid and nucleotide alignments were concatenated into a data matrix,
-                and RaxML (Stamatakis 2014) was used to analyze this matrix, with fast
-                bootstrapping(Stamatakis, et al. 2008) was used to generate the support
+                and RaxML<ref>Stamatakis 2014</ref> was used to analyze this matrix, with fast
+                bootstrapping<ref>Stamatakis, et al. 2008</ref> was used to generate the support
                 values in the tree (<fig-ref></fig-ref>).
             </p>
 
@@ -566,8 +567,8 @@
         </section>
         {{/if}}
 
-
-
+        <h2>References</h2>
+        <references></references>
 
 
     </body>
