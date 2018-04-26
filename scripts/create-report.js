@@ -186,16 +186,19 @@ async function addReferences(content) {
 
         sups = '';
         cites.split(';').forEach(ref => {
+            ref = ref.trim();
             if (ref in refCache)
                 i = refCache[ref];
 
             let citation = refObj[ref];
             references.push(citation);
-            sups += `<sup class="reference">[`+
-                (refAnchors ? `<a href="#citation-${i}">${i}</a>` : [i])+
-            `]</sup>`
-            refCache[ref] = i;
 
+            sups +=
+                `<sup class="reference">[`+
+                    (refAnchors ? `<a href="#citation-${i}">${i}</a>` : [i])+
+                `]</sup>`
+
+            refCache[ref] = i;
             i += 1;
         })
 
@@ -203,7 +206,11 @@ async function addReferences(content) {
     });
 
     // create references section
-    refHTML = '<ol>' + references.map((r, i) => `<li id="citation-${i}">${r}</li>` ).join('') + '</ol>';
+    refHTML =
+        `<ol class="references">` +
+            references.map((r, i) => `<li id="citation-${i}">${r}</li>` ).join('') +
+        `</ol>`;
+
     $('references').html(refHTML);
 
     return $.html();
