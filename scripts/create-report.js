@@ -1,10 +1,22 @@
 #!/usr/bin/env node
 /**
- *
  * create-report.js
  *
+ *
+ * Usage: create-report [options]
+ *
+ * Options:
+ *
+ *     -i, --input [value] Path of input data (Genome Typed Object)for which report will be built
+ *     -o, --output [value] Path to write resulting html output
+ *     -c, --circular-view [value] Path to SVG of circular view of genome
+ *     -s, --color-scheme [value] Path to custom scheme for subsystem colors
+ *
+ *
  * Example usage:
+ *
  *      ./scripts/create-report.js -i sample-data/sample.genome -o reports/test-report.html -c sample-data/myco.svg -s sample-data/myco.ss-colors
+ *
  *
  * Author(s):
  *      nconrad
@@ -36,12 +48,9 @@ helpers.comparison();
 utils.helpers(handlebars);
 
 
-// template data to be used
-let tmplData = {}
-
 
 if (require.main === module){
-    opts.option('-i, --input [value] Path of input data (Genome Typed Object)\n\t\t\t ' +
+    opts.option('-i, --input [value] Path of input data (Genome Typed Object)' +
                 'for which report will be built')
         .option('-o, --output [value] Path to write resulting html output')
         .option('-c, --circular-view [value] Path to SVG of circular view of genome')
@@ -78,6 +87,7 @@ async function buildReport(params) {
         return 1;
     }
 
+    console.log('Loading circular viewer svg...');
     let circularViewSVG;
     try {
         circularViewSVG = await readFile(circularView, 'utf8');
@@ -90,10 +100,10 @@ async function buildReport(params) {
     console.log('Creating subsystem chart...');
     let subsystemSVG = await createSubsystemChart(gto, colorScheme);
 
-    // merge in report data
+    // get all template data
     let meta = gto.genome_quality_measure;
     meta.genome_name = gto.scientific_name;
-    Object.assign(tmplData, {
+    let tmplData = {
         gto,
         meta,
         annotationMeta: getFeatureSummary(meta.feature_summary),
@@ -102,7 +112,7 @@ async function buildReport(params) {
         amr: 'classifications' in gto && getAMRPhenotypes(gto.classifications),
         subsystemSVG,
         circularViewSVG,
-    });
+    };
 
 
     console.log('Reading template...')
