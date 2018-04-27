@@ -109,7 +109,7 @@ async function buildReport(params) {
         gto,
         meta,
         annotationMeta: getFeatureSummary(meta.feature_summary),
-        proteinFeatures: getProteinFeatures(meta.protein_summary),
+        pFeatures: meta.protein_summary,
         specialtyGenes: getSpecialGenes(meta.specialty_gene_summary),
         amr: 'classifications' in gto && getAMRPhenotypes(gto.classifications),
         subsystemSVG,
@@ -280,22 +280,22 @@ function getSpecialGenes(data) {
 function getFeatureSummary(obj) {
     let data = [{
         name: "CDS",
-        count: obj.cds,
+        count: obj.cds || 0,
     }, {
         name: "Partial CDS",
-        count: obj.partial_cds
+        count: obj.partial_cds || 0
     }, {
         name: "rRNA",
-        count: obj.rRNA
+        count: obj.rRNA || 0
     }, {
         name: "tRNA",
-        count: obj.tRNA
+        count: obj.tRNA || 0
     }, {
         name: "Miscellaneous RNA",
-        count: obj.miscRNA
+        count: obj.miscRNA || 0
     }, {
         name: "Repeat Regions",
-        count: obj.repeat_region
+        count: obj.repeat_region || 0
     }]
 
 
@@ -305,32 +305,6 @@ function getFeatureSummary(obj) {
     return data;
 }
 
-function getProteinFeatures(obj) {
-    let data = [{
-        name: "Hypothetical proteins",
-        count: obj.hypothetical
-    }, {
-        name: "Proteins with functional assignments",
-        count: obj.function_assignment,
-    }, {
-        name: "Proteins with EC number assignments",
-        count: obj.ec_assignment
-    }, {
-        name: "Proteins with GO assignments",
-        count: obj.go_assignment
-    }, {
-        name: "Proteins with Pathway assignments",
-        count: obj.pathway_assignment
-    }, {
-        name: "Proteins with PATRIC genus-specific family (PLfam) assignments",
-        count: obj.plfam_assignment
-    }, {
-        name: "Proteins with PATRIC cross-genus family (PGfam) assignments",
-        count: obj.pgfam_assignment
-    }]
-
-    return data;
-}
 
 function getAMRPhenotypes(classifications) {
     let data = {

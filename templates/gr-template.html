@@ -175,7 +175,7 @@
         -->
         <section>
             <h2>Genome Assembly</h2>
-            {{#if false}}
+            {{#if gto.job_data.assembly.job_id}}
                 <p>
                     {{meta.genome_name}} ran under job ID {{gto.job_data.assembly.job_id}} at PATRIC<ref>Wattam, et al. 2017</ref>.
                     The assembly job started at {{datetime gto.job_data.assembly.start_time}} and completed at {{datetime gto.job_data.assembly.completion_time}}
@@ -190,14 +190,16 @@
                     assembly as the highest qualitye.
                 </p>
             {{/if}}
+
+            {{#meta}}
             <p>
                 An assembled genome was submitted to the Comprehensive Genome Analysis service.
                 This assembled genome had
-                    {{addCommas meta.contigs 0}} contig{{plural meta.contigs}},
+                    {{addCommas contigs 0}} contig{{plural contigs}},
                 with the total length of
-                    ~{{default (basePairs meta.genome_length) 0}}
+                    ~{{default (basePairs genome_length) 0}}
                 and an average G+C content of
-                    {{default (toFixed meta.gc_content 2) 0}}% (<table-ref></table-ref>).
+                    {{default (toFixed gc_content 2) 0}}% (<table-ref></table-ref>).
             </p>
 
             <table class="sm-table kv-table center">
@@ -212,38 +214,39 @@
                 <tbody>
                     <tr>
                         <td>Contigs</td>
-                        <td class="align-right">{{addCommas meta.contigs 0}}</td>
+                        <td class="align-right">{{addCommas contigs 0}}</td>
                     </tr>
                     <tr>
                         <td>GC Content</td>
-                        <td class="align-right">{{default (toFixed meta.gc_content 2) 0}}</td>
+                        <td class="align-right">{{default (toFixed gc_content 2) 0}}</td>
                     </tr>
                     <tr>
                         <td>Plasmids</td>
-                        <td class="align-right">{{addCommas meta.plasmids 0}}</td>
+                        <td class="align-right">{{addCommas plasmids 0}}</td>
                     <tr>
                     </tr>
                         <td>Contig L50</td>
-                        <td class="align-right">{{default meta.genome_metrics.L50 0}}</td>
+                        <td class="align-right">{{default genome_metrics.L50 0}}</td>
                     </tr>
                     <tr>
                         <td>Genome Length</td>
                         <td class="align-right">
-                            {{addCommas meta.genome_length 0}} bp
+                            {{addCommas genome_length 0}} bp
                         </td>
                     </tr>
                     <tr>
                         <td>Contig N50</td>
                         <td class="align-right">
-                            {{addCommas meta.genome_metrics.N50 0}}
+                            {{addCommas genome_metrics.N50 0}}
                         </td>
                     </tr>
                     <tr>
                         <td>Chromosomes</td>
-                        <td class="align-right">{{addCommas meta.chromosomes 0}}</td>
+                        <td class="align-right">{{addCommas chromosomes 0}}</td>
                     </tr>
                 </tbody>
             </table>
+            {{/meta}}
         </section>
 
 
@@ -252,6 +255,7 @@
         -->
         <section>
             <h2>Genome Annotation</h2>
+
 
             <table class="med-table kv-table center">
                 <thead class="table-header">
@@ -265,7 +269,7 @@
                 <tbody>
                     <tr>
                         <td>Job ID</td>
-                        <td class="align-right">{{gto.job_data.annotation.job_id}}</td>
+                        <td class="align-right">{{default gto.job_data.annotation.job_id 'N/A'}}</td>
                     </tr>
                     <tr>
                         <td>Job Started</td>
@@ -296,13 +300,15 @@
             </div>
             <br>
 
+            {{#meta.feature_summary}}
             <p>
                 This genome has
-                    {{addCommas (get 'count' 'CDS' annotationMeta) 0}} protein coding sequences (CDS),
-                    {{addCommas (get 'count' 'tRNA' annotationMeta) 0}} transfer RNA (tRNA) genes, and
-                    {{addCommas (get 'count' 'rRNA' annotationMeta) 0}} ribosomal RNA (rRNA) genes.
+                    {{addCommas cds 0}} protein coding sequence{{plural cds}} (CDS),
+                    {{addCommas tRNA 0}} transfer RNA (tRNA) gene{{plural tRNA}}, and
+                    {{addCommas rRNA 0}} ribosomal RNA (rRNA) gene{{plural rRNA}}.
                 The annotated features are summarized in <table-ref></table-ref>.
             </p>
+            {{/meta.feature_summary}}
 
             <table class="sm-table kv-table center">
                 <thead class="table-header">
@@ -324,28 +330,28 @@
                 </tbody>
             </table>
 
+
             <p>
+                {{#pFeatures}}
                 The annotation included
-                    {{addCommas (get 'count' 'Hypothetical proteins' proteinFeatures) 0}} hypothetical proteins and
-                    {{addCommas (get 'count' 'Proteins with functional assignments' proteinFeatures) 0}} proteins with functional assignments
+                    {{addCommas hypothetical 0}} hypothetical protein{{plural hypothetical}} and
+                    {{addCommas function_assignment 0}} proteins with functional assignment{{plural function_assignment}}
                     (<table-ref></table-ref>).
 
                 The proteins with functional assignments included
-                    {{addCommas (get 'count' 'Proteins with EC number assignments' proteinFeatures) 0}}
-                proteins with Enzyme Commission (EC) numbers<ref>Schomburg, et al. 2004</ref>,
-                    {{addCommas (get 'count' 'Proteins with GO assignments' proteinFeatures) 0}}
-                with Gene Ontology (GO) assignments<ref>Ashburner, et al. 2000</ref>, and
-                    {{addCommas (get 'count' 'Proteins with Pathway assignments' proteinFeatures) 0}}
-                    proteins that were mapped to KEGG pathways<ref>Kanehisa, et al. 2016</ref>.
+                    {{addCommas ec_assignment 0}} protein{{plural ec_assignment}} with Enzyme Commission (EC) numbers<ref>Schomburg, et al. 2004</ref>,
+                    {{addCommas go_assignment 0}} with Gene Ontology (GO) assignments<ref>Ashburner, et al. 2000</ref>, and
+                    {{addCommas pathway_assignment 0}} protein{{plural pathway_assignment}} that {{#if (eq pathway_assignment 1)}}was{{else}}were{{/if}} mapped to KEGG pathways<ref>Kanehisa, et al. 2016</ref>.
                 PATRIC annotation includes two types of protein families<ref>Davis, et al. 2016</ref>,
                 and this genome has
-                    {{addCommas (get 'count' 'Proteins with PATRIC genus-specific family (PLfam) assignments' proteinFeatures) 0}}
-                    proteins that belong to the genus-specific protein families (PLFams)
-                for Buchnera, and
-                    {{addCommas (get 'count' 'Proteins with PATRIC cross-genus family (PGfam) assignments' proteinFeatures) 0}}
-                    proteins that belong to the cross-genus protein families (PGFams).
+                    {{addCommas plfam_assignment 0}} protein{{plural plfam_assignment}} that belong to the genus-specific protein families (PLFams)
+                for {{gto.ncbi_genus}}, and
+                    {{addCommas pgfam_assignment 0}} protein{{plural pgfam_assignment}} that belong to the cross-genus protein families (PGFams).
+                {{/pFeatures}}
             </p>
 
+
+            {{#pFeatures}}
             <table class="med-table kv-table center">
                 <thead class="table-header">
                     <tr>
@@ -355,16 +361,41 @@
 
                 <tbody>
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
-                    {{#each proteinFeatures}}
                     <tr>
-                        <td>{{name}}</td>
+                        <td>Hypothetical proteins</td>
+                        <td class="align-right">{{addCommas hypothetical 0}}</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with functional assignments</td>
+                        <td class="align-right">{{addCommas function_assignment 0}}</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with EC number assignments</td>
+                        <td class="align-right">{{addCommas ec_assignment 0}}</td>
+                    <tr>
+                    </tr>
+                        <td>Proteins with GO assignments</td>
+                        <td class="align-right">{{addCommas go_assignment 0}}</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with Pathway assignments</td>
                         <td class="align-right">
-                            {{addCommas count 0}}
+                            {{addCommas pathway_assignment 0}}
                         </td>
                     </tr>
-                    {{/each}}
+                    <tr>
+                        <td>Proteins with PATRIC genus-specific family (PLfam) assignments</td>
+                        <td class="align-right">
+                            {{addCommas plfam_assignment 0}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with PATRIC cross-genus family (PGfam) assignments</td>
+                        <td class="align-right">{{addCommas pgfam_assignment 0}}</td>
+                    </tr>
                 </tbody>
             </table>
+            {{/pFeatures}}
 
 
             <p>

@@ -72,9 +72,9 @@ function helpers(handlebars) {
     // if name in object matches "match"
     handlebars.registerHelper('get', (key, match, objs, defaultStr) => {
         if (objs === undefined)
-            return (typeof undefinedStr !== 'object' ? undefinedStr : '-');
+            return (typeof defaultStr !== 'object' ? defaultStr : '-');
 
-        return objs.filter(o => o.name === match)[0][key];
+        return Array.isArray(objs) ? objs.filter(o => o.name === match)[0][key] : 'N/A';
     })
 
 
