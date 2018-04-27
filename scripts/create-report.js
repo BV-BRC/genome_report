@@ -180,15 +180,19 @@ async function addReferences(content) {
     // iterate <ref> tags, get corresponding references from the json
     // and replace <ref> tags with superscripts (links)
     let references = [];
-    let i = 1
+    var refIdx = 1;
     $('ref').each((idx, elem) => {
         let cites = $(elem).text().trim();
 
         sups = '';
         cites.split(';').forEach(ref => {
             ref = ref.trim();
-            if (ref in refCache)
+            if (ref in refCache) {
                 i = refCache[ref];
+            } else {
+                i = refIdx;
+                refCache[ref] = refIdx;
+            }
 
             let citation = refObj[ref];
             references.push(citation);
@@ -198,8 +202,7 @@ async function addReferences(content) {
                     (refAnchors ? `<a href="#citation-${i}">${i}</a>` : [i])+
                 `]</sup>`
 
-            refCache[ref] = i;
-            i += 1;
+            refIdx += 1;
         })
 
         $(elem).replaceWith(sups)
