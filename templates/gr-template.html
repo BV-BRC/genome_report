@@ -113,8 +113,7 @@
             }
 
             .tree-fig {
-                width: 1100px;
-                height: 150px;
+                width: 70%;
             }
 
             ol.references li {
@@ -607,17 +606,13 @@
 
 
             <p>
-            [Tree table will go here]
-            </p>
-            <p>
-            [Tree will go here]
+                [Tree table will go here]
             </p>
 
-            <!--
-                <h3>Comparison to Reference Genomes in the Same Genus</h3>
-                <fig-num></fig-num>
-                <img src="../{{meta.genome_id}}/{{meta.genome_id}}-tree.svg" class="tree-fig" />
-            -->
+            <fig-num></fig-num>
+            <div class="tree-fig center">{{{treeSVG}}}</div>
+
+
         </section>
 
 

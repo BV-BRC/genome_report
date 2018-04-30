@@ -55,6 +55,7 @@ if (require.main === module){
                 'for which report will be built')
         .option('-o, --output [value] Path to write resulting html output')
         .option('-c, --circular-view [value] Path to SVG of circular view of genome')
+        .option('-t, --tree [value] Path to SVG of phylogenetic tree')
         .option('-s, --color-scheme [value] Path to custom scheme for subsystem colors')
         .parse(process.argv)
 
@@ -76,7 +77,7 @@ if (require.main === module){
 
 
 async function buildReport(params) {
-    let { input, output, circularView, colorScheme } = params;
+    let { input, output, circularView, tree, colorScheme } = params;
 
     console.log('Loading Genome Typed Object...');
     let contents, data;
@@ -88,7 +89,7 @@ async function buildReport(params) {
         return 1;
     }
 
-    console.log('Loading circular viewer svg...');
+    console.log('Loading circular viewer SVG...');
     let circularViewSVG;
     try {
         circularViewSVG = await readFile(circularView, 'utf8');
@@ -96,6 +97,16 @@ async function buildReport(params) {
     } catch (e) {
         console.error(`*** Could not read circular view file: ${circularView}\n`, e);
         circularViewSVG = "";
+    }
+
+    console.log('Loading tree SVG...');
+    let treeSVG;
+    try {
+        treeSVG = await readFile(tree, 'utf8');
+        treeSVG = removeSVGSize(treeSVG);
+    } catch (e) {
+        console.error(`*** Could not read tree view file: ${tree}\n`, e);
+        treeSVG = "";
     }
 
     console.log('Creating subsystem chart...');
@@ -112,8 +123,9 @@ async function buildReport(params) {
         specialtyGenes: getSpecialGenes(meta.specialty_gene_summary),
         amrPhenotypes: 'classifications' in gto && getAMRPhenotypes(gto.classifications),
         amrGenes: 'amr_gene_summary' in meta && getAMRGenes(meta.amr_gene_summary),
-        subsystemSVG,
         circularViewSVG,
+        subsystemSVG,
+        treeSVG
     };
 
 
@@ -234,11 +246,19 @@ async function addReferences(content, assemblyMethod) {
 
 
 function setSVGViewbox(content) {
+    content = removeSVGSize(content)
+
+    const $ = cheerio.load(content);
+    $('svg').attr('viewbox', '0 0 3000 3000');
+
+    return $.html();
+}
+
+function removeSVGSize(content) {
     const $ = cheerio.load(content);
 
     $('svg').removeAttr('width');
     $('svg').removeAttr('height');
-    $('svg').attr('viewbox', '0 0 3000 3000');
 
     return $.html();
 }
@@ -336,43 +356,6 @@ function getAMRPhenotypes(classifications) {
 }
 
 
-
-/*
-"amr_gene_summary" : {
-    "protein altering cell wall charge conferring antibiotic resistance" : [
-       "GdpD"
-    ],
-    "gene conferring resistance via absence" : [
-       "gidB"
-    ],
-    "antibiotic inactivation enzyme" : [
-       "ANT(6)-I"
-    ],
-    "antibiotic target in susceptible species" : [
-       "Ddl",
-       "dxr",
-       "EF-G",
-       "folA, Dfr",
-       "folP",
-       "gyrA",
-       "gyrB",
-       "inhA, fabI",
-       "Iso-tRNA",
-       "kasA",
-       "MurA",
-       "parC",
-       "parE/parY",
-       "rho",
-       "rpoB",
-       "rpoC",
-       "S10p",
-       "S12p"
-    ],
-    "regulator modulating expression of antibiotic resistance genes" : [
-       "OxyR"
-    ]
- },
- */
 function getAMRGenes(geneSummary) {
     let data = Object.keys(geneSummary).map(key => {
         return {
