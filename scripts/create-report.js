@@ -40,7 +40,7 @@ const config = require('../config.json');
 const templatePath = path.resolve(`${config.templatePath}`);
 const referencesPath = path.resolve(`${config.referencesPath}`);
 
-let refAnchors = false;   // probably can't use anchors with iFrames
+let refAnchors = true;   // probably can't use anchors with iFrames
 
 // load template helpers
 helpers.array();
@@ -60,13 +60,13 @@ if (require.main === module){
 
 
     if (!opts.input) {
-        console.error("\nMust provide path '-i' to data (genome typed object)\n");
+        console.error("*** Must provide path '-i' to data (genome typed object)\n");
         opts.outputHelp();
         return 1;
     }
 
     if (!opts.output) {
-        console.error("\nMust provide output path '-o' for html report\n");
+        console.error("*** Must provide output path '-o' for html report\n");
         opts.outputHelp();
         return 1;
     }
@@ -84,7 +84,7 @@ async function buildReport(params) {
         contents = await readFile(`${input}`, 'utf8');
         gto = JSON.parse(contents);
     } catch(e) {
-        console.error(`\nCould not read GTO: ${input}\n`, e)
+        console.error(`*** Could not read GTO: ${input}\n`, e)
         return 1;
     }
 
@@ -94,7 +94,7 @@ async function buildReport(params) {
         circularViewSVG = await readFile(circularView, 'utf8');
         circularViewSVG = setSVGViewbox(circularViewSVG);
     } catch (e) {
-        console.error(`\nCould not read circular view file: ${circularView}\n`, e);
+        console.error(`*** Could not read circular view file: ${circularView}\n`, e);
         circularViewSVG = "";
     }
 
@@ -110,7 +110,8 @@ async function buildReport(params) {
         annotationMeta: getFeatureSummary(meta.feature_summary),
         pFeatures: meta.protein_summary,
         specialtyGenes: getSpecialGenes(meta.specialty_gene_summary),
-        amr: 'classifications' in gto && getAMRPhenotypes(gto.classifications),
+        amrPhenotypes: 'classifications' in gto && getAMRPhenotypes(gto.classifications),
+        amrGenes: 'amr_gene_summary' in meta && getAMRGenes(meta.amr_gene_summary),
         subsystemSVG,
         circularViewSVG,
     };
@@ -121,7 +122,7 @@ async function buildReport(params) {
     try {
         source = await readFile(templatePath);
     } catch(e) {
-        console.error(`\nCould not read html template file: ${templatePath}\n`, e)
+        console.error(`*** Could not read html template file: ${templatePath}\n`, e)
         return 1;
     }
 
@@ -132,9 +133,13 @@ async function buildReport(params) {
     console.log('Adding table/figure numbers...')
     content = addTableNumbers(content);
 
-
     console.log('Adding references...')
-    let assemblyMethod = gto.job_data.assembly.attributes.chosen_assembly;
+    let assemblyMethod
+    try {
+        assemblyMethod = gto.job_data.assembly.attributes.chosen_assembly;
+    } catch(e) {
+        assemblyMethod = '';
+    }
     content = await addReferences(content, assemblyMethod);
 
     let htmlPath = path.resolve(output);
@@ -143,7 +148,7 @@ async function buildReport(params) {
     try {
         await writeFile(htmlPath, content);
     } catch(e) {
-        console.error(`\nCould not write html file: ${htmlPath}\n`, e)
+        console.error(`*** Could not write html file: ${htmlPath}\n`, e)
         return 1;
     }
 }
@@ -169,7 +174,7 @@ async function addReferences(content, assemblyMethod) {
         let f = await readFile(referencesPath, 'utf8');
         refObj = JSON.parse(f);
     } catch(e) {
-        console.error(`\nCould not read references file: ${referencesPath}\n`, e)
+        console.error(`*** Could not read references file: ${referencesPath}\n`, e)
         return 1;
     }
 
@@ -185,9 +190,10 @@ async function addReferences(content, assemblyMethod) {
 
         // if special assembly method citation, look up citation first
         let cites;
-        if ($(elem).hasClass('assembly-method'))
+        if ($(elem).hasClass('assembly-method')) {
+            console.log('assemblymethod', assemblyMethod)
             cites = assemblyMapping[assemblyMethod.toLowerCase()].citation;
-        else
+        } else
             cites = $(elem).text().trim();
 
 
@@ -330,6 +336,62 @@ function getAMRPhenotypes(classifications) {
 }
 
 
+
+/*
+"amr_gene_summary" : {
+    "protein altering cell wall charge conferring antibiotic resistance" : [
+       "GdpD"
+    ],
+    "gene conferring resistance via absence" : [
+       "gidB"
+    ],
+    "antibiotic inactivation enzyme" : [
+       "ANT(6)-I"
+    ],
+    "antibiotic target in susceptible species" : [
+       "Ddl",
+       "dxr",
+       "EF-G",
+       "folA, Dfr",
+       "folP",
+       "gyrA",
+       "gyrB",
+       "inhA, fabI",
+       "Iso-tRNA",
+       "kasA",
+       "MurA",
+       "parC",
+       "parE/parY",
+       "rho",
+       "rpoB",
+       "rpoC",
+       "S10p",
+       "S12p"
+    ],
+    "regulator modulating expression of antibiotic resistance genes" : [
+       "OxyR"
+    ]
+ },
+ */
+function getAMRGenes(geneSummary) {
+    let data = Object.keys(geneSummary).map(key => {
+        return {
+            label: key.charAt(0).toUpperCase() + key.slice(1),
+            vals: geneSummary[key]
+        }
+    })
+
+    data.sort((a, b) => {
+        if(a.label < b.label) return -1;
+        if(a.label > b.label) return 1;
+        return 0;
+    })
+
+    return data;
+}
+
+
+
 let assemblyMapping = {
     spades: {
         label: 'SPAdes',
@@ -354,7 +416,8 @@ let assemblyMapping = {
     miniasm: {
         label: 'Miniasm',
         citation: 'Li 2016'
-    }
+    },
+    '': {citation: ''}
 }
 
 

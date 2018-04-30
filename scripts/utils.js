@@ -104,7 +104,7 @@ function helpers(handlebars) {
             miniasm: 'Miniasm'
         }
 
-        method = method.toLowerCase()
+        method = (method || '').toLowerCase()
         return method in mapping ? mapping[method] : method;
     })
 
