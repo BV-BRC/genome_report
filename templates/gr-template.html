@@ -20,9 +20,10 @@
             a:hover { text-decoration: underline; }
             h2 { font-size: 1.45em; }
             h2, h3 { font-weight: 500; }
-            h2 small { color: #aaa; }
+            h2 small { color: #888; font-size: 0.65em; }
             .pull-left { float: left; }
             .pull-right { float: right; }
+            sup { display: inline-block; }
 
             table-num,
             table-ref,
@@ -112,8 +113,11 @@
             }
 
             .tree-fig {
-                width: 1100px;
-                height: 150px;
+                width: 70%;
+            }
+
+            ol.references li {
+                margin-bottom: 1em;
             }
 
             .clearfix:after {
@@ -163,29 +167,69 @@
         </section>
         {{/or}}
 
+
+
+        <!--
+          ## Genome Assembly
+        -->
         <section>
             <h2>Genome Assembly</h2>
-            {{#if gto.job_data.assembly.job_id}}
-                <p>
-                    {{meta.genome_name}} ran under job ID {{gto.job_data.assembly.job_id}} at PATRIC[1].
-                    The assembly job started at {{datetime gto.job_data.assembly.start_time}} and completed at {{datetime gto.job_data.assembly.completion_time}}
-                    after {{elapsed gto.job_data.assembly.elapsed_time}}.
-                    The {{gto.job_data.assembly.parameters.recipe}} assembly strategy was selected.
-                    The auto strategy runs three assembly strategies that include Velvet [3], IDBA [4] and Spades [5], each of which is given
-                    an assembly score by ARAST, an in-house script. The minimum contig length was {{gto.job_data.assembly.parameters.min_contig_len}}bp
-                    and smaller contigs were not included in the assembly. The minimum contig coverage was
-                    {{gto.job_data.assembly.min_contig_cov}}
-                    and contigs with less coverage were not included in the assembly.
-                    Also add reference to QUAST. ARAST ranked the "{{gto.job_data.assembly.attributes.chosen_assembly}}"
-                    assembly as the highest qualitye.
-                </p>
-            {{/if}}
-            <p>
-                The assembled genome has {{addCommas meta.contigs 0}} contigs,
-                with the total length of ~{{basePairs meta.genome_length}}
-                and %GC of {{default (toFixed meta.gc_content 2) 0}}% (<table-ref></table-ref>).
-            </p>
 
+            {{#if gto.job_data.assembly.job_id}}
+                <table class="med-table kv-table center">
+                    <thead class="table-header">
+                        <tr>
+                            <th colspan="4">
+                                <table-num></table-num> Annotation Job Details
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Job ID</td>
+                            <td class="align-right">{{default gto.job_data.assembly.job_id 'N/A'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Job Started</td>
+                            <td class="align-right">{{datetime gto.job_data.assembly.start_time}}</td>
+                        </tr>
+                        <tr>
+                            <td>Job Completed</td>
+                            <td class="align-right">{{datetime gto.job_data.assembly.completion_time}}</td>
+                        <tr>
+                        </tr>
+                            <td>Total Time</td>
+                            <td class="align-right">{{elapsed gto.job_data.assembly.elapsed_time}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>
+                    {{meta.genome_name}} was assembled using
+                    {{prettyRecipe gto.job_data.assembly.attributes.chosen_assembly}}<ref class="assembly-method"></ref>. There were
+                    {{addCommas meta.contigs 0}} contig{{plural meta.contigs}}, an estimated genome length of {{addCommas meta.genome_length 0}} bp,
+                    and an average G+C content of {{default (toFixed meta.gc_content 2) 0}}%.
+
+                    The N50 length, which is defined as the shortest sequence length at 50% of
+                    the genome, is {{addCommas meta.genome_metrics.N50 0}} bp.   The L50 count, which is defined as
+                    the smallest number of contigs whose length sum produces N50, is {{addCommas meta.genome_metrics.N50 0}}.
+                </p>
+
+            {{else}}
+                <p>
+                    An assembled genome was submitted to the Comprehensive Genome Analysis service.
+                    This assembled genome had
+                        {{addCommas meta.contigs 0}} contig{{plural meta.contigs}},
+                    with the total length of
+                        {{default meta.genome_length 0}} bp
+                    and an average G+C content of
+                        {{default (toFixed meta.gc_content 2) 0}}% (<table-ref></table-ref>).
+                </p>
+
+            {{/if}}
+
+            {{#meta}}
             <table class="sm-table kv-table center">
                 <thead class="table-header">
                     <tr>
@@ -198,55 +242,80 @@
                 <tbody>
                     <tr>
                         <td>Contigs</td>
-                        <td class="align-right">{{addCommas meta.contigs 0}}</td>
+                        <td class="align-right">{{addCommas contigs 0}}</td>
                     </tr>
                     <tr>
                         <td>GC Content</td>
-                        <td class="align-right">{{default (toFixed meta.gc_content 2) 0}}</td>
+                        <td class="align-right">{{default (toFixed gc_content 2) 0}}</td>
                     </tr>
                     <tr>
                         <td>Plasmids</td>
-                        <td class="align-right">{{addCommas meta.plasmids 0}}</td>
+                        <td class="align-right">{{addCommas plasmids 0}}</td>
                     <tr>
                     </tr>
                         <td>Contig L50</td>
-                        <td class="align-right">{{default meta.genome_metrics.L50 0}}</td>
+                        <td class="align-right">{{default genome_metrics.L50 0}}</td>
                     </tr>
                     <tr>
                         <td>Genome Length</td>
-                        <td class="align-right">
-                            {{addCommas meta.genome_length 0}} Bp
-                        </td>
+                        <td class="align-right">{{addCommas genome_length 0}} bp</td>
                     </tr>
                     <tr>
                         <td>Contig N50</td>
-                        <td class="align-right">
-                            {{addCommas meta.genome_metrics.N50 0}}
-                        </td>
+                        <td class="align-right">{{addCommas genome_metrics.N50 0}}</td>
                     </tr>
                     <tr>
                         <td>Chromosomes</td>
-                        <td class="align-right">{{addCommas meta.chromosomes 0}}</td>
+                        <td class="align-right">{{addCommas chromosomes 0}}</td>
                     </tr>
                 </tbody>
             </table>
+            {{/meta}}
         </section>
 
 
-
+        <!--
+          ## Genome Annotation
+        -->
         <section>
             <h2>Genome Annotation</h2>
+
+            <table class="med-table kv-table center">
+                <thead class="table-header">
+                    <tr>
+                        <th colspan="4">
+                            <table-num></table-num> Annotation Job Details
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Job ID</td>
+                        <td class="align-right">{{default gto.job_data.annotation.job_id 'N/A'}}</td>
+                    </tr>
+                    <tr>
+                        <td>Job Started</td>
+                        <td class="align-right">{{datetime gto.job_data.annotation.start_time}}</td>
+                    </tr>
+                    <tr>
+                        <td>Job Completed</td>
+                        <td class="align-right">{{datetime gto.job_data.annotation.completion_time}}</td>
+                    <tr>
+                    </tr>
+                        <td>Total Time</td>
+                        <td class="align-right">{{elapsed gto.job_data.annotation.elapsed_time}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
             <p>
-                The Genome Annotation Service in PATRIC [1] uses the RAST tool kit (RASTtk) [6] to
-                provide annotation of genomic features. The job for {{meta.genome_name}}
-                ran under job number {{gto.job_data.annotation.job_id}}.
-                The annotation job started at {{datetime gto.job_data.annotation.start_time}}
-                and completed at {{datetime gto.job_data.annotation.completion_time}}
-                after {{elapsed gto.job_data.annotation.elapsed_time}} seconds.
-                This genome was described to be in the domain
+                The {{meta.genome_name}} genome was annotated
+                using RAST tool kit (RASTtk)<ref>Brettin, et al. 2015</ref> and assigned a unique genome
+                identifier of {{gto.id}}. This genome is in the superkingdom
                 {{#eq gto.domain 'B'}}Bacteria{{/eq}}{{#eq gto.domain 'A'}}Archaea{{/eq}}
-                with genetic code {{gto.genetic_code}}. It was assigned genome identifier
-                {{gto.id}}. The taxonomy of {{meta.genome_name}} is:
+                and was annotated using genetic code {{gto.genetic_code}}.
+                The taxonomy of this genome is:
             </p>
 
             <div style="width: 90%;" class="center">
@@ -254,26 +323,15 @@
             </div>
             <br>
 
-
+            {{#meta.feature_summary}}
             <p>
-                The annotations includes
-                    {{addCommas (get 'count' 'CDS' annotationMeta) 0}} CDS,
-                    {{addCommas (get 'count' 'tRNA' annotationMeta) 0}} tRNAs and
-                    {{addCommas (get 'count' 'rRNA' annotationMeta) 0}} rRNAs.
-
-                All annotated genome features for this genome are summarized in <table-ref></table-ref>.
+                This genome has
+                    {{addCommas cds 0}} protein coding sequence{{plural cds}} (CDS),
+                    {{addCommas tRNA 0}} transfer RNA (tRNA) gene{{plural tRNA}}, and
+                    {{addCommas rRNA 0}} ribosomal RNA (rRNA) gene{{plural rRNA}}.
+                The annotated features are summarized in <table-ref></table-ref>.
             </p>
-
-            <p>
-                The functional annotation included
-                    {{addCommas (get 'count' 'Hypothetical proteins' proteinFeatures) 0}} hypothetical proteins and
-                    {{addCommas (get 'count' 'Proteins with functional assignments' proteinFeatures) 0}} proteins with functional assignments.
-                Furthermore,
-                    {{addCommas (get 'count' 'Proteins with EC number assignments' proteinFeatures) 0}} proteins were assigned EC numbers and
-                    {{addCommas (get 'count' 'Proteins with Pathway assignments' proteinFeatures) 0}} proteins were mapped to KEGG pathways.
-
-                A breakdown of the proteins that have been annotated for this isolate is provided in <table-ref></table-ref>.
-            </p>
+            {{/meta.feature_summary}}
 
             <table class="sm-table kv-table center">
                 <thead class="table-header">
@@ -296,6 +354,27 @@
             </table>
 
 
+            <p>
+                {{#pFeatures}}
+                The annotation included
+                    {{addCommas hypothetical 0}} hypothetical protein{{plural hypothetical}} and
+                    {{addCommas function_assignment 0}} proteins with functional assignment{{plural function_assignment}}
+                    (<table-ref></table-ref>).
+
+                The proteins with functional assignments included
+                    {{addCommas ec_assignment 0}} protein{{plural ec_assignment}} with Enzyme Commission (EC) numbers<ref>Schomburg, et al. 2004</ref>,
+                    {{addCommas go_assignment 0}} with Gene Ontology (GO) assignments<ref>Ashburner, et al. 2000</ref>, and
+                    {{addCommas pathway_assignment 0}} protein{{plural pathway_assignment}} that {{#if (eq pathway_assignment 1)}}was{{else}}were{{/if}} mapped to KEGG pathways<ref>Kanehisa, et al. 2016</ref>.
+                PATRIC annotation includes two types of protein families<ref>Davis, et al. 2016</ref>,
+                and this genome has
+                    {{addCommas plfam_assignment 0}} protein{{plural plfam_assignment}} that belong to the genus-specific protein families (PLFams)
+                for {{gto.ncbi_genus}}, and
+                    {{addCommas pgfam_assignment 0}} protein{{plural pgfam_assignment}} that belong to the cross-genus protein families (PGFams).
+                {{/pFeatures}}
+            </p>
+
+
+            {{#pFeatures}}
             <table class="med-table kv-table center">
                 <thead class="table-header">
                     <tr>
@@ -305,36 +384,68 @@
 
                 <tbody>
                     <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
-                    {{#each proteinFeatures}}
                     <tr>
-                        <td>{{name}}</td>
+                        <td>Hypothetical proteins</td>
+                        <td class="align-right">{{addCommas hypothetical 0}}</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with functional assignments</td>
+                        <td class="align-right">{{addCommas function_assignment 0}}</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with EC number assignments</td>
+                        <td class="align-right">{{addCommas ec_assignment 0}}</td>
+                    <tr>
+                    </tr>
+                        <td>Proteins with GO assignments</td>
+                        <td class="align-right">{{addCommas go_assignment 0}}</td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with Pathway assignments</td>
                         <td class="align-right">
-                            {{addCommas count 0}}
+                            {{addCommas pathway_assignment 0}}
                         </td>
                     </tr>
-                    {{/each}}
+                    <tr>
+                        <td>Proteins with PATRIC genus-specific family (PLfam) assignments</td>
+                        <td class="align-right">
+                            {{addCommas plfam_assignment 0}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Proteins with PATRIC cross-genus family (PGfam) assignments</td>
+                        <td class="align-right">{{addCommas pgfam_assignment 0}}</td>
+                    </tr>
                 </tbody>
             </table>
+            {{/pFeatures}}
+
 
             <p>
-                A graphical display of the distribution of the CDS on each strand, the repeat_regions,
-                GC content and GC skew are provided (<fig-ref></fig-ref>).
+                A circular graphical display of the distribution of the genome annotations is provided
+                (<fig-ref></fig-ref>).  This includes, from outer to inner rings, the contigs,
+                CDS on the forward strand, CDS on the reverse strand, RNA genes,
+                CDS with homology to known antimicrobial resistance genes, CDS with
+                homology to know virulence factors, GC content and GC skew.
+                The colors of the CDS on the forward and reverse strand indicate the subsystem
+                that these genes belong to (see Subsystems below).
             </p>
 
             <fig-num></fig-num>
-
-
             <div class="circular-view-fig center" >{{{circularViewSVG}}}</div>
 
         </section>
 
 
+        <!--
+          ## Genome Quality
+        -->
         <section>
             <h2>Genome Quality</h2>
             <p>
-                Based on the analysis of genome assembly and annotation statistics and comparing
-                them to other closely related genomes available in PATRIC for the same species, the
-                overall genome seems to be of <i>{{meta.genome_quality}}</i> quality.
+                Based on an examination of the annotation statistics and a comparison to
+                other genomes in PATRIC<ref>Wattam, et al. 2017</ref> within this same species,
+                this genome appears to be of <b>{{meta.genome_quality}}</b> quality.
             </p>
             <p>
                 {{#isnt meta.genome_quality 'Good'}}
@@ -347,12 +458,19 @@
         </section>
 
 
+
+        <!--
+          ## Specialty Genes
+        -->
         <section>
             <h2>Specialty Genes</h2>
             <p>
-                PATRIC [1] annotation also includes identification of proteins that have homology to
-                known virulence factors, drug targets, and antibiotic resistance genes (Reference
-                the sources).  A breakdown of the distribution is provided (<table-ref></table-ref>).
+                Many of the genes annotated in {{gto.genome_id}} have homology to known
+                transporters<ref>Saier Jr, et al. 2015</ref>, virulence factors<ref>Mao, et al. 2015; Chen, et al. 2016</ref>,
+                drug targets<ref>Zhu, et al. 2009; Law, et al. 2014</ref>,
+                and antibiotic resistance genes<ref>McArthur, et al. 2013</ref>.
+
+                The number of genes and the specific source database where homology was found is provided (<table-ref></table-ref>).
             </p>
 
             <table class="sm-table kv-table center">
@@ -381,9 +499,15 @@
 
 
 
-        {{#amr}} <!-- only shown if data is available -->
+
+        <!--
+          ## AMR
+        -->
+
         <section>
+            {{#amrPhenotypes}}
             <h2>Antimicrobial Resistance Analysis</h2>
+
             <table class="lg-table kv-table center">
                 <thead class="table-header">
                     <tr>
@@ -407,23 +531,49 @@
                 </tbody>
 
             </table>
+            {{/amrPhenotypes}}
 
+
+            {{#if amrGenes}}
             <h2>Antimicrobial Resistance Genes</h2>
 
-            [Incomplete]
+            <table class="lg-table kv-table center">
+                <thead class="table-header">
+                    <tr>
+                        <th colspan="2"><table-num></table-num> Antimicrobial Resistance Genes</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="row-header">
+                        <td>AMR Mechanism</td>
+                        <td>Genes</td>
+                    </tr>
+                    {{#amrGenes}}
+                    <tr>
+                        <td>{{label}}</td>
+                        <td>{{join vals ', '}}</td>
+                    </tr>
+                    {{/amrGenes}}
+                </tbody>
+
+            </table>
+            {{/if}}
+
         </section>
-        {{/amr}}
 
 
 
+        <!--
+          ## Subsystem Analysis
+        -->
         <section>
             <h2>Subsystem Analysis</h2>
             <p>
-                A subsystem is a set of protein functions that are related. Frequently, subsystems
-                represent the collection of functional roles that make up a metabolic pathway, a complex
-                (e.g., the ribosome), or a class of proteins (e.g., two-component signal-transduction
-                proteins or AMR genes) [Overbeek].  An overview of the subsystems for this genome
-                is provided in <fig-ref></fig-ref>.
+                A subsystem is a set of proteins that together implement a specific biological
+                process or structural complex<ref>Overbeek, et al. 2005</ref> and PATRIC annotation
+                includes an analysis of the subsystems unique to each genome.
+                An overview of the subsystems for this genome is provided in <fig-ref></fig-ref>.
             </p>
 
             <fig-num></fig-num>
@@ -431,43 +581,40 @@
         </section>
 
 
+        <!--
+          ## Phylogenetic Analysis
+        -->
         <section>
             <h2>Phylogenetic Analysis</h2>
 
             <p>
-                PATRIC [1] provides a phylogentic tree building service.  The makes use of
-                several third-party tools. These include, BLAST[1], MCL[2], Muscle[3],
-                hmmbuild[4], hmmsearch[4], Gblocks[5], FastTree[6], and RAxML[7].
-                The pipeline begins with thegi set of ingroup genome protein files.
-                These are filtered to remove duplicate species, resulting in a distinct-species
-                subset of the ingroup genomes. This is done to reduce biasing the homolog
-                sets with overrepresented species. BLAST searches are used to find
-                bi-directional best hit protein pairs between genomes, and these bidirectional
-                best hit pairs are clustered using MCL. Clusters containing members from at least
-                half of the distinct genomes are chosen as initial, or seed, homolog sets. These
-                seed sets are expanded to include members from all ingroup and outgroup taxa using
-                tools from the HMMer suite. A hidden Markov Model (HMM) is built from each seed
-                set using hmmbuild. These HMMs are used to search each genome, with hmmsearch,
-                to find the best match from each genome for each homolog set model. The final,
-                expanded, homolog sets are created from the hmmsearch results. Homolog sets representing
-                fewer than 80% of ingroup genomes are removed. The remaining sets are aligned
-                using Muscle, and the alignments are trimmed using GBlocks.
-                The trimmed alignments are concatenated and this concatenated alignment is
-                used to build the main tree with either RAxML or FastTree.
+                The closest reference and representative genomes to {{gto.genome_name}}
+                were identified by Mash/MinHash<ref>Ondov, et al. 2016</ref>. PATRIC global
+                protein families (PGFams)<ref>Davis, et al. 2016</ref> were selected from these
+                genomes to determine the phylogenetic placement of this genome.  The
+                protein sequences from these families were aligned with MUSCLE<ref>Edgar 2004</ref>,
+                and the nucleotides for each of those sequences were mapped to the protein alignment.
+                The joint set of amino acid and nucleotide alignments were concatenated into a data matrix,
+                and RaxML<ref>Stamatakis 2014</ref> was used to analyze this matrix, with fast
+                bootstrapping<ref>Stamatakis, et al. 2008</ref> was used to generate the support
+                values in the tree (<fig-ref></fig-ref>).
             </p>
 
+
             <p>
-            [Tree will go here]
+                [Tree table will go here]
             </p>
-            <!--
-                <h3>Comparison to Reference Genomes in the Same Genus</h3>
-                <fig-num></fig-num>
-                <img src="../{{meta.genome_id}}/{{meta.genome_id}}-tree.svg" class="tree-fig" />
-            -->
+
+            <fig-num></fig-num>
+            <div class="tree-fig center">{{{treeSVG}}}</div>
+
+
         </section>
 
 
-
+        <!--
+          ## Protein Families
+        -->
         {{#if proteinFamily}} <!-- only shown if data is available -->
         <section>
             <h2>Unique Protein Families</h2>
@@ -500,6 +647,10 @@
             </table>
         </section>
         {{/if}}
+
+        <h2>References</h2>
+        <references></references>
+
 
     </body>
 </html>

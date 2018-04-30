@@ -1,10 +1,22 @@
 #!/usr/bin/env node
 /**
- *
  * create-report.js
  *
+ *
+ * Usage: create-report [options]
+ *
+ * Options:
+ *
+ *     -i, --input [value] Path of input data (Genome Typed Object)for which report will be built
+ *     -o, --output [value] Path to write resulting html output
+ *     -c, --circular-view [value] Path to SVG of circular view of genome
+ *     -s, --color-scheme [value] Path to custom scheme for subsystem colors
+ *
+ *
  * Example usage:
+ *
  *      ./scripts/create-report.js -i sample-data/sample.genome -o reports/test-report.html -c sample-data/myco.svg -s sample-data/myco.ss-colors
+ *
  *
  * Author(s):
  *      nconrad
@@ -26,7 +38,9 @@ const readFile = util.promisify(fs.readFile);
 const createSubsystemChart = require('./create-subsystem-chart');
 const config = require('../config.json');
 const templatePath = path.resolve(`${config.templatePath}`);
+const referencesPath = path.resolve(`${config.referencesPath}`);
 
+let refAnchors = true;   // probably can't use anchors with iFrames
 
 // load template helpers
 helpers.array();
@@ -36,27 +50,24 @@ helpers.comparison();
 utils.helpers(handlebars);
 
 
-// template data to be used
-let tmplData = {}
-
-
 if (require.main === module){
-    opts.option('-i, --input [value] Path of input data (Genome Typed Object)\n\t\t\t ' +
+    opts.option('-i, --input [value] Path of input data (Genome Typed Object)' +
                 'for which report will be built')
         .option('-o, --output [value] Path to write resulting html output')
         .option('-c, --circular-view [value] Path to SVG of circular view of genome')
+        .option('-t, --tree [value] Path to SVG of phylogenetic tree')
         .option('-s, --color-scheme [value] Path to custom scheme for subsystem colors')
         .parse(process.argv)
 
 
     if (!opts.input) {
-        console.error("\nMust provide path '-i' to data (genome typed object)\n");
+        console.error("*** Must provide path '-i' to data (genome typed object)\n");
         opts.outputHelp();
         return 1;
     }
 
     if (!opts.output) {
-        console.error("\nMust provide output path '-o' for html report\n");
+        console.error("*** Must provide output path '-o' for html report\n");
         opts.outputHelp();
         return 1;
     }
@@ -66,7 +77,7 @@ if (require.main === module){
 
 
 async function buildReport(params) {
-    let { input, output, circularView, colorScheme } = params;
+    let { input, output, circularView, tree, colorScheme } = params;
 
     console.log('Loading Genome Typed Object...');
     let contents, data;
@@ -74,35 +85,48 @@ async function buildReport(params) {
         contents = await readFile(`${input}`, 'utf8');
         gto = JSON.parse(contents);
     } catch(e) {
-        console.error(`\nCould not read GTO: ${input}\n`, e)
+        console.error(`*** Could not read GTO: ${input}\n`, e)
         return 1;
     }
 
+    console.log('Loading circular viewer SVG...');
     let circularViewSVG;
     try {
         circularViewSVG = await readFile(circularView, 'utf8');
         circularViewSVG = setSVGViewbox(circularViewSVG);
     } catch (e) {
-        console.error(`\nCould not read circular view file: ${circularView}\n`, e);
+        console.error(`*** Could not read circular view file: ${circularView}\n`, e);
         circularViewSVG = "";
+    }
+
+    console.log('Loading tree SVG...');
+    let treeSVG;
+    try {
+        treeSVG = await readFile(tree, 'utf8');
+        treeSVG = removeSVGSize(treeSVG);
+    } catch (e) {
+        console.error(`*** Could not read tree view file: ${tree}\n`, e);
+        treeSVG = "";
     }
 
     console.log('Creating subsystem chart...');
     let subsystemSVG = await createSubsystemChart(gto, colorScheme);
 
-    // merge in report data
+    // get all template data
     let meta = gto.genome_quality_measure;
     meta.genome_name = gto.scientific_name;
-    Object.assign(tmplData, {
+    let tmplData = {
         gto,
         meta,
         annotationMeta: getFeatureSummary(meta.feature_summary),
-        proteinFeatures: getProteinFeatures(meta.protein_summary),
+        pFeatures: meta.protein_summary,
         specialtyGenes: getSpecialGenes(meta.specialty_gene_summary),
-        amr: 'classifications' in gto && getAMRPhenotypes(gto.classifications),
-        subsystemSVG,
+        amrPhenotypes: 'classifications' in gto && getAMRPhenotypes(gto.classifications),
+        amrGenes: 'amr_gene_summary' in meta && getAMRGenes(meta.amr_gene_summary),
         circularViewSVG,
-    });
+        subsystemSVG,
+        treeSVG
+    };
 
 
     console.log('Reading template...')
@@ -110,7 +134,7 @@ async function buildReport(params) {
     try {
         source = await readFile(templatePath);
     } catch(e) {
-        console.error(`\nCould not read html template file: ${templatePath}\n`, e)
+        console.error(`*** Could not read html template file: ${templatePath}\n`, e)
         return 1;
     }
 
@@ -121,13 +145,22 @@ async function buildReport(params) {
     console.log('Adding table/figure numbers...')
     content = addTableNumbers(content);
 
+    console.log('Adding references...')
+    let assemblyMethod
+    try {
+        assemblyMethod = gto.job_data.assembly.attributes.chosen_assembly;
+    } catch(e) {
+        assemblyMethod = '';
+    }
+    content = await addReferences(content, assemblyMethod);
+
     let htmlPath = path.resolve(output);
     console.log(`Writing html to: ${htmlPath}...`);
 
     try {
         await writeFile(htmlPath, content);
     } catch(e) {
-        console.error(`\nCould not write html file: ${htmlPath}\n`, e)
+        console.error(`*** Could not write html file: ${htmlPath}\n`, e)
         return 1;
     }
 }
@@ -146,12 +179,86 @@ function addTableNumbers(content) {
 }
 
 
+async function addReferences(content, assemblyMethod) {
+    // load references json file (specified in config.json)
+    let refObj;
+    try {
+        let f = await readFile(referencesPath, 'utf8');
+        refObj = JSON.parse(f);
+    } catch(e) {
+        console.error(`*** Could not read references file: ${referencesPath}\n`, e)
+        return 1;
+    }
+
+    const $ = cheerio.load(content);
+
+    let refCache = {}; // keep mapping of included refs
+
+    // iterate <ref> tags, get corresponding references from the references.json
+    // and replace <ref> tags with superscripts (links)
+    let references = [];
+    var refIdx = 1;
+    $('ref').each((idx, elem) => {
+
+        // if special assembly method citation, look up citation first
+        let cites;
+        if ($(elem).hasClass('assembly-method')) {
+            console.log('assemblymethod', assemblyMethod)
+            cites = assemblyMapping[assemblyMethod.toLowerCase()].citation;
+        } else
+            cites = $(elem).text().trim();
+
+
+        sups = '';
+        cites.split(';').forEach(ref => {
+            ref = ref.trim();
+            if (ref in refCache) {
+                i = refCache[ref];
+            } else {
+                i = refIdx;
+                refCache[ref] = refIdx;
+            }
+
+            let citation = refObj[ref];
+            references.push(citation);
+
+            sups +=
+                `<sup class="reference">[`+
+                    (refAnchors ? `<a href="#citation-${i}">${i}</a>` : [i])+
+                `]</sup>`
+
+            refIdx += 1;
+        })
+
+        $(elem).replaceWith(sups)
+    });
+
+    // create references section
+    refHTML =
+        `<ol class="references">` +
+            references.map((r, i) => `<li id="citation-${i}">${r}</li>` ).join('') +
+        `</ol>`;
+
+    $('references').html(refHTML);
+
+    return $.html();
+}
+
+
 function setSVGViewbox(content) {
+    content = removeSVGSize(content)
+
+    const $ = cheerio.load(content);
+    $('svg').attr('viewbox', '0 0 3000 3000');
+
+    return $.html();
+}
+
+function removeSVGSize(content) {
     const $ = cheerio.load(content);
 
     $('svg').removeAttr('width');
     $('svg').removeAttr('height');
-    $('svg').attr('viewbox', '0 0 3000 3000');
 
     return $.html();
 }
@@ -206,22 +313,22 @@ function getSpecialGenes(data) {
 function getFeatureSummary(obj) {
     let data = [{
         name: "CDS",
-        count: obj.cds,
+        count: obj.cds || 0,
     }, {
         name: "Partial CDS",
-        count: obj.partial_cds
+        count: obj.partial_cds || 0
     }, {
         name: "rRNA",
-        count: obj.rRNA
+        count: obj.rRNA || 0
     }, {
         name: "tRNA",
-        count: obj.tRNA
+        count: obj.tRNA || 0
     }, {
         name: "Miscellaneous RNA",
-        count: obj.miscRNA
+        count: obj.miscRNA || 0
     }, {
         name: "Repeat Regions",
-        count: obj.repeat_region
+        count: obj.repeat_region || 0
     }]
 
 
@@ -231,32 +338,7 @@ function getFeatureSummary(obj) {
     return data;
 }
 
-function getProteinFeatures(obj) {
-    let data = [{
-        name: "Hypothetical proteins",
-        count: obj.hypothetical
-    }, {
-        name: "Proteins with functional assignments",
-        count: obj.function_assignment,
-    }, {
-        name: "Proteins with EC number assignments",
-        count: obj.ec_assignment
-    }, {
-        name: "Proteins with GO assignments",
-        count: obj.go_assignment
-    }, {
-        name: "Proteins with Pathway assignments",
-        count: obj.pathway_assignment
-    }, {
-        name: "Proteins with PATRIC genus-specific family (PLfam) assignments",
-        count: obj.plfam_assignment
-    }, {
-        name: "Proteins with PATRIC cross-genus family (PGfam) assignments",
-        count: obj.pgfam_assignment
-    }]
 
-    return data;
-}
 
 function getAMRPhenotypes(classifications) {
     let data = {
@@ -273,6 +355,53 @@ function getAMRPhenotypes(classifications) {
     return data;
 }
 
+
+function getAMRGenes(geneSummary) {
+    let data = Object.keys(geneSummary).map(key => {
+        return {
+            label: key.charAt(0).toUpperCase() + key.slice(1),
+            vals: geneSummary[key]
+        }
+    })
+
+    data.sort((a, b) => {
+        if(a.label < b.label) return -1;
+        if(a.label > b.label) return 1;
+        return 0;
+    })
+
+    return data;
+}
+
+
+
+let assemblyMapping = {
+    spades: {
+        label: 'SPAdes',
+        citation: 'Bankevich, et al. 2012'
+    },
+    velvet: {
+        label: 'Velvet',
+        citation: 'Zerbino and Birney 2008'
+    },
+    idba: {
+        label: 'IDBA',
+        citation: 'Peng, et al. 2010',
+    },
+    megahit: {
+        label: 'MEAGHIT',
+        citation: 'Li, et al. 2015'
+    },
+    plasmidspades: {
+        label: 'plasmidSPADES',
+        citation: 'Antipov, et al. 2016'
+    },
+    miniasm: {
+        label: 'Miniasm',
+        citation: 'Li 2016'
+    },
+    '': {citation: ''}
+}
 
 
 module.exports = buildReport;

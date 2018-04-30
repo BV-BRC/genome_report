@@ -75,7 +75,7 @@ async function fsCreateChart(opts) {
 }
 
 
-async function createChart(genomeTypedObject, colorsPath) {
+async function createChart(gto, colorsPath) {
     let colorObj;
     if (colorsPath) {
         try {
@@ -90,7 +90,12 @@ async function createChart(genomeTypedObject, colorsPath) {
         colorObj = colors;
     }
 
-    let subsystemSummary = genomeTypedObject.genome_quality_measure.subsystem_summary;
+    if (!('genome_quality_measure' in gto) || !('subsystem_summary' in gto.genome_quality_measure) ) {
+        console.error('*** Could not find subsystem data.')
+        return '';
+    }
+
+    let subsystemSummary = gto.genome_quality_measure.subsystem_summary;
     let data = parseSubsystemSummary(subsystemSummary, colorObj);
 
     let svg = pieChart({
