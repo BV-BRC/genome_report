@@ -26,8 +26,8 @@ function helpers(handlebars) {
             mins = Math.round(duration.minutes()),
             secs = Math.round(duration.seconds());
 
-        if(days > 0) return `${days} days and ${hours} hours`;
-        if(hours > 0) return `${hours} hours and ${mins} minutes and ${secs} seconds`;
+        if(days > 0) return `${days} days and ${hours}h${mins}m${secs}s`;
+        if(hours > 0) return `${hours}h${mins}m${secs}s`;
         if(mins > 0) return `${mins} minutes and ${secs} seconds`;
         if(secs > 0) return `${secs} seconds`;
         return 0;
@@ -93,6 +93,23 @@ function helpers(handlebars) {
     handlebars.registerHelper('plural', (num) => {
         return num == 1 ? '' : 's';
     })
+
+    handlebars.registerHelper('prettyRecipe', (method) => {
+        let mapping = {
+            spades: 'SPAdes',
+            velvet: 'Velvet',
+            idba: 'IDBA',
+            megahit: 'MEAGHIT',
+            plasmidspades: 'plasmidSPADES',
+            miniasm: 'Miniasm'
+        }
+
+        method = method.toLowerCase()
+        return method in mapping ? mapping[method] : method;
+    })
+
+
+
 }
 
 

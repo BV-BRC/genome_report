@@ -40,7 +40,7 @@ const config = require('../config.json');
 const templatePath = path.resolve(`${config.templatePath}`);
 const referencesPath = path.resolve(`${config.referencesPath}`);
 
-let refAnchors = true;   // probably can't use anchors with iFrames
+let refAnchors = false;   // probably can't use anchors with iFrames
 
 // load template helpers
 helpers.array();
@@ -48,7 +48,6 @@ helpers.number();
 helpers.comparison();
 
 utils.helpers(handlebars);
-
 
 
 if (require.main === module){
@@ -135,7 +134,8 @@ async function buildReport(params) {
 
 
     console.log('Adding references...')
-    content = await addReferences(content);
+    let assemblyMethod = gto.job_data.assembly.attributes.chosen_assembly;
+    content = await addReferences(content, assemblyMethod);
 
     let htmlPath = path.resolve(output);
     console.log(`Writing html to: ${htmlPath}...`);
@@ -162,7 +162,7 @@ function addTableNumbers(content) {
 }
 
 
-async function addReferences(content) {
+async function addReferences(content, assemblyMethod) {
     // load references json file (specified in config.json)
     let refObj;
     try {
@@ -177,12 +177,19 @@ async function addReferences(content) {
 
     let refCache = {}; // keep mapping of included refs
 
-    // iterate <ref> tags, get corresponding references from the json
+    // iterate <ref> tags, get corresponding references from the references.json
     // and replace <ref> tags with superscripts (links)
     let references = [];
     var refIdx = 1;
     $('ref').each((idx, elem) => {
-        let cites = $(elem).text().trim();
+
+        // if special assembly method citation, look up citation first
+        let cites;
+        if ($(elem).hasClass('assembly-method'))
+            cites = assemblyMapping[assemblyMethod.toLowerCase()].citation;
+        else
+            cites = $(elem).text().trim();
+
 
         sups = '';
         cites.split(';').forEach(ref => {
@@ -306,6 +313,7 @@ function getFeatureSummary(obj) {
 }
 
 
+
 function getAMRPhenotypes(classifications) {
     let data = {
         resistant: [],
@@ -321,6 +329,33 @@ function getAMRPhenotypes(classifications) {
     return data;
 }
 
+
+let assemblyMapping = {
+    spades: {
+        label: 'SPAdes',
+        citation: 'Bankevich, et al. 2012'
+    },
+    velvet: {
+        label: 'Velvet',
+        citation: 'Zerbino and Birney 2008'
+    },
+    idba: {
+        label: 'IDBA',
+        citation: 'Peng, et al. 2010',
+    },
+    megahit: {
+        label: 'MEAGHIT',
+        citation: 'Li, et al. 2015'
+    },
+    plasmidspades: {
+        label: 'plasmidSPADES',
+        citation: 'Antipov, et al. 2016'
+    },
+    miniasm: {
+        label: 'Miniasm',
+        citation: 'Li 2016'
+    }
+}
 
 
 module.exports = buildReport;

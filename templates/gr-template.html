@@ -175,33 +175,63 @@
         -->
         <section>
             <h2>Genome Assembly</h2>
+
+
             {{#if gto.job_data.assembly.job_id}}
+                <table class="med-table kv-table center">
+                    <thead class="table-header">
+                        <tr>
+                            <th colspan="4">
+                                <table-num></table-num> Annotation Job Details
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Job ID</td>
+                            <td class="align-right">{{default gto.job_data.assembly.job_id 'N/A'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Job Started</td>
+                            <td class="align-right">{{datetime gto.job_data.assembly.start_time}}</td>
+                        </tr>
+                        <tr>
+                            <td>Job Completed</td>
+                            <td class="align-right">{{datetime gto.job_data.assembly.completion_time}}</td>
+                        <tr>
+                        </tr>
+                            <td>Total Time</td>
+                            <td class="align-right">{{elapsed gto.job_data.assembly.elapsed_time}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
                 <p>
-                    {{meta.genome_name}} ran under job ID {{gto.job_data.assembly.job_id}} at PATRIC<ref>Wattam, et al. 2017</ref>.
-                    The assembly job started at {{datetime gto.job_data.assembly.start_time}} and completed at {{datetime gto.job_data.assembly.completion_time}}
-                    after {{elapsed gto.job_data.assembly.elapsed_time}}.
-                    The {{gto.job_data.assembly.parameters.recipe}} assembly strategy was selected.
-                    The auto strategy runs three assembly strategies that include Velvet [3], IDBA [4] and Spades [5], each of which is given
-                    an assembly score by ARAST, an in-house script. The minimum contig length was {{gto.job_data.assembly.parameters.min_contig_len}}bp
-                    and smaller contigs were not included in the assembly. The minimum contig coverage was
-                    {{gto.job_data.assembly.min_contig_cov}}
-                    and contigs with less coverage were not included in the assembly.
-                    Also add reference to QUAST. ARAST ranked the "{{gto.job_data.assembly.attributes.chosen_assembly}}"
-                    assembly as the highest qualitye.
+                    {{meta.genome_name}} was assembled using
+                    {{prettyRecipe gto.job_data.assembly.attributes.chosen_assembly}}<ref class="assembly-method"></ref>. There were
+                    {{addCommas meta.contigs 0}} contig{{plural meta.contigs}}, an estimated genome length of {{addCommas meta.genome_length 0}} bp,
+                    and an average G+C content of {{default (toFixed meta.gc_content 2) 0}}%.
+
+                    The N50 length, which is defined as the shortest sequence length at 50% of
+                    the genome, is {{addCommas meta.genome_metrics.N50 0}} bp.   The L50 count, which is defined as
+                    the smallest number of contigs whose length sum produces N50, is {{addCommas meta.genome_metrics.N50 0}}.
                 </p>
+
+            {{else}}
+                <p>
+                    An assembled genome was submitted to the Comprehensive Genome Analysis service.
+                    This assembled genome had
+                        {{addCommas meta.contigs 0}} contig{{plural meta.contigs}},
+                    with the total length of
+                        {{default meta.genome_length 0}} bp
+                    and an average G+C content of
+                        {{default (toFixed meta.gc_content 2) 0}}% (<table-ref></table-ref>).
+                </p>
+
             {{/if}}
 
             {{#meta}}
-            <p>
-                An assembled genome was submitted to the Comprehensive Genome Analysis service.
-                This assembled genome had
-                    {{addCommas contigs 0}} contig{{plural contigs}},
-                with the total length of
-                    ~{{default (basePairs genome_length) 0}}
-                and an average G+C content of
-                    {{default (toFixed gc_content 2) 0}}% (<table-ref></table-ref>).
-            </p>
-
             <table class="sm-table kv-table center">
                 <thead class="table-header">
                     <tr>
@@ -255,7 +285,6 @@
         -->
         <section>
             <h2>Genome Annotation</h2>
-
 
             <table class="med-table kv-table center">
                 <thead class="table-header">
@@ -421,7 +450,7 @@
             <h2>Genome Quality</h2>
             <p>
                 Based on an examination of the annotation statistics and a comparison to
-                other genomes in PATRIC (Wattam, et al. 2017) within this same species,
+                other genomes in PATRIC<ref>Wattam, et al. 2017</ref> within this same species,
                 this genome appears to be of <b>{{meta.genome_quality}}</b> quality.
             </p>
             <p>
