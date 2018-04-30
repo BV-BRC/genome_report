@@ -176,7 +176,6 @@
         <section>
             <h2>Genome Assembly</h2>
 
-
             {{#if gto.job_data.assembly.job_id}}
                 <table class="med-table kv-table center">
                     <thead class="table-header">
@@ -509,9 +508,11 @@
         <!--
           ## AMR
         -->
-        {{#amr}}
+
         <section>
+            {{#amrPhenotypes}}
             <h2>Antimicrobial Resistance Analysis</h2>
+
             <table class="lg-table kv-table center">
                 <thead class="table-header">
                     <tr>
@@ -535,12 +536,37 @@
                 </tbody>
 
             </table>
+            {{/amrPhenotypes}}
 
+
+            {{#if amrGenes}}
             <h2>Antimicrobial Resistance Genes</h2>
 
-            [Incomplete]
+            <table class="lg-table kv-table center">
+                <thead class="table-header">
+                    <tr>
+                        <th colspan="2"><table-num></table-num> Antimicrobial Resistance Genes</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="row-header">
+                        <td>AMR Mechanism</td>
+                        <td>Genes</td>
+                    </tr>
+                    {{#amrGenes}}
+                    <tr>
+                        <td>{{label}}</td>
+                        <td>{{join vals ', '}}</td>
+                    </tr>
+                    {{/amrGenes}}
+                </tbody>
+
+            </table>
+            {{/if}}
+
         </section>
-        {{/amr}}
+
 
 
         <!--
