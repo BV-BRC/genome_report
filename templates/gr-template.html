@@ -149,23 +149,26 @@
                 <span>Organism:</span> {{meta.genome_name}}
             </div>
         </header>
-
         <div class="clearfix"></div>
 
-        {{#or wiki comments}}
+
+        <!--
+          ## Summary
+        -->
         <section>
-            <h2>Introduction</h2>
-
-            <p>
-                <img src="{{wiki.imageSource}}" class="pull-left main-img"/>
-                <span class="pull-left">{{{wiki.text}}}</span>
-            </p>
-
-            <p>
-                {{meta.comments}}
-            </p>
+            <h2>Summary</h2>
+            {{#if gto.job_data.assembly.job_id}}
+                Reads for {{meta.genome_name}} were submitted to the comprehensive genome analysis
+                service at PATRIC <ref>Wattam, et al. 2017</ref>.
+            {{else}}
+                An assembled genome for {{meta.genome_name}} was submitted to the comprehensive genome analysis
+                service at PATRIC <ref>Wattam, et al. 2017</ref>.
+            {{/if}}
+            Based on the annotation statistics and a comparison to other genomes in PATRIC within
+            this same species, this genome appears to be of {{meta.genome_quality}} quality.  Details of the analysis,
+            including genes of interest (Specialty Genes), a functional categorization (Subsystems) and a
+            phylogenetic tree (Phylogenetic Analysis) are provided below.
         </section>
-        {{/or}}
 
 
 
