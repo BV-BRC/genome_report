@@ -210,7 +210,7 @@
             {{/if}}
 
 
-            <table class="med-table kv-table center">
+            <table class="{{#if gto.job_data.assembly.job_id}}med-table{{else}}sm-table{{/if}} kv-table center">
                 <thead class="table-header">
                     <tr>
                         <th colspan="4">
@@ -476,10 +476,10 @@
         -->
 
         <section>
-            {{#amrPhenotypes}}
+            {{#if amrPhenotypes}}
                 <h2>Antimicrobial Resistance Analysis</h2>
 
-                In <table-ref></table-ref> we present the analysis of antimicrobial resistance phenotypes for {{meta.genome_name}}.
+                The analysis of antimicrobial resistance phenotypes for {{meta.genome_name}} is given in <table-ref></table-ref>.
 
                 <table class="lg-table kv-table center">
                     <thead class="table-header">
@@ -495,16 +495,16 @@
                         </tr>
                         <tr>
                             <td>Resistant</td>
-                            <td>{{join resistant ', '}}</td>
+                            <td>{{join amrPhenotypes.resistant ', '}}</td>
                         </tr>
                         <tr>
                             <td>Susceptible</td>
-                            <td>{{join susceptible ', '}}</td>
+                            <td>{{join amrPhenotypes.susceptible ', '}}</td>
                         </tr>
                     </tbody>
 
                 </table>
-            {{/amrPhenotypes}}
+            {{/if}}
 
 
             {{#if amrGenes}}
