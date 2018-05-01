@@ -168,8 +168,9 @@
             this same species, this genome appears to be of {{meta.genome_quality}} quality.
             {{#isnt meta.genome_quality 'Good'}}
                 The reasons affecting the quality of genome follows:
+                <i>{{join meta.genome_quality_flags ', '}}</i>.
             {{/isnt}}
-            <i>{{join meta.genome_quality_flags ', '}}</i>.
+
             Details of the analysis, including genes of
             interest (Specialty Genes){{#meta.subsystem_summary}}, a functional categorization (Subsystems), {{/meta.subsystem_summary}}
             and a phylogenetic tree (Phylogenetic Analysis) are provided below.
@@ -489,7 +490,7 @@
                 <table class="lg-table kv-table center">
                     <thead class="table-header">
                         <tr>
-                            <th colspan="2"><table-num></table-num> Analysis of Antimicrobial Resistance Phenotypes</th>
+                            <th colspan="2"><table-num></table-num> Predicted Antimicrobial Resistance Phenotypes</th>
                         </tr>
                     </thead>
 
@@ -557,7 +558,7 @@
         <!--
           ## Subsystem Analysis
         -->
-        {{#meta.subsystem_summary}}
+        {{#if meta.subsystem_summary}}
         <section>
             <h2>Subsystem Analysis</h2>
             <p>
@@ -570,7 +571,7 @@
             <fig-num></fig-num>
             <div class="center subsystem-fig" >{{{subsystemSVG}}}</div>
         </section>
-        {{/meta.subsystem_summary}}
+        {{/if}}
 
 
         <!--
