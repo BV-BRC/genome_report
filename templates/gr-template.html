@@ -474,12 +474,17 @@
         <!--
           ## AMR
         -->
-
         <section>
             {{#if amrPhenotypes}}
                 <h2>Antimicrobial Resistance Analysis</h2>
 
-                The analysis of antimicrobial resistance phenotypes for {{meta.genome_name}} is given in <table-ref></table-ref>.
+                <p>
+                    Antimicrobial resistance phenotypes refer to the resistance or susceptibility of a given
+                    organism to one or more antibiotics. PATRIC provides AMR phenotype predictions
+                    using custom built AdaBoost (adaptive boosting) machine learning
+                    classifiers<ref>Davis, et al. 2016; Long, et al 2017</ref>.
+                    The predicted AMR phenotypes fo this genome are summarized in <table-ref></table-ref>.
+                </p>
 
                 <table class="lg-table kv-table center">
                     <thead class="table-header">
