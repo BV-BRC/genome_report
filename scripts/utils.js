@@ -83,7 +83,7 @@ function helpers(handlebars) {
     })
 
     // modify helpers version
-    handlebars.registerHelper('addCommas', (num, undefinedStr) => {
+    handlebars.registerHelper('commas', (num, undefinedStr) => {
         if (num === undefined)
             return (typeof undefinedStr !== 'object' ? undefinedStr : '-');
 

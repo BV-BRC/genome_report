@@ -165,9 +165,14 @@
                 service at PATRIC<ref>Wattam, et al. 2017</ref>.
             {{/if}}
             Based on the annotation statistics and a comparison to other genomes in PATRIC within
-            this same species, this genome appears to be of {{meta.genome_quality}} quality.  Details of the analysis,
-            including genes of interest (Specialty Genes), a functional categorization (Subsystems) and a
-            phylogenetic tree (Phylogenetic Analysis) are provided below.
+            this same species, this genome appears to be of {{meta.genome_quality}} quality.
+            {{#isnt meta.genome_quality 'Good'}}
+                The reasons affecting the quality of genome follows:
+            {{/isnt}}
+            <i>{{join meta.genome_quality_flags ', '}}</i>.
+            Details of the analysis, including genes of
+            interest (Specialty Genes){{#meta.subsystem_summary}}, a functional categorization (Subsystems), {{/meta.subsystem_summary}}
+            and a phylogenetic tree (Phylogenetic Analysis) are provided below.
         </section>
 
 
@@ -183,21 +188,21 @@
                 <p>
                     {{meta.genome_name}} was assembled using
                     {{prettyRecipe gto.job_data.assembly.attributes.chosen_assembly}}<ref class="assembly-method"></ref>. There were
-                    {{addCommas meta.contigs 0}} contig{{plural meta.contigs}}, an estimated genome length of {{addCommas meta.genome_length 0}} bp,
+                    {{commas meta.contigs 0}} contig{{plural meta.contigs}}, an estimated genome length of {{commas meta.genome_length 0}} bp,
                     and an average G+C content of {{default (toFixed meta.gc_content 2) 0}}%.
 
                     The N50 length, which is defined as the shortest sequence length at 50% of
-                    the genome, is {{addCommas meta.genome_metrics.N50 0}} bp.   The L50 count, which is defined as
-                    the smallest number of contigs whose length sum produces N50, is {{addCommas meta.genome_metrics.N50 0}} (<table-ref></table-ref>).
+                    the genome, is {{commas meta.genome_metrics.N50 0}} bp.   The L50 count, which is defined as
+                    the smallest number of contigs whose length sum produces N50, is {{commas meta.genome_metrics.N50 0}} (<table-ref></table-ref>).
                 </p>
 
             {{else}}
                 <p>
                     An assembled genome was submitted to the Comprehensive Genome Analysis service.
                     This assembled genome had
-                        {{addCommas meta.contigs 0}} contig{{plural meta.contigs}},
+                        {{commas meta.contigs 0}} contig{{plural meta.contigs}},
                     with the total length of
-                        {{addCommas meta.genome_length 0}} bp
+                        {{commas meta.genome_length 0}} bp
                     and an average G+C content of
                         {{default (toFixed meta.gc_content 2) 0}}% (<table-ref></table-ref>).
                 </p>
@@ -217,7 +222,7 @@
                 <tbody>
                     <tr>
                         <td>Contigs</td>
-                        <td class="align-right">{{addCommas meta.contigs 0}}</td>
+                        <td class="align-right">{{commas meta.contigs 0}}</td>
                     </tr>
                     <tr>
                         <td>GC Content</td>
@@ -225,7 +230,7 @@
                     </tr>
                     <tr>
                         <td>Plasmids</td>
-                        <td class="align-right">{{addCommas meta.plasmids 0}}</td>
+                        <td class="align-right">{{commas meta.plasmids 0}}</td>
                     <tr>
                     </tr>
                         <td>Contig L50</td>
@@ -233,15 +238,15 @@
                     </tr>
                     <tr>
                         <td>Genome Length</td>
-                        <td class="align-right">{{addCommas meta.genome_length 0}} bp</td>
+                        <td class="align-right">{{commas meta.genome_length 0}} bp</td>
                     </tr>
                     <tr>
                         <td>Contig N50</td>
-                        <td class="align-right">{{addCommas meta.genome_metrics.N50 0}}</td>
+                        <td class="align-right">{{commas meta.genome_metrics.N50 0}}</td>
                     </tr>
                     <tr>
                         <td>Chromosomes</td>
-                        <td class="align-right">{{addCommas meta.chromosomes 0}}</td>
+                        <td class="align-right">{{commas meta.chromosomes 0}}</td>
                     </tr>
 
                     {{#if gto.job_data.assembly.job_id}}
@@ -260,6 +265,10 @@
                     </tr>
                         <td>Total Time</td>
                         <td class="align-right">{{elapsed gto.job_data.assembly.elapsed_time}}</td>
+                    </tr>
+                    <tr>
+                        <td>Selected Recipe</td>
+                        <td class="align-right">{{gto.job_data.assembly.parameters.recipe}}</td>
                     </tr>
                     {{/if}}
 
@@ -292,9 +301,9 @@
             {{#meta.feature_summary}}
             <p>
                 This genome has
-                    {{addCommas cds 0}} protein coding sequence{{plural cds}} (CDS),
-                    {{addCommas tRNA 0}} transfer RNA (tRNA) gene{{plural tRNA}}, and
-                    {{addCommas rRNA 0}} ribosomal RNA (rRNA) gene{{plural rRNA}}.
+                    {{commas cds 0}} protein coding sequence{{plural cds}} (CDS),
+                    {{commas tRNA 0}} transfer RNA (tRNA) gene{{plural tRNA}}, and
+                    {{commas rRNA 0}} ribosomal RNA (rRNA) gene{{plural rRNA}}.
                 The annotated features are summarized in <table-ref></table-ref>.
             </p>
             {{/meta.feature_summary}}
@@ -307,12 +316,11 @@
                 </thead>
 
                 <tbody>
-                    <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
                     {{#each annotationMeta}}
                         <tr>
                             <td>{{name}}</td>
                             <td class="align-right">
-                                {{addCommas count 0}}
+                                {{commas count 0}}
                             </td>
                         </tr>
                     {{/each}}
@@ -340,19 +348,19 @@
             <p>
                 {{#pFeatures}}
                 The annotation included
-                    {{addCommas hypothetical 0}} hypothetical protein{{plural hypothetical}} and
-                    {{addCommas function_assignment 0}} proteins with functional assignment{{plural function_assignment}}
+                    {{commas hypothetical 0}} hypothetical protein{{plural hypothetical}} and
+                    {{commas function_assignment 0}} proteins with functional assignment{{plural function_assignment}}
                     (<table-ref></table-ref>).
 
                 The proteins with functional assignments included
-                    {{addCommas ec_assignment 0}} protein{{plural ec_assignment}} with Enzyme Commission (EC) numbers<ref>Schomburg, et al. 2004</ref>,
-                    {{addCommas go_assignment 0}} with Gene Ontology (GO) assignments<ref>Ashburner, et al. 2000</ref>, and
-                    {{addCommas pathway_assignment 0}} protein{{plural pathway_assignment}} that {{#if (eq pathway_assignment 1)}}was{{else}}were{{/if}} mapped to KEGG pathways<ref>Kanehisa, et al. 2016</ref>.
+                    {{commas ec_assignment 0}} protein{{plural ec_assignment}} with Enzyme Commission (EC) numbers<ref>Schomburg, et al. 2004</ref>,
+                    {{commas go_assignment 0}} with Gene Ontology (GO) assignments<ref>Ashburner, et al. 2000</ref>, and
+                    {{commas pathway_assignment 0}} protein{{plural pathway_assignment}} that {{#if (eq pathway_assignment 1)}}was{{else}}were{{/if}} mapped to KEGG pathways<ref>Kanehisa, et al. 2016</ref>.
                 PATRIC annotation includes two types of protein families<ref>Davis, et al. 2016</ref>,
                 and this genome has
-                    {{addCommas plfam_assignment 0}} protein{{plural plfam_assignment}} that belong to the genus-specific protein families (PLFams)
+                    {{commas plfam_assignment 0}} protein{{plural plfam_assignment}} that belong to the genus-specific protein families (PLFams)
                 for {{gto.ncbi_genus}}, and
-                    {{addCommas pgfam_assignment 0}} protein{{plural pgfam_assignment}} that belong to the cross-genus protein families (PGFams).
+                    {{commas pgfam_assignment 0}} protein{{plural pgfam_assignment}} that belong to the cross-genus protein families (PGFams).
                 {{/pFeatures}}
             </p>
 
@@ -366,38 +374,37 @@
                 </thead>
 
                 <tbody>
-                    <tr class="row-header"><td></td> <td class="align-right">Count</td></tr>
                     <tr>
                         <td>Hypothetical proteins</td>
-                        <td class="align-right">{{addCommas hypothetical 0}}</td>
+                        <td class="align-right">{{commas hypothetical 0}}</td>
                     </tr>
                     <tr>
                         <td>Proteins with functional assignments</td>
-                        <td class="align-right">{{addCommas function_assignment 0}}</td>
+                        <td class="align-right">{{commas function_assignment 0}}</td>
                     </tr>
                     <tr>
                         <td>Proteins with EC number assignments</td>
-                        <td class="align-right">{{addCommas ec_assignment 0}}</td>
+                        <td class="align-right">{{commas ec_assignment 0}}</td>
                     <tr>
                     </tr>
                         <td>Proteins with GO assignments</td>
-                        <td class="align-right">{{addCommas go_assignment 0}}</td>
+                        <td class="align-right">{{commas go_assignment 0}}</td>
                     </tr>
                     <tr>
                         <td>Proteins with Pathway assignments</td>
                         <td class="align-right">
-                            {{addCommas pathway_assignment 0}}
+                            {{commas pathway_assignment 0}}
                         </td>
                     </tr>
                     <tr>
                         <td>Proteins with PATRIC genus-specific family (PLfam) assignments</td>
                         <td class="align-right">
-                            {{addCommas plfam_assignment 0}}
+                            {{commas plfam_assignment 0}}
                         </td>
                     </tr>
                     <tr>
                         <td>Proteins with PATRIC cross-genus family (PGfam) assignments</td>
-                        <td class="align-right">{{addCommas pgfam_assignment 0}}</td>
+                        <td class="align-right">{{commas pgfam_assignment 0}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -420,25 +427,6 @@
         </section>
 
 
-        <!--
-          ## Genome Quality
-        -->
-        <section>
-            <h2>Genome Quality</h2>
-            <p>
-                Based on an examination of the annotation statistics and a comparison to
-                other genomes in PATRIC<ref>Wattam, et al. 2017</ref> within this same species,
-                this genome appears to be of <b>{{meta.genome_quality}}</b> quality.
-            </p>
-            <p>
-                {{#isnt meta.genome_quality 'Good'}}
-                    The reasons affecting the quality of genome follows:
-                {{/isnt}}
-                <i>{{join meta.genome_quality_flags ', '}}</i>
-            </p>
-
-
-        </section>
 
 
 
@@ -473,7 +461,7 @@
                     <tr>
                         <td>{{type}}</td>
                         <td>{{source}}</td>
-                        <td class="align-right">{{addCommas genes 0}}</td>
+                        <td class="align-right">{{commas genes 0}}</td>
                     </tr>
                     {{/each}}
                 </tbody>
@@ -564,6 +552,7 @@
         <!--
           ## Subsystem Analysis
         -->
+        {{#meta.subsystem_summary}}
         <section>
             <h2>Subsystem Analysis</h2>
             <p>
@@ -576,6 +565,7 @@
             <fig-num></fig-num>
             <div class="center subsystem-fig" >{{{subsystemSVG}}}</div>
         </section>
+        {{/meta.subsystem_summary}}
 
 
         <!--
@@ -585,6 +575,11 @@
             <h2>Phylogenetic Analysis</h2>
 
             <p>
+                The National Center for Biotechnology Information (NCBI) staff manually
+                select and categorize reference and representative genomes, which they
+                consider to be of high quality and importance to the research community.
+                PATRIC provides the reference and representative genomes, and includes them in the
+                phylogenetic analysis that is part of the Comprehensive Genome Analysis report.
                 The closest reference and representative genomes to {{gto.genome_name}}
                 were identified by Mash/MinHash<ref>Ondov, et al. 2016</ref>. PATRIC global
                 protein families (PGFams)<ref>Davis, et al. 2016</ref> were selected from these
