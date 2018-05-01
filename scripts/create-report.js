@@ -236,7 +236,7 @@ async function addReferences(content, assemblyMethod) {
     // create references section
     refHTML =
         `<ol class="references">` +
-            references.map((r, i) => `<li id="citation-${i}">${r}</li>` ).join('') +
+            references.map((r, i) => `<li id="citation-${i+1}">${r}</li>` ).join('') +
         `</ol>`;
 
     $('references').html(refHTML);
