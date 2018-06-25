@@ -132,7 +132,7 @@ async function buildReport(params) {
         treeSVG,
 	nContigs,
 	nContigsDrawn,
-	truncatedCircos: (nContigs > nContigsDrawn)
+	truncatedCircos: (Number(nContigs) > Number(nContigsDrawn))
     };
 
     console.log(`Contig status: nContigs=${tmplData.nContigs} nContigsDrawn=${tmplData.nContigsDrawn} truncatedCircos=${tmplData.truncatedCircos}\n`);
