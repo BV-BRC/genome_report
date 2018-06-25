@@ -135,7 +135,9 @@ async function buildReport(params) {
 	truncatedCircos: (nContigs > nContigsDrawn)
     };
 
-    console.log('Reading template...')
+    console.log(`Contig status: nContigs=${tmplData.nContigs} nContigsDrawn=${tmplData.nContigsDrawn} truncatedCircos=${tmplData.truncatedCircos}\n`);
+
+    console.log('Reading template...');
     let source;
     try {
         source = await readFile(templatePath);
