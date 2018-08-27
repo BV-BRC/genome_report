@@ -118,7 +118,6 @@ async function buildReport(params) {
 
     // get all template data
     let meta = gto.quality;
-    console.log(gto.quality);
     meta.genome_name = gto.scientific_name;
     let tmplData = {
         gto,
