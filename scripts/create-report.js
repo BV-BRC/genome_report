@@ -117,7 +117,8 @@ async function buildReport(params) {
     let subsystemSVG = await createSubsystemChart(gto, colorScheme);
 
     // get all template data
-    let meta = gto.genome_quality_measure;
+    let meta = gto.quality;
+    console.log(gto.quality);
     meta.genome_name = gto.scientific_name;
     let tmplData = {
         gto,
