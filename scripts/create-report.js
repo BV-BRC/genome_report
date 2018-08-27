@@ -11,6 +11,8 @@
  *     -o, --output [value] Path to write resulting html output
  *     -c, --circular-view [value] Path to SVG of circular view of genome
  *     -s, --color-scheme [value] Path to custom scheme for subsystem colors
+ *     --n-contigs [value] Number of contigs
+ *     --n-contigs-drawn [value] Number of contigs drawn
  *
  *
  * Example usage:
@@ -57,6 +59,8 @@ if (require.main === module){
         .option('-c, --circular-view [value] Path to SVG of circular view of genome')
         .option('-t, --tree [value] Path to SVG of phylogenetic tree')
         .option('-s, --color-scheme [value] Path to custom scheme for subsystem colors')
+	.option('--n-contigs [value]', 'Number of contigs')
+	.option('--n-contigs-drawn [value]', 'Number of contigs drawn')
         .parse(process.argv)
 
 
@@ -77,7 +81,7 @@ if (require.main === module){
 
 
 async function buildReport(params) {
-    let { input, output, circularView, tree, colorScheme } = params;
+    let { input, output, circularView, tree, colorScheme, nContigs, nContigsDrawn } = params;
 
     console.log('Loading Genome Typed Object...');
     let contents, data;
@@ -113,7 +117,7 @@ async function buildReport(params) {
     let subsystemSVG = await createSubsystemChart(gto, colorScheme);
 
     // get all template data
-    let meta = gto.genome_quality_measure;
+    let meta = gto.quality;
     meta.genome_name = gto.scientific_name;
     let tmplData = {
         gto,
@@ -125,11 +129,15 @@ async function buildReport(params) {
         amrGenes: 'amr_gene_summary' in meta && getAMRGenes(meta.amr_gene_summary),
         circularViewSVG,
         subsystemSVG,
-        treeSVG
+        treeSVG,
+	nContigs,
+	nContigsDrawn,
+	truncatedCircos: (Number(nContigs) > Number(nContigsDrawn))
     };
 
+    console.log(`Contig status: nContigs=${tmplData.nContigs} nContigsDrawn=${tmplData.nContigsDrawn} truncatedCircos=${tmplData.truncatedCircos}\n`);
 
-    console.log('Reading template...')
+    console.log('Reading template...');
     let source;
     try {
         source = await readFile(templatePath);

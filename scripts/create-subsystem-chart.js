@@ -90,12 +90,12 @@ async function createChart(gto, colorsPath) {
         colorObj = colors;
     }
 
-    if (!('genome_quality_measure' in gto) || !('subsystem_summary' in gto.genome_quality_measure) ) {
+    if (!('quality' in gto) || !('subsystem_summary' in gto.quality) ) {
         console.error('*** Could not find subsystem data.')
         return '';
     }
 
-    let subsystemSummary = gto.genome_quality_measure.subsystem_summary;
+    let subsystemSummary = gto.quality.subsystem_summary;
     let data = parseSubsystemSummary(subsystemSummary, colorObj);
 
     let svg = pieChart({

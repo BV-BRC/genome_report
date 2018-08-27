@@ -421,6 +421,11 @@
                 The colors of the CDS on the forward and reverse strand indicate the subsystem
                 that these genes belong to (see Subsystems below).
             </p>
+	    {{#if truncatedCircos}}
+	    <p> This genome has too many contigs to be rendered clearly. The circular display
+	      has been limited to the {{ nContigsDrawn }} longest contigs of the {{ nContigs }} contigs in the genome. 
+	      </p>
+	    {{/if}}
 
             <fig-num></fig-num>
             <div class="circular-view-fig center" >{{{circularViewSVG}}}</div>
