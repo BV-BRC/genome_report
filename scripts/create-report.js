@@ -59,8 +59,8 @@ if (require.main === module){
         .option('-c, --circular-view [value] Path to SVG of circular view of genome')
         .option('-t, --tree [value] Path to SVG of phylogenetic tree')
         .option('-s, --color-scheme [value] Path to custom scheme for subsystem colors')
-	.option('--n-contigs [value]', 'Number of contigs')
-	.option('--n-contigs-drawn [value]', 'Number of contigs drawn')
+        .option('--n-contigs [value]', 'Number of contigs')
+        .option('--n-contigs-drawn [value]', 'Number of contigs drawn')
         .parse(process.argv)
 
 
@@ -130,9 +130,9 @@ async function buildReport(params) {
         circularViewSVG,
         subsystemSVG,
         treeSVG,
-	nContigs,
-	nContigsDrawn,
-	truncatedCircos: (Number(nContigs) > Number(nContigsDrawn))
+        nContigs,
+        nContigsDrawn,
+        truncatedCircos: (Number(nContigs) > Number(nContigsDrawn))
     };
 
     console.log(`Contig status: nContigs=${tmplData.nContigs} nContigsDrawn=${tmplData.nContigsDrawn} truncatedCircos=${tmplData.truncatedCircos}\n`);
@@ -205,7 +205,7 @@ async function addReferences(content, assemblyMethod) {
     // iterate <ref> tags, get corresponding references from the references.json
     // and replace <ref> tags with superscripts (links)
     let references = [];
-    var refIdx = 1;
+    let refIdx = 1;
     $('ref').each((idx, elem) => {
 
         // if special assembly method citation, look up citation first
