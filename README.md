@@ -40,7 +40,7 @@ npm start
 ```
 
 
-## Test Output
+## Update Sample Reports
 
 ```
 npm run build
