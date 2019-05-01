@@ -40,6 +40,14 @@ npm start
 ```
 
 
+## Test output
+
+```
+./test/test-reports.sh
+```
+
+This will generate three different reports with the sample data found in `sample-data/`.
+
 
 ## Dev Notes
 
