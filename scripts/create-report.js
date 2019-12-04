@@ -211,8 +211,14 @@ async function addReferences(content, assemblyMethod) {
         // if special assembly method citation, look up citation first
         let cites;
         if ($(elem).hasClass('assembly-method')) {
-            console.log('assemblymethod', assemblyMethod)
-            cites = assemblyMapping[assemblyMethod.toLowerCase()].citation;
+	    try {
+		cites = assemblyMapping[assemblyMethod.toLowerCase()].citation
+		console.log('assemblymethod', assemblyMethod);
+	    }
+	    catch (err) {
+		cites = $(elem).text().trim();
+	    }
+		
         } else
             cites = $(elem).text().trim();
 
