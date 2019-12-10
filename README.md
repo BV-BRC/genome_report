@@ -40,17 +40,15 @@ npm start
 ```
 
 
+## Update Sample Reports
+
+```
+npm run build
+```
+
+This will generate three different reports with the sample data found in `sample-data/`.
+
 
 ## Dev Notes
 
 [Handlebars](https://github.com/wycats/handlebars.js/) is used for templating (`templates/gr-template.html`).  A full list of helpers is available here: [handlebars-helpers](https://github.com/helpers/handlebars-helpers)
-
-
-
-## Contributing
-
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request

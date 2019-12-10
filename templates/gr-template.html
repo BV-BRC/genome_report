@@ -421,11 +421,11 @@
                 The colors of the CDS on the forward and reverse strand indicate the subsystem
                 that these genes belong to (see Subsystems below).
             </p>
-	    {{#if truncatedCircos}}
-	    <p> This genome has too many contigs to be rendered clearly. The circular display
-	      has been limited to the {{ nContigsDrawn }} longest contigs of the {{ nContigs }} contigs in the genome. 
-	      </p>
-	    {{/if}}
+            {{#if truncatedCircos}}
+            <p> This genome has too many contigs to be rendered clearly. The circular display
+            has been limited to the {{ nContigsDrawn }} longest contigs of the {{ nContigs }} contigs in the genome.
+            </p>
+            {{/if}}
 
             <fig-num></fig-num>
             <div class="circular-view-fig center" >{{{circularViewSVG}}}</div>
@@ -433,6 +433,23 @@
         </section>
 
 
+        <!--
+          ## Subsystem Analysis
+        -->
+        {{#if meta.subsystem_summary}}
+        <section>
+            <h2>Subsystem Analysis</h2>
+            <p>
+                A subsystem is a set of proteins that together implement a specific biological
+                process or structural complex<ref>Overbeek, et al. 2005</ref> and PATRIC annotation
+                includes an analysis of the subsystems unique to each genome.
+                An overview of the subsystems for this genome is provided in <fig-ref></fig-ref>.
+            </p>
+
+            <fig-num></fig-num>
+            <div class="center subsystem-fig" >{{{subsystemSVG}}}</div>
+        </section>
+        {{/if}}
 
 
 
@@ -557,26 +574,6 @@
             {{/if}}
 
         </section>
-
-
-
-        <!--
-          ## Subsystem Analysis
-        -->
-        {{#if meta.subsystem_summary}}
-        <section>
-            <h2>Subsystem Analysis</h2>
-            <p>
-                A subsystem is a set of proteins that together implement a specific biological
-                process or structural complex<ref>Overbeek, et al. 2005</ref> and PATRIC annotation
-                includes an analysis of the subsystems unique to each genome.
-                An overview of the subsystems for this genome is provided in <fig-ref></fig-ref>.
-            </p>
-
-            <fig-num></fig-num>
-            <div class="center subsystem-fig" >{{{subsystemSVG}}}</div>
-        </section>
-        {{/if}}
 
 
         <!--

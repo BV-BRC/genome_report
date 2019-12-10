@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/live-server/live-server.js",
-    "start:dev": "./node_modules/live-server/live-server.js  --entry-file=/templates/gr-template.html"
+    "start:dev": "./node_modules/live-server/live-server.js  --entry-file=/templates/gr-template.html",
+    "build": "./test/build-reports.sh"
   },
   "repository": {
     "type": "git",
@@ -23,14 +24,12 @@
     "cheerio": "1.0.0-rc.2",
     "commander": "2.14.1",
     "d3": "5.0.0",
-    "handlebars": "4.0.11",
+    "handlebars": "4.1.2",
     "handlebars-helpers": "0.10.0",
-    "jsdom": "11.6.2",
+    "jsdom": "15.0.0",
     "moment": "2.22.0"
   },
   "devDependencies": {
-    "live-server": "1.2.0",
-    "puppeteer": "1.1.1",
-    "convert-svg-to-png": "0.4.0"
+    "live-server": "^1.2.1"
   }
 }
