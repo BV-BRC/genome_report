@@ -48,6 +48,7 @@ let refAnchors = true;   // probably can't use anchors with iFrames
 helpers.array();
 helpers.number();
 helpers.comparison();
+helpers.string();
 
 utils.helpers(handlebars);
 
@@ -114,7 +115,13 @@ async function buildReport(params) {
     }
 
     console.log('Creating subsystem chart...');
-    let subsystemSVG = await createSubsystemChart(gto, colorScheme);
+    let subsystemSVG;
+    try {
+	subsystemSVG = await createSubsystemChart(gto, colorScheme);
+    } catch (e) { 
+        console.error(`*** Could not read subsystem chart data: ${gto}\n`, e);
+        subsystemSVG = "";
+    }
 
     // get all template data
     let meta = gto.quality;

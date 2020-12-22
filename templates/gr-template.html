@@ -289,7 +289,10 @@
                 The {{meta.genome_name}} genome was annotated
                 using RAST tool kit (RASTtk)<ref>Brettin, et al. 2015</ref> and assigned a unique genome
                 identifier of {{gto.id}}. This genome is in the superkingdom
-                {{#eq gto.domain 'B'}}Bacteria{{/eq}}{{#eq gto.domain 'A'}}Archaea{{/eq}}
+		{{#startsWith "B" gto.domain}}Bacteria{{/startsWith}}
+		{{#startsWith "A" gto.domain}}Archaea{{/startsWith}}
+		{{#startsWith "V" gto.domain}}Virus{{/startsWith}}
+		{{#startsWith "E" gto.domain}}Eukaryota{{/startsWith}}
                 and was annotated using genetic code {{gto.genetic_code}}.
                 The taxonomy of this genome is:
             </p>
