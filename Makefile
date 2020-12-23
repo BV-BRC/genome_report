@@ -12,8 +12,8 @@ APP_DIR = .
 APP_COMPONENTS = config.json node_modules scripts templates lib
 
 PATH := $(DEPLOY_RUNTIME)/build-tools/bin:$(PATH)
-NODE = $(DEPLOY_RUNTIME)/bin/node-v8
-NPM = $(NODE) $(DEPLOY_RUNTIME)/bin/npm-v8
+NODE = $(DEPLOY_RUNTIME)/bin/node-v12
+NPM = $(NODE) $(DEPLOY_RUNTIME)/bin/npm-v12
 export NODE
 
 DATA_API_URL = https://p3.theseed.org/services/data_api
