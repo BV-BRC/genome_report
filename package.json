@@ -27,7 +27,7 @@
     "handlebars": "^4.7.6",
     "handlebars-helpers": "0.10.0",
     "jsdom": "15.0.0",
-    "moment": "2.22.0"
+    "moment": "2.29.2"
   },
   "devDependencies": {
     "live-server": "^1.2.1"
