@@ -26,7 +26,7 @@
     "d3": "5.0.0",
     "handlebars": "^4.7.6",
     "handlebars-helpers": "0.10.0",
-    "jsdom": "15.0.0",
+    "jsdom": "16.5.0",
     "moment": "2.22.0"
   },
   "devDependencies": {
